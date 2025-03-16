@@ -16,7 +16,6 @@ export const metadata: Metadata = {
   title: 'Bryan J. Hickey | a disciple of Jesus Christ',
   description:
     'Spreading a passion for the Truth, Beauty and Relevance of Jesus Christ',
-  
 }
 
 export default function RootLayout({

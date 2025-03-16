@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { Noto_Sans, Bitter } from 'next/font/google'
 import './globals.css'
-import '@calcom/atoms/globals.min.css'
 
 const notoSans = Noto_Sans({
   variable: '--font-noto-sans',

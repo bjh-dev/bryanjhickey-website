@@ -13,7 +13,6 @@ const bitterFont = Bitter({
   subsets: ['latin'],
 })
 
-const siteName = 'bryanjhickey.com'
 const localhost = 'http://localhost:3000'
 const vercelUrl =
   process.env.VERCEL_ENV === 'preview'

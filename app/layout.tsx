@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Noto_Sans, Bitter } from 'next/font/google'
 import './globals.css'
+import Favicon from '@/components/Favicon'
 
 const notoSans = Noto_Sans({
   variable: '--font-noto-sans',
@@ -12,9 +13,20 @@ const bitterFont = Bitter({
   subsets: ['latin'],
 })
 
+const siteName = 'bryanjhickey.com'
+const localhost = 'http://localhost:3000'
+const vercelUrl =
+  process.env.VERCEL_ENV === 'preview'
+    ? `http://${process.env.VERCEL_BRANCH_URL}`
+    : `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NODE_ENV === 'development' ? localhost : vercelUrl,
+  ),
   title:
     'Bryan J. Hickey — Proclaiming the truth, beauty and relevance of Jesus.',
+
   description:
     'I have the immense privilege of taking a break from bjh.dev to serve Jesus at my church, City on a Hill Geelong, overseeing theological training of interns, and providing pastoral support.',
 
@@ -35,6 +47,16 @@ export const metadata: Metadata = {
       },
     ],
   },
+  icons: {
+    icon: [
+      {
+        url: './favicon.png',
+        sizes: '16x16',
+        type: 'image/png',
+      },
+    ],
+    shortcut: ['./favicon.ico'],
+  },
 }
 
 export default function RootLayout({
@@ -44,6 +66,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <Favicon />
+      </head>
       <body
         className={`${notoSans.variable} ${bitterFont.variable} bg-background antialiased`}
       >

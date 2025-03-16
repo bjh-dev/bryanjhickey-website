@@ -13,7 +13,12 @@ export default function Home() {
           >
             <span className="border-b-4 border-b-[#E5A51A]">B.</span>
           </Link>
-          <Button asChild variant="secondary">
+          <Button
+            asChild
+            variant="secondary"
+            size="lg"
+            className="hover:text-accent-foreground border border-white bg-transparent text-white backdrop-blur-3xl"
+          >
             <a href="booking">Book a Time with Bryan</a>
           </Button>
         </nav>

@@ -20,13 +20,7 @@ const Navbar = () => {
           </p>
         </div>
         <Button asChild variant="secondary">
-          <a
-            href="https://cal.com/bryanjhickey"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            Book a Time with Bryan
-          </a>
+          <a href="booking">Book a Time with Bryan</a>
         </Button>
       </nav>
     </div>

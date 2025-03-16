@@ -1,10 +1,5 @@
-import Navbar from '@/components/Navbar'
+import { redirect } from 'next/navigation'
 
 export default function Contact() {
-  return (
-    <>
-      <Navbar />
-      <section>Contact Page</section>
-    </>
-  )
+  redirect(`https://cal.com/bryanjhickey`)
 }

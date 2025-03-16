@@ -14,13 +14,7 @@ export default function Home() {
             <span className="border-b-4 border-b-[#E5A51A]">B.</span>
           </Link>
           <Button asChild variant="secondary">
-            <a
-              href="https://cal.com/bryanjhickey"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              Book a Time with Bryan
-            </a>
+            <a href="booking">Book a Time with Bryan</a>
           </Button>
         </nav>
       </div>

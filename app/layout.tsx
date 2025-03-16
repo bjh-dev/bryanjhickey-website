@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     siteName: 'bryanjhickey.com',
     images: [
       {
-        url: 'https://www.bryanjhickey.com/images/sahre-image.png',
+        url: '/images/share-icon.png',
         width: 1200,
         height: 630,
         alt: 'Bryan J. Hickey | a disciple of Jesus Christ',

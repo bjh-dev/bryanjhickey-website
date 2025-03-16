@@ -13,11 +13,11 @@ const bitterFont = Bitter({
 })
 
 export const metadata: Metadata = {
-  title: 'Bryan J. Hickey — A Disciple of Jesus Christ',
+  title: 'Bryan J. Hickey — A Disciple of Jesus Christ.',
   description: 'Proclaiming the truth, beauty and relevance of Jesus.',
 
   openGraph: {
-    title: 'Bryan J. Hickey — A Disciple of Jesus Christ',
+    title: 'Bryan J. Hickey — A Disciple of Jesus Christ.',
     description: 'Proclaiming the truth, beauty and relevance of Jesus.',
     url: 'https://www.bryanjhickey.com',
     type: 'website',
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
         url: '/images/share-icon.png',
         width: 1200,
         height: 630,
-        alt: 'Bryan J. Hickey — A Disciple of Jesus Christ',
+        alt: 'Bryan J. Hickey — A Disciple of Jesus Christ.',
       },
     ],
   },

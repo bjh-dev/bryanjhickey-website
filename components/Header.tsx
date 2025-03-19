@@ -6,7 +6,7 @@ import TextLink from './ui/TextLink'
 
 const Header = () => {
   return (
-    <section className="relative grid h-svh overflow-hidden bg-gray-900">
+    <section className="relative grid h-svh overflow-hidden bg-[#000]">
       <Image
         src="/images/bryan_hero.jpg"
         fill
@@ -14,16 +14,16 @@ const Header = () => {
         placeholder="blur"
         blurDataURL={bryanHeroDataUri}
         alt="Bryan J. Hickey"
-        className="pointer-events-none object-cover object-right-top opacity-90"
+        className="pointer-events-none object-cover object-right-top"
       />
-      <div className="relative col-span-2 col-start-2 my-16 flex max-w-2xl flex-col justify-end space-y-2 px-4 text-white lg:justify-center">
-        <h1 className="font-medium text-[#E5A51A] uppercase lg:text-lg">
+      <div className="relative col-span-2 col-start-2 my-16 flex max-w-lg flex-col justify-end space-y-2 px-4 text-white md:max-w-xl lg:max-w-2xl lg:justify-center">
+        <h1 className="text-primary font-medium uppercase lg:text-lg">
           Bryan J. Hickey
         </h1>
-        <p className="font-serif text-3xl md:text-7xl lg:text-5xl">
+        <p className="font-serif text-3xl sm:text-5xl lg:text-6xl">
           Proclaiming the truth, beauty and relevance of Jesus.
         </p>
-        <div className="my-6 h-0.5 w-1/4 max-w-[120px] bg-[#E5A51A]" />
+        <div className="bg-primary my-6 h-0.5 w-1/4 max-w-[120px]" />
         <p className="lg:text-lg">
           Throughout 2025, I have the immense privilege of taking a break from{' '}
           <TextLink text="bjh.dev" link="https://www.bjh.dev" external /> to
@@ -36,7 +36,7 @@ const Header = () => {
           , overseeing theological training of interns, and providing pastoral
           support for Greenhouse participants.
         </p>
-        <div className="mt-4 flex gap-4 text-[#E5A51A]">
+        <div className="text-primary mt-4 flex gap-4">
           <a
             href="https://www.facebook.com/bryanjhickey"
             target="_blank"

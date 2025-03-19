@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Noto_Sans, Bitter } from 'next/font/google'
 import './globals.css'
 import Favicon from '@/components/Favicon'
+import { ThemeProvider } from '@/components/providers/ThemeProvider'
 
 const notoSans = Noto_Sans({
   variable: '--font-noto-sans',
@@ -49,8 +50,8 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: './favicon.png',
-        sizes: '16x16',
+        url: '/images/favicons/favicon-96x96.png',
+        sizes: '96x96',
         type: 'image/png',
       },
     ],
@@ -64,14 +65,19 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <Favicon />
       </head>
-      <body
-        className={`${notoSans.variable} ${bitterFont.variable} bg-background antialiased`}
-      >
-        <main>{children}</main>
+      <body className={(notoSans.variable, bitterFont.variable)}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <main className="bg-background antialiased">{children}</main>
+        </ThemeProvider>
       </body>
     </html>
   )

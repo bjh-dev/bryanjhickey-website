@@ -3,7 +3,7 @@ import { Noto_Sans, Bitter } from 'next/font/google'
 import './globals.css'
 import Favicon from '@/components/Favicon'
 import { ThemeProvider } from '@/components/providers/ThemeProvider'
-
+import { Analytics } from '@vercel/analytics/react'
 const notoSans = Noto_Sans({
   variable: '--font-noto-sans',
   subsets: ['latin'],
@@ -78,6 +78,7 @@ export default function RootLayout({
         >
           <main className="bg-background antialiased">{children}</main>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   )

@@ -24,15 +24,13 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NODE_ENV === 'development' ? localhost : vercelUrl,
   ),
-  title:
-    'Bryan J. Hickey — Proclaiming the truth, beauty and relevance of Jesus.',
+  title: 'Bryan J. Hickey — Personal Website',
 
   description:
     'I have the immense privilege of taking a break from bjh.dev to serve Jesus at my church, City on a Hill Geelong, overseeing theological training of interns, and providing pastoral support.',
 
   openGraph: {
-    title:
-      'Bryan J. Hickey — Proclaiming the truth, beauty and relevance of Jesus.',
+    title: 'Bryan J. Hickey — Personal Website',
     description:
       'I have the immense privilege of taking a break from bjh.dev to serve Jesus at my church, City on a Hill Geelong, overseeing theological training of interns, and providing pastoral support.',
     url: 'https://www.bryanjhickey.com',

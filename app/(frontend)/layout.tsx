@@ -76,7 +76,7 @@ export default async function FrontendLayout({
         enableSystem
         disableTransitionOnChange
       >
-        <main className="bg-background antialiased">
+        <main className="bg-background antialiased" role="main">
           {children}
           <SanityLive />
           {(await draftMode()).isEnabled && (

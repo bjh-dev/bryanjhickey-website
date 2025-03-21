@@ -6,8 +6,8 @@ export default function FrontendLayout({
   children: React.ReactNode
 }>) {
   return (
-    <div>
-      <main>{children}</main>
-    </div>
+    <main>
+      <div>{children}</div>
+    </main>
   )
 }

@@ -7,6 +7,7 @@ import { SanityLive } from '@/sanity/lib/live'
 import { DisableDraftMode } from '@/components/DisableDraftMode'
 import { VisualEditing } from 'next-sanity'
 import { draftMode } from 'next/headers'
+import { cn } from '@/lib/utils'
 const notoSans = Noto_Sans({
   variable: '--font-noto-sans',
   subsets: ['latin'],
@@ -68,7 +69,7 @@ export default async function FrontendLayout({
   children: React.ReactNode
 }>) {
   return (
-    <div className={(notoSans.variable, bitterFont.variable)}>
+    <div className={cn(notoSans.variable, bitterFont.variable)}>
       <ThemeProvider
         attribute="class"
         defaultTheme="system"

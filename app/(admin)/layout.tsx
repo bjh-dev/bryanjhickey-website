@@ -1,15 +1,4 @@
-import { Noto_Sans, Bitter } from 'next/font/google'
 import '@/app/globals.css'
-
-const notoSans = Noto_Sans({
-  variable: '--font-noto-sans',
-  subsets: ['latin'],
-})
-
-const bitterFont = Bitter({
-  variable: '--font-bitter',
-  subsets: ['latin'],
-})
 
 export default function FrontendLayout({
   children,
@@ -17,7 +6,7 @@ export default function FrontendLayout({
   children: React.ReactNode
 }>) {
   return (
-    <div className={(notoSans.variable, bitterFont.variable)}>
+    <div>
       <main>{children}</main>
     </div>
   )

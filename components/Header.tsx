@@ -8,7 +8,7 @@ import FadeYAnimation from './animations/FadeYAnimation'
 
 const Header = () => {
   return (
-    <section className="relative grid h-svh overflow-hidden bg-[#000]">
+    <section className="relative grid h-[90svh] overflow-hidden bg-[#000]">
       <Image
         src="/images/bryan_hero.jpg"
         fill

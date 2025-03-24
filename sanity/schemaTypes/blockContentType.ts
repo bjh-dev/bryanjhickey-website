@@ -1,6 +1,12 @@
 import { defineType, defineArrayMember } from 'sanity'
 import { ImageIcon } from '@sanity/icons'
-import { LeadParagraph } from './blockContentComponents'
+import {
+  HeadingFour,
+  HeadingOne,
+  HeadingThree,
+  HeadingTwo,
+  LeadParagraph,
+} from './blockContentComponents'
 
 /**
  * This is the schema type for block content used in the post document type
@@ -27,10 +33,10 @@ export const blockContentType = defineType({
       styles: [
         { title: 'Normal', value: 'normal' },
         { title: 'Leading Paragraph', value: 'lead', component: LeadParagraph },
-        { title: 'H1', value: 'h1' },
-        { title: 'H2', value: 'h2' },
-        { title: 'H3', value: 'h3' },
-        { title: 'H4', value: 'h4' },
+        { title: 'H1', value: 'h1', component: HeadingOne },
+        { title: 'H2', value: 'h2', component: HeadingTwo },
+        { title: 'H3', value: 'h3', component: HeadingThree },
+        { title: 'H4', value: 'h4', component: HeadingFour },
         { title: 'Quote', value: 'blockquote' },
       ],
       lists: [

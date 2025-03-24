@@ -6,13 +6,16 @@ import { PortableText } from '@portabletext/react'
 import { urlFor } from '@/sanity/lib/image'
 import { POST_QUERYResult } from '@/sanity.types'
 import { RelatedPosts } from '@/components/RelatedPosts'
+import { CustomPortableTextComponents } from '@/sanity/schemaTypes/blockContentComponents'
 
 export function Post({ post }: { post: NonNullable<POST_QUERYResult> }) {
   const { _id, _type, title, mainImage, body, relatedPosts } = post
 
   return (
     <main className="prose prose-lg container mx-auto p-4">
-      {title ? <h1>{title}</h1> : null}
+      {title ? (
+        <h1 className="my-8 font-serif text-6xl font-medium">{title}</h1>
+      ) : null}
       {mainImage?.asset?._ref ? (
         <Image
           className="float-left m-0 mr-4 w-1/3 rounded-lg"
@@ -22,7 +25,9 @@ export function Post({ post }: { post: NonNullable<POST_QUERYResult> }) {
           alt={title ?? ''}
         />
       ) : null}
-      {body ? <PortableText value={body} /> : null}
+      {body ? (
+        <PortableText value={body} components={CustomPortableTextComponents} />
+      ) : null}
       {relatedPosts ? (
         <RelatedPosts
           relatedPosts={relatedPosts}

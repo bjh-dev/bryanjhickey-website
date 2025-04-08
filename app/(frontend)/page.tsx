@@ -1,14 +1,14 @@
 import FadeXAnimation from '@/components/animations/FadeXAnimation'
 import Header from '@/components/Header'
 import Logo from '@/components/Logo'
-import { Posts } from '@/components/Posts'
+// import { Posts } from '@/components/Posts'
 // import { ThemeToggle } from '@/components/ThemeToggle'
 import { Button } from '@/components/ui/button'
-import { sanityFetch } from '@/sanity/lib/live'
-import { POSTS_QUERY } from '@/sanity/lib/queries'
+// import { sanityFetch } from '@/sanity/lib/live'
+// import { POSTS_QUERY } from '@/sanity/lib/queries'
 
 export default async function Home() {
-  const { data: posts } = await sanityFetch({ query: POSTS_QUERY })
+  // const { data: posts } = await sanityFetch({ query: POSTS_QUERY })
   return (
     <>
       <div className="fixed top-0 z-10 w-full">
@@ -30,7 +30,7 @@ export default async function Home() {
         </nav>
       </div>
       <Header />
-      <Posts posts={posts} />
+      {/* <Posts posts={posts} /> */}
     </>
   )
 }

@@ -1,0 +1,103 @@
+import FadeXAnimation from '@/components/animations/FadeXAnimation'
+import FadeYAnimation from '@/components/animations/FadeYAnimation'
+import { bryanHeroDataUri } from '@/lib/dataUris'
+import Image from 'next/image'
+import { FaFacebook, FaLinkedinIn, FaXTwitter } from 'react-icons/fa6'
+import CustomPortableText from '@/components/modules/PortableText'
+import { HeroSection } from '@/components/sections/types'
+import { urlForImage } from '@/lib/sanity/client/image'
+import { PortableTextBlock } from 'next-sanity'
+import { track } from '@vercel/analytics'
+
+export default function Hero({ section }: { section: HeroSection }) {
+  return (
+    <section className="relative grid h-svh overflow-hidden bg-[#000]">
+      {section.image && (
+        <Image
+          src={urlForImage(section.image).url()}
+          fill
+          priority
+          placeholder="blur"
+          blurDataURL={bryanHeroDataUri}
+          alt="Bryan J. Hickey"
+          className="pointer-events-none object-cover object-right-top"
+        />
+      )}
+      <div className="relative col-span-2 col-start-2 my-16 flex max-w-lg flex-col justify-end space-y-2 px-4 text-white md:max-w-xl lg:max-w-2xl lg:justify-center">
+        <FadeXAnimation xStartValue={-10} delay={0.25}>
+          {' '}
+          <h1 className="text-primary font-medium tracking-wider uppercase lg:text-lg">
+            {section.title}
+          </h1>
+        </FadeXAnimation>
+        <FadeXAnimation xStartValue={-10} delay={1} duration={0.75}>
+          <p className="font-serif text-3xl sm:text-5xl lg:text-6xl">
+            {section.subtitle}
+          </p>
+        </FadeXAnimation>
+        <FadeXAnimation xStartValue={-10} delay={1.24} duration={0.75}>
+          <div className="bg-primary my-6 h-0.5 w-1/4 max-w-[120px]" />
+        </FadeXAnimation>
+        {section.content && (
+          <FadeXAnimation xStartValue={-10} delay={1.5} duration={0.75}>
+            <CustomPortableText
+              value={section.content as PortableTextBlock[]}
+              className="leading-relaxed text-white lg:text-lg [&_a]:hover:text-white [&_a]:hover:decoration-white"
+            />
+          </FadeXAnimation>
+        )}
+        <div className="text-primary mt-4 flex gap-4">
+          <FadeYAnimation delay={1.75}>
+            <a
+              href="https://www.facebook.com/bryanjhickey"
+              target="_blank"
+              rel="nofollow noopener"
+              onClick={() => {
+                track('Social Platform', {
+                  platform: 'facebook',
+                  location: 'hero',
+                })
+              }}
+            >
+              <p className="sr-only">Facebook Link</p>
+              <FaFacebook className="h-6 w-6 transition-colors hover:text-white" />
+            </a>
+          </FadeYAnimation>
+          <FadeYAnimation delay={2}>
+            <a
+              href="www.linkedin.com/in/bryanjhickey
+"
+              target="_blank"
+              rel="nofollow noopener"
+              onClick={() => {
+                track('Social Platform', {
+                  platform: 'linkedin',
+                  location: 'hero',
+                })
+              }}
+            >
+              <p className="sr-only">LinkedIn Link</p>
+              <FaLinkedinIn className="h-6 w-6 transition-colors hover:text-white" />
+            </a>
+          </FadeYAnimation>
+          <FadeYAnimation delay={2.25}>
+            <a
+              href="https://x.com/bryanjhickey"
+              target="_blank"
+              rel="nofollow noopener"
+              onClick={() => {
+                track('Social Platform', {
+                  platform: 'twitter',
+                  location: 'hero',
+                })
+              }}
+            >
+              <p className="sr-only">X / Twitter Link</p>
+              <FaXTwitter className="h-6 w-6 transition-colors hover:text-white" />
+            </a>
+          </FadeYAnimation>
+        </div>
+      </div>
+    </section>
+  )
+}

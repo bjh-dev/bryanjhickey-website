@@ -81,9 +81,9 @@ export const linkFragment = /* groq */ `
   external,
   href,
   internal->{
+    ...,
     _type,
     _id,
-    "slug": slug.current
   },
 `
 
@@ -175,6 +175,7 @@ export const postCardFragment = /* groq */ `
 
 export const postFragment = /* groq */ `
   ${postCardFragment}
+  "slug": slug.current,
   ${contentFragment}
   seo {
     ${seoFragment}

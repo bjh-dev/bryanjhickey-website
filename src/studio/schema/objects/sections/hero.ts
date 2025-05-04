@@ -34,5 +34,11 @@ export default defineType({
       },
       validation: (Rule) => Rule.required(),
     }),
+    defineField({
+      name: 'buttons',
+      type: 'array',
+      of: [{ type: 'button' }],
+      validation: (Rule) => Rule.min(2).max(4),
+    }),
   ],
 })

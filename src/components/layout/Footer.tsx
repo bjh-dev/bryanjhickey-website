@@ -3,7 +3,7 @@ import { settingsQuery } from '@/lib/sanity/queries/queries'
 import { Button } from '../ui/button'
 import { Logo } from '@/components/icons/Logo'
 import Link from 'next/link'
-import { ThemeSwitcher } from '@/components/theme-switcher'
+import { ThemeSwitcher } from '@/components/modules/theme-switcher'
 import SocialMedia from '@/components/modules/SocialMedia'
 
 export default async function Footer() {

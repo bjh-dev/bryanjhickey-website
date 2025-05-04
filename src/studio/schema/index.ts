@@ -12,6 +12,7 @@ import settings from '@/studio/schema/singletons/settings'
 import { SchemaTypeDefinition } from 'sanity'
 import page from '@/studio/schema/documents/page'
 import social from '@/studio/schema/objects/social'
+import button from '@/studio/schema/objects/button'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -27,6 +28,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     hero,
     // Objects
     blockContent,
+    button,
     social,
     link,
     menu,

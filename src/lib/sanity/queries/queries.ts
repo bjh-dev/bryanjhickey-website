@@ -58,6 +58,7 @@ export const getSitemapQuery = defineQuery(`
 export const postQuery = defineQuery(`
   *[_type == "post" && slug.current == $slug] [0] {
     ${postFragment}
+    "slug": slug.current
   }
 `)
 

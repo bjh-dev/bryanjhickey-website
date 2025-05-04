@@ -18,7 +18,7 @@ export const getDocumentLink = (
     case 'page':
       return `${linkBase}/${slug}`
     case 'post':
-      return `${linkBase}/blog/${slug}`
+      return `${linkBase}/posts/${slug}`
     case 'category':
       return `${linkBase}/category/${slug}`
     case 'homePage':
@@ -38,6 +38,9 @@ export const getLinkByLinkObject = (
   }
 
   if (type === 'internal' && internal) {
-    return getDocumentLink(internal, false)
+    return getDocumentLink(
+      { _type: internal._type, slug: internal._ref ?? null },
+      false,
+    )
   }
 }

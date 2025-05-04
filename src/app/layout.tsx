@@ -3,7 +3,7 @@
  * file, it will not be tree shaken effectively across routes
  */
 
-import Favicon from '@/components/Favicon'
+import Favicon from '@/components/layout/Favicon'
 import { cn } from '@/lib/utils'
 import { Bitter, Noto_Sans } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'

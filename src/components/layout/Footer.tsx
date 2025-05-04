@@ -105,7 +105,7 @@ export default async function Footer() {
           </p>
         </div>
       </div>
-      <div className="absolute right-0 bottom-0 left-0 h-2 bg-gradient-to-r from-pink-500 to-blue-500"></div>
+      <div className="bg-primary absolute right-0 bottom-0 left-0 h-2"></div>
     </footer>
   )
 }

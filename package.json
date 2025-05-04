@@ -3,16 +3,22 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbo",
-    "dev:webpack": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "next:dev": "next dev --turbopack",
+    "next:build": "bun run sanity:typegen && next build",
+    "next:start": "next start",
+    "next:debug": "NEXT_PRIVATE_DEBUG_CACHE=1 next:build && next:start",
     "lint": "next lint",
-    "generate-types": "bunx sanity@latest schema extract && bunx sanity@latest typegen generate"
+    "dev": "bun run next:dev & bun run watch-typegen",
+    "built": "bun run next:build",
+    "start": "bun run next:start",
+    "sanity:typegen": "mkdir -p ./.sanity && sanity schema extract --path=.sanity/schema.json && sanity typegen generate",
+    "typecheck": "tsc --noEmit",
+    "watch-typegen": "tsx watch-typegen.ts"
   },
   "dependencies": {
     "@radix-ui/react-dropdown-menu": "^2.1.6",
-    "@radix-ui/react-slot": "^1.1.2",
+    "@radix-ui/react-navigation-menu": "^1.2.10",
+    "@radix-ui/react-slot": "^1.2.0",
     "@sanity/icons": "^3.7.0",
     "@sanity/image-url": "^1.1.0",
     "@sanity/vision": "^3.80.1",
@@ -29,6 +35,9 @@
     "react-headings": "^3.3.3",
     "react-icons": "^5.5.0",
     "sanity": "^3.80.1",
+    "sanity-plugin-asset-source-unsplash": "^3.0.3",
+    "sanity-plugin-media": "^3.0.2",
+    "sonner": "^2.0.3",
     "styled-components": "^6.1.16",
     "tailwind-merge": "^3.0.2",
     "tailwindcss-animate": "^1.0.7"
@@ -47,6 +56,7 @@
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "tailwindcss": "^4",
+    "tsx": "^4.19.4",
     "typescript": "^5"
   }
 }

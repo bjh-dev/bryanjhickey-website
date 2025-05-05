@@ -3,6 +3,8 @@ import { sanityFetch } from '@/lib/sanity/client/live'
 import { settingsQuery } from '@/lib/sanity/queries/queries'
 import { Logo } from '@/components/icons/Logo'
 import NavBar from '@/components/layout/Navbar'
+import FadeXAnimation from '@/components/animations/FadeXAnimation'
+import { Button } from '@/components/ui/button'
 
 export default async function Header() {
   const { data: settings } = await sanityFetch({
@@ -24,7 +26,19 @@ export default async function Header() {
             </Link>
           )}
         </div>
-        <NavBar menuItems={settings.menu || []} />
+        <div className="flex space-x-2">
+          <FadeXAnimation xStartValue={20} delay={3}>
+            <Button
+              asChild
+              variant="secondary"
+              size="lg"
+              className="hover:text-primary hover:border-primary hover:bg-background border border-white bg-transparent text-white backdrop-blur-3xl"
+            >
+              <Link href="/booking">Book a Time with Bryan</Link>
+            </Button>
+          </FadeXAnimation>
+          {settings.menu && <NavBar menuItems={settings.menu || []} />}
+        </div>
       </div>
     </header>
   )

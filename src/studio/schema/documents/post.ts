@@ -36,6 +36,14 @@ export default defineType({
       group: 'content',
     }),
     defineField({
+      name: 'isFeatured',
+      title: 'Featured Post',
+      type: 'boolean',
+      description: 'Check this box to feature the post on the homepage.',
+      group: 'content',
+      initialValue: false,
+    }),
+    defineField({
       name: 'image',
       title: 'Image',
       type: 'image',
@@ -66,15 +74,16 @@ export default defineType({
       ],
     }),
     defineField({
-      name: 'content',
-      title: 'Content',
-      type: 'blockContent',
-      group: 'content',
-    }),
-    defineField({
       name: 'excerpt',
       title: 'Excerpt',
       type: 'text',
+      group: 'content',
+      validation: (rule) => rule.max(300),
+    }),
+    defineField({
+      name: 'content',
+      title: 'Content',
+      type: 'blockContent',
       group: 'content',
     }),
     defineField({

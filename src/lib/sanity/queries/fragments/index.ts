@@ -166,6 +166,7 @@ export const postCardFragment = /* groq */ `
   "title": coalesce(title, "Untitled"),
   "slug": slug.current,
   excerpt,
+  isFeatured,
   image,
   "categories": categories[]->{${categoryFragment}},
   "date": coalesce(date, _updatedAt),
@@ -184,7 +185,9 @@ export const postFragment = /* groq */ `
 
 export const postListSectionFragment = /* groq */ `
     _type,
-    heading,
+    title,
+    subtitle,
+    description,
     numberOfPosts,
     "posts": *[_type == 'post'] | order(_createdAt desc, _id desc) [0...20] {
       ${postFragment}

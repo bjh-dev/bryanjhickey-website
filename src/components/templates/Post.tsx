@@ -11,20 +11,29 @@ type Props = {
 
 const Post = ({ post }: Props) => {
   return (
-    <div className="container mx-auto max-w-5xl pt-5 pb-12 md:pt-8">
+    <div className="mx-auto mt-16 max-w-5xl py-16">
       {post.image?.asset?._ref ? (
         <div className="mb-6 md:mb-14">
           <CoverImage image={post.image} priority />
         </div>
       ) : null}
-      <h1 className="mb-6 text-3xl font-bold md:text-5xl">{post.title}</h1>
-      {post.author ? (
-        <div className="mb-6">
-          <Byline post={post} />
-        </div>
-      ) : null}
+      <div className="mx-auto max-w-3xl px-4">
+        <h1 className="mb-6 font-serif text-3xl leading-12 tracking-tight md:text-5xl lg:leading-16">
+          {post.title}
+        </h1>
+        {post.author ? (
+          <div className="mb-6">
+            <Byline post={post} />
+          </div>
+        ) : null}
 
-      <CustomPortableText value={post.content as PortableTextBlock[]} />
+        <div className="text-foreground/70 my-12 border-y py-12 font-serif text-xl leading-normal lg:text-3xl">
+          <p className="text-primary mb-2 font-mono text-xs">TL;DR</p>
+          <p>{post.excerpt}</p>
+        </div>
+
+        <CustomPortableText value={post.content as PortableTextBlock[]} />
+      </div>
     </div>
   )
 }

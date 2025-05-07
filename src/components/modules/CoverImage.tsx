@@ -23,5 +23,5 @@ export default function CoverImage(props: CoverImageProps) {
     <div className="bg-slate-50 pt-[100%]" />
   )
 
-  return <div className="relative aspect-video">{image}</div>
+  return <div className="relative h-[40svh]">{image}</div>
 }

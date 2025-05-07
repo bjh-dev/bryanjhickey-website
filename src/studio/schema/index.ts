@@ -13,6 +13,7 @@ import { SchemaTypeDefinition } from 'sanity'
 import page from '@/studio/schema/documents/page'
 import social from '@/studio/schema/objects/social'
 import button from '@/studio/schema/objects/button'
+import postList from '@/studio/schema/objects/sections/postList'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -26,6 +27,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     page,
     // Sections
     hero,
+    postList,
     // Objects
     blockContent,
     button,

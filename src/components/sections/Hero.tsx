@@ -8,11 +8,10 @@ import { HeroSection } from '@/components/sections/types'
 import { urlForImage } from '@/lib/sanity/client/image'
 import { PortableTextBlock } from 'next-sanity'
 import { track } from '@vercel/analytics'
-import ButtonsGroup from '@/components/modules/ButtonsGroup'
 
 export default function Hero({ section }: { section: HeroSection }) {
   return (
-    <section className="relative grid h-svh overflow-hidden bg-[#000]">
+    <section className="relative grid h-svh overflow-hidden bg-black lg:h-[80svh]">
       {section.image && (
         <Image
           src={urlForImage(section.image).url()}
@@ -47,16 +46,6 @@ export default function Hero({ section }: { section: HeroSection }) {
             />
           </FadeXAnimation>
         )}
-        {section?.buttons && section?.buttons.length ? (
-          <div className="mt-8 flex gap-4">
-            {section?.buttons.length > 1 && (
-              <ButtonsGroup
-                className="w-full md:w-auto"
-                buttons={section?.buttons}
-              />
-            )}
-          </div>
-        ) : null}
         <div className="text-primary mt-4 flex gap-4">
           <FadeYAnimation delay={1.75}>
             <a

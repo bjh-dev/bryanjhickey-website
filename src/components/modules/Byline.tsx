@@ -12,12 +12,12 @@ export default function Byline({ post }: { post: PostCardFragmentType }) {
     <div className="flex items-center justify-between">
       <div className="flex items-center">
         {post.author?.image?.asset?._ref ? (
-          <div className="mr-4 h-9 w-9">
+          <div className="mr-4 h-20 w-20">
             <Image
               alt={post.author?.image?.alt || ''}
               className="h-full rounded-full object-cover"
-              height={48}
-              width={48}
+              height={80}
+              width={80}
               src={urlForImage(post.author?.image)
                 ?.height(96)
                 .width(96)
@@ -29,16 +29,11 @@ export default function Byline({ post }: { post: PostCardFragmentType }) {
           <div className="mr-1">By </div>
         )}
         <div className="flex flex-col">
-          {post.author?.firstName &&
-          post.author?.lastName &&
-          post.author?.slug ? (
-            <Link
-              className="font-bold underline transition-colors hover:text-gray-700"
-              href={`/author/${post.author.slug}`}
-            >
+          {post.author?.firstName && post.author?.lastName && (
+            <div>
               {post.author.firstName} {post.author.lastName}
-            </Link>
-          ) : null}
+            </div>
+          )}
           <div className="text-sm text-gray-500">
             <DateComponent dateString={post.date} />
           </div>

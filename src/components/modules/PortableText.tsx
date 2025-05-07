@@ -69,7 +69,7 @@ export default function CustomPortableText({
       normal: ({ children }) => (
         <p
           className={cn(
-            'text-foreground mb-6 text-lg leading-relaxed',
+            'text-foreground mb-6 font-serif text-lg leading-relaxed lg:text-xl',
             className,
           )}
         >
@@ -80,7 +80,7 @@ export default function CustomPortableText({
         <Heading
           as="h1"
           id={parseChildrenToSlug(value.children)}
-          className="mb-8 scroll-mt-20 text-4xl font-bold text-gray-900 md:text-5xl"
+          className="text-foreground/80 scroll-mt-20 py-6 font-serif text-4xl md:text-5xl"
         >
           {children}
         </Heading>
@@ -89,7 +89,7 @@ export default function CustomPortableText({
         <Heading
           as="h2"
           id={parseChildrenToSlug(value.children)}
-          className="mb-6 scroll-mt-20 text-3xl font-bold text-gray-900 md:text-4xl"
+          className="text-foreground/80 scroll-mt-20 py-12 font-serif text-3xl md:text-4xl"
         >
           {children}
         </Heading>
@@ -98,7 +98,7 @@ export default function CustomPortableText({
         <Heading
           as="h3"
           id={parseChildrenToSlug(value.children)}
-          className="mb-4 scroll-mt-20 text-2xl font-bold text-gray-900 md:text-3xl"
+          className="scroll-mt-20 py-6 font-serif text-2xl md:text-3xl"
         >
           {children}
         </Heading>
@@ -107,7 +107,7 @@ export default function CustomPortableText({
         <Heading
           as="h4"
           id={parseChildrenToSlug(value.children)}
-          className="mb-4 scroll-mt-20 text-xl font-bold text-gray-900 md:text-2xl"
+          className="scroll-mt-20 py-6 font-serif text-xl md:text-2xl"
         >
           {children}
         </Heading>
@@ -116,7 +116,7 @@ export default function CustomPortableText({
         <Heading
           as="h5"
           id={parseChildrenToSlug(value.children)}
-          className="mb-4 scroll-mt-20 text-lg font-bold text-gray-900 md:text-xl"
+          className="scroll-mt-20 py-6 font-serif text-lg md:text-xl"
         >
           {children}
         </Heading>
@@ -125,7 +125,7 @@ export default function CustomPortableText({
         <Heading
           as="h6"
           id={parseChildrenToSlug(value.children)}
-          className="mb-4 scroll-mt-20 text-base font-bold text-gray-900 md:text-lg"
+          className="scroll-mt-20 py-6 font-serif text-base md:text-lg"
         >
           {children}
         </Heading>

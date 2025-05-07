@@ -7,6 +7,9 @@
 @theme {
   --font-sans: var(--font-noto-sans);
   --font-bitter: var(--font-bitter);
+
+  --color-black: oklch(0.147 0.004 49.25);
+  --color-white: oklch(0.985 0.001 106.423);
 }
 
 :root {

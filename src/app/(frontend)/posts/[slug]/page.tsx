@@ -2,10 +2,11 @@ import { notFound } from 'next/navigation'
 import { sanityFetch } from '@/lib/sanity/client/live'
 import { postPagesSlugs, postQuery } from '@/lib/sanity/queries/queries'
 import { Metadata } from 'next'
-import { getDocumentLink } from '@/lib/links'
 import { client } from '@/lib/sanity/client/client'
 import { PostQueryResult } from '@/types/sanity.types'
 import Post from '@/components/templates/Post'
+import { formatMetaData } from '@/lib/sanity/client/seo'
+import { SeoType } from '@/types/seo'
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -29,11 +30,10 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
     return {}
   }
 
-  return {
-    alternates: {
-      canonical: getDocumentLink(routeData, true),
-    },
-  }
+  return formatMetaData(
+    routeData.seo as unknown as SeoType,
+    routeData?.title || '',
+  )
 }
 
 // Return a list of `params` to populate the [slug] dynamic segment

@@ -11,13 +11,13 @@ type Props = {
 
 const Post = ({ post }: Props) => {
   return (
-    <div className="mx-auto mt-16 max-w-5xl py-16">
+    <div className="mx-auto mt-16 max-w-5xl px-4 py-16">
       {post.image?.asset?._ref ? (
         <div className="mb-6 md:mb-14">
           <CoverImage image={post.image} priority />
         </div>
       ) : null}
-      <div className="mx-auto max-w-3xl px-4">
+      <div className="mx-auto max-w-3xl">
         <h1 className="mb-6 font-serif text-3xl leading-12 tracking-tight md:text-5xl lg:leading-16">
           {post.title}
         </h1>

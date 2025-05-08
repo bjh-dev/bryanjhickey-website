@@ -6,7 +6,11 @@ import NavBar from '@/components/layout/Navbar'
 import FadeXAnimation from '@/components/animations/FadeXAnimation'
 import { Button } from '@/components/ui/button'
 
-export default async function Header() {
+export default async function Header({
+  hasHero = true,
+}: {
+  hasHero?: boolean
+}) {
   const { data: settings } = await sanityFetch({
     query: settingsQuery,
   })
@@ -21,19 +25,14 @@ export default async function Header() {
         <div className="flex items-center space-x-4">
           {typeof settings.title !== 'undefined' && (
             <Link className="flex items-center space-x-4" href="/">
-              <Logo lightLogo animate />
+              <Logo lightLogo={hasHero ? true : false} animate />
               <span className="sr-only">{settings.title}</span>
             </Link>
           )}
         </div>
         <div className="flex space-x-2">
           <FadeXAnimation xStartValue={20} delay={3}>
-            <Button
-              asChild
-              variant="secondary"
-              size="lg"
-              className="hover:text-primary hover:border-primary hover:bg-background border border-white bg-transparent text-white backdrop-blur-3xl"
-            >
+            <Button asChild size="lg">
               <Link href="/booking">Book a Time with Bryan</Link>
             </Button>
           </FadeXAnimation>

@@ -33,11 +33,11 @@ export default function PostList({ section }: { section: PostListSection }) {
               return (
                 <div
                   key={post._id}
-                  className="col-span-1 overflow-hidden rounded-xl hover:shadow-lg md:col-span-2 lg:col-span-4"
+                  className="col-span-1 overflow-hidden rounded-xl md:col-span-2 lg:col-span-4"
                 >
                   <Card className="p-0">
                     <CardContent className="flex flex-col p-0 lg:grid lg:grid-cols-3">
-                      <div className="relative col-span-1 h-[40svh]">
+                      <div className="relative col-span-1 h-[40svh] lg:h-auto">
                         <Image
                           src={post.image ? urlForImage(post.image).url() : ''}
                           alt={post.title}

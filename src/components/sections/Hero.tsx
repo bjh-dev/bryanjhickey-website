@@ -11,7 +11,7 @@ import { track } from '@vercel/analytics'
 
 export default function Hero({ section }: { section: HeroSection }) {
   return (
-    <section className="relative grid h-svh overflow-hidden bg-black lg:h-[80svh]">
+    <section className="relative grid h-svh overflow-hidden bg-black lg:h-[90svh]">
       {section.image && (
         <Image
           src={urlForImage(section.image).url()}
@@ -23,7 +23,7 @@ export default function Hero({ section }: { section: HeroSection }) {
           className="pointer-events-none object-cover object-right-top"
         />
       )}
-      <div className="relative col-span-2 col-start-2 my-16 flex max-w-lg flex-col justify-end space-y-2 px-4 text-white md:max-w-xl lg:max-w-2xl lg:justify-center">
+      <div className="relative col-span-2 col-start-2 flex max-w-lg flex-col justify-end space-y-2 px-4 text-white md:max-w-xl lg:max-w-2xl lg:justify-center">
         <FadeXAnimation xStartValue={-10} delay={0.25}>
           {' '}
           <h1 className="text-primary font-medium tracking-wider uppercase lg:text-lg">

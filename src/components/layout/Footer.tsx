@@ -15,7 +15,6 @@ export default async function Footer() {
     return null
   }
 
-  // console.log('Settings', settings)
   return (
     <footer className="bg-background text-foreground relative py-12 md:py-16">
       <div className="container mx-auto max-w-7xl px-4">

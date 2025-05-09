@@ -10,7 +10,6 @@ import Link from 'next/link'
 import React from 'react'
 
 export default function PostList({ section }: { section: PostListSection }) {
-  console.log('PostList section', section)
   return (
     <section className="py-24">
       <div className="mx-auto max-w-5xl px-4">

@@ -42,6 +42,7 @@ export default defineConfig([
       'jsx-a11y/role-supports-aria-props': 'warn',
     },
   }),
+  // Ignore auto-generated TypeScript definitions from Sanity to avoid unnecessary linting.
   globalIgnores([
     "**/sanity.types.ts"
   ]),

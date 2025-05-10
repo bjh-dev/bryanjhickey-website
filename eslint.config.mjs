@@ -1,11 +1,12 @@
 import { FlatCompat } from '@eslint/eslintrc'
+import { defineConfig, globalIgnores } from "eslint/config";
 
 const compat = new FlatCompat({
   // import.meta.dirname is available after Node.js v20.11.0
   baseDirectory: import.meta.dirname,
 })
 
-const eslintConfig = [
+export default defineConfig([
   ...compat.config({
     extends: [
       'next',
@@ -41,6 +42,8 @@ const eslintConfig = [
       'jsx-a11y/role-supports-aria-props': 'warn',
     },
   }),
-]
-
-export default eslintConfig
+  // Ignore auto-generated TypeScript definitions from Sanity to avoid unnecessary linting.
+  globalIgnores([
+    "**/sanity.types.ts"
+  ]),
+])

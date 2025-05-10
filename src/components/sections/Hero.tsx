@@ -46,7 +46,7 @@ export default function Hero({ section }: { section: HeroSection }) {
             />
           </FadeXAnimation>
         )}
-        <div className="text-primary mt-4 flex gap-4">
+        <div className="text-primary flex gap-4 pb-12">
           <FadeYAnimation delay={1.75}>
             <a
               href="https://www.facebook.com/bryanjhickey"

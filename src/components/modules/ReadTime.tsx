@@ -1,12 +1,18 @@
-import { Clock } from 'lucide-react'
 import { readTime } from '@/utils/strings'
+import { cn } from '@/lib/utils'
 
-export default function ReadTime({ wordCount }: { wordCount: number }) {
+export default function ReadTime({
+  wordCount,
+  className,
+}: {
+  wordCount: number
+  className?: string
+}) {
   return (
-    <div className="flex items-center text-sm text-gray-500">
-      <Clock className="mr-1 h-4 w-4" />
+    <div className={cn('flex items-center text-sm text-gray-500', className)}>
       {readTime(wordCount)} minute
       {readTime(wordCount) > 1 ? 's' : ''}
+      &nbsp;<span>reading time</span>
     </div>
   )
 }

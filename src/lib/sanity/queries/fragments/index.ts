@@ -177,6 +177,7 @@ export const postCardFragment = /* groq */ `
 export const postFragment = /* groq */ `
   ${postCardFragment}
   "slug": slug.current,
+  "wordCount": count(string::split(coalesce(pt::text(content), ''), " ")),
   ${contentFragment}
   seo {
     ${seoFragment}

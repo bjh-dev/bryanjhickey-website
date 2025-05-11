@@ -91,47 +91,51 @@ export default function PostList({ section }: { section: PostListSection }) {
           )}
         </div>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-          {section.posts.map((post) => {
-            return (
-              <Link
-                key={post._id}
-                className="group col-span-1 overflow-hidden rounded-xl md:col-span-2"
-                href={getDocumentLink({
-                  slug: post.slug,
-                  _type: 'post',
-                })}
-              >
-                <Card className="group-hover:bg-accent/30 group-hover:shadow-primary/30 group-hover:border-primary/30 relative p-0 transition-all">
-                  <CardContent className="flex flex-col gap-4">
-                    <div className="col-span-2 flex flex-col gap-2 px-2 py-10">
-                      <div className="flex items-center gap-4">
-                        {post.date ? (
-                          <time className="text-xs text-gray-500">
-                            {new Date(post.date).toLocaleDateString('en-AU', {
-                              year: 'numeric',
-                              month: 'long',
-                              day: 'numeric',
-                            })}
-                          </time>
-                        ) : null}
-                        <span className="text-sm text-gray-500">&#10013;</span>
-                        <ReadTime
-                          wordCount={post.wordCount}
-                          className="text-xs"
-                        />
+          {section.posts
+            .filter((post) => !post.isFeatured)
+            .map((post) => {
+              return (
+                <Link
+                  key={post._id}
+                  className="group col-span-1 overflow-hidden rounded-xl md:col-span-2"
+                  href={getDocumentLink({
+                    slug: post.slug,
+                    _type: 'post',
+                  })}
+                >
+                  <Card className="group-hover:bg-accent/30 group-hover:shadow-primary/30 group-hover:border-primary/30 relative p-0 transition-all">
+                    <CardContent className="flex flex-col gap-4">
+                      <div className="col-span-2 flex flex-col gap-2 px-2 py-10">
+                        <div className="flex items-center gap-4">
+                          {post.date ? (
+                            <time className="text-xs text-gray-500">
+                              {new Date(post.date).toLocaleDateString('en-AU', {
+                                year: 'numeric',
+                                month: 'long',
+                                day: 'numeric',
+                              })}
+                            </time>
+                          ) : null}
+                          <span className="text-sm text-gray-500">
+                            &#10013;
+                          </span>
+                          <ReadTime
+                            wordCount={post.wordCount}
+                            className="text-xs"
+                          />
+                        </div>
+                        <h3 className="font-serif text-lg lg:font-bold">
+                          {post.title}
+                        </h3>
+                        <p className="text-foreground/80 line-clamp-4 font-serif text-base">
+                          {post.excerpt}
+                        </p>
                       </div>
-                      <h3 className="font-serif text-lg lg:font-bold">
-                        {post.title}
-                      </h3>
-                      <p className="text-foreground/80 line-clamp-4 font-serif text-base">
-                        {post.excerpt}
-                      </p>
-                    </div>
-                  </CardContent>
-                </Card>
-              </Link>
-            )
-          })}
+                    </CardContent>
+                  </Card>
+                </Link>
+              )
+            })}
         </div>
       </div>
     </section>

@@ -13,7 +13,7 @@ export default function PostCard({ post }: { post: PostCardFragmentType }) {
   const featuredCategory = categories?.[0]
 
   return (
-    <article className="relative overflow-hidden rounded-2xl bg-white shadow-sm">
+    <article className="relative h-full overflow-hidden rounded-2xl bg-white shadow-sm">
       <div className="grid gap-6 md:grid-cols-2">
         <div className="relative h-64 md:h-full">
           {image ? (

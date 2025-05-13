@@ -90,20 +90,20 @@ export default function PostList({ section }: { section: PostListSection }) {
             </Link>
           )}
         </div>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 items-stretch gap-4 md:grid-cols-2 lg:grid-cols-4">
           {section.posts
             .filter((post) => !post.isFeatured)
             .map((post) => {
               return (
                 <Link
                   key={post._id}
-                  className="group col-span-1 overflow-hidden rounded-xl md:col-span-2"
+                  className="group col-span-1 items-stretch overflow-hidden rounded-xl md:col-span-2"
                   href={getDocumentLink({
                     slug: post.slug,
                     _type: 'post',
                   })}
                 >
-                  <Card className="group-hover:bg-accent/30 group-hover:shadow-primary/30 group-hover:border-primary/30 relative p-0 transition-all">
+                  <Card className="group-hover:bg-accent/30 group-hover:shadow-primary/30 group-hover:border-primary/30 relative h-full p-0 transition-all">
                     <CardContent className="flex flex-col gap-4">
                       <div className="col-span-2 flex flex-col gap-2 px-2 py-10">
                         <div className="flex items-center gap-4">

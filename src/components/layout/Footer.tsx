@@ -26,7 +26,7 @@ export default async function Footer() {
                 <span className="sr-only">{settings.title}</span>
               </Link>
               <h3 className="mt-4 text-lg font-semibold">{settings.title}</h3>
-              <p className="text-sm">{settings.description}</p>
+              <p className="font-serif text-sm">{settings.description}</p>
             </div>
           </div>
           {settings.footerMenu && (
@@ -97,7 +97,7 @@ export default async function Footer() {
             </div>
           </div>
         </div>
-        <div className="mt-8 border-t border-gray-200 pt-8 text-center text-sm">
+        <div className="mt-8 border-t border-gray-200 pt-8 text-center text-xs">
           <p>
             &copy; {new Date().getFullYear()} {settings.title}. All rights
             reserved.

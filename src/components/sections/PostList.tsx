@@ -1,8 +1,7 @@
 import { PostListSection } from '@/components/sections/types'
 
 import React from 'react'
-import { Card } from '../ui/card'
-import { CardContent } from '../ui/card'
+import { Card, CardContent } from '../ui/card'
 import Link from 'next/link'
 import ReadTime from '../modules/ReadTime'
 import { getDocumentLink } from '@/lib/links'
@@ -34,13 +33,13 @@ export default function PostList({ section }: { section: PostListSection }) {
           {featuredPost && (
             <Link
               key={featuredPost._id}
-              className="group col-span-1 overflow-hidden rounded-xl md:col-span-2 lg:col-span-4"
+              className="group hover:shadow-primary/30 hover:shadow-x hover:border-primary/30 border-card col-span-1 overflow-hidden rounded-xl border shadow-none md:col-span-2 lg:col-span-4"
               href={getDocumentLink({
                 slug: featuredPost.slug,
                 _type: 'post',
               })}
             >
-              <Card className="group-hover:bg-accent/30 group-hover:shadow-primary/30 group-hover:border-primary/30 relative p-0 transition-all">
+              <Card className="group-hover:bg-accent/40 relative h-full p-0 transition-all">
                 {featuredPost.isFeatured && (
                   <div className="bg-primary absolute top-0 right-0 rounded-tr-xl rounded-bl-xs p-2 text-xs font-bold text-black uppercase">
                     Featured
@@ -97,13 +96,13 @@ export default function PostList({ section }: { section: PostListSection }) {
               return (
                 <Link
                   key={post._id}
-                  className="group col-span-1 items-stretch overflow-hidden rounded-xl md:col-span-2"
+                  className="group hover:shadow-primary/30 hover:shadow-x col-span-1 items-stretch overflow-hidden rounded-xl shadow-none md:col-span-2"
                   href={getDocumentLink({
                     slug: post.slug,
                     _type: 'post',
                   })}
                 >
-                  <Card className="group-hover:bg-accent/30 group-hover:shadow-primary/30 group-hover:border-primary/30 relative h-full p-0 transition-all">
+                  <Card className="group-hover:bg-accent/40 group-hover:border-primary/30 relative h-full p-0 transition-all">
                     <CardContent className="flex flex-col gap-4">
                       <div className="col-span-2 flex flex-col gap-2 px-2 py-10">
                         <div className="flex items-center gap-4">

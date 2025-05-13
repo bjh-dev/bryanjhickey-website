@@ -6,7 +6,6 @@
 import Favicon from '@/components/layout/Favicon'
 import { cn } from '@/lib/utils'
 import { Bitter, Noto_Sans } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/next'
 
 const notoSans = Noto_Sans({
   variable: '--font-noto-sans',
@@ -33,7 +32,6 @@ export default function RootLayout({
         <Favicon />
       </head>
       {children}
-      <Analytics />
     </html>
   )
 }

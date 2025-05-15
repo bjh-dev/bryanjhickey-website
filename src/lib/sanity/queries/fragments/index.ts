@@ -169,7 +169,7 @@ export const postCardFragment = /* groq */ `
   isFeatured,
   image,
   "categories": categories[]->{${categoryFragment}},
-  "date": coalesce(date, _updatedAt),
+  date,
   "author": author->{${personFragment}},
   "wordCount": count(string::split(coalesce(pt::text(content), ''), " ")),
 `

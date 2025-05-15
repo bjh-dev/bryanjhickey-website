@@ -62,6 +62,12 @@ export const postQuery = defineQuery(`
   }
 `)
 
+export const allPostsQuery = defineQuery(`
+  *[_type == 'post'] | order(date desc, _id desc) [0...20] {
+      ${postFragment}
+    }
+`)
+
 export const categoryQuery = defineQuery(`
   *[_type == "category" && slug.current == $slug] [0] {
     ${categoryFragment}

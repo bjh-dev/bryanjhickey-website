@@ -80,7 +80,7 @@ export default function PostList({ section }: { section: PostListSection }) {
                       <span className="text-sm text-gray-500">&#10013;</span>
                       <ReadTime wordCount={featuredPost.wordCount} />
                     </div>
-                    <p className="text-foreground/80 font-serif lg:text-lg">
+                    <p className="text-foreground/60 font-serif lg:text-lg">
                       {featuredPost.excerpt}
                     </p>
                   </div>
@@ -126,7 +126,7 @@ export default function PostList({ section }: { section: PostListSection }) {
                         <h3 className="font-serif text-lg lg:font-bold">
                           {post.title}
                         </h3>
-                        <p className="text-foreground/80 line-clamp-4 font-serif text-base">
+                        <p className="text-foreground/60 line-clamp-4 font-serif text-sm leading-relaxed lg:text-base">
                           {post.excerpt}
                         </p>
                       </div>

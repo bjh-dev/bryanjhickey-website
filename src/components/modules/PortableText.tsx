@@ -98,7 +98,7 @@ export default function CustomPortableText({
         <Heading
           as="h3"
           id={parseChildrenToSlug(value.children)}
-          className="scroll-mt-20 py-6 font-serif text-2xl md:text-3xl"
+          className="scroll-mt-20 py-6 font-serif text-3xl md:text-4xl"
         >
           {children}
         </Heading>
@@ -131,7 +131,7 @@ export default function CustomPortableText({
         </Heading>
       ),
       blockquote: ({ children }) => (
-        <blockquote className="my-6 border-l-4 border-gray-300 pl-4 text-gray-600 italic">
+        <blockquote className="text-foreground/60 border-border my-12 border-l-4 pl-4 font-serif text-lg leading-relaxed italic lg:text-xl">
           {children}
         </blockquote>
       ),
@@ -203,8 +203,8 @@ export default function CustomPortableText({
             <Image
               width="1000"
               height="667"
-              src={urlForImage(value)?.width(1000).height(667).url() as string}
-              alt={value?.alt || ''}
+              src={urlForImage(value)?.width(1000).height(667).url()}
+              alt={value?.alt ?? ''}
               className="h-auto w-full"
             />
           </div>

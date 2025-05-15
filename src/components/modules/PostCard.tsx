@@ -58,7 +58,9 @@ export default function PostCard({ post }: { post: PostCardFragmentType }) {
               {title}
             </Link>
           </h3>
-          {excerpt ? <p className="mb-4 text-gray-600">{excerpt}</p> : null}
+          {excerpt ? (
+            <p className="text-foreground/60 mb-4">{excerpt}</p>
+          ) : null}
           <div className="mb-4">
             {author ? (
               <span className="text-sm font-medium text-gray-700">

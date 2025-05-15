@@ -16,9 +16,11 @@ export default function Byline({ post }: { post: PostCardFragmentType }) {
             </span>
           )}
         </h4>
-        <div className="text-sm text-gray-500">
-          <DateComponent dateString={post.date} />
-        </div>
+        {post.date && (
+          <div className="text-sm text-gray-500">
+            <DateComponent dateString={post.date} />
+          </div>
+        )}
       </div>
       <div className="flex flex-col items-end gap-2">
         {post.categories && post.categories?.length > 0 && (

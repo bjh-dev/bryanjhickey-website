@@ -7,12 +7,20 @@ import ReadTime from '../modules/ReadTime'
 import { getDocumentLink } from '@/lib/links'
 import { urlForImage } from '@/lib/sanity/client/image'
 import Image from 'next/image'
+import { FaArrowRight } from 'react-icons/fa6'
+import { Button } from '@/components/ui/button'
 
 export default function PostList({ section }: { section: PostListSection }) {
   const featuredPost = section.posts
     .slice() // shallow copy to avoid mutating original
     .reverse() // reverse to get latest first
     .find((post) => post.isFeatured)
+
+  const isShowMore = section.numberOfPosts
+    ? section.posts.length > section.numberOfPosts + 1 &&
+      (section.numberOfPosts ?? 4)
+    : false
+
   return (
     <section className="py-24">
       <div className="mx-auto max-w-5xl px-4">
@@ -25,21 +33,23 @@ export default function PostList({ section }: { section: PostListSection }) {
               <h3 className="font-serif text-4xl">{section.subtitle}</h3>
             </div>
             <div>
-              <p>{section.description}</p>
+              <p className="text-foreground/60 font-serif">
+                {section.description}
+              </p>
             </div>
           </div>
         </div>
-        <div className="py-12">
+        <div className="mt-8 py-8">
           {featuredPost && (
             <Link
               key={featuredPost._id}
-              className="group hover:shadow-primary/30 hover:shadow-x hover:border-primary/30 border-card col-span-1 overflow-hidden rounded-xl border shadow-none md:col-span-2 lg:col-span-4"
+              className="group col-span-1 items-stretch rounded-xl md:col-span-2 lg:col-span-4"
               href={getDocumentLink({
                 slug: featuredPost.slug,
                 _type: 'post',
               })}
             >
-              <Card className="group-hover:bg-accent/40 relative h-full p-0 transition-all">
+              <Card className="group-hover:bg-accent/60 group-hover:border-primary border-border relative h-full border p-0 shadow-none transition-all">
                 {featuredPost.isFeatured && (
                   <div className="bg-primary absolute top-0 right-0 rounded-tr-xl rounded-bl-xs p-2 text-xs font-bold text-black uppercase">
                     Featured
@@ -89,20 +99,21 @@ export default function PostList({ section }: { section: PostListSection }) {
             </Link>
           )}
         </div>
-        <div className="grid grid-cols-1 items-stretch gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 items-stretch gap-8 md:grid-cols-2 lg:grid-cols-4">
           {section.posts
-            .filter((post) => !post.isFeatured)
+            .filter((post) => !post.isFeatured) // Exclude posts with isFeatured === true
+            .slice(0, section.numberOfPosts ?? 4) // Limit the array to the numberOfPosts
             .map((post) => {
               return (
                 <Link
                   key={post._id}
-                  className="group hover:shadow-primary/30 hover:shadow-x col-span-1 items-stretch overflow-hidden rounded-xl shadow-none md:col-span-2"
+                  className="group border-border hover:border-primary col-span-1 items-stretch overflow-hidden rounded-xl border md:col-span-2"
                   href={getDocumentLink({
                     slug: post.slug,
                     _type: 'post',
                   })}
                 >
-                  <Card className="group-hover:bg-accent/40 group-hover:border-primary/30 relative h-full p-0 transition-all">
+                  <Card className="group-hover:bg-accent/60 relative h-full border-none p-0 transition-all">
                     <CardContent className="flex flex-col gap-4">
                       <div className="col-span-2 flex flex-col gap-2 px-2 py-10">
                         <div className="flex items-center gap-4">
@@ -136,6 +147,19 @@ export default function PostList({ section }: { section: PostListSection }) {
               )
             })}
         </div>
+        {isShowMore && (
+          <div className="flex w-full justify-end py-12">
+            <Button asChild variant="link">
+              <Link
+                className="text-primary flex items-center gap-4"
+                href="/posts"
+              >
+                More Posts
+                <FaArrowRight />
+              </Link>
+            </Button>
+          </div>
+        )}
       </div>
     </section>
   )

@@ -29,7 +29,7 @@ const Post = ({ post }: Props) => {
 
         <div className="text-foreground/70 my-12 border-y py-12 font-serif text-xl leading-normal lg:text-3xl">
           <p className="text-primary mb-2 font-mono text-xs">TL;DR</p>
-          <p className="text-foreground/60 text-xl leading-relaxed">
+          <p className="text-foreground/60 text-xl leading-relaxed lg:text-2xl">
             {post.excerpt}
           </p>
         </div>

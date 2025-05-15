@@ -10,7 +10,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     if (!paths) return []
 
     return paths.map((path) => ({
-      url: path.href ? new URL(path.href, baseUrl).toString() : '',
+      url: new URL(path.href!, baseUrl).toString(),
       lastModified: new Date(path._updatedAt),
       changeFrequency: 'weekly',
       priority: 1,

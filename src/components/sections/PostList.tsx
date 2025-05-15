@@ -71,7 +71,7 @@ export default function PostList({ section }: { section: PostListSection }) {
                     />
                   </div>
                   <div className="col-span-2 flex flex-col gap-4 px-8 py-10">
-                    <h3 className="font-serif text-xl lg:text-2xl">
+                    <h3 className="font-serif text-xl font-bold lg:text-2xl">
                       {featuredPost.title}
                     </h3>
                     <div className="flex items-center gap-2">

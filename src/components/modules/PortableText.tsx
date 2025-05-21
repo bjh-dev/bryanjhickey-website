@@ -138,12 +138,12 @@ export default function CustomPortableText({
     },
     list: {
       bullet: ({ children }) => (
-        <ul className="mb-6 ml-6 list-outside list-disc space-y-2">
+        <ul className="mb-6 ml-6 list-outside list-disc space-y-2 font-serif text-lg lg:text-xl">
           {children}
         </ul>
       ),
       number: ({ children }) => (
-        <ol className="mb-6 ml-6 list-outside list-decimal space-y-2 font-serif">
+        <ol className="mb-6 ml-6 list-outside list-decimal space-y-2 font-serif text-lg lg:text-xl">
           {children}
         </ol>
       ),

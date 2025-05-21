@@ -10,7 +10,6 @@ import Main from '@/components/layout/Main'
 import Footer from '@/components/layout/Footer'
 import { handleError } from '@/app/(frontend)/client-utils'
 import { ThemeProvider } from '@/components/providers/ThemeProvider'
-import { Analytics } from '@vercel/analytics/next'
 
 export default async function RootLayout({
   children,
@@ -47,7 +46,6 @@ export default async function RootLayout({
           <Footer />
         </section>
       </ThemeProvider>
-      <Analytics />
     </body>
   )
 }

@@ -143,7 +143,7 @@ export default function CustomPortableText({
         </ul>
       ),
       number: ({ children }) => (
-        <ol className="mb-6 ml-6 list-outside list-decimal space-y-2">
+        <ol className="mb-6 ml-6 list-outside list-decimal space-y-2 font-serif">
           {children}
         </ol>
       ),

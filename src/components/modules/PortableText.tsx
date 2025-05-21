@@ -138,12 +138,12 @@ export default function CustomPortableText({
     },
     list: {
       bullet: ({ children }) => (
-        <ul className="mb-6 ml-6 list-outside list-disc space-y-2 text-gray-700">
+        <ul className="mb-6 ml-6 list-outside list-disc space-y-2">
           {children}
         </ul>
       ),
       number: ({ children }) => (
-        <ol className="mb-6 ml-6 list-outside list-decimal space-y-2 text-gray-700">
+        <ol className="mb-6 ml-6 list-outside list-decimal space-y-2">
           {children}
         </ol>
       ),
@@ -154,7 +154,7 @@ export default function CustomPortableText({
     },
     marks: {
       code: ({ children }) => (
-        <code className="rounded bg-gray-100 px-1 py-0.5 font-mono text-sm">
+        <code className="rounded px-1 py-0.5 font-mono text-sm">
           {children}
         </code>
       ),

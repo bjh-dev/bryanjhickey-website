@@ -175,7 +175,7 @@ export default function CustomPortableText({
         return (
           <Link
             link={customLink}
-            className="text-primary/80 hover:decoration-foreground hover:text-foreground underline underline-offset-2 transition-all"
+            className="text-primary/80 hover:decoration-primary hover:text-primary underline underline-offset-2 transition-all"
           >
             {children}
           </Link>

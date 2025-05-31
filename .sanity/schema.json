@@ -1895,14 +1895,6 @@
         },
         "optional": true
       },
-      "footerText": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "inline",
-          "name": "blockContent"
-        },
-        "optional": true
-      },
       "description": {
         "type": "objectAttribute",
         "value": {

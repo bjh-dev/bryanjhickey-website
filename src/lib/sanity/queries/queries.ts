@@ -12,7 +12,6 @@ import {
 export const settingsQuery = defineQuery(`*[_type == "settings"][0]{
   title,
   description,
-  footerText,
   ${menuFragment},
   footerMenu[]{
     ${menuItemFragment}

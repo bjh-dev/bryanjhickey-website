@@ -4,20 +4,6 @@ import { Logo } from '@/components/icons/Logo'
 import Link from 'next/link'
 import { ThemeSwitcher } from '@/components/modules/theme-switcher'
 import SocialMedia from '@/components/modules/SocialMedia'
-import CustomPortableText from '@/components/modules/PortableText'
-import { PortableTextBlock } from 'next-sanity'
-
-type SocialType = {
-  _key: string
-  platform?:
-    | 'facebook'
-    | 'instagram'
-    | 'linkedin'
-    | 'twitter'
-    | 'youtube'
-    | 'tiktok'
-  url?: string
-}
 
 export default async function Footer() {
   const { data: settings } = await sanityFetch({
@@ -29,70 +15,62 @@ export default async function Footer() {
   }
 
   return (
-    <footer className="bg-accent text-foreground border-foreground relative border-2 border-t py-12 md:py-16">
+    <footer className="bg-background text-foreground relative py-12 md:py-16">
       <div className="content feature">
-        <div className="grid grid-cols-1 gap-18 md:grid-cols-5">
-          <div className="col-span-2">
+        <div className="grid grid-cols-1 gap-18 md:grid-cols-4">
+          <div>
             <div className="mb-4 flex flex-col gap-2">
               <Link className="flex items-center space-x-4" href="/">
                 <Logo animate={false} />
                 <span className="sr-only">{settings.title}</span>
               </Link>
               <h3 className="mt-4 text-lg font-semibold">{settings.title}</h3>
-              {settings.footerText && (
-                <CustomPortableText
-                  value={settings.footerText as PortableTextBlock[]}
-                  className="!text-sm"
-                />
-              )}
+              <p className="font-serif text-sm">{settings.description}</p>
             </div>
           </div>
-          <div className="col-span-1">
-            {settings.footerMenu && (
-              <>
-                <h3 className="mb-4 text-lg font-semibold">Quick Links</h3>
-                <ul className="space-y-2 text-sm">
-                  <li>
-                    <Link
-                      href="/"
-                      className="transition-colors hover:text-gray-900"
-                    >
-                      Home
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/"
-                      className="transition-colors hover:text-gray-900"
-                    >
-                      About
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/"
-                      className="transition-colors hover:text-gray-900"
-                    >
-                      Posts
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/"
-                      className="transition-colors hover:text-gray-900"
-                    >
-                      Contact
-                    </Link>
-                  </li>
-                </ul>
-              </>
-            )}
-          </div>
-
-          <div className="col-span-1">
+          {settings.footerMenu && (
+            <div>
+              <h3 className="mb-4 text-lg font-semibold">Quick Links</h3>
+              <ul className="space-y-2 text-sm">
+                <li>
+                  <Link
+                    href="/"
+                    className="transition-colors hover:text-gray-900"
+                  >
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/"
+                    className="transition-colors hover:text-gray-900"
+                  >
+                    About
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/"
+                    className="transition-colors hover:text-gray-900"
+                  >
+                    Posts
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/"
+                    className="transition-colors hover:text-gray-900"
+                  >
+                    Contact
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          )}
+          <div>
             {settings.socials && (
               <div className="flex space-x-4">
-                {settings.socials.map((social: SocialType) => {
+                {settings.socials.map((social) => {
                   return (
                     <SocialMedia
                       key={social._key}
@@ -103,11 +81,13 @@ export default async function Footer() {
                 })}
               </div>
             )}
-
-            <div className="mt-8 flex items-center gap-4">
+          </div>
+          <div>
+            <div className="flex items-center gap-4">
               <div>
                 <p>Theme:</p>
               </div>
+
               <ThemeSwitcher />
             </div>
           </div>

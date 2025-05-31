@@ -39,14 +39,6 @@ export default defineType({
       group: 'general',
     }),
     defineField({
-      name: 'footerText',
-      title: 'Footer Text',
-      type: 'blockContent',
-      description:
-        'This text will be displayed in the footer of your site. You can use basic formatting and links.',
-      group: 'footer',
-    }),
-    defineField({
       name: 'description',
       description:
         'Used both for the <meta> description tag for SEO, and the blog subheader.',

@@ -21,22 +21,24 @@ export default async function Header({
 
   return (
     <header className="relative z-50 -mb-20 h-20">
-      <div className="container mx-auto flex max-w-7xl items-center justify-between px-4 py-6">
-        <div className="flex items-center space-x-4">
-          {typeof settings.title !== 'undefined' && (
-            <Link className="flex items-center space-x-4" href="/">
-              <Logo lightLogo={hasHero ? true : false} animate />
-              <span className="sr-only">{settings.title}</span>
-            </Link>
-          )}
-        </div>
-        <div className="flex space-x-2">
-          <FadeXAnimation xStartValue={20} delay={3}>
-            <Button asChild size="lg">
-              <Link href="/booking">Book a Time with Bryan</Link>
-            </Button>
-          </FadeXAnimation>
-          {settings.menu && <NavBar menuItems={settings.menu || []} />}
+      <div className="content feature">
+        <div className="flex items-center justify-between py-6">
+          <div className="flex items-center space-x-4">
+            {typeof settings.title !== 'undefined' && (
+              <Link className="flex items-center space-x-4" href="/">
+                <Logo lightLogo={hasHero ?? false} animate />
+                <span className="sr-only">{settings.title}</span>
+              </Link>
+            )}
+          </div>
+          <div className="flex space-x-2">
+            <FadeXAnimation xStartValue={20} delay={3}>
+              <Button asChild size="lg">
+                <Link href="/booking">Book a Time with Bryan</Link>
+              </Button>
+            </FadeXAnimation>
+            {settings.menu && <NavBar menuItems={settings.menu || []} />}
+          </div>
         </div>
       </div>
     </header>

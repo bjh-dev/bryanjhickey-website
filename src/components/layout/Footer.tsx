@@ -1,6 +1,5 @@
 import { sanityFetch } from '@/lib/sanity/client/live'
 import { settingsQuery } from '@/lib/sanity/queries/queries'
-import { Button } from '../ui/button'
 import { Logo } from '@/components/icons/Logo'
 import Link from 'next/link'
 import { ThemeSwitcher } from '@/components/modules/theme-switcher'
@@ -17,8 +16,8 @@ export default async function Footer() {
 
   return (
     <footer className="bg-background text-foreground relative py-12 md:py-16">
-      <div className="container mx-auto max-w-7xl px-4">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
+      <div className="content feature">
+        <div className="grid grid-cols-1 gap-18 md:grid-cols-4">
           <div>
             <div className="mb-4 flex flex-col gap-2">
               <Link className="flex items-center space-x-4" href="/">
@@ -70,20 +69,17 @@ export default async function Footer() {
           )}
           <div>
             {settings.socials && (
-              <>
-                <h3 className="mb-4 text-lg font-semibold">Follow Me</h3>
-                <div className="flex space-x-4">
-                  {settings.socials.map((social) => {
-                    return (
-                      <SocialMedia
-                        key={social._key}
-                        platform={social.platform!}
-                        url={social.url!}
-                      />
-                    )
-                  })}
-                </div>
-              </>
+              <div className="flex space-x-4">
+                {settings.socials.map((social) => {
+                  return (
+                    <SocialMedia
+                      key={social._key}
+                      platform={social.platform!}
+                      url={social.url!}
+                    />
+                  )
+                })}
+              </div>
             )}
           </div>
           <div>
@@ -91,9 +87,8 @@ export default async function Footer() {
               <div>
                 <p>Theme:</p>
               </div>
-              <Button variant="outline" size="icon">
-                <ThemeSwitcher />
-              </Button>
+
+              <ThemeSwitcher />
             </div>
           </div>
         </div>

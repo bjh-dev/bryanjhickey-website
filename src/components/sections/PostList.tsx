@@ -22,7 +22,7 @@ export default function PostList({ section }: { section: PostListSection }) {
     : false
 
   return (
-    <section className="py-24">
+    <section className="py-12">
       <div className="content feature">
         <div className="max-w-xl">
           <div className="flex flex-col gap-4">

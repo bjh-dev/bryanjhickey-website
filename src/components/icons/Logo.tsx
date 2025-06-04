@@ -48,11 +48,17 @@ export const Logo = ({
       <FadeXAnimation xStartValue={0} delay={3}>
         <div
           className={cn(
-            lightLogo && !isPostsRoute && 'text-white',
             'group text-foreground font-serif text-4xl font-medium tracking-widest uppercase transition',
           )}
         >
-          <span>B.</span>
+          <span
+            className={cn(
+              lightLogo && !isPostsRoute && 'group-hover:text-primary',
+              'group-hover:text-primary',
+            )}
+          >
+            B.
+          </span>
           <FadeXAnimation xStartValue={-10} delay={4}>
             <div
               className={cn(
@@ -73,7 +79,7 @@ export const Logo = ({
           'group text-foreground font-serif text-4xl font-medium tracking-widest uppercase transition',
         )}
       >
-        <span>B.</span>
+        <span className={cn('group-hover:text-primary')}>B.</span>
 
         <div
           className={cn(

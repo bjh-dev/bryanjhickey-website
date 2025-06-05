@@ -26,6 +26,7 @@
     "@vercel/analytics": "^1.5.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "fathom-client": "^3.7.2",
     "framer-motion": "^12.10.4",
     "lucide-react": "^0.510.0",
     "next": "15.3.2",
@@ -63,7 +64,7 @@
     "typescript": "^5.8.0"
   },
   "lint-staged": {
-     "*.{ts,tsx,js,jsx}": "eslint --cache --fix",
+    "*.{ts,tsx,js,jsx}": "eslint --cache --fix",
     "*.{ts,tsx,js,css,md}": "prettier --write"
   }
 }

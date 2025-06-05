@@ -4,8 +4,9 @@
  */
 
 import Favicon from '@/components/layout/Favicon'
+import { FathomAnalytics } from '@/components/modules/Fathom'
 import { cn } from '@/lib/utils'
-import { Analytics } from '@vercel/analytics/next'
+// import { Analytics } from '@vercel/analytics/next'
 import { Bitter, Noto_Sans } from 'next/font/google'
 
 const notoSans = Noto_Sans({
@@ -33,7 +34,8 @@ export default function RootLayout({
         <Favicon />
       </head>
       {children}
-      <Analytics />
+      {/* <Analytics /> */}
+      <FathomAnalytics />
     </html>
   )
 }

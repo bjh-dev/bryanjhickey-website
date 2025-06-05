@@ -35,7 +35,7 @@ export default function RootLayout({
       </head>
       {children}
       {/* <Analytics /> */}
-      <FathomAnalytics />
+      {process.env.NODE_ENV === 'production' && <FathomAnalytics />}
     </html>
   )
 }

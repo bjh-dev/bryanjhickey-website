@@ -17,7 +17,8 @@ export const Logo = ({
   const [isDarkTheme, setIsDarkTheme] = useState(false)
   const { theme } = useTheme()
   const pathname = usePathname()
-  const isPostsRoute = pathname.startsWith('/posts')
+  const isPostsRoute =
+    pathname.startsWith('/posts') || pathname.startsWith('/category')
   useEffect(() => {
     setMounted(true)
     const checkDarkTheme = () => {

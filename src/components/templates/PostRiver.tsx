@@ -1,7 +1,7 @@
 import { ArchivePagination } from '@/components/modules/ArchivePagination'
+import { PostFeaturedCard } from '@/components/modules/PostFeaturedCard'
 import { PostsArchiveQueryResult } from '@/types/sanity.types'
 import React from 'react'
-import PostCard from '../modules/PostCard'
 
 type Props = {
   listingData: NonNullable<PostsArchiveQueryResult>
@@ -23,7 +23,8 @@ const PostRiver = ({
     <>
       <div className="grid grid-cols-1 gap-10">
         {results.map((post) => {
-          return <PostCard key={post._id} post={post} />
+          // @ts-expect-error Type mismatch, but this is a Post type
+          return <PostFeaturedCard key={post._id} {...post} />
         })}
       </div>
       <ArchivePagination

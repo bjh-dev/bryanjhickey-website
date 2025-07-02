@@ -3,26 +3,92 @@ import { ReactNode } from 'react'
 
 export const LeadParagraph = ({ children }: { children: ReactNode }) => {
   return (
-    <p className="text-foreground/40 border-b-primary my-8 mb-8 border-b pb-8 text-xl leading-8 font-medium">
+    <p className="text-foreground/60 text-xl leading-relaxed lg:text-2xl">
       {children}
     </p>
   )
 }
 
 export const HeadingOne = ({ children }: { children: ReactNode }) => (
-  <h1 className="mb-8 font-serif text-6xl font-medium">{children}</h1>
+  <h1 className="text-foreground/80 scroll-mt-20 py-6 font-serif text-4xl md:text-5xl">
+    {children}
+  </h1>
 )
 export const HeadingTwo = ({ children }: { children: ReactNode }) => (
-  <h2 className="mt-12 mb-6 font-serif text-4xl font-medium">{children}</h2>
+  <h2 className="text-foreground/80 scroll-mt-20 py-12 font-serif text-3xl md:text-4xl">
+    {children}
+  </h2>
 )
 export const HeadingThree = ({ children }: { children: ReactNode }) => (
-  <h3 className="mt-8 mb-4 font-serif text-3xl font-medium">{children}</h3>
+  <h3 className="scroll-mt-20 py-6 font-serif text-3xl md:text-4xl">
+    {children}
+  </h3>
 )
 export const HeadingFour = ({ children }: { children: ReactNode }) => (
-  <h4 className="mt-8 mb-4 font-serif text-2xl font-medium">{children}</h4>
+  <h4 className="scroll-mt-20 py-6 font-serif text-xl md:text-2xl">
+    {children}
+  </h4>
 )
 export const HeadingFive = ({ children }: { children: ReactNode }) => (
-  <h5 className="mt-8 mb-4 font-serif text-xl font-medium">{children}</h5>
+  <h5 className="scroll-mt-20 py-6 font-serif text-lg md:text-xl">
+    {children}
+  </h5>
+)
+
+export const BlockQuote = ({ children }: { children: ReactNode }) => (
+  <blockquote className="text-foreground/60 border-border my-12 border-l-4 pl-4 font-serif text-lg leading-relaxed italic lg:text-xl">
+    {children}
+  </blockquote>
+)
+
+export const DefaultText = ({ children }: { children: ReactNode }) => (
+  <p className="text-foreground mb-6 font-serif text-lg leading-relaxed lg:text-xl">
+    {children}
+  </p>
+)
+
+export const BulletList = ({ children }: { children: ReactNode }) => (
+  <ul className="mb-6 ml-6 list-outside list-disc space-y-2 font-serif text-lg lg:text-xl">
+    {children}
+  </ul>
+)
+export const BulletListItem = ({ children }: { children: ReactNode }) => (
+  <li className="pl-2">{children}</li>
+)
+export const NumberedList = ({ children }: { children: ReactNode }) => (
+  <ol className="mb-6 ml-6 list-outside list-decimal space-y-2 font-serif text-lg lg:text-xl">
+    {children}
+  </ol>
+)
+export const NumberedListItem = ({ children }: { children: ReactNode }) => (
+  <li className="pl-2">{children}</li>
+)
+
+export const CodeBlock = ({ children }: { children: ReactNode }) => (
+  <code className="rounded px-1 py-0.5 font-mono text-sm">{children}</code>
+)
+
+export const EmphasisMark = ({ children }: { children: ReactNode }) => (
+  <em className="italic">{children}</em>
+)
+export const StrongMark = ({ children }: { children: ReactNode }) => (
+  <strong className="font-bold">{children}</strong>
+)
+
+export const StrikeThroughMark = ({ children }: { children: ReactNode }) => (
+  <del className="line-through">{children}</del>
+)
+
+export const UnderlineMark = ({ children }: { children: ReactNode }) => (
+  <u className="underline">{children}</u>
+)
+
+export const SuperScriptMark = ({ children }: { children: ReactNode }) => (
+  <sup className="text-xs">{children}</sup>
+)
+
+export const SubScriptMark = ({ children }: { children: ReactNode }) => (
+  <sub className="text-xs">{children}</sub>
 )
 
 export const CustomPortableTextComponents: Partial<PortableTextReactComponents> =
@@ -34,21 +100,29 @@ export const CustomPortableTextComponents: Partial<PortableTextReactComponents> 
       h4: ({ children }) => <HeadingFour>{children}</HeadingFour>,
       h5: ({ children }) => <HeadingFive>{children}</HeadingFive>,
       lead: ({ children }) => <LeadParagraph>{children}</LeadParagraph>,
-      normal: ({ children }) => <p className="my-6">{children}</p>,
-      default: ({ children }) => <p className="my-6">{children}</p>,
+      normal: ({ children }) => <DefaultText>{children}</DefaultText>,
+      default: ({ children }) => <DefaultText>{children}</DefaultText>,
+      blockquote: ({ children }) => <BlockQuote>{children}</BlockQuote>,
     },
     list: {
       // Ex. 1: customizing common list types
-      bullet: ({ children }) => (
-        <ul className="my-6 ml-4 list-outside list-disc">{children}</ul>
-      ),
-      number: ({ children }) => (
-        <ol className="my-6 ml-4 list-outside list-decimal">{children}</ol>
-      ),
+      bullet: ({ children }) => <BulletList>{children}</BulletList>,
+      number: ({ children }) => <NumberedList>{children}</NumberedList>,
     },
     listItem: {
       // Ex. 2: customizing list item types
-      bullet: ({ children }) => <li className="mt-sm mb-2 pl-4">{children}</li>,
-      number: ({ children }) => <li className="mt-sm mb-2 pl-4">{children}</li>,
+      bullet: ({ children }) => <BulletListItem>{children}</BulletListItem>,
+      number: ({ children }) => <NumberedListItem>{children}</NumberedListItem>,
+    },
+    marks: {
+      code: ({ children }) => <CodeBlock>{children}</CodeBlock>,
+      em: ({ children }) => <EmphasisMark>{children}</EmphasisMark>,
+      strong: ({ children }) => <StrongMark>{children}</StrongMark>,
+      'strike-through': ({ children }) => (
+        <StrikeThroughMark>{children}</StrikeThroughMark>
+      ),
+      underline: ({ children }) => <UnderlineMark>{children}</UnderlineMark>,
+      sup: ({ children }) => <SuperScriptMark>{children}</SuperScriptMark>,
+      sub: ({ children }) => <SubScriptMark>{children}</SubScriptMark>,
     },
   }

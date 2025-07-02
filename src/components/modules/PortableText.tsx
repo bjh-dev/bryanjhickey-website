@@ -16,46 +16,30 @@ import {
 
 import Link from '@/components/modules/Link'
 import Image from 'next/image'
-import { PropsWithChildren, ReactNode } from 'react'
-import { cn } from '@/lib/utils'
-import { parseChildrenToSlug } from '@/utils/strings'
+import { ReactNode } from 'react'
 import { LinkFragmentType } from '@/lib/sanity/queries/fragments/fragment.types'
 import { urlForImage } from '@/lib/sanity/client/image'
-
-type HeadingProps = PropsWithChildren<{
-  as: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
-  id: string
-  className?: string
-}>
-
-function Heading({ as, id, children, className = '' }: HeadingProps) {
-  const Element = as
-  return (
-    <Element className={cn('group relative', className)}>
-      {children}
-      <a
-        href={`#${id}`}
-        className="absolute top-0 bottom-0 left-0 -ml-6 flex items-center opacity-0 transition-opacity group-hover:opacity-100"
-        title="Copy link to heading"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-4 w-4"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
-          />
-        </svg>
-      </a>
-    </Element>
-  )
-}
+import {
+  BlockQuote,
+  HeadingFive,
+  HeadingFour,
+  HeadingOne,
+  HeadingThree,
+  HeadingTwo,
+  NumberedList,
+  BulletList,
+  BulletListItem,
+  NumberedListItem,
+  DefaultText,
+  LeadParagraph,
+  CodeBlock,
+  EmphasisMark,
+  StrikeThroughMark,
+  StrongMark,
+  UnderlineMark,
+  SuperScriptMark,
+  SubScriptMark,
+} from '@/studio/schema/objects/blockContentComponents'
 
 export default function CustomPortableText({
   className,
@@ -66,99 +50,26 @@ export default function CustomPortableText({
 }) {
   const components: PortableTextComponents = {
     block: {
-      normal: ({ children }) => (
-        <p
-          className={cn(
-            'text-foreground mb-6 font-serif text-lg leading-relaxed lg:text-xl',
-            className,
-          )}
-        >
-          {children}
-        </p>
-      ),
-      h1: ({ children, value }) => (
-        <Heading
-          as="h1"
-          id={parseChildrenToSlug(value.children)}
-          className="text-foreground/80 scroll-mt-20 py-6 font-serif text-4xl md:text-5xl"
-        >
-          {children}
-        </Heading>
-      ),
-      h2: ({ children, value }) => (
-        <Heading
-          as="h2"
-          id={parseChildrenToSlug(value.children)}
-          className="text-foreground/80 scroll-mt-20 py-12 font-serif text-3xl md:text-4xl"
-        >
-          {children}
-        </Heading>
-      ),
-      h3: ({ children, value }) => (
-        <Heading
-          as="h3"
-          id={parseChildrenToSlug(value.children)}
-          className="scroll-mt-20 py-6 font-serif text-3xl md:text-4xl"
-        >
-          {children}
-        </Heading>
-      ),
-      h4: ({ children, value }) => (
-        <Heading
-          as="h4"
-          id={parseChildrenToSlug(value.children)}
-          className="scroll-mt-20 py-6 font-serif text-xl md:text-2xl"
-        >
-          {children}
-        </Heading>
-      ),
-      h5: ({ children, value }) => (
-        <Heading
-          as="h5"
-          id={parseChildrenToSlug(value.children)}
-          className="scroll-mt-20 py-6 font-serif text-lg md:text-xl"
-        >
-          {children}
-        </Heading>
-      ),
-      h6: ({ children, value }) => (
-        <Heading
-          as="h6"
-          id={parseChildrenToSlug(value.children)}
-          className="scroll-mt-20 py-6 font-serif text-base md:text-lg"
-        >
-          {children}
-        </Heading>
-      ),
-      blockquote: ({ children }) => (
-        <blockquote className="text-foreground/60 border-border my-12 border-l-4 pl-4 font-serif text-lg leading-relaxed italic lg:text-xl">
-          {children}
-        </blockquote>
-      ),
+      normal: ({ children }) => <DefaultText>{children}</DefaultText>,
+      h1: ({ children }) => <HeadingOne>{children}</HeadingOne>,
+      h2: ({ children }) => <HeadingTwo>{children}</HeadingTwo>,
+      h3: ({ children }) => <HeadingThree>{children}</HeadingThree>,
+      h4: ({ children }) => <HeadingFour>{children}</HeadingFour>,
+      h5: ({ children }) => <HeadingFive>{children}</HeadingFive>,
+      lead: ({ children }) => <LeadParagraph>{children}</LeadParagraph>,
+      blockquote: ({ children }) => <BlockQuote>{children}</BlockQuote>,
     },
     list: {
-      bullet: ({ children }) => (
-        <ul className="mb-6 ml-6 list-outside list-disc space-y-2 font-serif text-lg lg:text-xl">
-          {children}
-        </ul>
-      ),
-      number: ({ children }) => (
-        <ol className="mb-6 ml-6 list-outside list-decimal space-y-2 font-serif text-lg lg:text-xl">
-          {children}
-        </ol>
-      ),
+      bullet: ({ children }) => <BulletList>{children}</BulletList>,
+      number: ({ children }) => <NumberedList>{children}</NumberedList>,
     },
     listItem: {
-      bullet: ({ children }) => <li className="pl-2">{children}</li>,
-      number: ({ children }) => <li className="pl-2">{children}</li>,
+      bullet: ({ children }) => <BulletListItem>{children}</BulletListItem>,
+      number: ({ children }) => <NumberedListItem>{children}</NumberedListItem>,
     },
     marks: {
-      code: ({ children }) => (
-        <code className="rounded px-1 py-0.5 font-mono text-sm">
-          {children}
-        </code>
-      ),
-      em: ({ children }) => <em className="italic">{children}</em>,
+      code: ({ children }) => <CodeBlock>{children}</CodeBlock>,
+      em: ({ children }) => <EmphasisMark>{children}</EmphasisMark>,
       link: ({
         children,
         value,
@@ -181,15 +92,13 @@ export default function CustomPortableText({
           </Link>
         )
       },
-      strong: ({ children }) => (
-        <strong className="font-bold">{children}</strong>
-      ),
+      strong: ({ children }) => <StrongMark>{children}</StrongMark>,
       'strike-through': ({ children }) => (
-        <del className="line-through">{children}</del>
+        <StrikeThroughMark>{children}</StrikeThroughMark>
       ),
-      underline: ({ children }) => <u className="underline">{children}</u>,
-      sup: ({ children }) => <sup className="text-xs">{children}</sup>,
-      sub: ({ children }) => <sub className="text-xs">{children}</sub>,
+      underline: ({ children }) => <UnderlineMark>{children}</UnderlineMark>,
+      sup: ({ children }) => <SuperScriptMark>{children}</SuperScriptMark>,
+      sub: ({ children }) => <SubScriptMark>{children}</SubScriptMark>,
     },
     types: {
       image: (props) => {

@@ -62,11 +62,10 @@ export function PostFeaturedCard(featuredPost: PostListSection['posts'][0]) {
               {featuredPost?.categories && (
                 <div className="flex items-center gap-2">
                   {featuredPost.categories.map((category) => (
-                    <Link
-                      href={`/category/${category.slug}`}
-                      className="border-primary bg-primary rounded-full border px-3 py-0.5 text-xs text-gray-950 hover:bg-gray-200"
+                    <span
+                      className="border-primary bg-primary rounded-full border px-3 py-0.5 text-xs text-gray-950"
                       key={category._id}
-                    >{`#${category.title}`}</Link>
+                    >{`#${category.title}`}</span>
                   ))}
                 </div>
               )}

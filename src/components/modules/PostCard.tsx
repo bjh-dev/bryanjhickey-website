@@ -42,11 +42,10 @@ export function PostCard({ post }: { post: PostListSection['posts'][0] }) {
               {post?.categories && (
                 <div className="flex items-center gap-2">
                   {post.categories.map((category) => (
-                    <Link
-                      href={`/category/${category.slug}`}
-                      className="border-primary hover:bg-primary rounded-full border px-3 py-0.5 text-xs text-gray-950"
+                    <span
+                      className="border-primary rounded-full border px-3 py-0.5 text-xs text-gray-950"
                       key={category._id}
-                    >{`#${category.title}`}</Link>
+                    >{`#${category.title}`}</span>
                   ))}
                 </div>
               )}

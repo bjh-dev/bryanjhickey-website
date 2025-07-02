@@ -42,15 +42,17 @@ import {
 } from '@/studio/schema/objects/blockContentComponents'
 
 export default function CustomPortableText({
-  className,
+  paragraphStyles,
   value,
 }: {
-  className?: string
+  paragraphStyles?: string
   value: PortableTextBlock[]
 }) {
   const components: PortableTextComponents = {
     block: {
-      normal: ({ children }) => <DefaultText>{children}</DefaultText>,
+      normal: ({ children }) => (
+        <DefaultText paragraphStyles={paragraphStyles}>{children}</DefaultText>
+      ),
       h1: ({ children }) => <HeadingOne>{children}</HeadingOne>,
       h2: ({ children }) => <HeadingTwo>{children}</HeadingTwo>,
       h3: ({ children }) => <HeadingThree>{children}</HeadingThree>,
@@ -123,7 +125,7 @@ export default function CustomPortableText({
   }
 
   return (
-    <div className={className}>
+    <div className={paragraphStyles}>
       <PortableText components={components} value={value} />
     </div>
   )

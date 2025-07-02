@@ -44,7 +44,7 @@ export default function Hero({ section }: { section: HeroSection }) {
               <FadeXAnimation xStartValue={-10} delay={1.5} duration={0.75}>
                 <CustomPortableText
                   value={section.content as PortableTextBlock[]}
-                  className="leading-relaxed text-white lg:text-lg [&_a]:hover:text-white [&_a]:hover:decoration-white"
+                  paragraphStyles="leading-relaxed text-white lg:text-lg [&_a]:hover:text-white [&_a]:hover:decoration-white"
                 />
               </FadeXAnimation>
             )}

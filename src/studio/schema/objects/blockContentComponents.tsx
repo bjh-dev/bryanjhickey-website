@@ -1,3 +1,4 @@
+import { cn } from '@/lib/utils'
 import { PortableTextReactComponents } from 'next-sanity'
 import { ReactNode } from 'react'
 
@@ -41,8 +42,19 @@ export const BlockQuote = ({ children }: { children: ReactNode }) => (
   </blockquote>
 )
 
-export const DefaultText = ({ children }: { children: ReactNode }) => (
-  <p className="text-foreground mb-6 font-serif text-lg leading-relaxed lg:text-xl">
+export const DefaultText = ({
+  children,
+  paragraphStyles,
+}: {
+  children: ReactNode
+  paragraphStyles?: string
+}) => (
+  <p
+    className={cn(
+      paragraphStyles,
+      'text-foreground mb-6 font-serif text-lg leading-relaxed lg:text-xl',
+    )}
+  >
     {children}
   </p>
 )

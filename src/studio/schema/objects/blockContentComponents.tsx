@@ -52,7 +52,7 @@ export const DefaultText = ({
   <p
     className={cn(
       paragraphStyles,
-      'text-foreground mb-6 font-serif text-lg leading-relaxed lg:text-xl',
+      'mb-6 font-serif text-lg leading-relaxed lg:text-xl',
     )}
   >
     {children}

@@ -11,12 +11,12 @@ export const LeadParagraph = ({ children }: { children: ReactNode }) => {
 }
 
 export const HeadingOne = ({ children }: { children: ReactNode }) => (
-  <h1 className="text-foreground/80 scroll-mt-20 py-6 font-serif text-4xl md:text-5xl">
+  <h1 className="scroll-mt-20 py-6 font-serif text-4xl md:text-5xl">
     {children}
   </h1>
 )
 export const HeadingTwo = ({ children }: { children: ReactNode }) => (
-  <h2 className="text-foreground/80 scroll-mt-20 py-12 font-serif text-3xl md:text-4xl">
+  <h2 className="scroll-mt-20 py-12 font-serif text-3xl md:text-4xl">
     {children}
   </h2>
 )

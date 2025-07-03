@@ -15,7 +15,7 @@ export function PostFeaturedCard(featuredPost: PostListSection['posts'][0]) {
         _type: 'post',
       })}
     >
-      <Card className="group-hover:bg-accent/60 bg-accent/30 group-hover:border-primary border-border h-full border-2 p-0 shadow-none transition-all">
+      <Card className="bg-accent/30 group-hover:border-primary border-border h-full border-2 p-0 shadow-none transition-all ease-linear">
         <CardContent className="flex flex-col p-0 lg:grid lg:grid-cols-3">
           <div className="relative col-span-1 h-[20svh] lg:h-auto">
             <Image
@@ -38,13 +38,13 @@ export function PostFeaturedCard(featuredPost: PostListSection['posts'][0]) {
             <h3 className="font-serif text-xl font-bold lg:text-2xl">
               {featuredPost.title}
             </h3>
-            <p className="text-foreground/60 font-serif lg:text-lg">
+            <p className="text-foreground/80 line-clamp-5 font-serif lg:text-lg">
               {featuredPost.excerpt}
             </p>
             <div className="flex flex-col items-start gap-2 md:flex-row md:items-center md:gap-4">
               {featuredPost.date ? (
                 <div className="flex">
-                  <time className="text-xs text-gray-500">
+                  <time className="text-foreground/50 text-xs">
                     {new Date(featuredPost.date).toLocaleDateString('en-AU', {
                       year: 'numeric',
                       month: 'long',
@@ -54,7 +54,7 @@ export function PostFeaturedCard(featuredPost: PostListSection['posts'][0]) {
                 </div>
               ) : null}
               <div className="hidden md:flex">
-                <span className="text-foreground/70 text-xs">&#10013;</span>
+                <span className="text-foreground/50 text-xs">&#10013;</span>
               </div>
               <div className="flex">
                 <ReadTime wordCount={featuredPost.wordCount} />
@@ -63,7 +63,7 @@ export function PostFeaturedCard(featuredPost: PostListSection['posts'][0]) {
                 <div className="flex items-center gap-2">
                   {featuredPost.categories.map((category) => (
                     <span
-                      className="border-primary bg-primary rounded-full border px-3 py-0.5 text-xs text-gray-950"
+                      className="border-primary bg-primary rounded-full border px-3 py-0.5 text-xs text-black"
                       key={category._id}
                     >{`#${category.title}`}</span>
                   ))}

@@ -34,7 +34,7 @@ export function PostCard({ post }: { post: PostListSection['posts'][0] }) {
                 </div>
               ) : null}
               <div className="hidden md:flex md:items-center">
-                <div className="text-sm text-gray-500">&#10013;</div>
+                <div className="text-foreground/70 text-sm">&#10013;</div>
               </div>
               <div className="flex items-center">
                 <ReadTime wordCount={post.wordCount} className="text-xs" />
@@ -43,7 +43,7 @@ export function PostCard({ post }: { post: PostListSection['posts'][0] }) {
                 <div className="flex items-center gap-2">
                   {post.categories.map((category) => (
                     <span
-                      className="border-primary rounded-full border px-3 py-0.5 text-xs text-gray-950"
+                      className="border-primary bg-primary rounded-full border px-3 py-0.5 text-xs text-gray-950"
                       key={category._id}
                     >{`#${category.title}`}</span>
                   ))}

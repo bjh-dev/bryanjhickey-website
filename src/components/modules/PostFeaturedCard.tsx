@@ -54,7 +54,7 @@ export function PostFeaturedCard(featuredPost: PostListSection['posts'][0]) {
                 </div>
               ) : null}
               <div className="hidden md:flex">
-                <span className="text-xs text-gray-500">&#10013;</span>
+                <span className="text-foreground/70 text-xs">&#10013;</span>
               </div>
               <div className="flex">
                 <ReadTime wordCount={featuredPost.wordCount} />

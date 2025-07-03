@@ -7,8 +7,8 @@ import { PostCardFragmentType } from '@/lib/sanity/queries/fragments/fragment.ty
 export default function Byline({ post }: { post: PostCardFragmentType }) {
   return (
     <div className="flex items-center justify-between">
-      <div className="flex flex-col gap-2">
-        <h4 className="flex">
+      <div className="flex flex-col gap-2 text-xs">
+        <h4 className="text-foreground/50 flex">
           <span className="mr-1">By </span>
           {post.author?.firstName && post.author?.lastName && (
             <span>
@@ -17,7 +17,7 @@ export default function Byline({ post }: { post: PostCardFragmentType }) {
           )}
         </h4>
         {post.date && (
-          <div className="text-sm text-gray-500">
+          <div className="text-foreground/50">
             <DateComponent dateString={post.date} />
           </div>
         )}
@@ -26,7 +26,12 @@ export default function Byline({ post }: { post: PostCardFragmentType }) {
         {post.categories && post.categories?.length > 0 && (
           <div className="flex items-center gap-2">
             {post.categories.map((category) => (
-              <Badge variant="default" asChild key={category._id}>
+              <Badge
+                variant="default"
+                className="hover:bg-primary! transition-all ease-linear hover:scale-110"
+                asChild
+                key={category._id}
+              >
                 <Link href={`/category/${category.slug}`}>
                   {category.title}
                 </Link>

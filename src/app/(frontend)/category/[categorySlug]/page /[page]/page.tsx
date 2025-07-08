@@ -74,12 +74,14 @@ export default async function PostPage(props: Props) {
 
   return (
     <section>
-      <PostRiver
-        listingData={posts.data}
-        currentPage={posts.currentPage}
-        totalPages={posts.totalPages}
-        paginationBase={`/category/${category.slug}`}
-      />
+      <div className="grid items-stretch gap-20 md:grid-cols-2 lg:gap-12">
+        <PostRiver
+          listingData={posts.data}
+          currentPage={posts.currentPage}
+          totalPages={posts.totalPages}
+          paginationBase={`/category/${category.slug}`}
+        />
+      </div>
     </section>
   )
 }

@@ -31,7 +31,7 @@ export default async function PostsPage() {
                 Recent Featured Posts
               </h4>
 
-              <div className="grid grid-cols-2 place-content-around items-stretch gap-12 md:grid-cols-2">
+              <div className="grid items-stretch gap-20 md:grid-cols-2 lg:gap-12">
                 {featuredPosts.map((featuredPost) => (
                   <PostFeaturedCard {...featuredPost} key={featuredPost._id} />
                 ))}
@@ -43,11 +43,10 @@ export default async function PostsPage() {
           <h4 className="text-foreground my-8 text-3xl font-bold tracking-wider uppercase">
             Recent Posts
           </h4>
-          <div className="grid grid-cols-1 items-stretch gap-12 md:grid-cols-2 lg:grid-cols-3">
-            {posts // Exclude posts with isFeatured === true
-              .map((post) => {
-                return <PostCard key={post._id} post={post} showFeaturedTag />
-              })}
+          <div className="grid grid-cols-1 items-stretch gap-20 md:grid-cols-2 lg:grid-cols-3 lg:gap-12">
+            {posts.map((post) => {
+              return <PostCard key={post._id} post={post} showFeaturedTag />
+            })}
           </div>
         </section>
       </div>

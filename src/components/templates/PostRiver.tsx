@@ -21,12 +21,11 @@ const PostRiver = ({
 
   return (
     <>
-      <div className="grid grid-cols-1 gap-10">
-        {results.map((post) => {
-          // @ts-expect-error Type mismatch, but this is a Post type
-          return <PostFeaturedCard key={post._id} {...post} />
-        })}
-      </div>
+      {results.map((post) => {
+        // @ts-expect-error Type mismatch, but this is a Post type
+        return <PostFeaturedCard key={post._id} {...post} />
+      })}
+
       <ArchivePagination
         currentPage={currentPage}
         linkBase={paginationBase}

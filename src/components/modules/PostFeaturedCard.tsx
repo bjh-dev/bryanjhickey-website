@@ -15,9 +15,9 @@ export function PostFeaturedCard(featuredPost: PostListSection['posts'][0]) {
         _type: 'post',
       })}
     >
-      <Card className="h-full rounded-none border-2 border-none bg-transparent p-0 shadow-none transition-all ease-linear">
+      <Card className="group h-full rounded-none border-2 border-none bg-transparent p-0 shadow-none transition-all ease-linear">
         <CardContent className="flex flex-col gap-6 p-0">
-          <div className="relative h-[20svh] lg:h-[30svh]">
+          <div className="relative h-[30svh] overflow-hidden lg:h-[30svh]">
             <Image
               src={
                 featuredPost.image ? urlForImage(featuredPost.image).url() : ''
@@ -26,11 +26,11 @@ export function PostFeaturedCard(featuredPost: PostListSection['posts'][0]) {
               fill
               priority
               sizes="100vw"
-              className="h-full w-full object-cover"
+              className="h-full w-full object-cover transition-transform duration-300 ease-linear group-hover:scale-120"
             />
           </div>
           <div className="flex flex-col gap-4">
-            <div className="flex items-start gap-2 md:flex-row md:items-center md:gap-4 lg:flex-col">
+            <div className="flex items-start gap-2 md:items-center md:gap-4">
               {featuredPost.date ? (
                 <div className="flex">
                   <time className="text-foreground/50 text-xs">

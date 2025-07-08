@@ -24,7 +24,7 @@ export function PostCard({
     >
       <Card className="group relative h-full border-none bg-transparent p-0 transition-all">
         <CardContent className="flex flex-col gap-4 p-0">
-          <div className="relative h-[10svh] overflow-hidden transition-transform duration-300 ease-linear lg:h-[20svh]">
+          <div className="relative h-[20svh] overflow-hidden transition-transform duration-300 ease-linear">
             {showFeaturedTag && post.isFeatured && (
               <div className="bg-primary absolute top-2 right-2 z-10 rounded px-2 py-1 text-xs font-semibold text-white">
                 Featured
@@ -41,7 +41,7 @@ export function PostCard({
           </div>
 
           <div className="col-span-2 flex flex-col gap-4">
-            <div className="flex items-start gap-2 md:flex-row md:items-center md:gap-4 lg:flex-col">
+            <div className="flex items-start gap-2 md:items-center md:gap-4">
               {post.date ? (
                 <div className="flex">
                   <time className="text-foreground/50 text-xs">

@@ -41,10 +41,13 @@ export default function Byline({ post }: { post: PostCardFragmentType }) {
         <div className="flex gap-2">
           {post.categories && post.categories?.length > 0 && (
             <div className="flex items-center gap-2 py-6">
+              <span className="text-foreground/50 pr-2">
+                {post.categories?.length > 1 ? 'Categories:' : 'Category:'}
+              </span>
               {post.categories.map((category) => (
                 <Badge
                   variant="default"
-                  className="hover:bg-primary! transition-all ease-linear hover:scale-110"
+                  className="px-3 py-1 text-xs transition-all ease-linear hover:scale-110"
                   asChild
                   key={category._id}
                 >

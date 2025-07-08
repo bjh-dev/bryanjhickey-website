@@ -78,9 +78,12 @@ export default async function PostPage(props: Props) {
     <section className="py-24">
       <div className="content feature">
         <div className="py-16">
+          <h2 className="text-primary mr-4 mb-2 font-mono text-lg leading-loose uppercase">
+            Category:
+          </h2>
           <h1 className="text-4xl font-bold">{category.title}</h1>
         </div>
-        <div className="pb-8">
+        <div className="grid items-stretch gap-20 md:grid-cols-2 lg:gap-12">
           <PostRiver
             listingData={posts.data}
             currentPage={posts.currentPage}

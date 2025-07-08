@@ -16,7 +16,7 @@ const Post = ({ post }: Props) => {
   return (
     <div className="content mt-16 py-16">
       {post.image?.asset?._ref ? (
-        <div className="mb-6 md:mb-14">
+        <div className="feature mb-6 md:mb-14">
           <CoverImage image={post.image} priority />
         </div>
       ) : null}

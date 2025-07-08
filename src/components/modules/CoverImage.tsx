@@ -12,7 +12,7 @@ export default function CoverImage(props: CoverImageProps) {
 
   const image = source?.asset?._ref ? (
     <Image
-      className="rounded-2xl object-cover shadow-md transition-shadow"
+      className="object-cover"
       fill={true}
       alt={stegaClean(source?.alt) || ''}
       src={urlForImage(source)?.height(720).width(1280).auto('format').url()}
@@ -20,8 +20,8 @@ export default function CoverImage(props: CoverImageProps) {
       priority={priority}
     />
   ) : (
-    <div className="bg-slate-50 pt-[100%]" />
+    <div className="bg-foreground pt-[100%]" />
   )
 
-  return <div className="relative h-[40svh]">{image}</div>
+  return <div className="relative h-[50svh]">{image}</div>
 }

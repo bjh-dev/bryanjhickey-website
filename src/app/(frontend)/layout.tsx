@@ -10,6 +10,7 @@ import Main from '@/components/layout/Main'
 import Footer from '@/components/layout/Footer'
 import { handleError } from '@/app/(frontend)/client-utils'
 import { ThemeProvider } from '@/components/providers/ThemeProvider'
+import { FathomAnalytics } from '@/components/modules/Fathom'
 
 export default async function RootLayout({
   children,
@@ -44,6 +45,8 @@ export default async function RootLayout({
           <Header />
           <Main>{children}</Main>
           <Footer />
+          {/* <Analytics /> */}
+          {process.env.NODE_ENV === 'production' && <FathomAnalytics />}
         </section>
       </ThemeProvider>
     </body>

@@ -7,7 +7,6 @@ import { usePathname, useSearchParams } from 'next/navigation'
 function TrackPageView() {
   const pathname = usePathname()
   const searchParams = useSearchParams()
-  const isInStudio = pathname.startsWith('/studio')
 
   useEffect(() => {
     load(process.env.NEXT_PUBLIC_FATHOM_ID ?? '', {
@@ -16,13 +15,15 @@ function TrackPageView() {
   }, [])
 
   useEffect(() => {
-    if (!pathname || isInStudio) return
+    if (!pathname) return
+
+    console.log('url', pathname + '?' + searchParams?.toString())
 
     trackPageview({
-      url: pathname + searchParams?.toString(),
+      url: pathname + '?' + searchParams?.toString(),
       referrer: document.referrer,
     })
-  }, [pathname, searchParams, isInStudio])
+  }, [pathname, searchParams])
 
   return null
 }

@@ -13,7 +13,7 @@ export default function PostList({ section }: { section: PostListSection }) {
 
   const isShowMore = section.numberOfPosts
     ? section.posts.length > section.numberOfPosts + 1 &&
-      (section.numberOfPosts ?? 4)
+      (section.numberOfPosts ?? 6)
     : false
 
   return (

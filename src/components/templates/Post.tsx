@@ -2,6 +2,7 @@ import Byline from '@/components/modules/Byline'
 import CoverImage from '@/components/modules/CoverImage'
 import CustomPortableText from '@/components/modules/PortableText'
 import Toc from '@/components/modules/Toc'
+import { cn } from '@/lib/utils'
 import { PostQueryResult } from '@/types/sanity.types'
 import type { PortableTextBlock } from 'next-sanity'
 import React from 'react'
@@ -11,17 +12,7 @@ type Props = {
 }
 
 const Post = ({ post }: Props) => {
-  // Map headings to the expected type for Toc, ensuring children is always an array of objects with a text property (no undefined)
-  const safeHeadings = Array.isArray(post.headings)
-    ? post.headings
-        .filter((h) => h && Array.isArray(h.children) && h.children[0]?.text)
-        .map((h) => ({
-          _key: h._key,
-          children: (h.children ?? [])
-            .filter((c) => typeof c.text === 'string')
-            .map((c) => ({ text: c.text as string })),
-        }))
-    : []
+  const hasHeadings = post.headings && post.headings.length > 0
   return (
     <div className="content mt-16 px-4 py-16">
       {post.image?.asset?._ref ? (
@@ -30,7 +21,13 @@ const Post = ({ post }: Props) => {
         </div>
       ) : null}
       <div className="">
-        <article className="grid grid-cols-4 gap-12">
+        <article
+          className={cn(
+            hasHeadings
+              ? 'grid grid-cols-4 gap-12'
+              : 'mx-auto flex max-w-3xl flex-col gap-12',
+          )}
+        >
           <section className="col-span-3">
             <h1 className="mb-6 font-serif text-3xl leading-12 tracking-tight md:text-5xl lg:leading-16">
               {post.title}
@@ -50,13 +47,13 @@ const Post = ({ post }: Props) => {
 
             <CustomPortableText value={post.content as PortableTextBlock[]} />
           </section>
-          <aside className="col-span-1">
-            {safeHeadings && (
+          {hasHeadings && (
+            <aside className="col-span-1">
               <nav className="bg-foreground/5 sticky top-6 mb-6 rounded-lg p-5">
-                <Toc headings={safeHeadings} />
+                <Toc posts={post} />
               </nav>
-            )}
-          </aside>
+            </aside>
+          )}
         </article>
       </div>
     </div>

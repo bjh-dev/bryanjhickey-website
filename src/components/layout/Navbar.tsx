@@ -69,23 +69,28 @@ export default function NavBar({
                 ) : (
                   // Simple link for items without children
                   <NavigationMenuLink asChild>
-                    <Link
-                      href={
-                        item.link
-                          ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                            (getLinkByLinkObject(item.link as any) ?? '#')
-                          : '#'
-                      }
-                      className={cn(
-                        navigationMenuTriggerStyle(),
-                        'cursor-pointer',
-                      )}
-                      {...(item.link?.openInNewTab
+                    {(() => {
+                      const linkProps = item.link?.openInNewTab
                         ? { target: '_blank', rel: 'noopener noreferrer' }
-                        : {})}
-                    >
-                      {item.text}
-                    </Link>
+                        : {}
+                      return (
+                        <Link
+                          href={
+                            item.link
+                              ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                                (getLinkByLinkObject(item.link as any) ?? '#')
+                              : '#'
+                          }
+                          className={cn(
+                            navigationMenuTriggerStyle(),
+                            'cursor-pointer',
+                          )}
+                          {...linkProps}
+                        >
+                          {item.text}
+                        </Link>
+                      )
+                    })()}
                   </NavigationMenuLink>
                 )}
               </NavigationMenuItem>
@@ -158,21 +163,26 @@ export default function NavBar({
                 </>
               ) : (
                 // Single menu item
-                <Link
-                  href={
-                    item.link
-                      ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                        (getLinkByLinkObject(item.link as any) ?? '#')
-                      : '#'
-                  }
-                  className="block rounded-md px-4 py-2 hover:bg-gray-100"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  {...(item.link?.openInNewTab
+                (() => {
+                  const linkProps = item.link?.openInNewTab
                     ? { target: '_blank', rel: 'noopener noreferrer' }
-                    : {})}
-                >
-                  {item.text}
-                </Link>
+                    : {}
+                  return (
+                    <Link
+                      href={
+                        item.link
+                          ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                            (getLinkByLinkObject(item.link as any) ?? '#')
+                          : '#'
+                      }
+                      className="block rounded-md px-4 py-2 hover:bg-gray-100"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      {...linkProps}
+                    >
+                      {item.text}
+                    </Link>
+                  )
+                })()
               )}
             </div>
           ))}

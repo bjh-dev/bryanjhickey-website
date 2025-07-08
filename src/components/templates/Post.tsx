@@ -31,11 +31,6 @@ const Post = ({ post }: Props) => {
       ) : null}
       <div className="">
         <article className="grid grid-cols-4 gap-12">
-          <aside className="col-span-1">
-            <nav className="bg-foreground/5 sticky top-6 mb-6 rounded-lg p-5">
-              <Toc headings={safeHeadings} />
-            </nav>
-          </aside>
           <section className="col-span-3">
             <h1 className="mb-6 font-serif text-3xl leading-12 tracking-tight md:text-5xl lg:leading-16">
               {post.title}
@@ -55,6 +50,13 @@ const Post = ({ post }: Props) => {
 
             <CustomPortableText value={post.content as PortableTextBlock[]} />
           </section>
+          <aside className="col-span-1">
+            {safeHeadings && (
+              <nav className="bg-foreground/5 sticky top-6 mb-6 rounded-lg p-5">
+                <Toc headings={safeHeadings} />
+              </nav>
+            )}
+          </aside>
         </article>
       </div>
     </div>

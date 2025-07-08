@@ -122,8 +122,16 @@ export default defineType({
       authorLastName: 'author.lastName',
       date: 'date',
       media: 'image',
+      isFeatured: 'isFeatured',
     },
-    prepare({ title, media, authorFirstName, authorLastName, date }) {
+    prepare({
+      title,
+      media,
+      authorFirstName,
+      authorLastName,
+      date,
+      isFeatured,
+    }) {
       const subtitles = [
         authorFirstName &&
           authorLastName &&
@@ -131,7 +139,11 @@ export default defineType({
         date && `on ${format(parseISO(date), 'LLL d, yyyy')}`,
       ].filter(Boolean)
 
-      return { title, media, subtitle: subtitles.join(' ') }
+      return {
+        title,
+        media,
+        subtitle: `${isFeatured ? '⭐️ ' : ''}${subtitles.join(' ')}`,
+      }
     },
   },
 })

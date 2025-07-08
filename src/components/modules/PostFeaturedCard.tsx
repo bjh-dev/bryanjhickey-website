@@ -9,15 +9,15 @@ import Link from 'next/link'
 export function PostFeaturedCard(featuredPost: PostListSection['posts'][0]) {
   return (
     <Link
-      className="group col-span-1 items-stretch rounded-xl md:col-span-2 lg:col-span-4"
+      className="group col-span-1 items-stretch rounded-xl"
       href={getDocumentLink({
         slug: featuredPost.slug,
         _type: 'post',
       })}
     >
-      <Card className="bg-accent/30 group-hover:border-primary border-border h-full border-2 p-0 shadow-none transition-all ease-linear">
-        <CardContent className="flex flex-col p-0 lg:grid lg:grid-cols-3">
-          <div className="relative col-span-1 h-[20svh] lg:h-auto">
+      <Card className="h-full rounded-none border-2 border-none bg-transparent p-0 shadow-none transition-all ease-linear">
+        <CardContent className="flex flex-col gap-6 p-0">
+          <div className="relative h-[20svh] lg:h-[30svh]">
             <Image
               src={
                 featuredPost.image ? urlForImage(featuredPost.image).url() : ''
@@ -26,22 +26,11 @@ export function PostFeaturedCard(featuredPost: PostListSection['posts'][0]) {
               fill
               priority
               sizes="100vw"
-              className="h-full w-full rounded-t-xl object-cover lg:rounded-t-none lg:rounded-l-xl"
+              className="h-full w-full object-cover"
             />
           </div>
-          <div className="col-span-2 flex flex-col gap-4 p-6 lg:p-10">
-            {featuredPost.isFeatured && (
-              <div className="text-primary text-xs font-bold uppercase">
-                Featured Post
-              </div>
-            )}
-            <h3 className="font-serif text-xl font-bold lg:text-2xl">
-              {featuredPost.title}
-            </h3>
-            <p className="text-foreground/80 line-clamp-5 font-serif lg:text-lg">
-              {featuredPost.excerpt}
-            </p>
-            <div className="flex flex-col items-start gap-2 md:flex-row md:items-center md:gap-4">
+          <div className="flex flex-col gap-4">
+            <div className="flex items-start gap-2 md:flex-row md:items-center md:gap-4 lg:flex-col">
               {featuredPost.date ? (
                 <div className="flex">
                   <time className="text-foreground/50 text-xs">
@@ -59,17 +48,11 @@ export function PostFeaturedCard(featuredPost: PostListSection['posts'][0]) {
               <div className="flex">
                 <ReadTime wordCount={featuredPost.wordCount} />
               </div>
-              {featuredPost?.categories && (
-                <div className="flex items-center gap-2">
-                  {featuredPost.categories.map((category) => (
-                    <span
-                      className="border-primary bg-primary rounded-full border px-3 py-0.5 text-xs text-black"
-                      key={category._id}
-                    >{`#${category.title}`}</span>
-                  ))}
-                </div>
-              )}
             </div>
+            <h3 className="hover:text-primary line-clamp-2 font-serif text-3xl font-medium lg:text-4xl">
+              {featuredPost.title}
+            </h3>
+            <p className="text-foreground/60 text-sm">{featuredPost.excerpt}</p>
           </div>
         </CardContent>
       </Card>

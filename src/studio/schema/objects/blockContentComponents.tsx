@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils'
-import { slugify } from '@/utils/strings'
+import { slugify, getTextFromReactNode } from '@/utils/strings'
 import { PortableTextReactComponents } from 'next-sanity'
 import { ReactNode } from 'react'
 
@@ -11,14 +11,8 @@ export const LeadParagraph = ({ children }: { children: ReactNode }) => {
   )
 }
 
-function getHeadingText(children: ReactNode): string {
-  if (typeof children === 'string') return children
-  if (Array.isArray(children)) return children.join(' ')
-  return ''
-}
-
 export const HeadingOne = ({ children }: { children: ReactNode }) => {
-  const headingText = getHeadingText(children)
+  const headingText = getTextFromReactNode(children)
   return (
     <h1
       id={slugify(headingText)}
@@ -29,7 +23,8 @@ export const HeadingOne = ({ children }: { children: ReactNode }) => {
   )
 }
 export const HeadingTwo = ({ children }: { children: ReactNode }) => {
-  const headingText = getHeadingText(children)
+  const headingText = getTextFromReactNode(children)
+
   return (
     <h2
       id={slugify(headingText)}
@@ -40,7 +35,7 @@ export const HeadingTwo = ({ children }: { children: ReactNode }) => {
   )
 }
 export const HeadingThree = ({ children }: { children: ReactNode }) => {
-  const headingText = getHeadingText(children)
+  const headingText = getTextFromReactNode(children)
   return (
     <h3
       id={slugify(headingText)}
@@ -51,7 +46,7 @@ export const HeadingThree = ({ children }: { children: ReactNode }) => {
   )
 }
 export const HeadingFour = ({ children }: { children: ReactNode }) => {
-  const headingText = getHeadingText(children)
+  const headingText = getTextFromReactNode(children)
   return (
     <h4
       id={slugify(headingText)}
@@ -62,7 +57,7 @@ export const HeadingFour = ({ children }: { children: ReactNode }) => {
   )
 }
 export const HeadingFive = ({ children }: { children: ReactNode }) => {
-  const headingText = getHeadingText(children)
+  const headingText = getTextFromReactNode(children)
   return (
     <h5
       id={slugify(headingText)}
@@ -89,7 +84,7 @@ export const DefaultText = ({
   <p
     className={cn(
       paragraphStyles,
-      'mb-6 font-serif text-lg leading-relaxed lg:text-xl',
+      'mb-6 font-serif text-lg leading-relaxed font-normal lg:text-xl',
     )}
   >
     {children}

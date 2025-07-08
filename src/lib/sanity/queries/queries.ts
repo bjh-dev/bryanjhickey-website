@@ -58,7 +58,8 @@ export const getSitemapQuery = defineQuery(`
 export const postQuery = defineQuery(`
   *[_type == "post" && slug.current == $slug] [0] {
     ${postFragment}
-    "slug": slug.current
+    "slug": slug.current,
+    "headings": content[style in ["h2", "h3", "h4", "h5", "h6"]],
   }
 `)
 

@@ -15,7 +15,7 @@ export default async function Footer() {
   }
 
   return (
-    <footer className="bg-primary/10 text-foreground relative py-12 md:py-16">
+    <footer className="bg-foreground/5 text-foreground relative py-12 md:py-16">
       <div className="content feature">
         <div className="grid grid-cols-1 gap-18 md:grid-cols-4">
           <div>

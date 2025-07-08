@@ -42,7 +42,7 @@ export default function PostList({ section }: { section: PostListSection }) {
         <div className="grid grid-cols-1 items-stretch gap-8 md:grid-cols-2 lg:grid-cols-4">
           {section.posts
             .filter((post) => !post.isFeatured) // Exclude posts with isFeatured === true
-            .slice(0, section.numberOfPosts ?? 6) // Limit the array to the numberOfPosts
+            .slice(0, 6) // Limit the array to the numberOfPosts
             .map((post) => {
               return <PostCard key={post._id} post={post} />
             })}

@@ -4,10 +4,10 @@ import { bryanHeroDataUri } from '@/lib/dataUris'
 import Image from 'next/image'
 import { FaFacebook, FaLinkedinIn, FaXTwitter } from 'react-icons/fa6'
 import CustomPortableText from '@/components/modules/PortableText'
-import { HeroSection } from '@/components/sections/types'
 import { urlForImage } from '@/lib/sanity/client/image'
 import { PortableTextBlock } from 'next-sanity'
 import { track } from '@vercel/analytics'
+import { HeroSection } from '@/components/sections/types'
 
 export default function Hero({ section }: { section: HeroSection }) {
   return (

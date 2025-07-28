@@ -1,0 +1,844 @@
+  {
+      "cycle_info": {
+        "cycle_number": 1,
+        "period": "January 1 - February 15, 2025",
+        "total_days": 46,
+        "description": "Genesis through Numbers, Matthew through Mark, Psalms/Wisdom foundation",
+        "average_verses_per_day": 197,
+        "daily_breakdown": {
+          "old_testament": "Genesis 1:1 through Numbers 36:13 (~127 verses/day)",
+          "new_testament": "Matthew 1:1 through Mark 16:20 (~44 verses/day)",
+          "psalms_wisdom": "Psalms 1-50, Proverbs 1-15, Job 1-14 (~26 verses/day)"
+        }
+      },
+      "readings": [
+        {
+          "day": "2025-01-01",
+          "old_testament": {
+            "passage": "Genesis 1:1-2:25",
+            "title": "Creation and the Garden of Eden",
+            "verses": 56
+          },
+          "new_testament": {
+            "passage": "Matthew 1:1-25",
+            "title": "Genealogy and Birth of Jesus",
+            "verses": 25
+          },
+          "psalms_wisdom": {
+            "passage": "Psalm 1:1-6, Proverbs 1:1-19",
+            "title": "The Way of the Righteous and Call to Wisdom",
+            "verses": 25
+          }
+        },
+        {
+          "day": "2025-01-02",
+          "old_testament": {
+            "passage": "Genesis 3:1-4:26",
+            "title": "The Fall and Cain and Abel",
+            "verses": 50
+          },
+          "new_testament": {
+            "passage": "Matthew 2:1-23",
+            "title": "Visit of the Magi and Flight to Egypt",
+            "verses": 23
+          },
+          "psalms_wisdom": {
+            "passage": "Psalm 2:1-12, Proverbs 1:20-33",
+            "title": "God's Anointed King and Wisdom's Warning",
+            "verses": 26
+          }
+        },
+        {
+          "day": "2025-01-03",
+          "old_testament": {
+            "passage": "Genesis 5:1-6:22",
+            "title": "From Adam to Noah and Corruption of Mankind",
+            "verses": 54
+          },
+          "new_testament": {
+            "passage": "Matthew 3:1-17",
+            "title": "John the Baptist and Jesus' Baptism",
+            "verses": 17
+          },
+          "psalms_wisdom": {
+            "passage": "Psalm 3:1-8, Proverbs 2:1-22",
+            "title": "Morning Prayer and Benefits of Wisdom",
+            "verses": 30
+          }
+        },
+        {
+          "day": "2025-01-04",
+          "old_testament": {
+            "passage": "Genesis 7:1-8:22",
+            "title": "The Great Flood",
+            "verses": 46
+          },
+          "new_testament": {
+            "passage": "Matthew 4:1-25",
+            "title": "Temptation and Beginning of Ministry",
+            "verses": 25
+          },
+          "psalms_wisdom": {
+            "passage": "Psalm 4:1-8, Proverbs 3:1-20",
+            "title": "Evening Prayer and Trust in the Lord",
+            "verses": 28
+          }
+        },
+        {
+          "day": "2025-01-05",
+          "old_testament": {
+            "passage": "Genesis 9:1-10:32",
+            "title": "God's Covenant with Noah and Table of Nations",
+            "verses": 61
+          },
+          "new_testament": {
+            "passage": "Matthew 5:1-26",
+            "title": "Beatitudes and True Righteousness",
+            "verses": 26
+          },
+          "psalms_wisdom": {
+            "passage": "Psalm 5:1-12, Proverbs 3:21-35",
+            "title": "Morning Prayer for Guidance and Security in Wisdom",
+            "verses": 27
+          }
+        },
+        {
+          "day": "2025-01-06",
+          "old_testament": {
+            "passage": "Genesis 11:1-12:20",
+            "title": "Tower of Babel and Call of Abram",
+            "verses": 52
+          },
+          "new_testament": {
+            "passage": "Matthew 5:27-48",
+            "title": "Higher Standards of Righteousness",
+            "verses": 22
+          },
+          "psalms_wisdom": {
+            "passage": "Psalm 6:1-10, Proverbs 4:1-19",
+            "title": "Prayer in Distress and Path of Wisdom",
+            "verses": 29
+          }
+        },
+        {
+          "day": "2025-01-07",
+          "old_testament": {
+            "passage": "Genesis 13:1-14:24",
+            "title": "Abram and Lot Separate; Rescue of Lot",
+            "verses": 42
+          },
+          "new_testament": {
+            "passage": "Matthew 6:1-18",
+            "title": "Giving, Prayer, and Fasting",
+            "verses": 18
+          },
+          "psalms_wisdom": {
+            "passage": "Psalm 7:1-17, Proverbs 4:20-27",
+            "title": "Prayer for Justice and Guard Your Heart",
+            "verses": 25
+          }
+        },
+        {
+          "day": "2025-01-08",
+          "old_testament": {
+            "passage": "Genesis 15:1-16:16",
+            "title": "God's Covenant with Abram and Hagar",
+            "verses": 37
+          },
+          "new_testament": {
+            "passage": "Matthew 6:19-7:12",
+            "title": "Treasures, Worry, and Golden Rule",
+            "verses": 28
+          },
+          "psalms_wisdom": {
+            "passage": "Psalm 8:1-9, Proverbs 5:1-23",
+            "title": "God's Glory in Creation and Warning Against Adultery",
+            "verses": 32
+          }
+        },
+        {
+          "day": "2025-01-09",
+          "old_testament": {
+            "passage": "Genesis 17:1-18:15",
+            "title": "Covenant of Circumcision and Promise of Isaac",
+            "verses": 42
+          },
+          "new_testament": {
+            "passage": "Matthew 7:13-29",
+            "title": "Narrow Gate and Wise Builder",
+            "verses": 17
+          },
+          "psalms_wisdom": {
+            "passage": "Psalm 9:1-20, Proverbs 6:1-19",
+            "title": "Thanksgiving for Deliverance and Practical Warnings",
+            "verses": 39
+          }
+        },
+        {
+          "day": "2025-01-10",
+          "old_testament": {
+            "passage": "Genesis 18:16-19:38",
+            "title": "Abraham Intercedes; Sodom and Gomorrah",
+            "verses": 49
+          },
+          "new_testament": {
+            "passage": "Matthew 8:1-17",
+            "title": "Authority Over Disease",
+            "verses": 17
+          },
+          "psalms_wisdom": {
+            "passage": "Psalm 10:1-18, Proverbs 6:20-35",
+            "title": "Prayer Against Oppression and Consequences of Adultery",
+            "verses": 34
+          }
+        },
+        {
+          "day": "2025-01-11",
+          "old_testament": {
+            "passage": "Genesis 20:1-21:34",
+            "title": "Abraham and Abimelech; Birth of Isaac",
+            "verses": 52
+          },
+          "new_testament": {
+            "passage": "Matthew 8:18-34",
+            "title": "Cost of Discipleship and Power Over Nature",
+            "verses": 17
+          },
+          "psalms_wisdom": {
+            "passage": "Psalm 11:1-7, Proverbs 7:1-27",
+            "title": "Trust in the Lord and Seduction's Trap",
+            "verses": 34
+          }
+        },
+        {
+          "day": "2025-01-12",
+          "old_testament": {
+            "passage": "Genesis 22:1-23:20",
+            "title": "Abraham Tested; Death of Sarah",
+            "verses": 44
+          },
+          "new_testament": {
+            "passage": "Matthew 9:1-17",
+            "title": "Authority to Forgive and Call of Matthew",
+            "verses": 17
+          },
+          "psalms_wisdom": {
+            "passage": "Psalm 12:1-8, Proverbs 8:1-21",
+            "title": "Prayer for Help and Wisdom's Call",
+            "verses": 29
+          }
+        },
+        {
+          "day": "2025-01-13",
+          "old_testament": {
+            "passage": "Genesis 24:1-67",
+            "title": "Isaac and Rebekah",
+            "verses": 67
+          },
+          "new_testament": {
+            "passage": "Matthew 9:18-38",
+            "title": "Faith Brings Healing and Compassion for Crowds",
+            "verses": 21
+          },
+          "psalms_wisdom": {
+            "passage": "Psalm 13:1-6, Proverbs 8:22-36",
+            "title": "Trust in God's Unfailing Love and Wisdom's Origin",
+            "verses": 21
+          }
+        },
+        {
+          "day": "2025-01-14",
+          "old_testament": {
+            "passage": "Genesis 25:1-26:35",
+            "title": "Abraham's Death; Isaac and His Sons",
+            "verses": 69
+          },
+          "new_testament": {
+            "passage": "Matthew 10:1-25",
+            "title": "The Twelve Sent Out",
+            "verses": 25
+          },
+          "psalms_wisdom": {
+            "passage": "Psalm 14:1-7, Proverbs 9:1-18",
+            "title": "The Fool Says There Is No God and Wisdom's Feast",
+            "verses": 25
+          }
+        },
+        {
+          "day": "2025-01-15",
+          "old_testament": {
+            "passage": "Genesis 27:1-28:22",
+            "title": "Jacob Deceives Isaac and Dreams at Bethel",
+            "verses": 68
+          },
+          "new_testament": {
+            "passage": "Matthew 10:26-42",
+            "title": "Fear God Alone and Family Divisions",
+            "verses": 17
+          },
+          "psalms_wisdom": {
+            "passage": "Psalm 15:1-5, Proverbs 10:1-16",
+            "title": "Who May Enter God's Presence and Wise Conduct",
+            "verses": 21
+          }
+        },
+        {
+          "day": "2025-01-16",
+          "old_testament": {
+            "passage": "Genesis 29:1-30:43",
+            "title": "Jacob's Marriages and Children",
+            "verses": 78
+          },
+          "new_testament": {
+            "passage": "Matthew 11:1-19",
+            "title": "Jesus and John the Baptist",
+            "verses": 19
+          },
+          "psalms_wisdom": {
+            "passage": "Psalm 16:1-11, Proverbs 10:17-32",
+            "title": "Security in God and Way of Life",
+            "verses": 27
+          }
+        },
+        {
+          "day": "2025-01-17",
+          "old_testament": {
+            "passage": "Genesis 31:1-32:32",
+            "title": "Jacob Flees Laban and Wrestles with God",
+            "verses": 87
+          },
+          "new_testament": {
+            "passage": "Matthew 11:20-30",
+            "title": "Woe to Unrepentant Cities and Rest for the Weary",
+            "verses": 11
+          },
+          "psalms_wisdom": {
+            "passage": "Psalm 17:1-15, Proverbs 11:1-15",
+            "title": "Prayer for Justice and Integrity",
+            "verses": 30
+          }
+        },
+        {
+          "day": "2025-01-18",
+          "old_testament": {
+            "passage": "Genesis 33:1-34:31",
+            "title": "Jacob and Esau Reconcile; Dinah Violated",
+            "verses": 51
+          },
+          "new_testament": {
+            "passage": "Matthew 12:1-21",
+            "title": "Lord of the Sabbath",
+            "verses": 21
+          },
+          "psalms_wisdom": {
+            "passage": "Psalm 18:1-19, Proverbs 11:16-31",
+            "title": "Deliverance by the Lord and Righteous Living",
+            "verses": 35
+          }
+        },
+        {
+          "day": "2025-01-19",
+          "old_testament": {
+            "passage": "Genesis 35:1-36:43",
+            "title": "Return to Bethel and Esau's Descendants",
+            "verses": 72
+          },
+          "new_testament": {
+            "passage": "Matthew 12:22-37",
+            "title": "Jesus and Beelzebul",
+            "verses": 16
+          },
+          "psalms_wisdom": {
+            "passage": "Psalm 18:20-36, Proverbs 12:1-14",
+            "title": "God's Perfect Ways and Truthful Words",
+            "verses": 31
+          }
+        },
+        {
+          "day": "2025-01-20",
+          "old_testament": {
+            "passage": "Genesis 37:1-38:30",
+            "title": "Joseph's Dreams and Judah and Tamar",
+            "verses": 66
+          },
+          "new_testament": {
+            "passage": "Matthew 12:38-50",
+            "title": "Sign of Jonah and Jesus' True Family",
+            "verses": 13
+          },
+          "psalms_wisdom": {
+            "passage": "Psalm 18:37-50, Proverbs 12:15-28",
+            "title": "Victory Through God and Prudent Speech",
+            "verses": 28
+          }
+        },
+        {
+          "day": "2025-01-21",
+          "old_testament": {
+            "passage": "Genesis 39:1-40:23",
+            "title": "Joseph in Potiphar's House and Prison",
+            "verses": 46
+          },
+          "new_testament": {
+            "passage": "Matthew 13:1-23",
+            "title": "Parable of the Sower",
+            "verses": 23
+          },
+          "psalms_wisdom": {
+            "passage": "Psalm 19:1-14, Proverbs 13:1-12",
+            "title": "Glory of God in Creation and Word; Wise Instruction",
+            "verses": 26
+          }
+        },
+        {
+          "day": "2025-01-22",
+          "old_testament": {
+            "passage": "Genesis 41:1-57",
+            "title": "Pharaoh's Dreams and Joseph's Rise to Power",
+            "verses": 57
+          },
+          "new_testament": {
+            "passage": "Matthew 13:24-43",
+            "title": "Parables of the Kingdom",
+            "verses": 20
+          },
+          "psalms_wisdom": {
+            "passage": "Psalm 20:1-9, Proverbs 13:13-25",
+            "title": "Prayer for Victory and Discipline's Reward",
+            "verses": 22
+          }
+        },
+        {
+          "day": "2025-01-23",
+          "old_testament": {
+            "passage": "Genesis 42:1-43:34",
+            "title": "Joseph's Brothers' First Trip to Egypt",
+            "verses": 72
+          },
+          "new_testament": {
+            "passage": "Matthew 13:44-58",
+            "title": "More Kingdom Parables and Rejection at Nazareth",
+            "verses": 15
+          },
+          "psalms_wisdom": {
+            "passage": "Psalm 21:1-13, Proverbs 14:1-18",
+            "title": "Thanksgiving for Victory and Wise Building",
+            "verses": 31
+          }
+        },
+        {
+          "day": "2025-01-24",
+          "old_testament": {
+            "passage": "Genesis 44:1-45:28",
+            "title": "The Silver Cup and Joseph Reveals Himself",
+            "verses": 62
+          },
+          "new_testament": {
+            "passage": "Matthew 14:1-21",
+            "title": "Death of John the Baptist and Feeding of 5000",
+            "verses": 21
+          },
+          "psalms_wisdom": {
+            "passage": "Psalm 22:1-18, Proverbs 14:19-35",
+            "title": "Cry of Anguish and Justice for the Poor",
+            "verses": 35
+          }
+        },
+        {
+          "day": "2025-01-25",
+          "old_testament": {
+            "passage": "Genesis 46:1-47:31",
+            "title": "Jacob Goes to Egypt",
+            "verses": 61
+          },
+          "new_testament": {
+            "passage": "Matthew 14:22-36",
+            "title": "Walking on Water",
+            "verses": 15
+          },
+          "psalms_wisdom": {
+            "passage": "Psalm 22:19-31, Proverbs 15:1-17",
+            "title": "Praise for Deliverance and Gentle Words",
+            "verses": 30
+          }
+        },
+        {
+          "day": "2025-01-26",
+          "old_testament": {
+            "passage": "Genesis 48:1-49:33",
+            "title": "Jacob Blesses His Sons",
+            "verses": 55
+          },
+          "new_testament": {
+            "passage": "Matthew 15:1-20",
+            "title": "Clean and Unclean",
+            "verses": 20
+          },
+          "psalms_wisdom": {
+            "passage": "Psalm 23:1-6, Proverbs 15:18-33",
+            "title": "The Lord Is My Shepherd and Peaceful Heart",
+            "verses": 22
+          }
+        },
+        {
+          "day": "2025-01-27",
+          "old_testament": {
+            "passage": "Genesis 50:1-26, Exodus 1:1-22",
+            "title": "Death of Jacob and Israel in Egypt",
+            "verses": 48
+          },
+          "new_testament": {
+            "passage": "Matthew 15:21-39",
+            "title": "Canaanite Woman's Faith and Feeding of 4000",
+            "verses": 19
+          },
+          "psalms_wisdom": {
+            "passage": "Psalm 24:1-10, Job 1:1-22",
+            "title": "King of Glory and Job's First Test",
+            "verses": 32
+          }
+        },
+        {
+          "day": "2025-01-28",
+          "old_testament": {
+            "passage": "Exodus 2:1-3:22",
+            "title": "Birth of Moses and the Burning Bush",
+            "verses": 47
+          },
+          "new_testament": {
+            "passage": "Matthew 16:1-20",
+            "title": "Signs of the Times and Peter's Declaration",
+            "verses": 20
+          },
+          "psalms_wisdom": {
+            "passage": "Psalm 25:1-15, Job 2:1-13",
+            "title": "Prayer for Guidance and Job's Second Test",
+            "verses": 28
+          }
+        },
+        {
+          "day": "2025-01-29",
+          "old_testament": {
+            "passage": "Exodus 4:1-5:23",
+            "title": "Moses' Signs and First Encounter with Pharaoh",
+            "verses": 54
+          },
+          "new_testament": {
+            "passage": "Matthew 16:21-17:13",
+            "title": "Jesus Predicts His Death and Transfiguration",
+            "verses": 21
+          },
+          "psalms_wisdom": {
+            "passage": "Psalm 25:16-22, Job 3:1-26",
+            "title": "Prayer for Deliverance and Job Curses His Birth",
+            "verses": 33
+          }
+        },
+        {
+          "day": "2025-01-30",
+          "old_testament": {
+            "passage": "Exodus 6:1-7:25",
+            "title": "God's Promise and First Plague",
+            "verses": 55
+          },
+          "new_testament": {
+            "passage": "Matthew 17:14-27",
+            "title": "Healing and Temple Tax",
+            "verses": 14
+          },
+          "psalms_wisdom": {
+            "passage": "Psalm 26:1-12, Job 4:1-21",
+            "title": "Declaration of Innocence and Eliphaz Speaks",
+            "verses": 33
+          }
+        },
+        {
+          "day": "2025-01-31",
+          "old_testament": {
+            "passage": "Exodus 8:1-9:35",
+            "title": "Plagues of Frogs, Gnats, Flies, Livestock, and Boils",
+            "verses": 67
+          },
+          "new_testament": {
+            "passage": "Matthew 18:1-20",
+            "title": "Greatest in the Kingdom and Church Discipline",
+            "verses": 20
+          },
+          "psalms_wisdom": {
+            "passage": "Psalm 27:1-14, Job 5:1-27",
+            "title": "The Lord Is My Light and God's Discipline",
+            "verses": 41
+          }
+        },
+        {
+          "day": "2025-02-01",
+          "old_testament": {
+            "passage": "Exodus 10:1-11:10",
+            "title": "Plagues of Locusts, Darkness, and Death Announced",
+            "verses": 39
+          },
+          "new_testament": {
+            "passage": "Matthew 18:21-35",
+            "title": "Parable of the Unforgiving Servant",
+            "verses": 15
+          },
+          "psalms_wisdom": {
+            "passage": "Psalm 28:1-9, Job 6:1-30",
+            "title": "Prayer for Help and Job's Reply to Eliphaz",
+            "verses": 39
+          }
+        },
+        {
+          "day": "2025-02-02",
+          "old_testament": {
+            "passage": "Exodus 12:1-51",
+            "title": "The Passover",
+            "verses": 51
+          },
+          "new_testament": {
+            "passage": "Matthew 19:1-15",
+            "title": "Divorce and Children",
+            "verses": 15
+          },
+          "psalms_wisdom": {
+            "passage": "Psalm 29:1-11, Job 7:1-21",
+            "title": "The Voice of the Lord and Job's Complaint",
+            "verses": 32
+          }
+        },
+        {
+          "day": "2025-02-03",
+          "old_testament": {
+            "passage": "Exodus 13:1-14:31",
+            "title": "Consecration and Red Sea Crossing",
+            "verses": 53
+          },
+          "new_testament": {
+            "passage": "Matthew 19:16-30",
+            "title": "Rich Young Man",
+            "verses": 15
+          },
+          "psalms_wisdom": {
+            "passage": "Psalm 30:1-12, Job 8:1-22",
+            "title": "Thanksgiving for Healing and Bildad Speaks",
+            "verses": 34
+          }
+        },
+        {
+          "day": "2025-02-04",
+          "old_testament": {
+            "passage": "Exodus 15:1-16:36",
+            "title": "Song of Deliverance and Manna",
+            "verses": 63
+          },
+          "new_testament": {
+            "passage": "Matthew 20:1-16",
+            "title": "Parable of Workers in Vineyard",
+            "verses": 16
+          },
+          "psalms_wisdom": {
+            "passage": "Psalm 31:1-18, Job 9:1-35",
+            "title": "Prayer for Deliverance and Job Replies to Bildad",
+            "verses": 53
+          }
+        },
+        {
+          "day": "2025-02-05",
+          "old_testament": {
+            "passage": "Exodus 17:1-18:27",
+            "title": "Water from Rock and Jethro's Advice",
+            "verses": 43
+          },
+          "new_testament": {
+            "passage": "Matthew 20:17-34",
+            "title": "Third Prediction and Request of James and John",
+            "verses": 18
+          },
+          "psalms_wisdom": {
+            "passage": "Psalm 31:19-24, Job 10:1-22",
+            "title": "Goodness to the Faithful and Job's Complaint to God",
+            "verses": 28
+          }
+        },
+        {
+          "day": "2025-02-06",
+          "old_testament": {
+            "passage": "Exodus 19:1-20:26",
+            "title": "At Mount Sinai and the Ten Commandments",
+            "verses": 51
+          },
+          "new_testament": {
+            "passage": "Matthew 21:1-17",
+            "title": "Triumphal Entry and Cleansing Temple",
+            "verses": 17
+          },
+          "psalms_wisdom": {
+            "passage": "Psalm 32:1-11, Job 11:1-20",
+            "title": "Blessed Forgiveness and Zophar Speaks",
+            "verses": 31
+          }
+        },
+        {
+          "day": "2025-02-07",
+          "old_testament": {
+            "passage": "Exodus 21:1-22:31",
+            "title": "Laws About Servants and Property",
+            "verses": 59
+          },
+          "new_testament": {
+            "passage": "Matthew 21:18-32",
+            "title": "Fig Tree and Parable of Two Sons",
+            "verses": 15
+          },
+          "psalms_wisdom": {
+            "passage": "Psalm 33:1-22, Job 12:1-25",
+            "title": "Praise for God's Sovereignty and Job's Sarcastic Reply",
+            "verses": 47
+          }
+        },
+        {
+          "day": "2025-02-08",
+          "old_testament": {
+            "passage": "Exodus 23:1-24:18",
+            "title": "Justice and Worship Laws; Covenant Confirmed",
+            "verses": 51
+          },
+          "new_testament": {
+            "passage": "Matthew 21:33-46",
+            "title": "Parable of Tenants",
+            "verses": 14
+          },
+          "psalms_wisdom": {
+            "passage": "Psalm 34:1-22, Job 13:1-28",
+            "title": "Taste and See the Lord Is Good and Job Defends Himself",
+            "verses": 50
+          }
+        },
+        {
+          "day": "2025-02-09",
+          "old_testament": {
+            "passage": "Exodus 25:1-26:37",
+            "title": "Tabernacle Plans Begin",
+            "verses": 77
+          },
+          "new_testament": {
+            "passage": "Matthew 22:1-22",
+            "title": "Parable of Wedding Feast and Taxes to Caesar",
+            "verses": 22
+          },
+          "psalms_wisdom": {
+            "passage": "Psalm 35:1-16, Job 14:1-22",
+            "title": "Prayer Against Enemies and Job on Human Frailty",
+            "verses": 38
+          }
+        },
+        {
+          "day": "2025-02-10",
+          "old_testament": {
+            "passage": "Exodus 27:1-28:43",
+            "title": "Altar and Priestly Garments",
+            "verses": 64
+          },
+          "new_testament": {
+            "passage": "Matthew 22:23-46",
+            "title": "Resurrection and Greatest Commandment",
+            "verses": 24
+          },
+          "psalms_wisdom": {
+            "passage": "Psalm 35:17-28, Psalm 36:1-12",
+            "title": "Vindication and God's Unfailing Love",
+            "verses": 24
+          }
+        },
+        {
+          "day": "2025-02-11",
+          "old_testament": {
+            "passage": "Exodus 29:1-30:38",
+            "title": "Consecration and Incense Altar",
+            "verses": 84
+          },
+          "new_testament": {
+            "passage": "Matthew 23:1-12",
+            "title": "Warning Against Hypocrisy",
+            "verses": 12
+          },
+          "psalms_wisdom": {
+            "passage": "Psalm 37:1-20",
+            "title": "Do Not Fret Because of Evildoers",
+            "verses": 20
+          }
+        },
+        {
+          "day": "2025-02-12",
+          "old_testament": {
+            "passage": "Exodus 31:1-32:35",
+            "title": "Skilled Workers and Golden Calf",
+            "verses": 53
+          },
+          "new_testament": {
+            "passage": "Matthew 23:13-39",
+            "title": "Seven Woes and Lament Over Jerusalem",
+            "verses": 27
+          },
+          "psalms_wisdom": {
+            "passage": "Psalm 37:21-40",
+            "title": "The Righteous and Their Inheritance",
+            "verses": 20
+          }
+        },
+        {
+          "day": "2025-02-13",
+          "old_testament": {
+            "passage": "Exodus 33:1-34:35",
+            "title": "Moses Intercedes and God's Glory",
+            "verses": 58
+          },
+          "new_testament": {
+            "passage": "Matthew 24:1-22",
+            "title": "Signs of the End Times",
+            "verses": 22
+          },
+          "psalms_wisdom": {
+            "passage": "Psalm 38:1-22",
+            "title": "Prayer of a Suffering Penitent",
+            "verses": 22
+          }
+        },
+        {
+          "day": "2025-02-14",
+          "old_testament": {
+            "passage": "Exodus 35:1-36:38",
+            "title": "Sabbath and Tabernacle Construction Begins",
+            "verses": 73
+          },
+          "new_testament": {
+            "passage": "Matthew 24:23-51",
+            "title": "Second Coming and Faithful Servant",
+            "verses": 29
+          },
+          "psalms_wisdom": {
+            "passage": "Psalm 39:1-13",
+            "title": "The Brevity of Life",
+            "verses": 13
+          }
+        },
+        {
+          "day": "2025-02-15",
+          "old_testament": {
+            "passage": "Exodus 37:1-38:31",
+            "title": "Tabernacle Furnishings Made",
+            "verses": 60
+          },
+          "new_testament": {
+            "passage": "Matthew 25:1-30",
+            "title": "Parables of Ten Virgins and Talents",
+            "verses": 30
+          },
+          "psalms_wisdom": {
+            "passage": "Psalm 40:1-17",
+            "title": "Thanksgiving and Prayer for Help",
+            "verses": 17
+          }
+        }
+      ]
+    }

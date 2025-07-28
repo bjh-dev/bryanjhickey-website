@@ -1,0 +1,844 @@
+      {
+        "cycle_info": {
+          "cycle_number": 3,
+          "period": "April 2 - May 17, 2025",
+          "total_days": 46,
+          "description": "Deuteronomy completion through Esther + Isaiah-Jeremiah, Acts through Paul's early letters, Psalms/Wisdom climax",
+          "average_verses_per_day": 197,
+          "daily_breakdown": {
+            "old_testament": "Deuteronomy 27:1 through Jeremiah 52:34 (~127 verses/day)",
+            "new_testament": "Acts 1:9 through Ephesians 6:24 (~44 verses/day)",
+            "psalms_wisdom": "Psalms 82-131, Job 29-42, Ecclesiastes (~26 verses/day)"
+          }
+        },
+        "readings": [
+          {
+            "day": "2025-04-02",
+            "old_testament": {
+              "passage": "Deuteronomy 27:1-28:68",
+              "title": "Covenant Renewal and Blessings/Curses",
+              "verses": 94
+            },
+            "new_testament": {
+              "passage": "Acts 1:9-26",
+              "title": "Ascension and Matthias Chosen",
+              "verses": 18
+            },
+            "psalms_wisdom": {
+              "passage": "Psalm 82:1-8, Job 29:1-25",
+              "title": "God Judges Gods and Job's Former Blessing",
+              "verses": 33
+            }
+          },
+          {
+            "day": "2025-04-03",
+            "old_testament": {
+              "passage": "Deuteronomy 29:1-30:20",
+              "title": "Covenant in Moab and Call to Choose Life",
+              "verses": 49
+            },
+            "new_testament": {
+              "passage": "Acts 2:1-31",
+              "title": "Day of Pentecost and Peter's Sermon",
+              "verses": 31
+            },
+            "psalms_wisdom": {
+              "passage": "Psalm 83:1-18, Job 30:1-31",
+              "title": "Prayer Against Enemies and Job's Present Suffering",
+              "verses": 49
+            }
+          },
+          {
+            "day": "2025-04-04",
+            "old_testament": {
+              "passage": "Deuteronomy 31:1-32:52",
+              "title": "Joshua Commissioned and Song of Moses",
+              "verses": 82
+            },
+            "new_testament": {
+              "passage": "Acts 2:32-47",
+              "title": "Peter's Sermon Concluded and Early Church",
+              "verses": 16
+            },
+            "psalms_wisdom": {
+              "passage": "Psalm 84:1-12, Job 31:1-40",
+              "title": "How Lovely Is Your Dwelling and Job's Final Defense",
+              "verses": 52
+            }
+          },
+          {
+            "day": "2025-04-05",
+            "old_testament": {
+              "passage": "Deuteronomy 33:1-34:12, Joshua 1:1-18",
+              "title": "Moses' Final Blessing, Death, and Joshua's Commission",
+              "verses": 75
+            },
+            "new_testament": {
+              "passage": "Acts 3:1-26",
+              "title": "Healing of Lame Man and Peter's Second Sermon",
+              "verses": 26
+            },
+            "psalms_wisdom": {
+              "passage": "Psalm 85:1-13, Job 32:1-22",
+              "title": "Prayer for Revival and Elihu Speaks",
+              "verses": 35
+            }
+          },
+          {
+            "day": "2025-04-06",
+            "old_testament": {
+              "passage": "Joshua 2:1-3:17",
+              "title": "Rahab and the Spies, Crossing Jordan",
+              "verses": 41
+            },
+            "new_testament": {
+              "passage": "Acts 4:1-31",
+              "title": "Peter and John Before Sanhedrin",
+              "verses": 31
+            },
+            "psalms_wisdom": {
+              "passage": "Psalm 86:1-17, Job 33:1-33",
+              "title": "Prayer of the Afflicted and Elihu's First Speech",
+              "verses": 50
+            }
+          },
+          {
+            "day": "2025-04-07",
+            "old_testament": {
+              "passage": "Joshua 4:1-5:15",
+              "title": "Memorial Stones and Circumcision at Gilgal",
+              "verses": 39
+            },
+            "new_testament": {
+              "passage": "Acts 4:32-5:16",
+              "title": "Believers Share and Ananias and Sapphira",
+              "verses": 21
+            },
+            "psalms_wisdom": {
+              "passage": "Psalm 87:1-7, Job 34:1-37",
+              "title": "Zion, City of God and Elihu's Second Speech",
+              "verses": 44
+            }
+          },
+          {
+            "day": "2025-04-08",
+            "old_testament": {
+              "passage": "Joshua 6:1-7:26",
+              "title": "Fall of Jericho and Achan's Sin",
+              "verses": 53
+            },
+            "new_testament": {
+              "passage": "Acts 5:17-42",
+              "title": "Apostles Persecuted and Gamaliel's Advice",
+              "verses": 26
+            },
+            "psalms_wisdom": {
+              "passage": "Psalm 88:1-18, Job 35:1-16",
+              "title": "Prayer in Deep Distress and Elihu's Third Speech",
+              "verses": 34
+            }
+          },
+          {
+            "day": "2025-04-09",
+            "old_testament": {
+              "passage": "Joshua 8:1-9:27",
+              "title": "Conquest of Ai and Gibeonite Deception",
+              "verses": 62
+            },
+            "new_testament": {
+              "passage": "Acts 6:1-15",
+              "title": "Seven Chosen and Stephen Arrested",
+              "verses": 15
+            },
+            "psalms_wisdom": {
+              "passage": "Psalm 89:1-18, Job 36:1-33",
+              "title": "God's Faithfulness and Elihu's Fourth Speech",
+              "verses": 51
+            }
+          },
+          {
+            "day": "2025-04-10",
+            "old_testament": {
+              "passage": "Joshua 10:1-11:23",
+              "title": "Southern and Northern Campaigns",
+              "verses": 66
+            },
+            "new_testament": {
+              "passage": "Acts 7:1-29",
+              "title": "Stephen's Defense: Abraham to Moses",
+              "verses": 29
+            },
+            "psalms_wisdom": {
+              "passage": "Psalm 89:19-37, Job 37:1-24",
+              "title": "God's Covenant with David and God's Majesty",
+              "verses": 43
+            }
+          },
+          {
+            "day": "2025-04-11",
+            "old_testament": {
+              "passage": "Joshua 12:1-13:33",
+              "title": "Kings Defeated and Land Still to Conquer",
+              "verses": 57
+            },
+            "new_testament": {
+              "passage": "Acts 7:30-60",
+              "title": "Stephen's Defense Continued and Martyrdom",
+              "verses": 31
+            },
+            "psalms_wisdom": {
+              "passage": "Psalm 89:38-52, Job 38:1-41",
+              "title": "Prayer in Affliction and God Answers Job",
+              "verses": 56
+            }
+          },
+          {
+            "day": "2025-04-12",
+            "old_testament": {
+              "passage": "Joshua 14:1-15:63",
+              "title": "Division of Land West of Jordan Begins",
+              "verses": 76
+            },
+            "new_testament": {
+              "passage": "Acts 8:1-25",
+              "title": "Persecution and Philip in Samaria",
+              "verses": 25
+            },
+            "psalms_wisdom": {
+              "passage": "Psalm 90:1-17, Job 39:1-30",
+              "title": "Prayer of Moses and God's Creatures",
+              "verses": 47
+            }
+          },
+          {
+            "day": "2025-04-13",
+            "old_testament": {
+              "passage": "Joshua 16:1-17:18",
+              "title": "Inheritance of Ephraim and Manasseh",
+              "verses": 28
+            },
+            "new_testament": {
+              "passage": "Acts 8:26-9:9",
+              "title": "Ethiopian Eunuch and Saul's Conversion",
+              "verses": 28
+            },
+            "psalms_wisdom": {
+              "passage": "Psalm 91:1-16, Job 40:1-24",
+              "title": "He Who Dwells in Shelter and Job Humbled",
+              "verses": 40
+            }
+          },
+          {
+            "day": "2025-04-14",
+            "old_testament": {
+              "passage": "Joshua 18:1-19:51",
+              "title": "Remaining Tribal Allotments",
+              "verses": 79
+            },
+            "new_testament": {
+              "passage": "Acts 9:10-31",
+              "title": "Ananias and Saul's Early Ministry",
+              "verses": 22
+            },
+            "psalms_wisdom": {
+              "passage": "Psalm 92:1-15, Job 41:1-34",
+              "title": "Sabbath Song and Leviathan",
+              "verses": 49
+            }
+          },
+          {
+            "day": "2025-04-15",
+            "old_testament": {
+              "passage": "Joshua 20:1-21:45",
+              "title": "Cities of Refuge and Levitical Cities",
+              "verses": 54
+            },
+            "new_testament": {
+              "passage": "Acts 9:32-10:8",
+              "title": "Peter Heals Aeneas and Dorcas",
+              "verses": 21
+            },
+            "psalms_wisdom": {
+              "passage": "Psalm 93:1-5, Job 42:1-17",
+              "title": "The Lord Reigns and Job Restored",
+              "verses": 22
+            }
+          },
+          {
+            "day": "2025-04-16",
+            "old_testament": {
+              "passage": "Joshua 22:1-23:16",
+              "title": "Eastern Tribes Return and Joshua's Farewell",
+              "verses": 50
+            },
+            "new_testament": {
+              "passage": "Acts 10:9-33",
+              "title": "Peter's Vision and Meets Cornelius",
+              "verses": 25
+            },
+            "psalms_wisdom": {
+              "passage": "Psalm 94:1-23, Ecclesiastes 1:1-18",
+              "title": "God of Vengeance and Everything Is Meaningless",
+              "verses": 41
+            }
+          },
+          {
+            "day": "2025-04-17",
+            "old_testament": {
+              "passage": "Joshua 24:1-33, Judges 1:1-36",
+              "title": "Covenant Renewal and Beginning of Judges",
+              "verses": 69
+            },
+            "new_testament": {
+              "passage": "Acts 10:34-11:18",
+              "title": "Cornelius's Household Converted",
+              "verses": 29
+            },
+            "psalms_wisdom": {
+              "passage": "Psalm 95:1-11, Ecclesiastes 2:1-26",
+              "title": "Call to Worship and Pleasures Are Meaningless",
+              "verses": 37
+            }
+          },
+          {
+            "day": "2025-04-18",
+            "old_testament": {
+              "passage": "Judges 2:1-3:31",
+              "title": "Angel at Bokim and First Judges",
+              "verses": 62
+            },
+            "new_testament": {
+              "passage": "Acts 11:19-12:5",
+              "title": "Church in Antioch and James Killed",
+              "verses": 17
+            },
+            "psalms_wisdom": {
+              "passage": "Psalm 96:1-13, Ecclesiastes 3:1-22",
+              "title": "Sing to the Lord and Time for Everything",
+              "verses": 35
+            }
+          },
+          {
+            "day": "2025-04-19",
+            "old_testament": {
+              "passage": "Judges 4:1-5:31",
+              "title": "Deborah and Barak; Song of Deborah",
+              "verses": 55
+            },
+            "new_testament": {
+              "passage": "Acts 12:6-25",
+              "title": "Peter's Miraculous Escape",
+              "verses": 20
+            },
+            "psalms_wisdom": {
+              "passage": "Psalm 97:1-12, Ecclesiastes 4:1-16",
+              "title": "The Lord Reigns and Oppression and Rivalry",
+              "verses": 28
+            }
+          },
+          {
+            "day": "2025-04-20",
+            "old_testament": {
+              "passage": "Judges 6:1-7:25",
+              "title": "Gideon Called and Defeats Midianites",
+              "verses": 65
+            },
+            "new_testament": {
+              "passage": "Acts 13:1-25",
+              "title": "Barnabas and Saul Sent Out",
+              "verses": 25
+            },
+            "psalms_wisdom": {
+              "passage": "Psalm 98:1-9, Ecclesiastes 5:1-20",
+              "title": "Sing New Song and Guard Your Steps",
+              "verses": 29
+            }
+          },
+          {
+            "day": "2025-04-21",
+            "old_testament": {
+              "passage": "Judges 8:1-9:57",
+              "title": "Gideon's Later Years and Abimelech",
+              "verses": 92
+            },
+            "new_testament": {
+              "passage": "Acts 13:26-52",
+              "title": "Paul's Sermon in Pisidian Antioch",
+              "verses": 27
+            },
+            "psalms_wisdom": {
+              "passage": "Psalm 99:1-9, Ecclesiastes 6:1-12",
+              "title": "The Lord Reigns in Zion and Futility of Life",
+              "verses": 21
+            }
+          },
+          {
+            "day": "2025-04-22",
+            "old_testament": {
+              "passage": "Judges 10:1-11:40",
+              "title": "Tola, Jair, and Jephthah",
+              "verses": 58
+            },
+            "new_testament": {
+              "passage": "Acts 14:1-28",
+              "title": "Ministry in Iconium and Lystra",
+              "verses": 28
+            },
+            "psalms_wisdom": {
+              "passage": "Psalm 100:1-5, Ecclesiastes 7:1-29",
+              "title": "Shout for Joy and Wisdom Better Than Folly",
+              "verses": 34
+            }
+          },
+          {
+            "day": "2025-04-23",
+            "old_testament": {
+              "passage": "Judges 12:1-13:25",
+              "title": "Jephthah's Conflict and Samson's Birth",
+              "verses": 40
+            },
+            "new_testament": {
+              "passage": "Galatians 1:1-24",
+              "title": "No Other Gospel and Paul's Calling",
+              "verses": 24
+            },
+            "psalms_wisdom": {
+              "passage": "Psalm 101:1-8, Ecclesiastes 8:1-17",
+              "title": "Psalm of David and Obey the King",
+              "verses": 25
+            }
+          },
+          {
+            "day": "2025-04-24",
+            "old_testament": {
+              "passage": "Judges 14:1-15:20",
+              "title": "Samson's Marriage and Revenge",
+              "verses": 40
+            },
+            "new_testament": {
+              "passage": "Galatians 2:1-21",
+              "title": "Paul Accepted by Apostles and Justified by Faith",
+              "verses": 21
+            },
+            "psalms_wisdom": {
+              "passage": "Psalm 102:1-28, Ecclesiastes 9:1-18",
+              "title": "Prayer of the Afflicted and Common Destiny",
+              "verses": 46
+            }
+          },
+          {
+            "day": "2025-04-25",
+            "old_testament": {
+              "passage": "Judges 16:1-17:13",
+              "title": "Samson and Delilah; Micah's Idols",
+              "verses": 44
+            },
+            "new_testament": {
+              "passage": "Galatians 3:1-29",
+              "title": "Faith or Observance of Law",
+              "verses": 29
+            },
+            "psalms_wisdom": {
+              "passage": "Psalm 103:1-22, Ecclesiastes 10:1-20",
+              "title": "Praise for God's Benefits and Wisdom and Folly",
+              "verses": 42
+            }
+          },
+          {
+            "day": "2025-04-26",
+            "old_testament": {
+              "passage": "Judges 18:1-19:30",
+              "title": "Danites Settle and Levite's Concubine",
+              "verses": 61
+            },
+            "new_testament": {
+              "passage": "Galatians 4:1-31",
+              "title": "Sons of God and Hagar and Sarah",
+              "verses": 31
+            },
+            "psalms_wisdom": {
+              "passage": "Psalm 104:1-23, Ecclesiastes 11:1-10",
+              "title": "Praise for God's Creation and Invest in Many Ventures",
+              "verses": 33
+            }
+          },
+          {
+            "day": "2025-04-27",
+            "old_testament": {
+              "passage": "Judges 20:1-21:25",
+              "title": "War Against Benjamin and Wives for Benjamites",
+              "verses": 73
+            },
+            "new_testament": {
+              "passage": "Galatians 5:1-26",
+              "title": "Freedom in Christ and Life by the Spirit",
+              "verses": 26
+            },
+            "psalms_wisdom": {
+              "passage": "Psalm 104:24-35, Ecclesiastes 12:1-14",
+              "title": "God's Wisdom in Creation and Remember Your Creator",
+              "verses": 26
+            }
+          },
+          {
+            "day": "2025-04-28",
+            "old_testament": {
+              "passage": "Ruth 1:1-4:22",
+              "title": "Ruth's Loyalty and Kinsman Redeemer",
+              "verses": 85
+            },
+            "new_testament": {
+              "passage": "Galatians 6:1-18",
+              "title": "Doing Good and Boasting in the Cross",
+              "verses": 18
+            },
+            "psalms_wisdom": {
+              "passage": "Psalm 105:1-22, Proverbs 31:1-9",
+              "title": "Give Thanks and Sayings of King Lemuel",
+              "verses": 31
+            }
+          },
+          {
+            "day": "2025-04-29",
+            "old_testament": {
+              "passage": "1 Samuel 1:1-2:36",
+              "title": "Hannah's Prayer and Samuel's Birth",
+              "verses": 64
+            },
+            "new_testament": {
+              "passage": "Acts 15:1-21",
+              "title": "Jerusalem Council",
+              "verses": 21
+            },
+            "psalms_wisdom": {
+              "passage": "Psalm 105:23-45, Proverbs 31:10-31",
+              "title": "Israel in Egypt and Wife of Noble Character",
+              "verses": 45
+            }
+          },
+          {
+            "day": "2025-04-30",
+            "old_testament": {
+              "passage": "1 Samuel 3:1-4:22",
+              "title": "Samuel's Call and Ark Captured",
+              "verses": 43
+            },
+            "new_testament": {
+              "passage": "Acts 15:22-41",
+              "title": "Letter to Gentile Believers and Paul and Barnabas Separate",
+              "verses": 20
+            },
+            "psalms_wisdom": {
+              "passage": "Psalm 106:1-23, 1 Thessalonians 1:1-10",
+              "title": "Praise and Israel's Rebellion; Paul's Thanksgiving",
+              "verses": 33
+            }
+          },
+          {
+            "day": "2025-05-01",
+            "old_testament": {
+              "passage": "1 Samuel 5:1-6:21",
+              "title": "Ark Among Philistines and Returned",
+              "verses": 41
+            },
+            "new_testament": {
+              "passage": "Acts 16:1-15",
+              "title": "Timothy Joins Paul and Call to Macedonia",
+              "verses": 15
+            },
+            "psalms_wisdom": {
+              "passage": "Psalm 106:24-48, 1 Thessalonians 2:1-12",
+              "title": "Continued Rebellion and Paul's Ministry",
+              "verses": 37
+            }
+          },
+          {
+            "day": "2025-05-02",
+            "old_testament": {
+              "passage": "1 Samuel 7:1-8:22",
+              "title": "Samuel Judges Israel and Request for King",
+              "verses": 39
+            },
+            "new_testament": {
+              "passage": "Acts 16:16-40",
+              "title": "Paul and Silas in Prison",
+              "verses": 25
+            },
+            "psalms_wisdom": {
+              "passage": "Psalm 107:1-22, 1 Thessalonians 2:13-20",
+              "title": "Give Thanks for Deliverance and Paul's Concern",
+              "verses": 30
+            }
+          },
+          {
+            "day": "2025-05-03",
+            "old_testament": {
+              "passage": "1 Samuel 9:1-10:27",
+              "title": "Saul Chosen as King",
+              "verses": 54
+            },
+            "new_testament": {
+              "passage": "Acts 17:1-15",
+              "title": "In Thessalonica and Berea",
+              "verses": 15
+            },
+            "psalms_wisdom": {
+              "passage": "Psalm 107:23-43, 1 Thessalonians 3:1-13",
+              "title": "Those Who Go Down to Sea and Timothy's Report",
+              "verses": 32
+            }
+          },
+          {
+            "day": "2025-05-04",
+            "old_testament": {
+              "passage": "1 Samuel 11:1-12:25",
+              "title": "Saul Rescues Jabesh and Samuel's Farewell",
+              "verses": 40
+            },
+            "new_testament": {
+              "passage": "Acts 17:16-18:11",
+              "title": "Paul in Athens and Corinth",
+              "verses": 28
+            },
+            "psalms_wisdom": {
+              "passage": "Psalm 108:1-13, 1 Thessalonians 4:1-18",
+              "title": "Song of Praise and Living to Please God",
+              "verses": 31
+            }
+          },
+          {
+            "day": "2025-05-05",
+            "old_testament": {
+              "passage": "1 Samuel 13:1-14:52",
+              "title": "Saul's Unlawful Sacrifice and Jonathan's Victory",
+              "verses": 74
+            },
+            "new_testament": {
+              "passage": "1 Thessalonians 5:1-28",
+              "title": "Day of the Lord and Final Instructions",
+              "verses": 28
+            },
+            "psalms_wisdom": {
+              "passage": "Psalm 109:1-31, 2 Thessalonians 1:1-12",
+              "title": "Prayer Against Enemies and Paul's Thanksgiving",
+              "verses": 43
+            }
+          },
+          {
+            "day": "2025-05-06",
+            "old_testament": {
+              "passage": "1 Samuel 15:1-16:23",
+              "title": "Saul Rejected and David Anointed",
+              "verses": 58
+            },
+            "new_testament": {
+              "passage": "2 Thessalonians 2:1-17",
+              "title": "Man of Lawlessness and Stand Firm",
+              "verses": 17
+            },
+            "psalms_wisdom": {
+              "passage": "Psalm 110:1-7, 2 Thessalonians 3:1-18",
+              "title": "The Lord Says to My Lord and Final Exhortations",
+              "verses": 25
+            }
+          },
+          {
+            "day": "2025-05-07",
+            "old_testament": {
+              "passage": "1 Samuel 17:1-18:16",
+              "title": "David and Goliath; Saul's Jealousy",
+              "verses": 74
+            },
+            "new_testament": {
+              "passage": "Acts 18:12-19:7",
+              "title": "Paul Before Gallio and in Ephesus",
+              "verses": 24
+            },
+            "psalms_wisdom": {
+              "passage": "Psalm 111:1-10, 1 Corinthians 1:1-17",
+              "title": "Praise for God's Works and Divisions in Church",
+              "verses": 27
+            }
+          },
+          {
+            "day": "2025-05-08",
+            "old_testament": {
+              "passage": "1 Samuel 18:17-19:24",
+              "title": "David Marries Michal and Saul Tries to Kill David",
+              "verses": 32
+            },
+            "new_testament": {
+              "passage": "Acts 19:8-41",
+              "title": "Paul's Ministry in Ephesus and Riot",
+              "verses": 34
+            },
+            "psalms_wisdom": {
+              "passage": "Psalm 112:1-10, 1 Corinthians 1:18-31",
+              "title": "Blessed Is the Man and Foolishness of God",
+              "verses": 24
+            }
+          },
+          {
+            "day": "2025-05-09",
+            "old_testament": {
+              "passage": "1 Samuel 20:1-21:15",
+              "title": "David and Jonathan's Covenant; David Flees",
+              "verses": 58
+            },
+            "new_testament": {
+              "passage": "1 Corinthians 2:1-16",
+              "title": "Spiritual Wisdom",
+              "verses": 16
+            },
+            "psalms_wisdom": {
+              "passage": "Psalm 113:1-9, 1 Corinthians 3:1-23",
+              "title": "From Rising of Sun and On Building",
+              "verses": 32
+            }
+          },
+          {
+            "day": "2025-05-10",
+            "old_testament": {
+              "passage": "1 Samuel 22:1-23:29",
+              "title": "David Gathers Men and Saul Pursues",
+              "verses": 52
+            },
+            "new_testament": {
+              "passage": "1 Corinthians 4:1-21",
+              "title": "Apostles of Christ and Paul's Appeal",
+              "verses": 21
+            },
+            "psalms_wisdom": {
+              "passage": "Psalm 114:1-8, 1 Corinthians 5:1-13",
+              "title": "When Israel Came Out and Expel Immoral Brother",
+              "verses": 21
+            }
+          },
+          {
+            "day": "2025-05-11",
+            "old_testament": {
+              "passage": "1 Samuel 24:1-25:44",
+              "title": "David Spares Saul and Nabal's Folly",
+              "verses": 66
+            },
+            "new_testament": {
+              "passage": "1 Corinthians 6:1-20",
+              "title": "Lawsuits and Sexual Immorality",
+              "verses": 20
+            },
+            "psalms_wisdom": {
+              "passage": "Psalm 115:1-18, 1 Corinthians 7:1-16",
+              "title": "Not to Us O Lord and Marriage",
+              "verses": 34
+            }
+          },
+          {
+            "day": "2025-05-12",
+            "old_testament": {
+              "passage": "1 Samuel 26:1-27:12",
+              "title": "David Spares Saul Again and Lives Among Philistines",
+              "verses": 37
+            },
+            "new_testament": {
+              "passage": "1 Corinthians 7:17-40",
+              "title": "Remain as You Are and Unmarried",
+              "verses": 24
+            },
+            "psalms_wisdom": {
+              "passage": "Psalm 116:1-19, 1 Corinthians 8:1-13",
+              "title": "I Love the Lord and Food Sacrificed to Idols",
+              "verses": 32
+            }
+          },
+          {
+            "day": "2025-05-13",
+            "old_testament": {
+              "passage": "1 Samuel 28:1-29:11",
+              "title": "Saul and Witch of Endor; Philistines Distrust David",
+              "verses": 36
+            },
+            "new_testament": {
+              "passage": "1 Corinthians 9:1-27",
+              "title": "Paul's Rights as Apostle and Run to Win",
+              "verses": 27
+            },
+            "psalms_wisdom": {
+              "passage": "Psalm 117:1-2, 1 Corinthians 10:1-22",
+              "title": "Praise the Lord All Nations and Warnings from History",
+              "verses": 24
+            }
+          },
+          {
+            "day": "2025-05-14",
+            "old_testament": {
+              "passage": "1 Samuel 30:1-31:13",
+              "title": "David Defeats Amalekites and Saul's Death",
+              "verses": 44
+            },
+            "new_testament": {
+              "passage": "1 Corinthians 10:23-11:16",
+              "title": "Believer's Freedom and Covering Head",
+              "verses": 28
+            },
+            "psalms_wisdom": {
+              "passage": "Psalm 118:1-18, 1 Corinthians 11:17-34",
+              "title": "Give Thanks and Lord's Supper",
+              "verses": 36
+            }
+          },
+          {
+            "day": "2025-05-15",
+            "old_testament": {
+              "passage": "2 Samuel 1:1-2:32",
+              "title": "David Mourns Saul and Made King of Judah",
+              "verses": 59
+            },
+            "new_testament": {
+              "passage": "1 Corinthians 12:1-31",
+              "title": "Spiritual Gifts and One Body Many Parts",
+              "verses": 31
+            },
+            "psalms_wisdom": {
+              "passage": "Psalm 118:19-29, 1 Corinthians 13:1-13",
+              "title": "This Is Gate of Lord and Love Is Greatest",
+              "verses": 24
+            }
+          },
+          {
+            "day": "2025-05-16",
+            "old_testament": {
+              "passage": "2 Samuel 3:1-4:12",
+              "title": "War Between Houses and Ish-Bosheth Murdered",
+              "verses": 51
+            },
+            "new_testament": {
+              "passage": "1 Corinthians 14:1-25",
+              "title": "Gifts of Prophecy and Tongues",
+              "verses": 25
+            },
+            "psalms_wisdom": {
+              "passage": "Psalm 119:1-32, 1 Corinthians 14:26-40",
+              "title": "Blessed Are Blameless and Order in Worship",
+              "verses": 47
+            }
+          },
+          {
+            "day": "2025-05-17",
+            "old_testament": {
+              "passage": "2 Samuel 5:1-6:23",
+              "title": "David King Over Israel and Ark Brought to Jerusalem",
+              "verses": 48
+            },
+            "new_testament": {
+              "passage": "1 Corinthians 15:1-34",
+              "title": "The Resurrection of Christ and Dead",
+              "verses": 34
+            },
+            "psalms_wisdom": {
+              "passage": "Psalm 119:33-64, 1 Corinthians 15:35-58",
+              "title": "Teach Me O Lord and Resurrection Body",
+              "verses": 56
+            }
+          }
+        ]
+      }

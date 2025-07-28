@@ -1,47 +1,37 @@
 import { PostQueryResult } from '@/types/sanity.types'
-import { slugify, getHeadingsFromPortableText } from '@/utils/strings'
-import React from 'react'
-import type { PortableTextBlock } from 'next-sanity'
-import { FaArrowRight } from 'react-icons/fa6'
-
-// Portable Text heading block type
-interface PortableTextSpan {
-  text: string
-}
+import { slugify } from '@/utils/strings'
+import React, { ReactNode } from 'react'
 
 export default function Toc({
   posts,
 }: {
   posts: NonNullable<PostQueryResult>
 }) {
-  // If posts.content is PortableText, extract headings
-  const blocks = Array.isArray(posts.content) ? posts.content : []
-  const headings = getHeadingsFromPortableText(blocks as PortableTextBlock[])
+  function getHeadingText(children: ReactNode): string {
+    if (typeof children === 'string') return children
+    if (Array.isArray(children)) return children.join(' ')
+    return ''
+  }
 
   return (
     <div>
       <h2 className="mb-5 text-xl font-bold">Contents</h2>
       <nav>
-        <ul className="flex flex-col gap-5">
-          {headings.map((heading, idx) => {
-            // Join all child text for the heading
-            const headingText = (heading.children as PortableTextSpan[])
-              .map((c) => c.text)
-              .join(' ')
-            return (
-              <li key={heading._key ?? idx} className="text-sm">
-                <a
-                  className="decoration-primary flex items-center gap-4 decoration-2 underline-offset-2 hover:underline"
-                  href={`#${slugify(headingText)}`}
-                >
-                  <div>
-                    <FaArrowRight className="text-primary" />
-                  </div>
-                  <div>{headingText}</div>
-                </a>
-              </li>
-            )
-          })}
+        <ul>
+          {posts.headings &&
+            posts.headings?.map((heading) => {
+              const headingText = getHeadingText(heading.children)
+              return (
+                <li key={heading?._key} className="mb-2 text-sm">
+                  <a
+                    className="decoration-primary decoration-2 underline-offset-2 hover:underline"
+                    href={slugify(headingText)}
+                  >
+                    {headingText}
+                  </a>
+                </li>
+              )
+            })}
         </ul>
       </nav>
     </div>

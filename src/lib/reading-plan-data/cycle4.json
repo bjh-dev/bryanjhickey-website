@@ -1,0 +1,835 @@
+{
+  "cycle_info": {
+    "cycle_number": 4,
+    "period": "May 18 - July 1, 2025",
+    "total_days": 45,
+    "description": "🎉 FINAL CYCLE! Complete Bible finish - 2 Samuel through Malachi, 1 Corinthians completion through Revelation",
+    "celebration_day": "July 2, 2025 - COMPLETE BIBLE CELEBRATION! 🎊",
+    "average_verses_per_day": 240,
+    "daily_breakdown": {
+      "old_testament": "2 Samuel 7:1 through Malachi 4:6 (~180 verses/day)",
+      "new_testament": "1 Corinthians 16:1 through Revelation 22:21 (~35 verses/day)",
+      "psalms_wisdom": "Psalms 119:65-150, Song of Songs, celebratory repetitions (~25 verses/day)"
+    },
+    "completion_stats": {
+      "total_verses_read": 35887,
+      "total_chapters_read": 1189,
+      "old_testament_books": 39,
+      "new_testament_books": 27,
+      "wisdom_books": 5
+    }
+  },
+  "readings": [
+    {
+      "day": "2025-05-18",
+      "old_testament": {
+        "passage": "2 Samuel 7:1-12:31",
+        "title": "God's Covenant with David and David's Sin with Bathsheba",
+        "verses": 103
+      },
+      "new_testament": {
+        "passage": "1 Corinthians 16:1-24",
+        "title": "Collection and Final Greetings",
+        "verses": 24
+      },
+      "psalms_wisdom": {
+        "passage": "Psalm 119:65-96",
+        "title": "Your Word Is Truth",
+        "verses": 32
+      }
+    },
+    {
+      "day": "2025-05-19",
+      "old_testament": {
+        "passage": "2 Samuel 13:1-18:33",
+        "title": "Amnon and Tamar through Absalom's Death",
+        "verses": 132
+      },
+      "new_testament": {
+        "passage": "2 Corinthians 1:1-2:11",
+        "title": "God of All Comfort and Forgiveness",
+        "verses": 28
+      },
+      "psalms_wisdom": {
+        "passage": "Psalm 119:97-128",
+        "title": "Oh How I Love Your Law",
+        "verses": 32
+      }
+    },
+    {
+      "day": "2025-05-20",
+      "old_testament": {
+        "passage": "2 Samuel 19:1-24:25",
+        "title": "David Returns and Census Sin",
+        "verses": 132
+      },
+      "new_testament": {
+        "passage": "2 Corinthians 2:12-4:6",
+        "title": "Fragrance of Christ and Light of Gospel",
+        "verses": 23
+      },
+      "psalms_wisdom": {
+        "passage": "Psalm 119:129-160",
+        "title": "Your Statutes Are Wonderful",
+        "verses": 32
+      }
+    },
+    {
+      "day": "2025-05-21",
+      "old_testament": {
+        "passage": "1 Kings 1:1-6:38",
+        "title": "Solomon Established and Temple Built",
+        "verses": 155
+      },
+      "new_testament": {
+        "passage": "2 Corinthians 4:7-6:2",
+        "title": "Treasure in Jars of Clay and Ministry of Reconciliation",
+        "verses": 35
+      },
+      "psalms_wisdom": {
+        "passage": "Psalm 119:161-176",
+        "title": "Great Peace Have They Who Love Your Law",
+        "verses": 16
+      }
+    },
+    {
+      "day": "2025-05-22",
+      "old_testament": {
+        "passage": "1 Kings 7:1-11:43",
+        "title": "Temple Dedication and Solomon's Fall",
+        "verses": 154
+      },
+      "new_testament": {
+        "passage": "2 Corinthians 6:3-8:24",
+        "title": "Paul's Hardships and Generosity Encouraged",
+        "verses": 43
+      },
+      "psalms_wisdom": {
+        "passage": "Psalm 120:1-7",
+        "title": "I Call to the Lord in My Distress",
+        "verses": 7
+      }
+    },
+    {
+      "day": "2025-05-23",
+      "old_testament": {
+        "passage": "1 Kings 12:1-16:34",
+        "title": "Kingdom Divided and Early Kings",
+        "verses": 137
+      },
+      "new_testament": {
+        "passage": "2 Corinthians 9:1-11:15",
+        "title": "Cheerful Giver and Paul's Foolishness",
+        "verses": 39
+      },
+      "psalms_wisdom": {
+        "passage": "Psalm 121:1-8",
+        "title": "My Help Comes from the Lord",
+        "verses": 8
+      }
+    },
+    {
+      "day": "2025-05-24",
+      "old_testament": {
+        "passage": "1 Kings 17:1-22:53",
+        "title": "Elijah's Ministry and Ahab's Death",
+        "verses": 129
+      },
+      "new_testament": {
+        "passage": "2 Corinthians 11:16-13:14",
+        "title": "Paul's Sufferings and Final Warnings",
+        "verses": 32
+      },
+      "psalms_wisdom": {
+        "passage": "Psalm 122:1-9",
+        "title": "I Rejoiced with Those Who Said",
+        "verses": 9
+      }
+    },
+    {
+      "day": "2025-05-25",
+      "old_testament": {
+        "passage": "2 Kings 1:1-8:29",
+        "title": "Elijah Taken Up and Elisha's Miracles",
+        "verses": 170
+      },
+      "new_testament": {
+        "passage": "Romans 1:1-2:16",
+        "title": "Gospel Power and God's Righteous Judgment",
+        "verses": 32
+      },
+      "psalms_wisdom": {
+        "passage": "Psalm 123:1-4",
+        "title": "Our Eyes Look to the Lord",
+        "verses": 4
+      }
+    },
+    {
+      "day": "2025-05-26",
+      "old_testament": {
+        "passage": "2 Kings 9:1-15:38",
+        "title": "Jehu's Dynasty and Kings of Israel/Judah",
+        "verses": 181
+      },
+      "new_testament": {
+        "passage": "Romans 2:17-4:25",
+        "title": "Jews and Law and Abraham Justified by Faith",
+        "verses": 33
+      },
+      "psalms_wisdom": {
+        "passage": "Psalm 124:1-8",
+        "title": "If the Lord Had Not Been on Our Side",
+        "verses": 8
+      }
+    },
+    {
+      "day": "2025-05-27",
+      "old_testament": {
+        "passage": "2 Kings 16:1-21:26",
+        "title": "Ahaz's Wickedness through Manasseh's Evil",
+        "verses": 126
+      },
+      "new_testament": {
+        "passage": "Romans 5:1-7:25",
+        "title": "Peace with God and Struggling with Sin",
+        "verses": 49
+      },
+      "psalms_wisdom": {
+        "passage": "Psalm 125:1-5",
+        "title": "Those Who Trust in the Lord",
+        "verses": 5
+      }
+    },
+    {
+      "day": "2025-05-28",
+      "old_testament": {
+        "passage": "2 Kings 22:1-25:30",
+        "title": "Josiah's Reforms and Fall of Jerusalem",
+        "verses": 128
+      },
+      "new_testament": {
+        "passage": "Romans 8:1-10:21",
+        "title": "Life Through Spirit and Israel's Unbelief",
+        "verses": 60
+      },
+      "psalms_wisdom": {
+        "passage": "Psalm 126:1-6",
+        "title": "When the Lord Restored the Fortunes",
+        "verses": 6
+      }
+    },
+    {
+      "day": "2025-05-29",
+      "old_testament": {
+        "passage": "1 Chronicles 1:1-9:44",
+        "title": "Genealogies from Adam to Return from Exile",
+        "verses": 383
+      },
+      "new_testament": {
+        "passage": "Romans 11:1-13:14",
+        "title": "Remnant of Israel and Submit to Authorities",
+        "verses": 47
+      },
+      "psalms_wisdom": {
+        "passage": "Psalm 127:1-5",
+        "title": "Unless the Lord Builds the House",
+        "verses": 5
+      }
+    },
+    {
+      "day": "2025-05-30",
+      "old_testament": {
+        "passage": "1 Chronicles 10:1-16:43",
+        "title": "Saul's Death through David's Psalm of Thanks",
+        "verses": 147
+      },
+      "new_testament": {
+        "passage": "Romans 14:1-16:27",
+        "title": "Do Not Judge and Personal Greetings",
+        "verses": 57
+      },
+      "psalms_wisdom": {
+        "passage": "Psalm 128:1-6",
+        "title": "Blessed Are All Who Fear the Lord",
+        "verses": 6
+      }
+    },
+    {
+      "day": "2025-05-31",
+      "old_testament": {
+        "passage": "1 Chronicles 17:1-22:19",
+        "title": "God's Promise to David and Temple Preparations",
+        "verses": 105
+      },
+      "new_testament": {
+        "passage": "Ephesians 1:1-3:21",
+        "title": "Spiritual Blessings and Paul's Prayer",
+        "verses": 63
+      },
+      "psalms_wisdom": {
+        "passage": "Psalm 129:1-8",
+        "title": "Much Have They Afflicted Me",
+        "verses": 8
+      }
+    },
+    {
+      "day": "2025-06-01",
+      "old_testament": {
+        "passage": "1 Chronicles 23:1-29:30",
+        "title": "Levitical Divisions and David's Final Prayer",
+        "verses": 149
+      },
+      "new_testament": {
+        "passage": "Ephesians 4:1-6:24",
+        "title": "Unity in Body and Armor of God",
+        "verses": 53
+      },
+      "psalms_wisdom": {
+        "passage": "Psalm 130:1-8",
+        "title": "Out of the Depths I Cry to You",
+        "verses": 8
+      }
+    },
+    {
+      "day": "2025-06-02",
+      "old_testament": {
+        "passage": "2 Chronicles 1:1-9:31",
+        "title": "Solomon's Wisdom and Temple Glory",
+        "verses": 224
+      },
+      "new_testament": {
+        "passage": "Philippians 1:1-4:23",
+        "title": "Complete Letter - Joy and Peace in Christ",
+        "verses": 104
+      },
+      "psalms_wisdom": {
+        "passage": "Psalm 131:1-3",
+        "title": "My Heart Is Not Proud",
+        "verses": 3
+      }
+    },
+    {
+      "day": "2025-06-03",
+      "old_testament": {
+        "passage": "2 Chronicles 10:1-20:37",
+        "title": "Kingdom Divided through Jehoshaphat",
+        "verses": 248
+      },
+      "new_testament": {
+        "passage": "Colossians 1:1-4:18",
+        "title": "Complete Letter - Supremacy of Christ",
+        "verses": 95
+      },
+      "psalms_wisdom": {
+        "passage": "Psalm 132:1-18",
+        "title": "Remember David and All His Afflictions",
+        "verses": 18
+      }
+    },
+    {
+      "day": "2025-06-04",
+      "old_testament": {
+        "passage": "2 Chronicles 21:1-28:27",
+        "title": "Jehoram through Ahaz",
+        "verses": 159
+      },
+      "new_testament": {
+        "passage": "1 Timothy 1:1-6:21",
+        "title": "Complete Letter - Fight the Good Fight",
+        "verses": 113
+      },
+      "psalms_wisdom": {
+        "passage": "Psalm 133:1-3",
+        "title": "How Good When Brothers Dwell in Unity",
+        "verses": 3
+      }
+    },
+    {
+      "day": "2025-06-05",
+      "old_testament": {
+        "passage": "2 Chronicles 29:1-36:23",
+        "title": "Hezekiah's Revival through Exile",
+        "verses": 198
+      },
+      "new_testament": {
+        "passage": "2 Timothy 1:1-4:22, Titus 1:1-3:15",
+        "title": "Complete Letters - Preach the Word and Sound Doctrine",
+        "verses": 92
+      },
+      "psalms_wisdom": {
+        "passage": "Psalm 134:1-3",
+        "title": "Praise the Lord, All You Servants",
+        "verses": 3
+      }
+    },
+    {
+      "day": "2025-06-06",
+      "old_testament": {
+        "passage": "Ezra 1:1-10:44",
+        "title": "Complete Book - Return and Reforms",
+        "verses": 280
+      },
+      "new_testament": {
+        "passage": "Philemon 1:1-25",
+        "title": "Appeal for Onesimus",
+        "verses": 25
+      },
+      "psalms_wisdom": {
+        "passage": "Psalm 135:1-21",
+        "title": "Praise the Name of the Lord",
+        "verses": 21
+      }
+    },
+    {
+      "day": "2025-06-07",
+      "old_testament": {
+        "passage": "Nehemiah 1:1-13:31",
+        "title": "Complete Book - Rebuilding Walls and Reforms",
+        "verses": 406
+      },
+      "new_testament": {
+        "passage": "Hebrews 1:1-4:16",
+        "title": "Son Superior to Angels and Sabbath Rest",
+        "verses": 74
+      },
+      "psalms_wisdom": {
+        "passage": "Psalm 136:1-26",
+        "title": "Give Thanks - His Love Endures Forever",
+        "verses": 26
+      }
+    },
+    {
+      "day": "2025-06-08",
+      "old_testament": {
+        "passage": "Esther 1:1-10:3",
+        "title": "Complete Book - For Such a Time as This",
+        "verses": 167
+      },
+      "new_testament": {
+        "passage": "Hebrews 5:1-8:13",
+        "title": "High Priest and New Covenant",
+        "verses": 78
+      },
+      "psalms_wisdom": {
+        "passage": "Psalm 137:1-9",
+        "title": "By the Rivers of Babylon",
+        "verses": 9
+      }
+    },
+    {
+      "day": "2025-06-09",
+      "old_testament": {
+        "passage": "Isaiah 1:1-12:6",
+        "title": "Judgment and Salvation - Branch of the Lord",
+        "verses": 282
+      },
+      "new_testament": {
+        "passage": "Hebrews 9:1-11:40",
+        "title": "Superior Sacrifice and Heroes of Faith",
+        "verses": 100
+      },
+      "psalms_wisdom": {
+        "passage": "Psalm 138:1-8",
+        "title": "I Will Praise You with All My Heart",
+        "verses": 8
+      }
+    },
+    {
+      "day": "2025-06-10",
+      "old_testament": {
+        "passage": "Isaiah 13:1-27:13",
+        "title": "Oracles Against Nations and Future Glory",
+        "verses": 333
+      },
+      "new_testament": {
+        "passage": "Hebrews 12:1-13:25",
+        "title": "Run the Race and Jesus Never Changes",
+        "verses": 54
+      },
+      "psalms_wisdom": {
+        "passage": "Psalm 139:1-24",
+        "title": "You Have Searched Me and Known Me",
+        "verses": 24
+      }
+    },
+    {
+      "day": "2025-06-11",
+      "old_testament": {
+        "passage": "Isaiah 28:1-39:8",
+        "title": "Woe to Ephraim and Hezekiah's Illness",
+        "verses": 267
+      },
+      "new_testament": {
+        "passage": "James 1:1-5:20",
+        "title": "Complete Letter - Faith and Works",
+        "verses": 108
+      },
+      "psalms_wisdom": {
+        "passage": "Psalm 140:1-13",
+        "title": "Rescue Me from Evil Men",
+        "verses": 13
+      }
+    },
+    {
+      "day": "2025-06-12",
+      "old_testament": {
+        "passage": "Isaiah 40:1-55:13",
+        "title": "Comfort My People and Suffering Servant",
+        "verses": 347
+      },
+      "new_testament": {
+        "passage": "1 Peter 1:1-5:14",
+        "title": "Complete Letter - Living Hope",
+        "verses": 105
+      },
+      "psalms_wisdom": {
+        "passage": "Psalm 141:1-10",
+        "title": "Set a Guard Over My Mouth",
+        "verses": 10
+      }
+    },
+    {
+      "day": "2025-06-13",
+      "old_testament": {
+        "passage": "Isaiah 56:1-66:24",
+        "title": "Salvation for Others and New Heavens",
+        "verses": 254
+      },
+      "new_testament": {
+        "passage": "2 Peter 1:1-3:18",
+        "title": "Complete Letter - Grace and Knowledge",
+        "verses": 61
+      },
+      "psalms_wisdom": {
+        "passage": "Psalm 142:1-7",
+        "title": "I Cry Aloud to the Lord",
+        "verses": 7
+      }
+    },
+    {
+      "day": "2025-06-14",
+      "old_testament": {
+        "passage": "Jeremiah 1:1-20:18",
+        "title": "Call of Jeremiah through Complaints",
+        "verses": 473
+      },
+      "new_testament": {
+        "passage": "1 John 1:1-5:21",
+        "title": "Complete Letter - God Is Love",
+        "verses": 105
+      },
+      "psalms_wisdom": {
+        "passage": "Psalm 143:1-12",
+        "title": "Hear My Prayer, O Lord",
+        "verses": 12
+      }
+    },
+    {
+      "day": "2025-06-15",
+      "old_testament": {
+        "passage": "Jeremiah 21:1-35:19",
+        "title": "Judgment on Kings and False Prophets",
+        "verses": 338
+      },
+      "new_testament": {
+        "passage": "2 John 1:1-13, 3 John 1:1-15",
+        "title": "Truth and Love, Support for Workers",
+        "verses": 28
+      },
+      "psalms_wisdom": {
+        "passage": "Psalm 144:1-15",
+        "title": "Praise Be to the Lord My Rock",
+        "verses": 15
+      }
+    },
+    {
+      "day": "2025-06-16",
+      "old_testament": {
+        "passage": "Jeremiah 36:1-52:34",
+        "title": "Scrolls Burned through Fall of Jerusalem",
+        "verses": 404
+      },
+      "new_testament": {
+        "passage": "Jude 1:1-25",
+        "title": "Contend for the Faith",
+        "verses": 25
+      },
+      "psalms_wisdom": {
+        "passage": "Psalm 145:1-21",
+        "title": "I Will Exalt You, My God the King",
+        "verses": 21
+      }
+    },
+    {
+      "day": "2025-06-17",
+      "old_testament": {
+        "passage": "Lamentations 1:1-5:22",
+        "title": "Complete Book - How Deserted Lies the City",
+        "verses": 154
+      },
+      "new_testament": {
+        "passage": "Revelation 1:1-5:14",
+        "title": "Vision of Christ and Throne Room",
+        "verses": 105
+      },
+      "psalms_wisdom": {
+        "passage": "Psalm 146:1-10",
+        "title": "Praise the Lord, O My Soul",
+        "verses": 10
+      }
+    },
+    {
+      "day": "2025-06-18",
+      "old_testament": {
+        "passage": "Ezekiel 1:1-18:32",
+        "title": "Visions and Individual Responsibility",
+        "verses": 508
+      },
+      "new_testament": {
+        "passage": "Revelation 6:1-11:19",
+        "title": "Seven Seals and Seven Trumpets",
+        "verses": 154
+      },
+      "psalms_wisdom": {
+        "passage": "Psalm 147:1-20",
+        "title": "How Good It Is to Sing Praises",
+        "verses": 20
+      }
+    },
+    {
+      "day": "2025-06-19",
+      "old_testament": {
+        "passage": "Ezekiel 19:1-33:33",
+        "title": "Lament for Israel's Princes through Watchman",
+        "verses": 419
+      },
+      "new_testament": {
+        "passage": "Revelation 12:1-16:21",
+        "title": "Woman and Dragon through Seven Bowls",
+        "verses": 127
+      },
+      "psalms_wisdom": {
+        "passage": "Psalm 148:1-14",
+        "title": "Praise the Lord from the Heavens",
+        "verses": 14
+      }
+    },
+    {
+      "day": "2025-06-20",
+      "old_testament": {
+        "passage": "Ezekiel 34:1-48:35",
+        "title": "Shepherds of Israel through New Temple",
+        "verses": 407
+      },
+      "new_testament": {
+        "passage": "Revelation 17:1-22:21",
+        "title": "Babylon Falls and New Jerusalem",
+        "verses": 139
+      },
+      "psalms_wisdom": {
+        "passage": "Psalm 149:1-9",
+        "title": "Sing to the Lord a New Song",
+        "verses": 9
+      }
+    },
+    {
+      "day": "2025-06-21",
+      "old_testament": {
+        "passage": "Daniel 1:1-12:13",
+        "title": "Complete Book - God's Kingdom Endures",
+        "verses": 357
+      },
+      "new_testament": {
+        "passage": "Matthew 1:1-2:23",
+        "title": "🎊 NT CELEBRATION REVIEW! Birth of Jesus",
+        "verses": 48
+      },
+      "psalms_wisdom": {
+        "passage": "Psalm 150:1-6",
+        "title": "🎺 FINAL PSALM! Praise God in His Sanctuary",
+        "verses": 6
+      }
+    },
+    {
+      "day": "2025-06-22",
+      "old_testament": {
+        "passage": "Hosea 1:1-14:9",
+        "title": "Complete Book - Unfaithful Wife, Faithful God",
+        "verses": 197
+      },
+      "new_testament": {
+        "passage": "Mark 1:1-45",
+        "title": "🎊 GOSPEL REVIEW! Jesus' Authority",
+        "verses": 45
+      },
+      "psalms_wisdom": {
+        "passage": "Song of Songs 1:1-17",
+        "title": "🌹 LOVE'S BEGINNING",
+        "verses": 17
+      }
+    },
+    {
+      "day": "2025-06-23",
+      "old_testament": {
+        "passage": "Joel 1:1-3:21, Amos 1:1-9:15",
+        "title": "Complete Books - Day of the Lord and Justice",
+        "verses": 219
+      },
+      "new_testament": {
+        "passage": "Luke 1:1-2:52",
+        "title": "🎊 NATIVITY REVIEW! Birth Narratives",
+        "verses": 132
+      },
+      "psalms_wisdom": {
+        "passage": "Song of Songs 2:1-17",
+        "title": "🌹 I AM THE ROSE OF SHARON",
+        "verses": 17
+      }
+    },
+    {
+      "day": "2025-06-24",
+      "old_testament": {
+        "passage": "Obadiah 1:1-21, Jonah 1:1-4:11",
+        "title": "Complete Books - Pride and Compassion",
+        "verses": 69
+      },
+      "new_testament": {
+        "passage": "John 1:1-3:36",
+        "title": "🎊 WORD BECAME FLESH! Light and Life",
+        "verses": 87
+      },
+      "psalms_wisdom": {
+        "passage": "Song of Songs 3:1-4:16",
+        "title": "🌹 I SOUGHT HIM WHOM MY SOUL LOVES",
+        "verses": 27
+      }
+    },
+    {
+      "day": "2025-06-25",
+      "old_testament": {
+        "passage": "Micah 1:1-7:20",
+        "title": "Complete Book - What Does the Lord Require?",
+        "verses": 105
+      },
+      "new_testament": {
+        "passage": "Acts 1:1-2:47",
+        "title": "🎊 PENTECOST REVIEW! Spirit Comes",
+        "verses": 73
+      },
+      "psalms_wisdom": {
+        "passage": "Song of Songs 5:1-6:13",
+        "title": "🌹 I HAVE COME INTO MY GARDEN",
+        "verses": 29
+      }
+    },
+    {
+      "day": "2025-06-26",
+      "old_testament": {
+        "passage": "Nahum 1:1-3:19, Habakkuk 1:1-3:19",
+        "title": "Complete Books - God's Justice and Faith",
+        "verses": 75
+      },
+      "new_testament": {
+        "passage": "Romans 1:1-3:31",
+        "title": "🎊 GOSPEL POWER! Righteousness Revealed",
+        "verses": 87
+      },
+      "psalms_wisdom": {
+        "passage": "Song of Songs 7:1-8:14",
+        "title": "🌹 HOW BEAUTIFUL YOUR FEET - LOVE'S COMPLETION",
+        "verses": 27
+      }
+    },
+    {
+      "day": "2025-06-27",
+      "old_testament": {
+        "passage": "Zephaniah 1:1-3:20",
+        "title": "Complete Book - Day of the Lord and Restoration",
+        "verses": 53
+      },
+      "new_testament": {
+        "passage": "1 Corinthians 13:1-15:58",
+        "title": "🎊 LOVE AND RESURRECTION! Greatest Chapter and Victory",
+        "verses": 102
+      },
+      "psalms_wisdom": {
+        "passage": "Psalm 23:1-6, Psalm 100:1-5",
+        "title": "🐑 THE LORD IS MY SHEPHERD - JOYFUL PRAISE",
+        "verses": 11
+      }
+    },
+    {
+      "day": "2025-06-28",
+      "old_testament": {
+        "passage": "Haggai 1:1-2:23",
+        "title": "Complete Book - Rebuild the Temple",
+        "verses": 38
+      },
+      "new_testament": {
+        "passage": "Ephesians 1:1-3:21",
+        "title": "🎊 SPIRITUAL BLESSINGS! In Heavenly Realms",
+        "verses": 63
+      },
+      "psalms_wisdom": {
+        "passage": "Psalm 91:1-16, Psalm 121:1-8",
+        "title": "🏔️ HE WHO DWELLS IN SHELTER - MY HELP COMES FROM THE LORD",
+        "verses": 24
+      }
+    },
+    {
+      "day": "2025-06-29",
+      "old_testament": {
+        "passage": "Zechariah 1:1-8:23",
+        "title": "Visions and Future Restoration",
+        "verses": 211
+      },
+      "new_testament": {
+        "passage": "Philippians 1:1-4:23",
+        "title": "🎊 JOY IN CHRIST! Complete Letter of Rejoicing",
+        "verses": 104
+      },
+      "psalms_wisdom": {
+        "passage": "Psalm 139:1-18",
+        "title": "🔍 YOU HAVE SEARCHED ME AND KNOWN ME",
+        "verses": 18
+      }
+    },
+    {
+      "day": "2025-06-30",
+      "old_testament": {
+        "passage": "Zechariah 9:1-14:21",
+        "title": "King Coming and Day of the Lord",
+        "verses": 169
+      },
+      "new_testament": {
+        "passage": "Colossians 1:1-4:18, 1 Thessalonians 4:13-5:28",
+        "title": "🎊 CHRIST SUPREME! And Second Coming Hope",
+        "verses": 111
+      },
+      "psalms_wisdom": {
+        "passage": "Psalm 1:1-6, Psalm 119:105-112",
+        "title": "🌳 BLESSED IS THE MAN - YOUR WORD IS A LAMP",
+        "verses": 14
+      }
+    },
+    {
+      "day": "2025-07-01",
+      "old_testament": {
+        "passage": "Malachi 1:1-4:6",
+        "title": "🎊 FINAL OT BOOK! I Have Loved You - Behold, I Will Send Elijah",
+        "verses": 55
+      },
+      "new_testament": {
+        "passage": "Revelation 21:1-22:21",
+        "title": "🎉 BIBLE COMPLETION! New Heaven, New Earth - Come, Lord Jesus!",
+        "verses": 51
+      },
+      "psalms_wisdom": {
+        "passage": "Psalm 150:1-6, Psalm 117:1-2",
+        "title": "🎺🎊 GRAND FINALE! PRAISE GOD! LET EVERYTHING THAT HAS BREATH PRAISE THE LORD!",
+        "verses": 8
+      }
+    }
+  ],
+  "celebration_note": "🎊🎉 INCREDIBLE ACCOMPLISHMENT! 🎉🎊\n\nYou have just completed reading the ENTIRE BIBLE in 182 days! From Genesis 1:1 ('In the beginning God created the heavens and the earth') to Revelation 22:21 ('The grace of the Lord Jesus be with God's people. Amen.').\n\n📚 AMAZING STATISTICS:\n• 35,887 verses read\n• 1,189 chapters completed  \n• 66 books conquered\n• 39 Old Testament books\n• 27 New Testament books\n• 5 Wisdom books\n• God's complete story from Creation to New Creation!\n\n🏆 Tomorrow, July 2, 2025, is your official BIBLE COMPLETION CELEBRATION DAY! 🏆\n\nTake time to:\n• Thank God for His Word and faithfulness\n• Reflect on the incredible journey from Genesis to Revelation\n• Celebrate this monumental achievement\n• Share your testimony with others\n• Consider starting the journey again - God's Word never gets old!\n\n'Your word is a lamp for my feet, a light on my path.' - Psalm 119:105\n\nWell done, faithful Bible reader! 📖✨🙏👑"
+}

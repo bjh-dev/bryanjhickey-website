@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils'
-import { slugify, getTextFromReactNode } from '@/utils/strings'
-import { PortableTextReactComponents } from 'next-sanity'
+import { slugify } from '@/utils/strings'
+import { PortableTextBlock, PortableTextReactComponents } from 'next-sanity'
 import { ReactNode } from 'react'
 
 export const LeadParagraph = ({ children }: { children: ReactNode }) => {
@@ -11,62 +11,47 @@ export const LeadParagraph = ({ children }: { children: ReactNode }) => {
   )
 }
 
-export const HeadingOne = ({ children }: { children: ReactNode }) => {
-  const headingText = getTextFromReactNode(children)
-  return (
-    <h1
-      id={slugify(headingText)}
-      className="scroll-mt-20 py-6 font-serif text-4xl md:text-5xl"
-    >
-      {children}
-    </h1>
-  )
-}
-export const HeadingTwo = ({ children }: { children: ReactNode }) => {
-  const headingText = getTextFromReactNode(children)
+export const HeadingOne = ({ children }: { children: PortableTextBlock }) => (
+  <h1
+    id={slugify(children)}
+    className="scroll-mt-20 py-6 font-serif text-4xl md:text-5xl"
+  >
+    {children}
+  </h1>
+)
+export const HeadingTwo = ({ children }: { children: PortableTextBlock }) => (
+  <h2
+    id={slugify(children)}
+    className="scroll-mt-20 py-12 font-serif text-3xl md:text-4xl"
+  >
+    {children}
+  </h2>
+)
+export const HeadingThree = ({ children }: { children: PortableTextBlock }) => (
+  <h3
+    id={slugify(children)}
+    className="scroll-mt-20 py-6 font-serif text-3xl md:text-4xl"
+  >
+    {children}
+  </h3>
+)
 
-  return (
-    <h2
-      id={slugify(headingText)}
-      className="scroll-mt-20 py-12 font-serif text-3xl md:text-4xl"
-    >
-      {children}
-    </h2>
-  )
-}
-export const HeadingThree = ({ children }: { children: ReactNode }) => {
-  const headingText = getTextFromReactNode(children)
-  return (
-    <h3
-      id={slugify(headingText)}
-      className="scroll-mt-20 py-6 font-serif text-3xl md:text-4xl"
-    >
-      {children}
-    </h3>
-  )
-}
-export const HeadingFour = ({ children }: { children: ReactNode }) => {
-  const headingText = getTextFromReactNode(children)
-  return (
-    <h4
-      id={slugify(headingText)}
-      className="scroll-mt-20 py-6 font-serif text-xl md:text-2xl"
-    >
-      {children}
-    </h4>
-  )
-}
-export const HeadingFive = ({ children }: { children: ReactNode }) => {
-  const headingText = getTextFromReactNode(children)
-  return (
-    <h5
-      id={slugify(headingText)}
-      className="scroll-mt-20 py-6 font-serif text-lg md:text-xl"
-    >
-      {children}
-    </h5>
-  )
-}
+export const HeadingFour = ({ children }: { children: PortableTextBlock }) => (
+  <h4
+    id={slugify(children)}
+    className="scroll-mt-20 py-6 font-serif text-xl md:text-2xl"
+  >
+    {children}
+  </h4>
+)
+export const HeadingFive = ({ children }: { children: PortableTextBlock }) => (
+  <h5
+    id={slugify(children)}
+    className="scroll-mt-20 py-6 font-serif text-lg md:text-xl"
+  >
+    {children}
+  </h5>
+)
 
 export const BlockQuote = ({ children }: { children: ReactNode }) => (
   <blockquote className="text-foreground/60 border-border my-12 border-l-4 pl-4 font-serif text-lg leading-relaxed italic lg:text-xl">
@@ -84,7 +69,7 @@ export const DefaultText = ({
   <p
     className={cn(
       paragraphStyles,
-      'mb-6 font-serif text-lg leading-relaxed font-normal lg:text-xl',
+      'mb-6 font-serif text-lg leading-relaxed lg:text-xl',
     )}
   >
     {children}

@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils'
 import { slugify } from '@/utils/strings'
-import { PortableTextBlock, PortableTextReactComponents } from 'next-sanity'
+import { PortableTextReactComponents } from 'next-sanity'
 import { ReactNode } from 'react'
 
 export const LeadParagraph = ({ children }: { children: ReactNode }) => {
@@ -11,42 +11,42 @@ export const LeadParagraph = ({ children }: { children: ReactNode }) => {
   )
 }
 
-export const HeadingOne = ({ children }: { children: PortableTextBlock }) => (
+export const HeadingOne = ({ children }: { children: ReactNode }) => (
   <h1
-    id={slugify(children)}
+    id={slugify(String(children))}
     className="scroll-mt-20 py-6 font-serif text-4xl md:text-5xl"
   >
     {children}
   </h1>
 )
-export const HeadingTwo = ({ children }: { children: PortableTextBlock }) => (
+export const HeadingTwo = ({ children }: { children: ReactNode }) => (
   <h2
-    id={slugify(children)}
+    id={slugify(String(children))}
     className="scroll-mt-20 py-12 font-serif text-3xl md:text-4xl"
   >
     {children}
   </h2>
 )
-export const HeadingThree = ({ children }: { children: PortableTextBlock }) => (
+export const HeadingThree = ({ children }: { children: ReactNode }) => (
   <h3
-    id={slugify(children)}
+    id={slugify(String(children))}
     className="scroll-mt-20 py-6 font-serif text-3xl md:text-4xl"
   >
     {children}
   </h3>
 )
 
-export const HeadingFour = ({ children }: { children: PortableTextBlock }) => (
+export const HeadingFour = ({ children }: { children: ReactNode }) => (
   <h4
-    id={slugify(children)}
+    id={slugify(String(children))}
     className="scroll-mt-20 py-6 font-serif text-xl md:text-2xl"
   >
     {children}
   </h4>
 )
-export const HeadingFive = ({ children }: { children: PortableTextBlock }) => (
+export const HeadingFive = ({ children }: { children: ReactNode }) => (
   <h5
-    id={slugify(children)}
+    id={slugify(String(children))}
     className="scroll-mt-20 py-6 font-serif text-lg md:text-xl"
   >
     {children}

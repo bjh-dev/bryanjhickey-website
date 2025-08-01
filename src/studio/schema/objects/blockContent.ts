@@ -1,5 +1,5 @@
 import { defineType, defineArrayMember, defineField } from 'sanity'
-import { ImageIcon } from '@sanity/icons'
+import { ImageIcon, LinkIcon } from '@sanity/icons'
 import {
   HeadingFour,
   HeadingOne,
@@ -86,6 +86,69 @@ export default defineType({
           title: 'Alternative text',
           description: 'Important for SEO and accessibility.',
         },
+      ],
+    }),
+    defineArrayMember({
+      name: 'callout',
+      title: 'Callout',
+      type: 'object',
+      description: 'A callout block for highlighting important information.',
+      fields: [
+        defineField({
+          name: 'calloutType',
+          type: 'string',
+          title: 'Callout Type',
+          options: {
+            list: [
+              { title: 'Info', value: 'info' },
+              { title: 'Question', value: 'question' },
+              { title: 'Caution', value: 'caution' },
+            ],
+            layout: 'radio',
+            direction: 'horizontal',
+          },
+          initialValue: 'info',
+        }),
+        defineField({
+          name: 'title',
+          type: 'string',
+          title: 'Title',
+          description: 'The title of the callout block.',
+        }),
+        defineField({
+          name: 'content',
+          type: 'array',
+          title: 'Callout Text',
+          description: 'The text content of the callout block.',
+          of: [
+            defineArrayMember({
+              type: 'block',
+              styles: [{ title: 'Normal', value: 'normal' }],
+              marks: {
+                decorators: [
+                  { title: 'Emphasis', value: 'em' },
+                  { title: 'Strong', value: 'strong' },
+                  { title: 'Strike', value: 'strike-through' },
+                  { title: 'Underline', value: 'underline' },
+                ],
+                annotations: [
+                  defineArrayMember({
+                    name: 'customLink',
+                    type: 'object',
+                    title: 'Link',
+                    icon: LinkIcon,
+                    fields: [
+                      defineField({
+                        name: 'customLink',
+                        type: 'link',
+                      }),
+                    ],
+                  }),
+                ],
+              },
+            }),
+          ],
+        }),
       ],
     }),
   ],

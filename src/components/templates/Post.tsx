@@ -50,7 +50,7 @@ const Post = ({ post }: Props) => {
                   </nav>
                 </aside>
               )}
-              <div className="max-w-prose">
+              <div className="mr-auto ml-0 max-w-2xl">
                 <CustomPortableText
                   value={post.content as PortableTextBlock[]}
                 />

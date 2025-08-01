@@ -84,11 +84,13 @@ export const linkFragment = /* groq */ `
     ...,
     _type,
     _id,
+    "slug": slug.current
   },
 `
 
 const customLinkFragment = /* groq */ `
-  ...customLink{
+  customLink{
+    ...,
     ${linkFragment}
   },
 `
@@ -104,6 +106,10 @@ const contentFragment = /* groq */ `
   content[]{
     ...,
     ${markDefsFragment}
+    content[]{
+      ...,
+      ${markDefsFragment}
+    }
   },
 `
 

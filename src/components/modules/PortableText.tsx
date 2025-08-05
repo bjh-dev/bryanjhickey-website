@@ -39,6 +39,7 @@ import {
   UnderlineMark,
   SuperScriptMark,
   SubScriptMark,
+  CalloutBlock,
 } from '@/studio/schema/objects/blockContentComponents'
 
 export default function CustomPortableText({
@@ -72,6 +73,20 @@ export default function CustomPortableText({
     marks: {
       code: ({ children }) => <CodeBlock>{children}</CodeBlock>,
       em: ({ children }) => <EmphasisMark>{children}</EmphasisMark>,
+      customLink: ({
+        children,
+        value,
+      }: {
+        children: ReactNode
+        value?: { customLink: LinkFragmentType }
+      }) => {
+        const customLink = value?.customLink
+        if (!customLink) {
+          return <>{children}</>
+        }
+
+        return <Link link={customLink}>{children}</Link>
+      },
       link: ({
         children,
         value,
@@ -80,19 +95,11 @@ export default function CustomPortableText({
         value?: { customLink: LinkFragmentType }
       }) => {
         const customLink = value?.customLink
-
         if (!customLink) {
           return <>{children}</>
         }
 
-        return (
-          <Link
-            link={customLink}
-            className="text-primary/80 hover:decoration-primary hover:text-primary underline underline-offset-2 transition-all"
-          >
-            {children}
-          </Link>
-        )
+        return <Link link={customLink}>{children}</Link>
       },
       strong: ({ children }) => <StrongMark>{children}</StrongMark>,
       'strike-through': ({ children }) => (
@@ -119,6 +126,15 @@ export default function CustomPortableText({
               className="h-auto w-full"
             />
           </div>
+        )
+      },
+      callout: (props) => {
+        return (
+          <CalloutBlock
+            type={props.value?.calloutType}
+            title={props?.value?.title}
+            content={props?.value?.content}
+          />
         )
       },
     },

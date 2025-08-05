@@ -121,6 +121,10 @@ const developmentPlugins = [
 
 export default defineConfig({
   basePath: '/studio',
+  title:
+    process.env.NEXT_PUBLIC_SANITY_DATASET === 'development'
+      ? 'DEV | Studio'
+      : 'production',
   projectId: clientEnv.NEXT_PUBLIC_SANITY_PROJECT_ID,
   dataset: clientEnv.NEXT_PUBLIC_SANITY_DATASET,
   // Add and edit the content schema in the './sanity/schemaTypes' folder

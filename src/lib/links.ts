@@ -38,8 +38,13 @@ export const getLinkByLinkObject = (
   }
 
   if (type === 'internal' && internal) {
+    // Only attempt to access slug if it exists on internal
     return getDocumentLink(
-      { _type: internal._type, slug: internal._ref ?? null },
+      {
+        _type: internal._type,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        slug: 'slug' in internal ? ((internal as any).slug ?? null) : null,
+      },
       false,
     )
   }

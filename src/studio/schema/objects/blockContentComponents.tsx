@@ -1,6 +1,8 @@
+import CustomPortableText from '@/components/modules/PortableText'
 import { cn } from '@/lib/utils'
 import { slugify, getTextFromReactNode } from '@/utils/strings'
-import { PortableTextReactComponents } from 'next-sanity'
+import { AlertCircle, CircleQuestionMark, Info } from 'lucide-react'
+import { PortableTextBlock, PortableTextReactComponents } from 'next-sanity'
 import { ReactNode } from 'react'
 
 export const LeadParagraph = ({ children }: { children: ReactNode }) => {
@@ -16,7 +18,7 @@ export const HeadingOne = ({ children }: { children: ReactNode }) => {
   return (
     <h1
       id={slugify(headingText)}
-      className="scroll-mt-20 py-6 font-serif text-4xl md:text-5xl"
+      className="py-6 font-serif text-4xl first-of-type:pt-0 md:text-5xl"
     >
       {children}
     </h1>
@@ -28,7 +30,7 @@ export const HeadingTwo = ({ children }: { children: ReactNode }) => {
   return (
     <h2
       id={slugify(headingText)}
-      className="scroll-mt-20 py-12 font-serif text-3xl md:text-4xl"
+      className="py-6 font-serif text-3xl first-of-type:pt-0 md:text-4xl"
     >
       {children}
     </h2>
@@ -39,7 +41,7 @@ export const HeadingThree = ({ children }: { children: ReactNode }) => {
   return (
     <h3
       id={slugify(headingText)}
-      className="scroll-mt-20 py-6 font-serif text-3xl md:text-4xl"
+      className="py-6 font-serif text-3xl first-of-type:pt-0 md:text-4xl"
     >
       {children}
     </h3>
@@ -50,7 +52,7 @@ export const HeadingFour = ({ children }: { children: ReactNode }) => {
   return (
     <h4
       id={slugify(headingText)}
-      className="scroll-mt-20 py-6 font-serif text-xl md:text-2xl"
+      className="py-6 font-serif text-xl first-of-type:pt-0 md:text-2xl"
     >
       {children}
     </h4>
@@ -61,7 +63,7 @@ export const HeadingFive = ({ children }: { children: ReactNode }) => {
   return (
     <h5
       id={slugify(headingText)}
-      className="scroll-mt-20 py-6 font-serif text-lg md:text-xl"
+      className="py-6 font-serif text-lg first-of-type:pt-0 md:text-xl"
     >
       {children}
     </h5>
@@ -72,6 +74,37 @@ export const BlockQuote = ({ children }: { children: ReactNode }) => (
   <blockquote className="text-foreground/60 border-border my-12 border-l-4 pl-4 font-serif text-lg leading-relaxed italic lg:text-xl">
     {children}
   </blockquote>
+)
+
+export const CalloutBlock = ({
+  content,
+  type = 'info',
+  title = 'callout',
+}: {
+  type?: 'info' | 'question' | 'caution'
+  title?: string
+  content: PortableTextBlock[]
+}) => (
+  <div
+    className={cn(
+      'border-border bg-background my-6 rounded-lg border p-6',
+      type === 'info' && 'border-green-600 bg-green-50 dark:bg-green-950',
+      type === 'question' && 'border-blue-600 bg-blue-50 dark:bg-blue-950',
+      type === 'caution' &&
+        'border-yellow-4000 bg-yellow-50 dark:bg-yellow-950',
+    )}
+  >
+    <div className="flex items-center gap-2 pb-2">
+      {type === 'info' && <Info className="h-4 w-4" />}
+      {type === 'question' && <CircleQuestionMark className="h-4 w-4" />}
+      {type === 'caution' && <AlertCircle className="h-4 w-4" />}
+      <h3 className="text-sm font-bold">{title}</h3>
+    </div>
+    <CustomPortableText
+      value={content}
+      paragraphStyles="text-sm! font-sans! last-of-type:mb-0!"
+    />
+  </div>
 )
 
 export const DefaultText = ({

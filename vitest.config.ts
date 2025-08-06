@@ -10,6 +10,26 @@ export default defineConfig({
     setupFiles: ['./src/test/setup.tsx'],
     include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     exclude: ['node_modules', 'dist', '.next', 'out'],
+    coverage: {
+      reporter: ['text', 'json', 'html', 'lcov'],
+      exclude: [
+        'src/test/**',
+        'src/types/**',
+        'src/studio/**',
+        '**/*.d.ts',
+        '**/*.config.*',
+        '**/node_modules/**',
+        '.next/**',
+      ],
+      thresholds: {
+        global: {
+          branches: 80,
+          functions: 80,
+          lines: 80,
+          statements: 80,
+        },
+      },
+    },
     env: {
       NEXT_PUBLIC_SANITY_PROJECT_ID: 'test-project',
       NEXT_PUBLIC_SANITY_DATASET: 'test',

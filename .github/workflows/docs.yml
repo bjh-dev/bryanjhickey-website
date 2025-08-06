@@ -1,0 +1,318 @@
+name: Documentation & Maintenance
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'src/**'
+      - '*.md'
+      - '.github/workflows/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'src/**'
+      - '*.md'
+  schedule:
+    # Run weekly on Sundays at 3 AM UTC
+    - cron: '0 3 * * 0'
+  workflow_dispatch:
+
+env:
+  BUN_VERSION: 'latest'
+
+jobs:
+  # Job 1: Generate Code Documentation
+  generate-docs:
+    name: Generate Code Documentation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: ${{ env.BUN_VERSION }}
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Generate Sanity types
+        run: bun run sanity:typegen
+        env:
+          NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
+          NEXT_PUBLIC_SANITY_DATASET: ${{ secrets.NEXT_PUBLIC_SANITY_DATASET }}
+          NEXT_PUBLIC_SANITY_API_VERSION: ${{ secrets.NEXT_PUBLIC_SANITY_API_VERSION }}
+
+      - name: Generate component documentation
+        run: |
+          echo "# Component Documentation" > COMPONENTS.md
+          echo "" >> COMPONENTS.md
+          echo "Auto-generated component documentation for bryanjhickey.com" >> COMPONENTS.md
+          echo "" >> COMPONENTS.md
+          echo "Generated on: $(date)" >> COMPONENTS.md
+          echo "" >> COMPONENTS.md
+          
+          # Find all components and document them
+          echo "## Layout Components" >> COMPONENTS.md
+          find src/components/layout -name "*.tsx" | while read file; do
+            echo "### $(basename "$file" .tsx)" >> COMPONENTS.md
+            echo "- **File**: \`$file\`" >> COMPONENTS.md
+            echo "- **Purpose**: $(grep -m1 "^// " "$file" | sed 's|^// ||' || echo "Layout component")" >> COMPONENTS.md
+            echo "" >> COMPONENTS.md
+          done
+          
+          echo "## UI Components" >> COMPONENTS.md
+          find src/components/ui -name "*.tsx" | while read file; do
+            echo "### $(basename "$file" .tsx)" >> COMPONENTS.md
+            echo "- **File**: \`$file\`" >> COMPONENTS.md
+            echo "- **Purpose**: $(grep -m1 "^// " "$file" | sed 's|^// ||' || echo "UI component")" >> COMPONENTS.md
+            echo "" >> COMPONENTS.md
+          done
+          
+          echo "## Module Components" >> COMPONENTS.md
+          find src/components/modules -name "*.tsx" | while read file; do
+            echo "### $(basename "$file" .tsx)" >> COMPONENTS.md
+            echo "- **File**: \`$file\`" >> COMPONENTS.md
+            echo "- **Purpose**: $(grep -m1 "^// " "$file" | sed 's|^// ||' || echo "Module component")" >> COMPONENTS.md
+            echo "" >> COMPONENTS.md
+          done
+
+      - name: Generate API documentation
+        run: |
+          echo "# API Documentation" > API.md
+          echo "" >> API.md
+          echo "Auto-generated API documentation for bryanjhickey.com" >> API.md
+          echo "" >> API.md
+          echo "Generated on: $(date)" >> API.md
+          echo "" >> API.md
+          
+          # Find all API routes
+          find src/app/api -name "route.ts" | while read file; do
+            echo "## $(dirname "$file" | sed 's|src/app/api/||')" >> API.md
+            echo "- **File**: \`$file\`" >> API.md
+            echo "- **Methods**: $(grep -o "export const [A-Z]*" "$file" | cut -d' ' -f3 | tr '\n' ', ' | sed 's|,$||')" >> API.md
+            echo "" >> API.md
+          done
+
+      - name: Generate test coverage documentation
+        run: |
+          bun run test:coverage > coverage-output.txt 2>&1 || true
+          
+          echo "# Test Coverage Report" > COVERAGE.md
+          echo "" >> COVERAGE.md
+          echo "Auto-generated test coverage report" >> COVERAGE.md
+          echo "" >> COVERAGE.md
+          echo "Generated on: $(date)" >> COVERAGE.md
+          echo "" >> COVERAGE.md
+          echo '```' >> COVERAGE.md
+          cat coverage-output.txt >> COVERAGE.md
+          echo '```' >> COVERAGE.md
+        env:
+          NEXT_PUBLIC_SANITY_PROJECT_ID: test-project
+          NEXT_PUBLIC_SANITY_DATASET: test
+          NEXT_PUBLIC_SANITY_API_VERSION: 2024-01-01
+          NEXT_PUBLIC_SITE_URL: http://localhost:3000
+          SANITY_API_READ_TOKEN: test-token
+
+      - name: Upload documentation artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: generated-docs
+          path: |
+            COMPONENTS.md
+            API.md
+            COVERAGE.md
+            coverage/
+
+  # Job 2: Update README badges and metrics
+  update-readme:
+    name: Update README Metrics
+    runs-on: ubuntu-latest
+    needs: generate-docs
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: ${{ env.BUN_VERSION }}
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Generate metrics
+        run: |
+          # Generate project metrics
+          echo "Generating project metrics..."
+          
+          # Count files
+          TOTAL_FILES=$(find src -name "*.ts" -o -name "*.tsx" | wc -l)
+          COMPONENT_FILES=$(find src/components -name "*.tsx" | wc -l)
+          TEST_FILES=$(find src -name "*.test.*" -o -name "*.spec.*" | wc -l)
+          
+          # Lines of code
+          TOTAL_LINES=$(find src -name "*.ts" -o -name "*.tsx" | xargs wc -l | tail -1 | awk '{print $1}')
+          
+          # Create metrics file
+          echo "TOTAL_FILES=$TOTAL_FILES" > metrics.env
+          echo "COMPONENT_FILES=$COMPONENT_FILES" >> metrics.env
+          echo "TEST_FILES=$TEST_FILES" >> metrics.env
+          echo "TOTAL_LINES=$TOTAL_LINES" >> metrics.env
+          
+          # Load metrics
+          source metrics.env
+          
+          echo "📊 Project Metrics:"
+          echo "- Total TypeScript files: $TOTAL_FILES"
+          echo "- Component files: $COMPONENT_FILES"  
+          echo "- Test files: $TEST_FILES"
+          echo "- Total lines of code: $TOTAL_LINES"
+
+      - name: Run test coverage for metrics
+        run: bun run test:coverage --reporter=json > coverage-metrics.json || true
+        env:
+          NEXT_PUBLIC_SANITY_PROJECT_ID: test-project
+          NEXT_PUBLIC_SANITY_DATASET: test
+          NEXT_PUBLIC_SANITY_API_VERSION: 2024-01-01
+          NEXT_PUBLIC_SITE_URL: http://localhost:3000
+          SANITY_API_READ_TOKEN: test-token
+
+      - name: Update README with metrics
+        run: |
+          # Extract coverage percentage if available
+          if [ -f coverage/coverage-summary.json ]; then
+            COVERAGE=$(jq -r '.total.lines.pct' coverage/coverage-summary.json 2>/dev/null || echo "0")
+          else
+            COVERAGE="0"
+          fi
+          
+          # Load other metrics
+          source metrics.env
+          
+          # Create metrics badges section
+          cat > metrics-section.md << EOF
+          ## 📊 Project Metrics
+          
+          ![TypeScript](https://img.shields.io/badge/TypeScript-100%25-blue)
+          ![Test Coverage](https://img.shields.io/badge/Coverage-${COVERAGE}%25-green)
+          ![Components](https://img.shields.io/badge/Components-${COMPONENT_FILES}-orange)
+          ![Tests](https://img.shields.io/badge/Tests-${TEST_FILES}-purple)
+          ![Lines of Code](https://img.shields.io/badge/Lines%20of%20Code-${TOTAL_LINES}-lightgrey)
+          
+          | Metric | Value |
+          |--------|-------|
+          | TypeScript Files | ${TOTAL_FILES} |
+          | React Components | ${COMPONENT_FILES} |
+          | Test Files | ${TEST_FILES} |
+          | Lines of Code | ${TOTAL_LINES} |
+          | Test Coverage | ${COVERAGE}% |
+          | Build Status | ![CI](https://github.com/${{ github.repository }}/workflows/CI%2FCD%20Pipeline/badge.svg) |
+          
+          *Metrics updated automatically on $(date)*
+          EOF
+          
+          # Update README if it exists
+          if [ -f README.md ]; then
+            # Check if metrics section exists, if not add it
+            if ! grep -q "## 📊 Project Metrics" README.md; then
+              echo "" >> README.md
+              cat metrics-section.md >> README.md
+            else
+              # Replace existing metrics section
+              sed -i '/## 📊 Project Metrics/,/^\*Metrics updated automatically/c\' README.md
+              cat metrics-section.md >> README.md
+            fi
+          fi
+
+      - name: Commit updated documentation
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          
+          if git diff --quiet; then
+            echo "No changes to commit"
+          else
+            git add README.md
+            git commit -m "docs: Update project metrics and documentation [skip ci]"
+            git push
+          fi
+
+  # Job 3: Check for outdated documentation
+  documentation-health:
+    name: Documentation Health Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check documentation completeness
+        run: |
+          echo "🔍 Checking documentation health..."
+          
+          # Check for README
+          if [ ! -f README.md ]; then
+            echo "❌ README.md is missing"
+            echo "README_STATUS=missing" >> $GITHUB_ENV
+          else
+            echo "✅ README.md exists"
+            echo "README_STATUS=exists" >> $GITHUB_ENV
+          fi
+          
+          # Check for testing documentation
+          if [ ! -f TESTING.md ]; then
+            echo "❌ TESTING.md is missing"
+            echo "TESTING_DOCS_STATUS=missing" >> $GITHUB_ENV
+          else
+            echo "✅ TESTING.md exists"
+            echo "TESTING_DOCS_STATUS=exists" >> $GITHUB_ENV
+          fi
+          
+          # Check for component documentation
+          UNDOCUMENTED_COMPONENTS=$(find src/components -name "*.tsx" ! -path "*/test/*" ! -path "*/__tests__/*" | wc -l)
+          echo "📊 Found $UNDOCUMENTED_COMPONENTS components"
+          echo "UNDOCUMENTED_COMPONENTS=$UNDOCUMENTED_COMPONENTS" >> $GITHUB_ENV
+          
+          # Check for API documentation
+          API_ROUTES=$(find src/app/api -name "route.ts" | wc -l)
+          echo "📊 Found $API_ROUTES API routes"
+          echo "API_ROUTES=$API_ROUTES" >> $GITHUB_ENV
+
+      - name: Create documentation health report
+        run: |
+          echo "# 📖 Documentation Health Report" > doc-health.md
+          echo "" >> doc-health.md
+          echo "Generated on: $(date)" >> doc-health.md
+          echo "" >> doc-health.md
+          
+          echo "## Status Overview" >> doc-health.md
+          echo "- README.md: ${{ env.README_STATUS }}" >> doc-health.md
+          echo "- TESTING.md: ${{ env.TESTING_DOCS_STATUS }}" >> doc-health.md
+          echo "- Components: ${{ env.UNDOCUMENTED_COMPONENTS }} files" >> doc-health.md
+          echo "- API Routes: ${{ env.API_ROUTES }} endpoints" >> doc-health.md
+          echo "" >> doc-health.md
+          
+          echo "## Recommendations" >> doc-health.md
+          if [ "${{ env.README_STATUS }}" = "missing" ]; then
+            echo "- ❌ Create README.md with project overview" >> doc-health.md
+          fi
+          
+          if [ "${{ env.TESTING_DOCS_STATUS }}" = "missing" ]; then
+            echo "- ❌ Create TESTING.md with testing guidelines" >> doc-health.md
+          fi
+          
+          echo "- 📊 Consider adding JSDoc comments to components" >> doc-health.md
+          echo "- 📊 Consider adding inline API documentation" >> doc-health.md
+
+      - name: Upload health report
+        uses: actions/upload-artifact@v4
+        with:
+          name: documentation-health-report
+          path: doc-health.md

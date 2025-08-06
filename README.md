@@ -127,13 +127,17 @@ src/
 
 ## 🔍 Code Quality Analysis & Roadmap
 
-_Last Updated: December 2024_
+### Last Updated
+
+December 2024
 
 ### Executive Summary
 
 This is an exceptionally well-architected Next.js 15 personal website that demonstrates professional-level development practices. The codebase shows excellent TypeScript implementation, modern React patterns, and outstanding Sanity CMS integration with minimal technical debt.
 
-**Overall Grade: A- (90/100)**
+### Overall Grade
+
+A- (90/100)
 
 ### Quality Scorecard
 
@@ -228,7 +232,7 @@ See [TESTING.md](./TESTING.md) for detailed testing documentation.
 
 ### Build Performance
 
-```
+```text
 Route (app)                    Size     First Load JS
 ┌ ○ /                         169 B    247 kB
 ├ ● /posts/[slug]           2.03 kB    170 kB

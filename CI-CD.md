@@ -6,11 +6,11 @@ This document describes the comprehensive CI/CD pipeline for bryanjhickey.com, b
 
 The CI/CD pipeline consists of 5 main workflows that ensure code quality, security, and reliable deployments:
 
-1. **[CI/CD Pipeline](#cicd-pipeline)** - Main build, test, and deployment workflow
-2. **[Pull Request Checks](#pull-request-checks)** - Enhanced PR validation and analysis
-3. **[Security & Dependencies](#security--dependency-checks)** - Automated security monitoring
-4. **[Release & Deploy](#release--deploy)** - Automated versioning and production deployment
-5. **[Documentation](#documentation--maintenance)** - Documentation generation and maintenance
+1. **CI/CD Pipeline** - Main build, test, and deployment workflow
+2. **Pull Request Checks** - Enhanced PR validation and analysis
+3. **Security & Dependencies** - Automated security monitoring
+4. **Release & Deploy** - Automated versioning and production deployment
+5. **Documentation** - Documentation generation and maintenance
 
 ## 🔄 CI/CD Pipeline
 

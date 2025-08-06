@@ -40,9 +40,6 @@ bun run test:coverage
 ```
 src/
 ├── components/
-│   ├── layout/
-│   │   └── __tests__/
-│   │       └── Navbar.test.tsx
 │   └── modules/
 │       └── __tests__/
 │           ├── PostCard.test.tsx
@@ -61,14 +58,6 @@ src/
 ## Test Categories
 
 ### 1. Unit Tests - Components
-
-**Navbar Component Tests**
-
-- Navigation menu rendering
-- Mobile menu toggle functionality
-- Dropdown menu behavior
-- Menu item interactions
-- Accessibility compliance
 
 **PostCard Component Tests**
 

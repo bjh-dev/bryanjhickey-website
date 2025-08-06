@@ -75,7 +75,7 @@ src/
 │   ├── (backend)/         # Sanity Studio at /studio
 │   └── api/               # API routes (draft mode)
 ├── components/
-│   ├── layout/            # Header, Footer, Navbar
+│   ├── layout/            # Header, Footer
 │   ├── modules/           # Reusable UI modules
 │   ├── sections/          # Page sections
 │   ├── templates/         # Page templates
@@ -179,7 +179,7 @@ This is an exceptionally well-architected Next.js 15 personal website that demon
 bun add -D @testing-library/react @testing-library/jest-dom vitest jsdom
 ```
 
-- **Unit Tests**: Critical components (Post, Navbar, CoverImage)
+- **Unit Tests**: Critical components (Post, CoverImage)
 - **Integration Tests**: API routes and data fetching
 - **Accessibility Tests**: Automated a11y testing
 

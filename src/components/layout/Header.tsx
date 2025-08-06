@@ -2,7 +2,6 @@ import Link from 'next/link'
 import { sanityFetch } from '@/lib/sanity/client/live'
 import { settingsQuery } from '@/lib/sanity/queries/queries'
 import { Logo } from '@/components/icons/Logo'
-import NavBar from '@/components/layout/Navbar'
 import FadeXAnimation from '@/components/animations/FadeXAnimation'
 import { Button } from '@/components/ui/button'
 
@@ -37,7 +36,6 @@ export default async function Header({
                 <Link href="/booking">Book a Time with Bryan</Link>
               </Button>
             </FadeXAnimation>
-            {settings.menu && <NavBar menuItems={settings.menu || []} />}
           </div>
         </div>
       </div>

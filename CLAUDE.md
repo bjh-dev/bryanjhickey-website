@@ -54,7 +54,7 @@ The app uses Next.js App Router with two distinct sections:
 ### Key Directories
 
 - `src/components/` - React components organized by purpose:
-  - `layout/` - Header, Footer, Navbar, etc.
+  - `layout/` - Header, Footer, etc.
   - `modules/` - Reusable UI modules
   - `sections/` - Page section components
   - `templates/` - Page templates

@@ -1,0 +1,274 @@
+name: Security & Dependency Checks
+
+on:
+  schedule:
+    # Run daily at 2 AM UTC
+    - cron: '0 2 * * *'
+  push:
+    branches: [ main ]
+    paths:
+      - 'package.json'
+      - 'bun.lockb'
+  workflow_dispatch:
+
+env:
+  BUN_VERSION: 'latest'
+
+jobs:
+  # Job 1: Security Audit
+  security-audit:
+    name: Security Vulnerability Scan
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: ${{ env.BUN_VERSION }}
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Run security audit
+        id: audit
+        run: |
+          echo "Running security audit..."
+          bun audit --json > audit-report.json || true
+          bun audit > audit-report.txt || true
+        continue-on-error: true
+
+      - name: Parse audit results
+        run: |
+          if [ -f audit-report.json ]; then
+            VULNERABILITIES=$(jq '.vulnerabilities | length' audit-report.json 2>/dev/null || echo "0")
+            echo "VULNERABILITIES_COUNT=$VULNERABILITIES" >> $GITHUB_ENV
+            
+            if [ "$VULNERABILITIES" -gt 0 ]; then
+              echo "AUDIT_STATUS=VULNERABILITIES_FOUND" >> $GITHUB_ENV
+            else
+              echo "AUDIT_STATUS=CLEAN" >> $GITHUB_ENV
+            fi
+          else
+            echo "AUDIT_STATUS=UNKNOWN" >> $GITHUB_ENV
+            echo "VULNERABILITIES_COUNT=0" >> $GITHUB_ENV
+          fi
+
+      - name: Create issue for vulnerabilities
+        if: env.AUDIT_STATUS == 'VULNERABILITIES_FOUND'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const auditReport = fs.readFileSync('audit-report.txt', 'utf8');
+            
+            const issueBody = `
+            ## 🚨 Security Vulnerabilities Detected
+            
+            The automated security scan has detected **${{ env.VULNERABILITIES_COUNT }}** vulnerabilities in the project dependencies.
+            
+            ### Audit Report
+            \`\`\`
+            ${auditReport}
+            \`\`\`
+            
+            ### Recommended Actions
+            1. Review each vulnerability carefully
+            2. Update affected packages to secure versions
+            3. Consider using \`bun update\` or manual updates
+            4. Re-run tests after updates
+            5. Close this issue once vulnerabilities are resolved
+            
+            ---
+            *This issue was created automatically by the Security workflow*
+            *Triggered: ${new Date().toISOString()}*
+            `;
+            
+            // Check if there's already an open security issue
+            const existingIssues = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: ['security', 'dependencies'],
+              state: 'open'
+            });
+            
+            if (existingIssues.data.length === 0) {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: `🚨 Security Vulnerabilities Detected (${new Date().toISOString().split('T')[0]})`,
+                body: issueBody,
+                labels: ['security', 'dependencies', 'high-priority']
+              });
+            }
+
+      - name: Upload security report
+        uses: actions/upload-artifact@v4
+        with:
+          name: security-audit-report
+          path: |
+            audit-report.json
+            audit-report.txt
+        if: always()
+
+  # Job 2: Dependency Health Check
+  dependency-health:
+    name: Dependency Health Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: ${{ env.BUN_VERSION }}
+
+      - name: Check for outdated packages
+        run: |
+          echo "Checking for outdated packages..."
+          bun outdated > outdated-packages.txt || true
+          cat outdated-packages.txt
+
+      - name: Check package.json for issues
+        run: |
+          echo "Analyzing package.json..."
+          
+          # Check for potential issues
+          if grep -q '".*": "latest"' package.json; then
+            echo "WARNING: Found 'latest' version specifiers"
+            echo "PACKAGE_ISSUES=true" >> $GITHUB_ENV
+          fi
+          
+          if grep -q '".*": "\*"' package.json; then
+            echo "WARNING: Found wildcard version specifiers"  
+            echo "PACKAGE_ISSUES=true" >> $GITHUB_ENV
+          fi
+
+      - name: Upload dependency report
+        uses: actions/upload-artifact@v4
+        with:
+          name: dependency-health-report
+          path: outdated-packages.txt
+        if: always()
+
+  # Job 3: License Compliance Check
+  license-check:
+    name: License Compliance Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: ${{ env.BUN_VERSION }}
+
+      - name: Install license checker
+        run: bun add -D license-checker
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Check licenses
+        run: |
+          echo "Checking package licenses..."
+          bunx license-checker --summary > license-summary.txt || true
+          bunx license-checker --json > license-report.json || true
+          
+          # Check for problematic licenses
+          if bunx license-checker --failOn 'GPL;AGPL;LGPL' --excludePrivatePackages; then
+            echo "LICENSE_STATUS=COMPLIANT" >> $GITHUB_ENV
+          else
+            echo "LICENSE_STATUS=ISSUES_FOUND" >> $GITHUB_ENV
+          fi
+
+      - name: Create license compliance report
+        run: |
+          echo "## License Compliance Report" > license-compliance.md
+          echo "" >> license-compliance.md
+          echo "Generated on: $(date)" >> license-compliance.md
+          echo "" >> license-compliance.md
+          echo "### Summary" >> license-compliance.md
+          echo '```' >> license-compliance.md
+          cat license-summary.txt >> license-compliance.md
+          echo '```' >> license-compliance.md
+
+      - name: Upload license reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: license-compliance-report
+          path: |
+            license-summary.txt
+            license-report.json
+            license-compliance.md
+        if: always()
+
+  # Job 4: Code Quality Metrics
+  code-quality:
+    name: Code Quality Metrics
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: ${{ env.BUN_VERSION }}
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Generate Sanity types
+        run: bun run sanity:typegen
+        env:
+          NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
+          NEXT_PUBLIC_SANITY_DATASET: ${{ secrets.NEXT_PUBLIC_SANITY_DATASET }}
+          NEXT_PUBLIC_SANITY_API_VERSION: ${{ secrets.NEXT_PUBLIC_SANITY_API_VERSION }}
+
+      - name: Run comprehensive tests with coverage
+        run: bun run test:coverage --reporter=json > test-results.json
+        env:
+          NEXT_PUBLIC_SANITY_PROJECT_ID: test-project
+          NEXT_PUBLIC_SANITY_DATASET: test
+          NEXT_PUBLIC_SANITY_API_VERSION: 2024-01-01
+          NEXT_PUBLIC_SITE_URL: http://localhost:3000
+          SANITY_API_READ_TOKEN: test-token
+        continue-on-error: true
+
+      - name: Analyze code metrics
+        run: |
+          echo "Analyzing code metrics..."
+          
+          # Count files by type
+          echo "TypeScript/React files: $(find src -name '*.ts' -o -name '*.tsx' | wc -l)" > code-metrics.txt
+          echo "Test files: $(find src -name '*.test.*' -o -name '*.spec.*' | wc -l)" >> code-metrics.txt
+          echo "Component files: $(find src/components -name '*.tsx' | wc -l)" >> code-metrics.txt
+          
+          # Lines of code
+          echo "Total lines of code: $(find src -name '*.ts' -o -name '*.tsx' | xargs wc -l | tail -1)" >> code-metrics.txt
+          
+          # Test coverage (if available)
+          if [ -f coverage/coverage-summary.json ]; then
+            COVERAGE=$(jq '.total.lines.pct' coverage/coverage-summary.json)
+            echo "Test coverage: ${COVERAGE}%" >> code-metrics.txt
+          fi
+
+      - name: Upload quality metrics
+        uses: actions/upload-artifact@v4
+        with:
+          name: code-quality-metrics
+          path: |
+            test-results.json
+            code-metrics.txt
+            coverage/
+        if: always()

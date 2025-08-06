@@ -313,3 +313,22 @@ This codebase represents an exemplary implementation of modern web development p
 ---
 
 _Analysis performed using automated code quality assessment tools and manual review. Recommend quarterly updates as the project evolves._
+
+## 📊 Project Metrics
+
+![TypeScript](https://img.shields.io/badge/TypeScript-100%25-blue)
+![Test Coverage](https://img.shields.io/badge/Coverage-0%25-green)
+![Components](https://img.shields.io/badge/Components-40-orange)
+![Tests](https://img.shields.io/badge/Tests-4-purple)
+![Lines of Code](https://img.shields.io/badge/Lines%20of%20Code-6265-lightgrey)
+
+| Metric           | Value                                                                                         |
+| ---------------- | --------------------------------------------------------------------------------------------- |
+| TypeScript Files | 109                                                                                           |
+| React Components | 40                                                                                            |
+| Test Files       | 4                                                                                             |
+| Lines of Code    | 6265                                                                                          |
+| Test Coverage    | 0%                                                                                            |
+| Build Status     | ![CI](https://github.com/bjh-dev/bryanjhickey-website/workflows/CI%2FCD%20Pipeline/badge.svg) |
+
+_Metrics updated automatically on Wed Aug 6 11:01:38 UTC 2025_

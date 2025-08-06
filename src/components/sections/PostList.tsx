@@ -1,11 +1,11 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { PostListSection } from '@/components/sections/types'
 import Link from 'next/link'
 import { FaArrowRight } from 'react-icons/fa6'
 import { Button } from '@/components/ui/button'
 import { PostFeaturedCard } from '@/components/modules/PostFeaturedCard'
 import { PostCard } from '@/components/modules/PostCard'
-// import { Post } from '@/types/sanity.types'
+
+type PostType = NonNullable<PostListSection['posts']>[number]
 
 export default function PostList({ section }: { section: PostListSection }) {
   const featuredPosts = section.posts
@@ -29,7 +29,7 @@ export default function PostList({ section }: { section: PostListSection }) {
               </h4>
 
               <div className="grid items-stretch gap-20 md:grid-cols-2 lg:gap-12">
-                {featuredPosts.map((featuredPost: any) => (
+                {featuredPosts.map((featuredPost: PostType) => (
                   <PostFeaturedCard {...featuredPost} key={featuredPost._id} />
                 ))}
               </div>

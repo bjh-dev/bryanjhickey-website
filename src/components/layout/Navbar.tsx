@@ -46,9 +46,7 @@ export default function NavBar({
                             <Link
                               href={
                                 child.link
-                                  ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                                    (getLinkByLinkObject(child.link as any) ??
-                                    '#')
+                                  ? (getLinkByLinkObject(child.link) ?? '#')
                                   : '#'
                               }
                               className="block rounded-md p-2 hover:bg-gray-100"
@@ -77,8 +75,7 @@ export default function NavBar({
                         <Link
                           href={
                             item.link
-                              ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                                (getLinkByLinkObject(item.link as any) ?? '#')
+                              ? (getLinkByLinkObject(item.link) ?? '#')
                               : '#'
                           }
                           className={cn(
@@ -146,8 +143,7 @@ export default function NavBar({
                         key={child._key}
                         href={
                           child.link
-                            ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                              (getLinkByLinkObject(child.link as any) ?? '#')
+                            ? (getLinkByLinkObject(child.link) ?? '#')
                             : '#'
                         }
                         className="block rounded-md px-4 py-2 hover:bg-gray-100"
@@ -171,8 +167,7 @@ export default function NavBar({
                     <Link
                       href={
                         item.link
-                          ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                            (getLinkByLinkObject(item.link as any) ?? '#')
+                          ? (getLinkByLinkObject(item.link) ?? '#')
                           : '#'
                       }
                       className="block rounded-md px-4 py-2 hover:bg-gray-100"

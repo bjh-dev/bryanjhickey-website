@@ -21,8 +21,8 @@ const mockPost = {
   isFeatured: false,
   image: {
     _type: 'image' as const,
-    crop: null,
-    hotspot: null,
+    crop: undefined,
+    hotspot: undefined,
     asset: {
       _ref: 'image-123',
       _type: 'reference' as const,

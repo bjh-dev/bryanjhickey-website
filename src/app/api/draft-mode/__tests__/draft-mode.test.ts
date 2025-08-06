@@ -1,4 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
+import { NextRequest } from 'next/server'
 import { GET as enableDraftMode } from '../enable/route'
 import { GET as disableDraftMode } from '../disable/route'
 
@@ -54,7 +55,7 @@ describe('Draft Mode API Routes', () => {
     })
 
     it('should enable draft mode successfully', async () => {
-      const mockRequest = new Request(
+      const mockRequest = new NextRequest(
         'http://localhost:3000/api/draft-mode/enable?slug=test-post',
       )
 
@@ -72,7 +73,7 @@ describe('Draft Mode API Routes', () => {
     })
 
     it('should disable draft mode and redirect', async () => {
-      const mockRequest = new Request(
+      const mockRequest = new NextRequest(
         'http://localhost:3000/api/draft-mode/disable',
       )
 

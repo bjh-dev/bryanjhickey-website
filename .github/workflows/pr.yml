@@ -3,11 +3,11 @@ name: Pull Request Checks
 on:
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review]
-    branches: [ main ]
+    branches: [main]
 
 env:
-  NODE_VERSION: '20'
-  BUN_VERSION: 'latest'
+  NODE_VERSION: "20"
+  BUN_VERSION: "latest"
 
 jobs:
   # Job 1: PR Analysis & Validation
@@ -78,9 +78,9 @@ jobs:
         with:
           script: |
             const fs = require('fs');
-            
+
             let comment = '## 🔍 PR Analysis Results\n\n';
-            
+
             // Check if reports exist and read them
             try {
               const eslintReport = fs.readFileSync('eslint-report.txt', 'utf8');
@@ -90,7 +90,7 @@ jobs:
             } catch (e) {
               comment += '### 📝 ESLint Results\n✅ No linting issues found\n\n';
             }
-            
+
             try {
               const typecheckReport = fs.readFileSync('typecheck-report.txt', 'utf8');
               comment += '### 🔧 TypeScript Results\n';
@@ -99,7 +99,7 @@ jobs:
             } catch (e) {
               comment += '### 🔧 TypeScript Results\n✅ No type errors found\n\n';
             }
-            
+
             try {
               const testReport = fs.readFileSync('test-report.txt', 'utf8');
               comment += '### 🧪 Test Results\n';
@@ -108,7 +108,7 @@ jobs:
             } catch (e) {
               comment += '### 🧪 Test Results\n❌ Tests failed to run\n\n';
             }
-            
+
             try {
               const buildReport = fs.readFileSync('build-report.txt', 'utf8');
               comment += '### 🏗️ Build Results\n';
@@ -117,9 +117,9 @@ jobs:
             } catch (e) {
               comment += '### 🏗️ Build Results\n❌ Build failed\n\n';
             }
-            
+
             comment += '---\n*This comment was generated automatically by the CI/CD pipeline*';
-            
+
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
@@ -161,7 +161,7 @@ jobs:
           NEXT_PUBLIC_SANITY_API_VERSION: ${{ secrets.NEXT_PUBLIC_SANITY_API_VERSION }}
 
       - name: Run accessibility tests
-        run: bun run test:run --grep "should be accessible"
+        run: bun run test:run
         env:
           NEXT_PUBLIC_SANITY_PROJECT_ID: test-project
           NEXT_PUBLIC_SANITY_DATASET: test

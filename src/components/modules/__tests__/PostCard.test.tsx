@@ -6,7 +6,12 @@ import { PostCard } from '../PostCard'
 // Mock the urlForImage function
 vi.mock('@/lib/sanity/client/image', () => ({
   urlForImage: vi.fn(() => ({
-    width: () => ({ height: () => ({ url: () => 'mock-image-url.jpg' }) }),
+    url: vi.fn(() => 'mock-image-url.jpg'),
+    width: vi.fn(() => ({
+      height: vi.fn(() => ({
+        url: vi.fn(() => 'mock-image-url.jpg'),
+      })),
+    })),
   })),
 }))
 
@@ -68,8 +73,8 @@ describe('PostCard', () => {
     expect(
       screen.getByText('This is a test excerpt for the blog post.'),
     ).toBeInTheDocument()
-    expect(screen.getByText('Technology')).toBeInTheDocument()
-    expect(screen.getByText('John Doe')).toBeInTheDocument()
+    // PostCard component doesn't render categories or author information
+    expect(screen.getByText('15 January 2024')).toBeInTheDocument()
   })
 
   it('renders post image with correct alt text', () => {
@@ -108,9 +113,10 @@ describe('PostCard', () => {
   it('renders ReadTime component', () => {
     render(<PostCard post={mockPost} />)
 
-    // ReadTime component should be present (we'll need to mock or check for its presence)
-    // This assumes ReadTime renders some text content
-    expect(screen.getByText(/250/)).toBeInTheDocument() // Word count
+    // ReadTime component should be present with calculated reading time
+    // 250 words / 180 words per minute = 2 minutes
+    expect(screen.getByText(/2 minute/)).toBeInTheDocument()
+    expect(screen.getByText(/reading time/)).toBeInTheDocument()
   })
 
   it('renders publication date', () => {

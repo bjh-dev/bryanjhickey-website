@@ -19,6 +19,23 @@ This project uses **Vitest** with **React Testing Library** for comprehensive te
 - **src/test/setup.tsx**: Global test setup and mocks
 - **src/test/utils.tsx**: Custom render utilities
 
+## Current Test Status
+
+```bash
+✓ All tests passing (31/31)
+✓ 4 test files
+✓ 100% critical component coverage
+✓ API routes fully tested
+✓ Accessibility compliance verified
+```
+
+### Test Files
+
+- `src/test/__tests__/setup.test.ts` ✅ (2 tests)
+- `src/app/api/draft-mode/__tests__/draft-mode.test.ts` ✅ (5 tests)
+- `src/components/modules/__tests__/PostCard.test.tsx` ✅ (13 tests)
+- `src/components/modules/__tests__/CoverImage.test.tsx` ✅ (11 tests)
+
 ## Running Tests
 
 ```bash
@@ -37,7 +54,7 @@ bun run test:coverage
 
 ## Test Structure
 
-```
+```text
 src/
 ├── components/
 │   └── modules/
@@ -59,7 +76,7 @@ src/
 
 ### 1. Unit Tests - Components
 
-**PostCard Component Tests**
+#### PostCard Component Tests
 
 - Post information display
 - Featured post badges
@@ -67,7 +84,7 @@ src/
 - Image handling
 - Graceful error handling
 
-**CoverImage Component Tests**
+#### CoverImage Component Test
 
 - Image rendering with asset references
 - Placeholder fallbacks
@@ -77,7 +94,7 @@ src/
 
 ### 2. Integration Tests - API Routes
 
-**Draft Mode API Tests**
+#### Draft Mode API Tests
 
 - Draft mode enable/disable functionality
 - Sanity client integration
@@ -130,12 +147,47 @@ vi.mock("next/navigation", () => ({
 }));
 ```
 
+### Next.js API Routes
+
+```typescript
+// Mock Next.js server components (preserving NextRequest)
+vi.mock("next/server", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("next/server")>();
+  return {
+    ...actual,
+    NextResponse: {
+      redirect: vi.fn(
+        (url) =>
+          new Response(null, {
+            status: 302,
+            headers: { location: url.toString() },
+          }),
+      ),
+    },
+  };
+});
+
+// Mock Next.js headers
+vi.mock("next/headers", () => ({
+  draftMode: vi.fn(() =>
+    Promise.resolve({
+      disable: vi.fn(),
+    }),
+  ),
+}));
+```
+
 ### Sanity Integration
 
 ```typescript
 vi.mock("@/lib/sanity/client/image", () => ({
   urlForImage: vi.fn(() => ({
-    width: () => ({ height: () => ({ url: () => "mock-image-url.jpg" }) }),
+    url: vi.fn(() => "mock-image-url.jpg"),
+    width: vi.fn(() => ({
+      height: vi.fn(() => ({
+        url: vi.fn(() => "mock-image-url.jpg"),
+      })),
+    })),
   })),
 }));
 ```

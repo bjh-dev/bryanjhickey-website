@@ -21,17 +21,21 @@ vi.mock('next/headers', () => ({
   ),
 }))
 
-vi.mock('next/server', () => ({
-  NextResponse: {
-    redirect: vi.fn(
-      (url) =>
-        new Response(null, {
-          status: 302,
-          headers: { location: url.toString() },
-        }),
-    ),
-  },
-}))
+vi.mock('next/server', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('next/server')>()
+  return {
+    ...actual,
+    NextResponse: {
+      redirect: vi.fn(
+        (url) =>
+          new Response(null, {
+            status: 302,
+            headers: { location: url.toString() },
+          }),
+      ),
+    },
+  }
+})
 
 // Mock Sanity client
 vi.mock('@/lib/sanity/client/client', () => ({

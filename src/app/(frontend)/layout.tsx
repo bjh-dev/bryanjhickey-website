@@ -1,6 +1,5 @@
 import { draftMode } from 'next/headers'
 import '../globals.css'
-// import Alert from '@/components/layout/Alert'
 import DraftModeToast from '@/components/modules/DraftModeToast'
 import { VisualEditing } from 'next-sanity'
 import { Toaster } from 'sonner'
@@ -29,7 +28,6 @@ export default async function RootLayout({
         disableTransitionOnChange
       >
         <section className="min-h-screen">
-          {/* <Alert /> */}
           {/* The <Toaster> component is responsible for rendering toast notifications used in /app/client-utils.ts and /app/components/DraftModeToast.tsx */}
           <Toaster />
           {isDraftMode && (
@@ -45,7 +43,6 @@ export default async function RootLayout({
           <Header />
           <Main>{children}</Main>
           <Footer />
-          {/* <Analytics /> */}
           {process.env.NODE_ENV === 'production' && <FathomAnalytics />}
         </section>
       </ThemeProvider>

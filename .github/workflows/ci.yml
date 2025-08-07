@@ -101,7 +101,7 @@ jobs:
           SANITY_API_READ_TOKEN: test-token
 
       - name: Upload coverage reports
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: ./coverage/lcov.info

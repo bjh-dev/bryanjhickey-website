@@ -64,13 +64,6 @@ bun start                  # Start production server
 bun run lint               # Run ESLint
 bun run typecheck          # TypeScript type checking
 bun run next:debug         # Debug build with cache inspection
-
-# Testing
-bun test                   # Run tests in watch mode
-bun run test:run           # Run tests once
-bun run test:ui            # Run tests with UI
-bun run test:coverage      # Run tests with coverage
-bun run test:ci            # Run tests with coverage (CI)
 ```
 
 ## Project Structure
@@ -127,17 +120,13 @@ src/
 
 ## 🔍 Code Quality Analysis & Roadmap
 
-### Last Updated
-
-December 2024
+_Last Updated: December 2024_
 
 ### Executive Summary
 
 This is an exceptionally well-architected Next.js 15 personal website that demonstrates professional-level development practices. The codebase shows excellent TypeScript implementation, modern React patterns, and outstanding Sanity CMS integration with minimal technical debt.
 
-### Overall Grade
-
-A- (90/100)
+**Overall Grade: A- (90/100)**
 
 ### Quality Scorecard
 
@@ -183,16 +172,16 @@ A- (90/100)
 
 ### High Priority (1-2 weeks)
 
-#### 1. ✅ Testing Infrastructure (COMPLETED)
+#### 1. Testing Infrastructure
 
-The project now includes comprehensive testing infrastructure:
+```bash
+# Recommended setup
+bun add -D @testing-library/react @testing-library/jest-dom vitest jsdom
+```
 
-- **Unit Tests**: Critical components (PostCard, CoverImage)
-- **Integration Tests**: API routes (draft mode functionality)
-- **Accessibility Tests**: Automated a11y testing with jest-axe
-- **Test Framework**: Vitest with React Testing Library
-
-See [TESTING.md](./TESTING.md) for detailed testing documentation.
+- **Unit Tests**: Critical components (Post, CoverImage)
+- **Integration Tests**: API routes and data fetching
+- **Accessibility Tests**: Automated a11y testing
 
 #### 2. Error Handling Enhancement
 
@@ -232,7 +221,7 @@ See [TESTING.md](./TESTING.md) for detailed testing documentation.
 
 ### Build Performance
 
-```text
+```
 Route (app)                    Size     First Load JS
 ┌ ○ /                         169 B    247 kB
 ├ ● /posts/[slug]           2.03 kB    170 kB
@@ -249,14 +238,14 @@ Route (app)                    Size     First Load JS
 
 ## 🚀 Technical Roadmap
 
-### ✅ Phase 1: Testing Foundation (COMPLETED)
+### Phase 1: Testing Foundation (2 weeks)
 
-1. ✅ **Set up Vitest** with React Testing Library
-2. ✅ **Component Unit Tests** for critical components
-3. ✅ **API Route Testing** for draft mode functionality
-4. ✅ **Accessibility Tests** automated with jest-axe
+1. **Set up Vitest** with React Testing Library
+2. **Component Unit Tests** for critical components
+3. **API Route Testing** for draft mode functionality
+4. **Accessibility Tests** automated with jest-axe
 
-### Phase 2: Enhanced Error Handling (1-2 weeks)
+### Phase 2: Performance & Security (3-4 weeks)
 
 1. **Bundle Optimization** analysis and improvements
 2. **Security Hardening** with CSP and CORS improvements
@@ -297,38 +286,19 @@ Route (app)                    Size     First Load JS
 
 ### Short-term (1 week each)
 
-1. ✅ **Testing Setup**: Basic test infrastructure (COMPLETED)
+1. **Testing Setup**: Basic test infrastructure
 2. **Performance Monitoring**: Add Core Web Vitals tracking
 3. **Error Tracking**: Implement error logging service
 4. **SEO Enhancements**: Schema.org structured data
 
 ## 🏆 Conclusion
 
-This codebase represents an exemplary implementation of modern web development practices. The strong architectural foundations, comprehensive type safety, excellent testing infrastructure, and excellent integration patterns provide a solid base for future growth. The remaining improvements focus on monitoring, error handling, and advanced features rather than fixing fundamental issues.
+This codebase represents an exemplary implementation of modern web development practices. The strong architectural foundations, comprehensive type safety, and excellent integration patterns provide a solid base for future growth. The recommended improvements focus on testing, monitoring, and advanced features rather than fixing fundamental issues.
 
-**Primary Strength**: Outstanding balance of modern practices with maintainable, clean code and comprehensive test coverage.
+**Primary Strength**: Outstanding balance of modern practices with maintainable, clean code.
 
 **Key Recommendation**: The highest ROI improvement would be implementing a comprehensive testing suite, which would elevate this already excellent codebase to enterprise-level standards.
 
 ---
 
 _Analysis performed using automated code quality assessment tools and manual review. Recommend quarterly updates as the project evolves._
-
-## 📊 Project Metrics
-
-![TypeScript](https://img.shields.io/badge/TypeScript-100%25-blue)
-![Test Coverage](https://img.shields.io/badge/Coverage-0%25-green)
-![Components](https://img.shields.io/badge/Components-40-orange)
-![Tests](https://img.shields.io/badge/Tests-4-purple)
-![Lines of Code](https://img.shields.io/badge/Lines%20of%20Code-6265-lightgrey)
-
-| Metric           | Value                                                                                         |
-| ---------------- | --------------------------------------------------------------------------------------------- |
-| TypeScript Files | 109                                                                                           |
-| React Components | 40                                                                                            |
-| Test Files       | 4                                                                                             |
-| Lines of Code    | 6265                                                                                          |
-| Test Coverage    | 0%                                                                                            |
-| Build Status     | ![CI](https://github.com/bjh-dev/bryanjhickey-website/workflows/CI%2FCD%20Pipeline/badge.svg) |
-
-_Metrics updated automatically on Wed Aug 6 11:01:38 UTC 2025_

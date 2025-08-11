@@ -66,8 +66,6 @@ jobs:
       - name: Build check
         run: bun run built > build-report.txt 2>&1
         env:
-          # Note: Public env vars should ideally use vars.* instead of secrets.*
-          # but keeping as secrets for backwards compatibility until repo variables are configured
           NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
           NEXT_PUBLIC_SANITY_DATASET: ${{ secrets.NEXT_PUBLIC_SANITY_DATASET }}
           NEXT_PUBLIC_SANITY_API_VERSION: ${{ secrets.NEXT_PUBLIC_SANITY_API_VERSION }}
@@ -214,8 +212,6 @@ jobs:
           npx @next/bundle-analyzer || echo "Bundle analyzer not available"
         env:
           ANALYZE: true
-          # Note: Public env vars should ideally use vars.* instead of secrets.*
-          # but keeping as secrets for backwards compatibility until repo variables are configured
           NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
           NEXT_PUBLIC_SANITY_DATASET: ${{ secrets.NEXT_PUBLIC_SANITY_DATASET }}
           NEXT_PUBLIC_SANITY_API_VERSION: ${{ secrets.NEXT_PUBLIC_SANITY_API_VERSION }}

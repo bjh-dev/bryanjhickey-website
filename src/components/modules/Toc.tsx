@@ -22,7 +22,7 @@ export default function Toc({
     <div>
       <h2 className="mb-5 text-xl font-bold">Contents</h2>
       <nav>
-        <ul className="flex flex-col gap-5">
+        <ul className="flex flex-col gap-4">
           {headings.map((heading, idx) => {
             // Join all child text for the heading
             const headingText = (heading.children as PortableTextSpan[])

@@ -20,8 +20,8 @@ export default function Toc({
 
   return (
     <div>
-      <h2 className="mb-5 text-xl font-bold">Contents</h2>
-      <nav>
+      <h2 className="mb-5 text-2xl font-bold">Contents</h2>
+      <nav className="max-h-screen overflow-y-auto">
         <ul className="flex flex-col gap-4">
           {headings.map((heading, idx) => {
             // Join all child text for the heading
@@ -31,7 +31,7 @@ export default function Toc({
             return (
               <li key={heading._key ?? idx} className="text-sm">
                 <a
-                  className="decoration-primary flex items-center gap-4 decoration-2 underline-offset-2 hover:underline"
+                  className="text-foreground/70 hover:text-foreground flex items-center gap-4 transition-all duration-300"
                   href={`#${slugify(headingText)}`}
                 >
                   <div>

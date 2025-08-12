@@ -15,9 +15,9 @@ export function PostFeaturedCard(featuredPost: PostListSection['posts'][0]) {
         _type: 'post',
       })}
     >
-      <Card className="group h-full rounded-none border-2 border-none bg-transparent p-0 shadow-none transition-all ease-linear">
+      <Card className="group h-full rounded-none border-2 border-none bg-transparent p-0 shadow-none transition-all duration-300 ease-linear">
         <CardContent className="flex flex-col gap-6 p-0">
-          <div className="relative h-[30svh] overflow-hidden lg:h-[30svh]">
+          <div className="relative h-[20svh] overflow-hidden lg:h-[40svh]">
             <Image
               src={
                 featuredPost.image ? urlForImage(featuredPost.image).url() : ''
@@ -49,10 +49,12 @@ export function PostFeaturedCard(featuredPost: PostListSection['posts'][0]) {
                 <ReadTime wordCount={featuredPost.wordCount} />
               </div>
             </div>
-            <h3 className="hover:text-primary line-clamp-2 font-serif text-3xl font-medium lg:text-4xl">
+            <h3 className="group-hover:text-primary font-serif text-3xl font-medium transition-all duration-300 md:line-clamp-2 lg:text-4xl">
               {featuredPost.title}
             </h3>
-            <p className="text-foreground/60 text-sm">{featuredPost.excerpt}</p>
+            <p className="text-foreground/80 group-hover:text-foreground font-serif text-sm leading-relaxed transition-all duration-300 md:line-clamp-3 lg:text-base">
+              {featuredPost.excerpt}
+            </p>
           </div>
         </CardContent>
       </Card>

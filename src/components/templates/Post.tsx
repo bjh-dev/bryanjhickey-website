@@ -14,9 +14,9 @@ type Props = {
 const Post = ({ post }: Props) => {
   const hasHeadings = post.headings && post.headings.length > 0
   return (
-    <div className="content mt-16 py-16">
+    <div className="mt-16 py-16">
       {post.image?.asset?._ref ? (
-        <div className="feature mb-6 md:mb-14">
+        <div className="content mb-6 md:mb-14">
           <CoverImage image={post.image} priority />
         </div>
       ) : null}

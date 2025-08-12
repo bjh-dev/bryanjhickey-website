@@ -23,5 +23,5 @@ export default function CoverImage(props: CoverImageProps) {
     <div className="bg-foreground pt-[100%]" />
   )
 
-  return <div className="relative h-[50svh]">{image}</div>
+  return <div className="relative h-[30svh] lg:h-[50svh]">{image}</div>
 }

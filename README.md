@@ -307,17 +307,17 @@ _Analysis performed using automated code quality assessment tools and manual rev
 
 ![TypeScript](https://img.shields.io/badge/TypeScript-100%25-blue)
 ![Test Coverage](https://img.shields.io/badge/Coverage-0%25-green)
-![Components](https://img.shields.io/badge/Components-40-orange)
-![Tests](https://img.shields.io/badge/Tests-4-purple)
-![Lines of Code](https://img.shields.io/badge/Lines%20of%20Code-6291-lightgrey)
+![Components](https://img.shields.io/badge/Components-41-orange)
+![Tests](https://img.shields.io/badge/Tests-5-purple)
+![Lines of Code](https://img.shields.io/badge/Lines%20of%20Code-6679-lightgrey)
 
 | Metric           | Value                                                                                         |
 | ---------------- | --------------------------------------------------------------------------------------------- |
-| TypeScript Files | 109                                                                                           |
-| React Components | 40                                                                                            |
-| Test Files       | 4                                                                                             |
-| Lines of Code    | 6291                                                                                          |
+| TypeScript Files | 110                                                                                           |
+| React Components | 41                                                                                            |
+| Test Files       | 5                                                                                             |
+| Lines of Code    | 6679                                                                                          |
 | Test Coverage    | 0%                                                                                            |
 | Build Status     | ![CI](https://github.com/bjh-dev/bryanjhickey-website/workflows/CI%2FCD%20Pipeline/badge.svg) |
 
-_Metrics updated automatically on Tue Aug 12 13:26:06 UTC 2025_
+_Metrics updated automatically on Sun Aug 24 08:20:29 UTC 2025_

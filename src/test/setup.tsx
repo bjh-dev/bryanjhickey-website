@@ -6,6 +6,10 @@ import React from 'react'
 // Extend expect with jest-axe matchers
 expect.extend(toHaveNoViolations)
 
+// Mock CSS modules
+vi.mock('*.css', () => ({}))
+vi.mock('*.scss', () => ({}))
+
 // Mock Next.js router
 vi.mock('next/navigation', () => ({
   useRouter: () => ({

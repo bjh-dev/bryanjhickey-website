@@ -1,9 +1,19 @@
 import { render, RenderOptions } from '@testing-library/react'
 import { ReactElement } from 'react'
+import { ThemeProvider } from '@/components/providers/ThemeProvider'
 
 // Mock providers if needed
 const AllTheProviders = ({ children }: { children: React.ReactNode }) => {
-  return <>{children}</>
+  return (
+    <ThemeProvider
+      attribute="class"
+      defaultTheme="system"
+      enableSystem
+      disableTransitionOnChange
+    >
+      {children}
+    </ThemeProvider>
+  )
 }
 
 const customRender = (

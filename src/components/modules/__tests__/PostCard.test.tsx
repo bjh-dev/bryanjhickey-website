@@ -66,19 +66,24 @@ const mockFeaturedPost = {
 }
 
 describe('PostCard', () => {
-  it('renders post information correctly', () => {
+  it('renders post information correctly without image', () => {
     render(<PostCard post={mockPost} />)
 
     expect(screen.getByText('Test Blog Post')).toBeInTheDocument()
     expect(
       screen.getByText('This is a test excerpt for the blog post.'),
     ).toBeInTheDocument()
-    // PostCard component doesn't render categories or author information
     expect(screen.getByText('15 January 2024')).toBeInTheDocument()
   })
 
-  it('renders post image with correct alt text', () => {
+  it('does not render image by default', () => {
     render(<PostCard post={mockPost} />)
+
+    expect(screen.queryByRole('img')).not.toBeInTheDocument()
+  })
+
+  it('renders post image when showImage is true', () => {
+    render(<PostCard post={mockPost} showImage={true} />)
 
     const image = screen.getByRole('img')
     expect(image).toBeInTheDocument()
@@ -92,20 +97,44 @@ describe('PostCard', () => {
     expect(link).toHaveAttribute('href', '/posts/test-blog-post')
   })
 
-  it('shows featured tag when showFeaturedTag is true and post is featured', () => {
-    render(<PostCard post={mockFeaturedPost} showFeaturedTag={true} />)
+  it('shows featured tag when showFeaturedTag and showImage are true and post is featured', () => {
+    render(
+      <PostCard
+        post={mockFeaturedPost}
+        showFeaturedTag={true}
+        showImage={true}
+      />,
+    )
 
     expect(screen.getByText('Featured')).toBeInTheDocument()
   })
 
   it('does not show featured tag when showFeaturedTag is false', () => {
-    render(<PostCard post={mockFeaturedPost} showFeaturedTag={false} />)
+    render(
+      <PostCard
+        post={mockFeaturedPost}
+        showFeaturedTag={false}
+        showImage={true}
+      />,
+    )
+
+    expect(screen.queryByText('Featured')).not.toBeInTheDocument()
+  })
+
+  it('does not show featured tag when showImage is false', () => {
+    render(
+      <PostCard
+        post={mockFeaturedPost}
+        showFeaturedTag={true}
+        showImage={false}
+      />,
+    )
 
     expect(screen.queryByText('Featured')).not.toBeInTheDocument()
   })
 
   it('does not show featured tag when post is not featured', () => {
-    render(<PostCard post={mockPost} showFeaturedTag={true} />)
+    render(<PostCard post={mockPost} showFeaturedTag={true} showImage={true} />)
 
     expect(screen.queryByText('Featured')).not.toBeInTheDocument()
   })
@@ -126,13 +155,29 @@ describe('PostCard', () => {
     expect(screen.getByText(/Jan/i)).toBeInTheDocument()
   })
 
+  it('shows date and read time when showImage is false', () => {
+    render(<PostCard post={mockPost} showImage={false} />)
+
+    expect(screen.getByText('15 January 2024')).toBeInTheDocument()
+    expect(screen.getByText(/2 minute/)).toBeInTheDocument()
+  })
+
+  it('shows date and read time when showImage is true', () => {
+    render(<PostCard post={mockPost} showImage={true} />)
+
+    expect(screen.getByText('15 January 2024')).toBeInTheDocument()
+    expect(screen.getByText(/2 minute/)).toBeInTheDocument()
+  })
+
   it('handles post without image gracefully', () => {
     const postWithoutImage = {
       ...mockPost,
       image: null,
     }
 
-    expect(() => render(<PostCard post={postWithoutImage} />)).not.toThrow()
+    expect(() =>
+      render(<PostCard post={postWithoutImage} showImage={true} />),
+    ).not.toThrow()
   })
 
   it('handles post without categories gracefully', () => {
@@ -161,10 +206,100 @@ describe('PostCard', () => {
     expect(results).toHaveNoViolations()
   })
 
+  it('should be accessible with image', async () => {
+    const { container } = render(<PostCard post={mockPost} showImage={true} />)
+    const results = await axe(container)
+    expect(results).toHaveNoViolations()
+  })
+
   it('has proper ARIA attributes for the link', () => {
     render(<PostCard post={mockPost} />)
 
     const link = screen.getByRole('link')
     expect(link).toHaveAttribute('href', '/posts/test-blog-post')
+  })
+
+  it('applies correct card styling', () => {
+    const { container } = render(<PostCard post={mockPost} />)
+
+    const card = container.querySelector('.group')
+    expect(card).toBeInTheDocument()
+    expect(card).toHaveClass(
+      'group',
+      'hover:bg-foreground/2',
+      'relative',
+      'h-full',
+      'border-none',
+      'bg-transparent',
+      'p-6',
+      'transition-all',
+      'duration-300',
+    )
+  })
+
+  it('applies correct title styling', () => {
+    render(<PostCard post={mockPost} />)
+
+    const title = screen.getByText('Test Blog Post')
+    expect(title).toHaveClass(
+      'group-hover:text-primary',
+      'font-serif',
+      'text-xl',
+      'transition-all',
+      'duration-300',
+      'md:line-clamp-2',
+      'lg:font-bold',
+    )
+  })
+
+  it('applies correct excerpt styling', () => {
+    render(<PostCard post={mockPost} />)
+
+    const excerpt = screen.getByText(
+      'This is a test excerpt for the blog post.',
+    )
+    expect(excerpt).toHaveClass(
+      'text-foreground/80',
+      'group-hover:text-foreground',
+      'font-serif',
+      'text-sm',
+      'leading-relaxed',
+      'transition-all',
+      'duration-300',
+      'md:line-clamp-3',
+      'lg:text-base',
+    )
+  })
+
+  it('applies correct date styling', () => {
+    render(<PostCard post={mockPost} />)
+
+    const date = screen.getByText('15 January 2024')
+    expect(date).toHaveClass('text-foreground/50', 'text-xs')
+  })
+
+  it('applies correct featured tag styling when shown', () => {
+    render(
+      <PostCard
+        post={mockFeaturedPost}
+        showFeaturedTag={true}
+        showImage={true}
+      />,
+    )
+
+    const featuredTag = screen.getByText('Featured')
+    expect(featuredTag).toHaveClass(
+      'bg-primary',
+      'absolute',
+      'top-2',
+      'right-2',
+      'z-10',
+      'rounded',
+      'px-2',
+      'py-1',
+      'text-xs',
+      'font-semibold',
+      'text-white',
+    )
   })
 })

@@ -110,7 +110,15 @@ describe('CoverImage', () => {
     const { container } = render(<CoverImage image={mockImageWithAsset} />)
 
     const imageContainer = container.firstChild as HTMLElement
-    expect(imageContainer).toHaveClass('relative', 'h-[50svh]')
+    expect(imageContainer).toHaveClass('relative', 'h-[30svh]', 'lg:h-[50svh]')
+  })
+
+  it('applies correct placeholder styling', () => {
+    const { container } = render(<CoverImage image={mockImageWithoutAsset} />)
+
+    const placeholder = container.querySelector('.bg-foreground')
+    expect(placeholder).toBeInTheDocument()
+    expect(placeholder).toHaveClass('bg-foreground', 'pt-[100%]')
   })
 
   it('should be accessible', async () => {

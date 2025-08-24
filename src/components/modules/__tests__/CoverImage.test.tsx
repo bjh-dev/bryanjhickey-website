@@ -2,6 +2,7 @@ import { describe, it, expect, vi } from 'vitest'
 import { render, screen } from '@/test/utils'
 import { axe } from 'jest-axe'
 import CoverImage from '../CoverImage'
+import Image from 'next/image'
 
 // Mock the urlForImage function
 vi.mock('@/lib/sanity/client/image', () => ({
@@ -28,7 +29,7 @@ vi.mock('next-sanity/image', () => ({
     src: string
     className?: string
     [key: string]: unknown
-  }) => <img alt={alt} src={src} className={className} {...props} />,
+  }) => <Image alt={alt} src={src} className={className} {...props} />,
 }))
 
 // Mock stegaClean

@@ -19,7 +19,6 @@ export default defineConfig({
     include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     exclude: ['node_modules', 'dist', '.next', 'out'],
     coverage: {
-      provider: 'v8',
       reporter: ['text', 'json', 'html', 'lcov'],
       exclude: [
         'src/test/**',

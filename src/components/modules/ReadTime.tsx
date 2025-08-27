@@ -9,12 +9,12 @@ export default function ReadTime({
   className?: string
 }) {
   return (
-    <div
-      className={cn('text-foreground/50 flex items-center text-xs', className)}
-    >
-      {readTime(wordCount)} minute
-      {readTime(wordCount) > 1 ? 's' : ''}
-      &nbsp;<span>reading time</span>
+    <div>
+      <div className={cn('text-foreground/50', className)}>
+        {readTime(wordCount)} min
+        {readTime(wordCount) > 1 ? 's' : ''}
+        &nbsp;<span>reading time</span>
+      </div>
     </div>
   )
 }

@@ -144,7 +144,7 @@ describe('PostCard', () => {
 
     // ReadTime component should be present with calculated reading time
     // 250 words / 180 words per minute = 2 minutes
-    expect(screen.getByText(/2 minute/)).toBeInTheDocument()
+    expect(screen.getByText(/2 min/)).toBeInTheDocument()
     expect(screen.getByText(/reading time/)).toBeInTheDocument()
   })
 

@@ -66,14 +66,14 @@ export function PostCard({
                 </div>
               </div>
             )}
-            <h3 className="group-hover:text-primary font-serif text-xl transition-all duration-300 md:line-clamp-2 lg:font-bold">
+            <h3 className="group-hover:text-primary font-serif text-2xl transition-all duration-300 md:line-clamp-2">
               {post.title}
             </h3>
             {!showImage && (
-              <div className="flex items-start gap-2 md:items-center md:gap-4">
+              <div className="flex items-start gap-2 text-sm md:items-center md:gap-4">
                 {post.date ? (
                   <div className="flex">
-                    <time className="text-foreground/50 text-xs">
+                    <time className="text-foreground/50">
                       {new Date(post.date).toLocaleDateString('en-AU', {
                         year: 'numeric',
                         month: 'long',
@@ -86,7 +86,7 @@ export function PostCard({
                   <div className="text-foreground/50 text-sm">&#10013;</div>
                 </div>
                 <div className="flex items-center">
-                  <ReadTime wordCount={post.wordCount} className="text-xs" />
+                  <ReadTime wordCount={post.wordCount} />
                 </div>
               </div>
             )}

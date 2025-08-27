@@ -5,6 +5,7 @@ import { getDocumentLink } from '@/lib/links'
 import { urlForImage } from '@/lib/sanity/client/image'
 import Image from 'next/image'
 import Link from 'next/link'
+import { FaCross } from 'react-icons/fa6'
 
 export function PostFeaturedCard(featuredPost: PostListSection['posts'][0]) {
   return (
@@ -30,10 +31,10 @@ export function PostFeaturedCard(featuredPost: PostListSection['posts'][0]) {
             />
           </div>
           <div className="flex flex-col gap-4">
-            <div className="flex items-start gap-2 md:items-center md:gap-4">
+            <div className="flex items-center gap-2 text-sm md:gap-4">
               {featuredPost.date ? (
                 <div className="flex">
-                  <time className="text-foreground/50 text-xs">
+                  <time className="text-foreground/50">
                     {new Date(featuredPost.date).toLocaleDateString('en-AU', {
                       year: 'numeric',
                       month: 'long',
@@ -42,8 +43,10 @@ export function PostFeaturedCard(featuredPost: PostListSection['posts'][0]) {
                   </time>
                 </div>
               ) : null}
-              <div className="hidden md:flex">
-                <span className="text-foreground/50 text-xs">&#10013;</span>
+              <div className="flex items-center gap-2">
+                <span className="text-primary">
+                  <FaCross />
+                </span>
               </div>
               <div className="flex">
                 <ReadTime wordCount={featuredPost.wordCount} />

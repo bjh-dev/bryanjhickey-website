@@ -4,6 +4,7 @@ import { Logo } from '@/components/icons/Logo'
 import Link from 'next/link'
 import { ThemeSwitcher } from '@/components/modules/theme-switcher'
 import SocialMedia from '@/components/modules/SocialMedia'
+import { SocialMediaType } from '@/types/seo'
 
 export default async function Footer() {
   const { data: settings } = await sanityFetch({
@@ -70,15 +71,19 @@ export default async function Footer() {
           <div>
             {settings.socials && (
               <div className="flex space-x-4">
-                {settings.socials.map((social) => {
-                  return (
-                    <SocialMedia
-                      key={social._key}
-                      platform={social.platform!}
-                      url={social.url!}
-                    />
+                {settings.socials
+                  .filter(
+                    (social) => social.platform !== null && social.url !== null,
                   )
-                })}
+                  .map((social) => {
+                    return (
+                      <SocialMedia
+                        key={social._key}
+                        platform={social.platform as SocialMediaType}
+                        url={social.url as string}
+                      />
+                    )
+                  })}
               </div>
             )}
           </div>

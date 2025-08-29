@@ -1,5 +1,6 @@
 import { PostCard } from '@/components/modules/PostCard'
 import { PostFeaturedCard } from '@/components/modules/PostFeaturedCard'
+import { PostListSection } from '@/components/sections/types'
 import { sanityFetch } from '@/lib/sanity/client/live'
 import { allPostsQuery } from '@/lib/sanity/queries/queries'
 import { notFound } from 'next/navigation'
@@ -15,7 +16,7 @@ export default async function PostsPage() {
   }
   const featuredPosts = posts
     .slice() // shallow copy to avoid mutating original
-    .filter((post) => post.isFeatured)
+    .filter((post: PostListSection['posts'][0]) => post.isFeatured)
     .slice(0, 2) // Limit to 2 featured posts
 
   return (
@@ -32,9 +33,14 @@ export default async function PostsPage() {
               </h4>
 
               <div className="grid items-stretch gap-20 md:grid-cols-2 lg:gap-12">
-                {featuredPosts.map((featuredPost) => (
-                  <PostFeaturedCard {...featuredPost} key={featuredPost._id} />
-                ))}
+                {featuredPosts.map(
+                  (featuredPost: PostListSection['posts'][0]) => (
+                    <PostFeaturedCard
+                      {...featuredPost}
+                      key={featuredPost._id}
+                    />
+                  ),
+                )}
               </div>
             </div>
           </section>
@@ -44,7 +50,7 @@ export default async function PostsPage() {
             Recent Posts
           </h4>
           <div className="grid grid-cols-1 items-stretch gap-20 md:grid-cols-2 lg:grid-cols-3 lg:gap-12">
-            {posts.map((post) => {
+            {posts.map((post: PostListSection['posts'][0]) => {
               return <PostCard key={post._id} post={post} showFeaturedTag />
             })}
           </div>

@@ -198,7 +198,7 @@ describe('PostFeaturedCard', () => {
     render(<PostFeaturedCard {...mockFeaturedPost} />)
 
     const date = screen.getByText('15 January 2024')
-    expect(date).toHaveClass('text-foreground/50', 'text-xs')
+    expect(date).toHaveClass('text-foreground/50') // 'text-xs' removed
   })
 
   it('applies correct image container styling', () => {

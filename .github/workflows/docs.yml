@@ -306,7 +306,6 @@ jobs:
             if [ "$README_STATUS" = "missing" ]; then
             echo "- ❌ Create README.md with project overview" >> doc-health.md
           fi
-
             if [ "$TESTING_DOCS_STATUS" = "missing" ]; then
             echo "- ❌ Create TESTING.md with testing guidelines" >> doc-health.md
           fi

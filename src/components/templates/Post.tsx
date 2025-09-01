@@ -26,7 +26,7 @@ const Post = ({ post }: Props) => {
       <div className="flex gap-12">
         <article
           className={cn(
-            hasHeadings ? 'content' : 'mx-auto flex max-w-3xl flex-col gap-12',
+            hasHeadings ? '' : 'mx-auto flex max-w-3xl flex-col gap-12',
           )}
         >
           <section className="col-span-3">

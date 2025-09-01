@@ -131,13 +131,17 @@ jobs:
     name: Update README Metrics
     runs-on: ubuntu-latest
     needs: generate-docs
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    # Only update files on branches other than main (e.g., PR branches)
+    if: github.event_name == 'pull_request' && github.head_ref != 'main'
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          # Ensure we are on the PR's head branch so pushes go to the branch, not main
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
@@ -242,8 +246,7 @@ jobs:
             git add README.md
             git commit -m "docs: Update project metrics and documentation [skip ci]"
               # Push changes to the current PR branch, not main
-              # Extract branch name from GITHUB_REF
-              BRANCH_NAME="${GITHUB_REF##*/}"
+              BRANCH_NAME="${GITHUB_HEAD_REF:-$(git rev-parse --abbrev-ref HEAD)}"
               git push origin "HEAD:$BRANCH_NAME"
           fi
 

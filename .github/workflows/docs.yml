@@ -241,7 +241,10 @@ jobs:
           else
             git add README.md
             git commit -m "docs: Update project metrics and documentation [skip ci]"
-            git push
+              # Push changes to the current PR branch, not main
+              # Extract branch name from GITHUB_REF
+              BRANCH_NAME="${GITHUB_REF##*/}"
+              git push origin "HEAD:$BRANCH_NAME"
           fi
 
   # Job 3: Check for outdated documentation
@@ -293,18 +296,18 @@ jobs:
           echo "" >> doc-health.md
           
           echo "## Status Overview" >> doc-health.md
-          echo "- README.md: ${{ env.README_STATUS }}" >> doc-health.md
-          echo "- TESTING.md: ${{ env.TESTING_DOCS_STATUS }}" >> doc-health.md
-          echo "- Components: ${{ env.UNDOCUMENTED_COMPONENTS }} files" >> doc-health.md
-          echo "- API Routes: ${{ env.API_ROUTES }} endpoints" >> doc-health.md
+            echo "- README.md: $README_STATUS" >> doc-health.md
+            echo "- TESTING.md: $TESTING_DOCS_STATUS" >> doc-health.md
+            echo "- Components: $UNDOCUMENTED_COMPONENTS files" >> doc-health.md
+            echo "- API Routes: $API_ROUTES endpoints" >> doc-health.md
           echo "" >> doc-health.md
           
           echo "## Recommendations" >> doc-health.md
-          if [ "${{ env.README_STATUS }}" = "missing" ]; then
+            if [ "$README_STATUS" = "missing" ]; then
             echo "- ❌ Create README.md with project overview" >> doc-health.md
           fi
           
-          if [ "${{ env.TESTING_DOCS_STATUS }}" = "missing" ]; then
+            if [ "$TESTING_DOCS_STATUS" = "missing" ]; then
             echo "- ❌ Create TESTING.md with testing guidelines" >> doc-health.md
           fi
           

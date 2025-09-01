@@ -2,23 +2,23 @@ name: Documentation & Maintenance
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
     paths:
-      - 'src/**'
-      - '*.md'
-      - '.github/workflows/**'
+      - "src/**"
+      - "*.md"
+      - ".github/workflows/**"
   pull_request:
-    branches: [ main ]
+    branches: [main]
     paths:
-      - 'src/**'
-      - '*.md'
+      - "src/**"
+      - "*.md"
   schedule:
     # Run weekly on Sundays at 3 AM UTC
-    - cron: '0 3 * * 0'
+    - cron: "0 3 * * 0"
   workflow_dispatch:
 
 env:
-  BUN_VERSION: 'latest'
+  BUN_VERSION: "latest"
 
 jobs:
   # Job 1: Generate Code Documentation
@@ -53,7 +53,7 @@ jobs:
           echo "" >> COMPONENTS.md
           echo "Generated on: $(date)" >> COMPONENTS.md
           echo "" >> COMPONENTS.md
-          
+
           # Find all components and document them
           echo "## Layout Components" >> COMPONENTS.md
           find src/components/layout -name "*.tsx" | while read file; do
@@ -62,7 +62,7 @@ jobs:
             echo "- **Purpose**: $(grep -m1 "^// " "$file" | sed 's|^// ||' || echo "Layout component")" >> COMPONENTS.md
             echo "" >> COMPONENTS.md
           done
-          
+
           echo "## UI Components" >> COMPONENTS.md
           find src/components/ui -name "*.tsx" | while read file; do
             echo "### $(basename "$file" .tsx)" >> COMPONENTS.md
@@ -70,7 +70,7 @@ jobs:
             echo "- **Purpose**: $(grep -m1 "^// " "$file" | sed 's|^// ||' || echo "UI component")" >> COMPONENTS.md
             echo "" >> COMPONENTS.md
           done
-          
+
           echo "## Module Components" >> COMPONENTS.md
           find src/components/modules -name "*.tsx" | while read file; do
             echo "### $(basename "$file" .tsx)" >> COMPONENTS.md
@@ -87,7 +87,7 @@ jobs:
           echo "" >> API.md
           echo "Generated on: $(date)" >> API.md
           echo "" >> API.md
-          
+
           # Find all API routes
           find src/app/api -name "route.ts" | while read file; do
             echo "## $(dirname "$file" | sed 's|src/app/api/||')" >> API.md
@@ -99,7 +99,7 @@ jobs:
       - name: Generate test coverage documentation
         run: |
           bun run test:coverage > coverage-output.txt 2>&1 || true
-          
+
           echo "# Test Coverage Report" > COVERAGE.md
           echo "" >> COVERAGE.md
           echo "Auto-generated test coverage report" >> COVERAGE.md
@@ -151,24 +151,24 @@ jobs:
         run: |
           # Generate project metrics
           echo "Generating project metrics..."
-          
+
           # Count files
           TOTAL_FILES=$(find src -name "*.ts" -o -name "*.tsx" | wc -l)
           COMPONENT_FILES=$(find src/components -name "*.tsx" | wc -l)
           TEST_FILES=$(find src -name "*.test.*" -o -name "*.spec.*" | wc -l)
-          
+
           # Lines of code
           TOTAL_LINES=$(find src -name "*.ts" -o -name "*.tsx" | xargs wc -l | tail -1 | awk '{print $1}')
-          
+
           # Create metrics file
           echo "TOTAL_FILES=$TOTAL_FILES" > metrics.env
           echo "COMPONENT_FILES=$COMPONENT_FILES" >> metrics.env
           echo "TEST_FILES=$TEST_FILES" >> metrics.env
           echo "TOTAL_LINES=$TOTAL_LINES" >> metrics.env
-          
+
           # Load metrics
           source metrics.env
-          
+
           echo "📊 Project Metrics:"
           echo "- Total TypeScript files: $TOTAL_FILES"
           echo "- Component files: $COMPONENT_FILES"  
@@ -192,20 +192,20 @@ jobs:
           else
             COVERAGE="0"
           fi
-          
+
           # Load other metrics
           source metrics.env
-          
+
           # Create metrics badges section
           cat > metrics-section.md << EOF
           ## 📊 Project Metrics
-          
+
           ![TypeScript](https://img.shields.io/badge/TypeScript-100%25-blue)
           ![Test Coverage](https://img.shields.io/badge/Coverage-${COVERAGE}%25-green)
           ![Components](https://img.shields.io/badge/Components-${COMPONENT_FILES}-orange)
           ![Tests](https://img.shields.io/badge/Tests-${TEST_FILES}-purple)
           ![Lines of Code](https://img.shields.io/badge/Lines%20of%20Code-${TOTAL_LINES}-lightgrey)
-          
+
           | Metric | Value |
           |--------|-------|
           | TypeScript Files | ${TOTAL_FILES} |
@@ -214,10 +214,10 @@ jobs:
           | Lines of Code | ${TOTAL_LINES} |
           | Test Coverage | ${COVERAGE}% |
           | Build Status | ![CI](https://github.com/${{ github.repository }}/workflows/CI%2FCD%20Pipeline/badge.svg) |
-          
+
           *Metrics updated automatically on $(date)*
           EOF
-          
+
           # Update README if it exists
           if [ -f README.md ]; then
             # Check if metrics section exists, if not add it
@@ -235,7 +235,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          
+
           if git diff --quiet; then
             echo "No changes to commit"
           else
@@ -259,7 +259,7 @@ jobs:
       - name: Check documentation completeness
         run: |
           echo "🔍 Checking documentation health..."
-          
+
           # Check for README
           if [ ! -f README.md ]; then
             echo "❌ README.md is missing"
@@ -268,7 +268,7 @@ jobs:
             echo "✅ README.md exists"
             echo "README_STATUS=exists" >> $GITHUB_ENV
           fi
-          
+
           # Check for testing documentation
           if [ ! -f TESTING.md ]; then
             echo "❌ TESTING.md is missing"
@@ -277,12 +277,12 @@ jobs:
             echo "✅ TESTING.md exists"
             echo "TESTING_DOCS_STATUS=exists" >> $GITHUB_ENV
           fi
-          
+
           # Check for component documentation
           UNDOCUMENTED_COMPONENTS=$(find src/components -name "*.tsx" ! -path "*/test/*" ! -path "*/__tests__/*" | wc -l)
           echo "📊 Found $UNDOCUMENTED_COMPONENTS components"
           echo "UNDOCUMENTED_COMPONENTS=$UNDOCUMENTED_COMPONENTS" >> $GITHUB_ENV
-          
+
           # Check for API documentation
           API_ROUTES=$(find src/app/api -name "route.ts" | wc -l)
           echo "📊 Found $API_ROUTES API routes"
@@ -294,23 +294,22 @@ jobs:
           echo "" >> doc-health.md
           echo "Generated on: $(date)" >> doc-health.md
           echo "" >> doc-health.md
-          
+
           echo "## Status Overview" >> doc-health.md
             echo "- README.md: $README_STATUS" >> doc-health.md
             echo "- TESTING.md: $TESTING_DOCS_STATUS" >> doc-health.md
             echo "- Components: $UNDOCUMENTED_COMPONENTS files" >> doc-health.md
             echo "- API Routes: $API_ROUTES endpoints" >> doc-health.md
           echo "" >> doc-health.md
-          
+
           echo "## Recommendations" >> doc-health.md
             if [ "$README_STATUS" = "missing" ]; then
             echo "- ❌ Create README.md with project overview" >> doc-health.md
           fi
-          
             if [ "$TESTING_DOCS_STATUS" = "missing" ]; then
             echo "- ❌ Create TESTING.md with testing guidelines" >> doc-health.md
           fi
-          
+
           echo "- 📊 Consider adding JSDoc comments to components" >> doc-health.md
           echo "- 📊 Consider adding inline API documentation" >> doc-health.md
 

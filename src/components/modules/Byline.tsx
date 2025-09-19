@@ -5,27 +5,26 @@ import ReadTime from '@/components/modules/ReadTime'
 import { PostCardFragmentType } from '@/lib/sanity/queries/fragments/fragment.types'
 
 export default function Byline({ post }: { post: PostCardFragmentType }) {
+  console.log('Post: ', post)
   return (
-    <div>
-      <div className="grid grid-cols-2 text-sm">
-        <div className="col-span-1">
-          {!!post.wordCount && <ReadTime wordCount={post.wordCount} />}
-        </div>
+    <div className="grid grid-cols-1 items-start justify-between gap-4 md:grid-cols-2">
+      <div className="flex flex-col items-start justify-start gap-2 text-sm">
+        <div>{!!post.wordCount && <ReadTime wordCount={post.wordCount} />}</div>
 
         {post.date && (
-          <div className="flex items-center justify-end gap-2">
-            <div className="text-foreground/50 text-right">
-              <DateComponent dateString={post.date} />
-            </div>
+          <div className="text-foreground/50 text-right">
+            First Published: <DateComponent dateString={post.date} />
+          </div>
+        )}
+        {post.lastEdited && (
+          <div className="text-foreground/50 text-right">
+            Last Edited: <DateComponent dateString={post.lastEdited} />
           </div>
         )}
       </div>
 
       {post.categories && post.categories?.length > 0 && (
-        <div className="flex gap-2 py-6">
-          <div className="text-foreground/50 pr-2 text-sm">
-            {post.categories?.length > 1 ? 'Categories:' : 'Category:'}
-          </div>
+        <div className="flex gap-2">
           <div className="flex flex-wrap gap-1">
             {post.categories.map((category) => (
               <Badge

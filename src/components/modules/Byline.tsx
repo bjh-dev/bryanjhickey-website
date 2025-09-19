@@ -2,17 +2,12 @@ import DateComponent from '@/components/ui/Date'
 import { Badge } from '@/components/ui/badge'
 import Link from 'next/link'
 import ReadTime from '@/components/modules/ReadTime'
-import { PostCardFragmentType } from '@/lib/sanity/queries/fragments/fragment.types'
-import { Post } from '@/types/sanity.types'
+import { PostQueryResult } from '@/types/sanity.types'
 
 export default function Byline({
   post,
 }: {
-  post: Post & {
-    wordCount: number
-    lastEdited?: string
-    categories: { title: string; slug: string }[]
-  } & Pick<PostCardFragmentType, 'categories'>
+  post: NonNullable<PostQueryResult>
 }) {
   return (
     <div className="grid grid-cols-1 items-start justify-between gap-4 md:grid-cols-2">
@@ -24,9 +19,9 @@ export default function Byline({
             First Published: <DateComponent dateString={post.date} />
           </div>
         )}
-        {post.lastEdited && (
+        {post._updatedAt && (
           <div className="text-foreground/50 text-right">
-            Last Edited: <DateComponent dateString={post.lastEdited} />
+            Last Edited: <DateComponent dateString={post._updatedAt} />
           </div>
         )}
       </div>
@@ -35,10 +30,12 @@ export default function Byline({
         <div className="flex gap-2">
           <div className="flex flex-wrap gap-1">
             {post.categories.map(
-              ({
-                category,
-              }: {
-                category: { _id: string; title: string; slug: string }
+              (category: {
+                _id: string
+                _type: 'category'
+                title: string | null
+                slug: string | null
+                description?: string | null
               }) => (
                 <Badge
                   variant="default"

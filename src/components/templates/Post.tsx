@@ -1,12 +1,12 @@
+import type { PortableTextBlock } from 'next-sanity'
+import React from 'react'
 import FadeXAnimation from '@/components/animations/FadeXAnimation'
 import Byline from '@/components/modules/Byline'
 import CoverImage from '@/components/modules/CoverImage'
 import CustomPortableText from '@/components/modules/PortableText'
 import Toc from '@/components/modules/Toc'
 import { cn } from '@/lib/utils'
-import { PostQueryResult } from '@/types/sanity.types'
-import type { PortableTextBlock } from 'next-sanity'
-import React from 'react'
+import type { PostQueryResult } from '@/types/sanity.types'
 
 type Props = {
   post: NonNullable<PostQueryResult>

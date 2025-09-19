@@ -1,7 +1,7 @@
 import { draftMode } from 'next/headers'
 import '../globals.css'
 import DraftModeToast from '@/components/modules/DraftModeToast'
-import { VisualEditing } from 'next-sanity'
+import { VisualEditing } from 'next-sanity/visual-editing'
 import { Toaster } from 'sonner'
 import { SanityLive } from '@/lib/sanity/client/live'
 import Header from '@/components/layout/Header'

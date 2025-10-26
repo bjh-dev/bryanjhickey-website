@@ -105,7 +105,7 @@ jobs:
             }
 
       - name: Upload security report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: security-audit-report
           path: |
@@ -149,7 +149,7 @@ jobs:
           fi
 
       - name: Upload dependency report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: dependency-health-report
           path: outdated-packages.txt
@@ -200,7 +200,7 @@ jobs:
           echo '```' >> license-compliance.md
 
       - name: Upload license reports
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: license-compliance-report
           path: |
@@ -264,7 +264,7 @@ jobs:
           fi
 
       - name: Upload quality metrics
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: code-quality-metrics
           path: |

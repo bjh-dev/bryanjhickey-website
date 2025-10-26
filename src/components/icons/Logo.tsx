@@ -3,7 +3,6 @@
 import FadeXAnimation from '@/components/animations/FadeXAnimation'
 import { cn } from '@/lib/utils'
 import { useTheme } from 'next-themes'
-import { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
 
 export const Logo = ({
@@ -13,34 +12,13 @@ export const Logo = ({
   lightLogo?: boolean
   animate?: boolean
 }) => {
-  const [mounted, setMounted] = useState(false)
-  const [isDarkTheme, setIsDarkTheme] = useState(false)
-  const { theme } = useTheme()
+  const { resolvedTheme } = useTheme()
   const pathname = usePathname()
   const isPostsRoute =
     pathname.startsWith('/posts') || pathname.startsWith('/category')
-  useEffect(() => {
-    setMounted(true)
-    const checkDarkTheme = () => {
-      setIsDarkTheme(
-        theme === 'dark' || document.documentElement.classList.contains('dark'),
-      )
-    }
+  const isDarkTheme = resolvedTheme === 'dark'
 
-    // Run the check initially
-    checkDarkTheme()
-
-    // Optionally, add a listener if the theme can change dynamically
-    const observer = new MutationObserver(checkDarkTheme)
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['class'],
-    })
-
-    return () => observer.disconnect()
-  }, [theme])
-
-  if (!mounted) {
+  if (!resolvedTheme) {
     return null
   }
 

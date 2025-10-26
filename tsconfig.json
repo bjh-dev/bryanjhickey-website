@@ -16,9 +16,12 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "incremental": true,
-    "types": ["vitest/globals", "@types/jest-axe"],
+    "types": [
+      "vitest/globals",
+      "@types/jest-axe"
+    ],
     "plugins": [
       {
         "name": "next"
@@ -27,16 +30,20 @@
     "paths": {
       "@/*": [
         "./src/*"
-      ],
+      ]
     }
   },
-   "include": [
+  "include": [
     "next-env.d.ts",
     "vitest.d.ts",
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "watch-typegen.ts"
+    "watch-typegen.ts",
+    ".next/dev/types/**/*.ts"
   ],
-  "exclude": ["node_modules", "./types/sanity.types.ts",]
+  "exclude": [
+    "node_modules",
+    "./types/sanity.types.ts"
+  ]
 }

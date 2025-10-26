@@ -24,6 +24,7 @@ const mockPost = {
   slug: 'test-blog-post',
   excerpt: 'This is a test excerpt for the blog post.',
   isFeatured: false,
+  _updatedAt: '2024-01-15T12:00:00.000Z',
   image: {
     _type: 'image' as const,
     crop: undefined,

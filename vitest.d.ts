@@ -4,8 +4,10 @@
 
 import type { TestingLibraryMatchers } from '@testing-library/jest-dom/matchers'
 
-interface CustomMatchers<R = unknown>
-  extends TestingLibraryMatchers<typeof expect.stringContaining, R> {
+interface CustomMatchers<R = unknown> extends TestingLibraryMatchers<
+  typeof expect.stringContaining,
+  R
+> {
   toHaveNoViolations(): R
 }
 

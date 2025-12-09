@@ -3,16 +3,16 @@ name: Security & Dependency Checks
 on:
   schedule:
     # Run daily at 2 AM UTC
-    - cron: '0 2 * * *'
+    - cron: "0 2 * * *"
   push:
-    branches: [ main ]
+    branches: [main]
     paths:
-      - 'package.json'
-      - 'bun.lockb'
+      - "package.json"
+      - "bun.lockb"
   workflow_dispatch:
 
 env:
-  BUN_VERSION: 'latest'
+  BUN_VERSION: "latest"
 
 jobs:
   # Job 1: Security Audit
@@ -30,7 +30,7 @@ jobs:
           bun-version: ${{ env.BUN_VERSION }}
 
       - name: Install dependencies
-        run: bun install --frozen-lockfile
+        run: bun install
 
       - name: Run security audit
         id: audit
@@ -63,29 +63,29 @@ jobs:
           script: |
             const fs = require('fs');
             const auditReport = fs.readFileSync('audit-report.txt', 'utf8');
-            
+
             const issueBody = `
             ## 🚨 Security Vulnerabilities Detected
-            
+
             The automated security scan has detected **${{ env.VULNERABILITIES_COUNT }}** vulnerabilities in the project dependencies.
-            
+
             ### Audit Report
             \`\`\`
             ${auditReport}
             \`\`\`
-            
+
             ### Recommended Actions
             1. Review each vulnerability carefully
             2. Update affected packages to secure versions
             3. Consider using \`bun update\` or manual updates
             4. Re-run tests after updates
             5. Close this issue once vulnerabilities are resolved
-            
+
             ---
             *This issue was created automatically by the Security workflow*
             *Triggered: ${new Date().toISOString()}*
             `;
-            
+
             // Check if there's already an open security issue
             const existingIssues = await github.rest.issues.listForRepo({
               owner: context.repo.owner,
@@ -93,7 +93,7 @@ jobs:
               labels: ['security', 'dependencies'],
               state: 'open'
             });
-            
+
             if (existingIssues.data.length === 0) {
               await github.rest.issues.create({
                 owner: context.repo.owner,
@@ -136,13 +136,13 @@ jobs:
       - name: Check package.json for issues
         run: |
           echo "Analyzing package.json..."
-          
+
           # Check for potential issues
           if grep -q '".*": "latest"' package.json; then
             echo "WARNING: Found 'latest' version specifiers"
             echo "PACKAGE_ISSUES=true" >> $GITHUB_ENV
           fi
-          
+
           if grep -q '".*": "\*"' package.json; then
             echo "WARNING: Found wildcard version specifiers"  
             echo "PACKAGE_ISSUES=true" >> $GITHUB_ENV
@@ -173,14 +173,14 @@ jobs:
         run: bun add -D license-checker
 
       - name: Install dependencies
-        run: bun install --frozen-lockfile
+        run: bun install
 
       - name: Check licenses
         run: |
           echo "Checking package licenses..."
           bunx license-checker --summary > license-summary.txt || true
           bunx license-checker --json > license-report.json || true
-          
+
           # Check for problematic licenses
           if bunx license-checker --failOn 'GPL;AGPL;LGPL' --excludePrivatePackages; then
             echo "LICENSE_STATUS=COMPLIANT" >> $GITHUB_ENV
@@ -226,7 +226,7 @@ jobs:
           bun-version: ${{ env.BUN_VERSION }}
 
       - name: Install dependencies
-        run: bun install --frozen-lockfile
+        run: bun install
 
       - name: Generate Sanity types
         run: bun run sanity:typegen
@@ -248,15 +248,15 @@ jobs:
       - name: Analyze code metrics
         run: |
           echo "Analyzing code metrics..."
-          
+
           # Count files by type
           echo "TypeScript/React files: $(find src -name '*.ts' -o -name '*.tsx' | wc -l)" > code-metrics.txt
           echo "Test files: $(find src -name '*.test.*' -o -name '*.spec.*' | wc -l)" >> code-metrics.txt
           echo "Component files: $(find src/components -name '*.tsx' | wc -l)" >> code-metrics.txt
-          
+
           # Lines of code
           echo "Total lines of code: $(find src -name '*.ts' -o -name '*.tsx' | xargs wc -l | tail -1)" >> code-metrics.txt
-          
+
           # Test coverage (if available)
           if [ -f coverage/coverage-summary.json ]; then
             COVERAGE=$(jq '.total.lines.pct' coverage/coverage-summary.json)

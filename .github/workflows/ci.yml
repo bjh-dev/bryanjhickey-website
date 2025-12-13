@@ -26,7 +26,7 @@ jobs:
           bun-version: ${{ env.BUN_VERSION }}
 
       - name: Cache dependencies
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ~/.bun/install/cache
           key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lockb') }}
@@ -66,7 +66,7 @@ jobs:
           bun-version: ${{ env.BUN_VERSION }}
 
       - name: Cache dependencies
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ~/.bun/install/cache
           key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lockb') }}
@@ -126,7 +126,7 @@ jobs:
           bun-version: ${{ env.BUN_VERSION }}
 
       - name: Cache dependencies
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ~/.bun/install/cache
           key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lockb') }}
@@ -157,7 +157,7 @@ jobs:
         continue-on-error: true
 
       - name: Cache build output
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: |
             .next/cache
@@ -184,7 +184,7 @@ jobs:
           bun-version: ${{ env.BUN_VERSION }}
 
       - name: Cache dependencies
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ~/.bun/install/cache
           key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lockb') }}

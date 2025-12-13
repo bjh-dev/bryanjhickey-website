@@ -10,7 +10,7 @@
     "lint": "eslint",
     "lint:fix": "eslint --fix",
     "dev": "bun run next:dev",
-    "built": "bun run next:build",
+    "built": "npx sanity typegen generate & bun run next:build",
     "start": "bun run next:start",
     "sanity:typegen": "mkdir -p ./.sanity && sanity schema extract --path=.sanity/schema.json && sanity typegen generate",
     "typecheck": "tsc --noEmit",

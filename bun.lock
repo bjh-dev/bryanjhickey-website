@@ -1,5 +1,6 @@
 {
   "lockfileVersion": 1,
+  "configVersion": 0,
   "workspaces": {
     "": {
       "name": "bryanjhickey.com",
@@ -25,7 +26,7 @@
         "react-headings": "^3.3.3",
         "react-icons": "^5.5.0",
         "sanity": "^4.21.1",
-        "sanity-plugin-asset-source-unsplash": "^4.0.1",
+        "sanity-plugin-asset-source-unsplash": "^7.0.0",
         "sanity-plugin-media": "^4.1.0",
         "sonner": "^2.0.7",
         "styled-components": "^6.1.19",
@@ -2318,11 +2319,9 @@
 
     "react-icons": ["react-icons@5.5.0", "", { "peerDependencies": { "react": "*" } }, "sha512-MEFcXdkP3dLo8uumGI5xN3lDFNsRtrjbOEKDLD7yv76v4wpnEq2Lt2qeHaQOr34I/wPN3s3+N08WkQ+CW37Xiw=="],
 
-    "react-infinite-scroll-component": ["react-infinite-scroll-component@6.1.0", "", { "dependencies": { "throttle-debounce": "^2.1.0" }, "peerDependencies": { "react": ">=16.0.0" } }, "sha512-SQu5nCqy8DxQWpnUVLx7V7b7LcA37aM7tvoWjTLZp1dk6EJibM5/4EJKzOnl07/BsM1Y40sKLuqjCwwH/xV0TQ=="],
-
     "react-is": ["react-is@19.2.3", "", {}, "sha512-qJNJfu81ByyabuG7hPFEbXqNcWSU3+eVus+KJs+0ncpGfMyYdvSmxiJxbWR65lYi1I+/0HBcliO029gc4F+PnA=="],
 
-    "react-photo-album": ["react-photo-album@2.4.1", "", { "peerDependencies": { "react": ">=16.8.0" } }, "sha512-dzqP5QbYAugA0uZTl3qsVldckzDXYDkDOvA8CpACl51hSEfhJmCfwhbnI4WBHnETQHv48nnNQ1jhrulst8njLA=="],
+    "react-photo-album": ["react-photo-album@3.3.0", "", { "peerDependencies": { "@types/react": "^18 || ^19", "react": "^18 || ^19" }, "optionalPeers": ["@types/react"] }, "sha512-2KvavqTjOgq+cgQDyewdEyOt9mIk4KO91Hq1mTXq8Jdpax7TYSV9ikySCfhlFOcfAC2vGQ7Femb626kJYovIAA=="],
 
     "react-redux": ["react-redux@9.2.0", "", { "dependencies": { "@types/use-sync-external-store": "^0.0.6", "use-sync-external-store": "^1.4.0" }, "peerDependencies": { "@types/react": "^18.2.25 || ^19", "react": "^18.0 || ^19", "redux": "^5.0.0" }, "optionalPeers": ["@types/react", "redux"] }, "sha512-ROY9fvHhwOD9ySfrF0wmvu//bKCQ6AeZZq1nJNtbDC+kk5DuSuNX/n6YWYF/SYy7bSba4D4FSz8DJeKY/S/r+g=="],
 
@@ -2436,7 +2435,7 @@
 
     "sanity": ["sanity@4.21.1", "", { "dependencies": { "@date-fns/tz": "^1.4.1", "@dnd-kit/core": "^6.3.1", "@dnd-kit/modifiers": "^6.0.1", "@dnd-kit/sortable": "^7.0.2", "@dnd-kit/utilities": "^3.2.2", "@isaacs/ttlcache": "^1.4.1", "@juggle/resize-observer": "^3.4.0", "@mux/mux-player-react": "^3.8.0", "@portabletext/block-tools": "^4.1.9", "@portabletext/editor": "^3.3.5", "@portabletext/patches": "^2.0.1", "@portabletext/plugin-markdown-shortcuts": "^4.0.25", "@portabletext/plugin-one-line": "^3.0.25", "@portabletext/plugin-typography": "^4.0.25", "@portabletext/react": "^6.0.0", "@portabletext/toolkit": "^5.0.0", "@rexxars/react-json-inspector": "^9.0.1", "@sanity/asset-utils": "^2.3.0", "@sanity/bifur-client": "^0.4.1", "@sanity/cli": "4.21.1", "@sanity/client": "^7.13.2", "@sanity/color": "^3.0.6", "@sanity/comlink": "^4.0.1", "@sanity/diff": "4.21.1", "@sanity/diff-match-patch": "^3.2.0", "@sanity/diff-patch": "^5.0.0", "@sanity/eventsource": "^5.0.2", "@sanity/export": "^5.0.1", "@sanity/icons": "^3.7.4", "@sanity/id-utils": "^1.0.0", "@sanity/image-url": "^2.0.1", "@sanity/import": "^3.38.3", "@sanity/insert-menu": "^2.1.0", "@sanity/logos": "^2.2.2", "@sanity/media-library-types": "^1.0.1", "@sanity/message-protocol": "^0.17.6", "@sanity/migrate": "4.21.1", "@sanity/mutator": "4.21.1", "@sanity/presentation-comlink": "^2.0.1", "@sanity/preview-url-secret": "^3.0.0", "@sanity/schema": "4.21.1", "@sanity/sdk": "2.1.2", "@sanity/telemetry": "^0.8.0", "@sanity/types": "4.21.1", "@sanity/ui": "^3.1.11", "@sanity/util": "4.21.1", "@sanity/uuid": "^3.0.2", "@sentry/react": "^8.55.0", "@tanstack/react-table": "^8.21.3", "@tanstack/react-virtual": "^3.13.12", "@types/react-is": "^19.2.0", "@types/shallow-equals": "^1.0.3", "@types/speakingurl": "^13.0.6", "@types/tar-stream": "^3.1.4", "@types/use-sync-external-store": "^1.5.0", "@types/which": "^3.0.4", "@vitejs/plugin-react": "^5.1.1", "@xstate/react": "^6.0.0", "archiver": "^7.0.1", "arrify": "^2.0.1", "async-mutex": "^0.5.0", "chalk": "^4.1.2", "chokidar": "^3.6.0", "classnames": "^2.2.5", "color2k": "^2.0.3", "configstore": "^5.0.1", "console-table-printer": "^2.14.6", "dataloader": "^2.2.3", "date-fns": "^4.1.0", "debug": "^4.4.3", "esbuild": "0.27.0", "esbuild-register": "^3.6.0", "execa": "^2.1.0", "exif-component": "^1.0.1", "fast-deep-equal": "3.1.3", "form-data": "^4.0.5", "get-it": "^8.7.0", "groq-js": "^1.23.0", "gunzip-maybe": "^1.4.2", "history": "^5.3.0", "i18next": "^23.16.8", "import-fresh": "^3.3.1", "is-hotkey-esm": "^1.0.0", "is-tar": "^1.0.0", "isomorphic-dompurify": "^2.26.0", "jsdom": "^26.1.0", "jsdom-global": "^3.0.2", "json-lexer": "^1.2.0", "json-reduce": "^3.0.0", "json5": "^2.2.3", "lodash": "^4.17.21", "log-symbols": "^2.2.0", "mendoza": "^3.0.8", "module-alias": "^2.2.3", "motion": "^12.23.25", "nano-pubsub": "^3.0.0", "nanoid": "^3.3.11", "node-html-parser": "^6.1.13", "observable-callback": "^1.0.3", "oneline": "^1.0.4", "open": "^8.4.2", "p-map": "^7.0.0", "path-to-regexp": "^6.3.0", "peek-stream": "^1.1.3", "pirates": "^4.0.7", "player.style": "^0.1.9", "pluralize-esm": "^9.0.5", "polished": "^4.3.1", "preferred-pm": "^4.1.1", "pretty-ms": "^7.0.1", "quick-lru": "^7.3.0", "raf": "^3.4.1", "react-compiler-runtime": "1.0.0", "react-fast-compare": "^3.2.2", "react-focus-lock": "^2.13.7", "react-i18next": "15.6.1", "react-is": "^19.2.1", "react-refractor": "^4.0.0", "react-rx": "^4.2.2", "read-pkg-up": "^7.0.1", "refractor": "^5.0.0", "resolve-from": "^5.0.0", "resolve.exports": "^2.0.3", "rimraf": "^5.0.10", "rxjs": "^7.8.2", "rxjs-exhaustmap-with-trailing": "^2.1.1", "rxjs-mergemap-array": "^0.1.0", "scroll-into-view-if-needed": "^3.1.0", "scrollmirror": "^1.2.4", "semver": "^7.7.2", "shallow-equals": "^1.0.0", "speakingurl": "^14.0.1", "tar-fs": "^2.1.3", "tar-stream": "^3.1.7", "tinyglobby": "^0.2.14", "urlpattern-polyfill": "10.1.0", "use-device-pixel-ratio": "^1.1.2", "use-effect-event": "^2.0.3", "use-hot-module-reload": "^2.0.0", "use-sync-external-store": "^1.6.0", "uuid": "^11.1.0", "vite": "^7.2.6", "which": "^5.0.0", "xstate": "^5.24.0", "yargs": "^17.7.2" }, "peerDependencies": { "react": "^18 || ^19", "react-dom": "^18 || ^19", "styled-components": "^6.1.15" }, "bin": { "sanity": "bin/sanity" } }, "sha512-iutv4mhtgDDh7ySLx9kUkVXOW8MVyxs2WmaX4KUMEETNqV293ZrcO7PvCoRoivYE94o6v2c9cqVp8xT6ELld8w=="],
 
-    "sanity-plugin-asset-source-unsplash": ["sanity-plugin-asset-source-unsplash@4.0.1", "", { "dependencies": { "@sanity/icons": "^3.7.4", "@sanity/ui": "^3.0.7", "react-infinite-scroll-component": "6.1.0", "react-photo-album": "2.4.1", "rxjs": "^7.8.2" }, "peerDependencies": { "react": "^18.3 || ^19", "react-dom": "^18.3 || ^19", "sanity": "^4", "styled-components": "^6.1" } }, "sha512-JIZt4d/g5/yj8NmbEau7Lcvsiow9OvSgrEk+184gGwgzgn4rQsNL2GoOgjIrt1XfMMlIrQszWJxkwulMeTKEYw=="],
+    "sanity-plugin-asset-source-unsplash": ["sanity-plugin-asset-source-unsplash@7.0.0", "", { "dependencies": { "@sanity/icons": "^3.7.4", "@sanity/ui": "^3.1.11", "lodash-es": "^4.17.21", "react-photo-album": "^3.3.0" }, "peerDependencies": { "react": "^19.2", "sanity": "^5.0.0-0", "styled-components": "^6.1" } }, "sha512-xjPUMSw2eep5XOCDUCQWhUhD32ZMGxNY1A9n5riCbEyjOGso7zwDfXR/yYT4Yf7iLCSheRimZMgAmX9rZ3rUxQ=="],
 
     "sanity-plugin-media": ["sanity-plugin-media@4.1.0", "", { "dependencies": { "@hookform/resolvers": "^3.1.1", "@reduxjs/toolkit": "^2.6.0", "@sanity/client": "^6.28.3", "@sanity/color": "^3.0.6", "@sanity/icons": "^3.7.0", "@sanity/incompatible-plugin": "^1.0.5", "@sanity/ui": "^3.0.5", "@sanity/uuid": "^3.0.1", "@tanem/react-nprogress": "^5.0.55", "copy-to-clipboard": "^3.3.1", "date-fns": "^4.0.0", "filesize": "^9.0.0", "groq": "^3.0.0", "is-hotkey-esm": "^1.0.0", "nanoid": "^3.3.8", "pluralize": "^8.0.0", "react-dropzone": "^11.3.1", "react-file-icon": "^1.6.0", "react-hook-form": "^7.54.2", "react-redux": "^9.2.0", "react-select": "^5.10.1", "react-virtuoso": "^4.12.5", "redux": "^5.0.1", "redux-observable": "3.0.0-rc.2", "rxjs": "^7.8.1", "zod": "^3.21.4" }, "peerDependencies": { "react": "^18.3 || ^19", "react-dom": "^18.3 || ^19", "react-is": "^18.3 || ^19", "sanity": "^3.78 || ^4.0.0-0", "styled-components": "^6.1" } }, "sha512-ZhrhB6Zj/+7xR1OZvRvwo/6clpGHdvKeojrphJ5Tjft7gizqMsiUjrEIBcRxMDSKAb28KQ4Bq1r9HtVSaklSBQ=="],
 
@@ -2599,8 +2598,6 @@
     "tar-stream": ["tar-stream@3.1.7", "", { "dependencies": { "b4a": "^1.6.4", "fast-fifo": "^1.2.0", "streamx": "^2.15.0" } }, "sha512-qJj60CXt7IU1Ffyc3NJMjh6EkuCFej46zUqJ4J7pqYlThyd9bO0XBTmcOIhSzZJVWfsLks0+nle/j538YAW9RQ=="],
 
     "text-decoder": ["text-decoder@1.2.3", "", { "dependencies": { "b4a": "^1.6.4" } }, "sha512-3/o9z3X0X0fTupwsYvR03pJ/DjWuqqrfwBgTQzdWDiQSm9KitAyz/9WqsT2JQW7KV2m+bC2ol/zqpW37NHxLaA=="],
-
-    "throttle-debounce": ["throttle-debounce@2.3.0", "", {}, "sha512-H7oLPV0P7+jgvrk+6mwwwBDmxTaxnu9HMXmloNLXwnNO0ZxZ31Orah2n8lU1eMPvsaowP2CX+USCgyovXfdOFQ=="],
 
     "through2": ["through2@4.0.2", "", { "dependencies": { "readable-stream": "3" } }, "sha512-iOqSav00cVxEEICeD7TjLB1sueEL+81Wpzp2bY17uZjZN0pWZPuo4suZ/61VujxmqSGFfgOcNuTZ85QJwNZQpw=="],
 

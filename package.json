@@ -65,7 +65,7 @@
     "rollup": "^4.53.3",
     "@types/estree": "^1.0.8",
     "@vitest/coverage-v8": "^4.0.0",
-    "eslint": "^9.39.2",
+    "eslint": "^10.0.0",
     "eslint-config-next": "16.1.6",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-jsx-a11y": "^6.10.2",

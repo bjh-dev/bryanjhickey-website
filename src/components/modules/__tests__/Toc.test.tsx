@@ -103,6 +103,59 @@ describe('Toc', () => {
     expect(listItems).toHaveLength(0)
   })
 
+  it('handles non-array content gracefully', () => {
+    const postsWithNullContent = {
+      ...mockPosts,
+      content: null,
+    }
+
+    render(<Toc posts={postsWithNullContent as never} />)
+
+    expect(screen.getByText('Contents')).toBeInTheDocument()
+    expect(screen.queryAllByRole('listitem')).toHaveLength(0)
+  })
+
+  it('handles undefined content gracefully', () => {
+    const postsWithUndefinedContent = {
+      ...mockPosts,
+      content: undefined,
+    }
+
+    render(<Toc posts={postsWithUndefinedContent as never} />)
+
+    expect(screen.getByText('Contents')).toBeInTheDocument()
+    expect(screen.queryAllByRole('listitem')).toHaveLength(0)
+  })
+
+  it('renders heading with multiple children spans', () => {
+    const postsWithMultiSpanHeading = {
+      ...mockPosts,
+      content: [
+        {
+          _type: 'block',
+          _key: 'key1',
+          style: 'h2',
+          children: [
+            { _type: 'span', _key: 'span1', text: 'Part' },
+            { _type: 'span', _key: 'span2', text: ' One' },
+          ],
+          markDefs: [],
+        },
+      ],
+    }
+
+    render(<Toc posts={postsWithMultiSpanHeading as never} />)
+
+    expect(screen.getByText('Part One')).toBeInTheDocument()
+  })
+
+  it('uses heading _key as list item key when available', () => {
+    render(<Toc posts={mockPosts as never} />)
+
+    const listItems = screen.getAllByRole('listitem')
+    expect(listItems).toHaveLength(2)
+  })
+
   it('should be accessible', async () => {
     const { container } = render(<Toc posts={mockPosts as never} />)
     const results = await axe(container)

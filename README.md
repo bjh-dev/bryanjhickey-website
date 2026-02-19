@@ -350,17 +350,17 @@ _Analysis performed using automated code quality assessment tools and manual rev
 
 ![TypeScript](https://img.shields.io/badge/TypeScript-100%25-blue)
 ![Test Coverage](https://img.shields.io/badge/Coverage-0%25-green)
-![Components](https://img.shields.io/badge/Components-47-orange)
-![Tests](https://img.shields.io/badge/Tests-11-purple)
-![Lines of Code](https://img.shields.io/badge/Lines%20of%20Code-7567-lightgrey)
+![Components](https://img.shields.io/badge/Components-50-orange)
+![Tests](https://img.shields.io/badge/Tests-15-purple)
+![Lines of Code](https://img.shields.io/badge/Lines%20of%20Code-8046-lightgrey)
 
 | Metric           | Value                                                                                         |
 | ---------------- | --------------------------------------------------------------------------------------------- |
-| TypeScript Files | 122                                                                                           |
-| React Components | 47                                                                                            |
-| Test Files       | 11                                                                                            |
-| Lines of Code    | 7567                                                                                          |
+| TypeScript Files | 126                                                                                           |
+| React Components | 50                                                                                            |
+| Test Files       | 15                                                                                            |
+| Lines of Code    | 8046                                                                                          |
 | Test Coverage    | 0%                                                                                            |
 | Build Status     | ![CI](https://github.com/bjh-dev/bryanjhickey-website/workflows/CI%2FCD%20Pipeline/badge.svg) |
 
-_Metrics updated automatically on Thu Feb 19 13:43:57 UTC 2026_
+_Metrics updated automatically on Thu Feb 19 13:54:17 UTC 2026_

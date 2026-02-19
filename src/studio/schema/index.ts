@@ -14,6 +14,7 @@ import page from '@/studio/schema/documents/page'
 import social from '@/studio/schema/objects/social'
 import button from '@/studio/schema/objects/button'
 import postList from '@/studio/schema/objects/sections/postList'
+import textColumn from '@/studio/schema/objects/sections/textColumn'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -28,6 +29,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     // Sections
     hero,
     postList,
+    textColumn,
     // Objects
     blockContent,
     button,

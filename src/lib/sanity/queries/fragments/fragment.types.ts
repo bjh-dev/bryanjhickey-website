@@ -45,6 +45,10 @@ export type SubscribeSectionFragmentType = Extract<
   NonNullable<SectionsType>,
   { _type: 'subscribe' }
 >
+export type TextColumnSectionFragmentType = Extract<
+  NonNullable<SectionsType>,
+  { _type: 'textColumn' }
+>
 
 export type ButtonFragmentType = NonNullable<
   HeroSectionFragmentType['buttons']

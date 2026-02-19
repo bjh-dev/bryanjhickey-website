@@ -1,8 +1,9 @@
 import { defineArrayMember, defineField } from 'sanity'
 import hero from '@/studio/schema/objects/sections/hero'
 import postList from '@/studio/schema/objects/sections/postList'
+import textColumn from '@/studio/schema/objects/sections/textColumn'
 
-const pageSectionsObjects = [hero, postList]
+const pageSectionsObjects = [hero, postList, textColumn]
 
 export default defineField({
   name: 'pageSections',

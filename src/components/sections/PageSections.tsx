@@ -7,12 +7,14 @@ import { dataAttr } from '@/lib/sanity/client/utils'
 import Hero from '@/components/sections/Hero'
 import { Section, Sections } from '@/components/sections/types'
 import PostList from '@/components/sections/PostList'
+import TextColumn from '@/components/sections/TextColumn'
 
 type PageSectionstype = Section['_type']
 
 const SECTION_COMPONENTS: Record<PageSectionstype, ElementType> = {
   hero: Hero,
   postList: PostList,
+  textColumn: TextColumn,
 } as const
 
 type PageSectionsProps = {

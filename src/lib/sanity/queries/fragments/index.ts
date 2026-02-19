@@ -220,6 +220,13 @@ export const subscribeSectionFragment = /* groq */ `
   text
 `
 
+export const textColumnSectionFragment = /* groq */ `
+  _type,
+  eyebrow,
+  ${contentFragment}
+  ${buttonsFragment}
+`
+
 export const cardGridFragment = /* groq */ `
   _type,
   heading,
@@ -245,7 +252,8 @@ export const pageBuilderFragment = /* groq */ `
     _type == 'hero' => {${heroSectionFragment}},
     _type == 'mediaText' => {${mediaTextSectionFragment}},
     _type == 'postList' => {${postListSectionFragment}},
-    _type == 'subscribe' => {${subscribeSectionFragment}}
+    _type == 'subscribe' => {${subscribeSectionFragment}},
+    _type == 'textColumn' => {${textColumnSectionFragment}}
   },
 `
 

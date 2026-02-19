@@ -1,10 +1,10 @@
 import { urlForImage } from '@/lib/sanity/client/image'
 import { baseUrl, clientEnv } from '@/studio/env'
-import { CustomImageType } from '@/types/seo'
+import type { SanityImageSource } from '@sanity/image-url'
 import { createDataAttribute, CreateDataAttributeProps } from 'next-sanity'
 
 export function resolveOpenGraphImage(
-  image: CustomImageType | undefined,
+  image: SanityImageSource | undefined,
   width = 1200,
   height = 627,
 ) {

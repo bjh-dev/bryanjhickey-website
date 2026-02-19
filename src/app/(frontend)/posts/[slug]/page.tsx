@@ -6,7 +6,6 @@ import { client } from '@/lib/sanity/client/client'
 import { PostQueryResult } from '@/types/sanity.types'
 import Post from '@/components/templates/Post'
 import { formatMetaData } from '@/lib/sanity/client/seo'
-import { SeoType } from '@/types/seo'
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -26,14 +25,11 @@ const loadData = async (props: Props): Promise<PostQueryResult> => {
 export async function generateMetadata(props: Props): Promise<Metadata> {
   const routeData = await loadData(props)
 
-  if (!routeData) {
+  if (!routeData?.seo) {
     return {}
   }
 
-  return formatMetaData(
-    routeData.seo as unknown as SeoType,
-    routeData?.title || '',
-  )
+  return formatMetaData(routeData.seo, routeData?.title || '')
 }
 
 // Return a list of `params` to populate the [slug] dynamic segment

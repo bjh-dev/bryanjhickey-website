@@ -3,7 +3,6 @@ import { sanityFetch } from '@/lib/sanity/client/live'
 import { formatMetaData } from '@/lib/sanity/client/seo'
 import PageSections from '@/components/sections/PageSections'
 import { notFound } from 'next/navigation'
-import { SeoType } from '@/types/seo'
 
 export async function generateMetadata() {
   const { data: home } = await sanityFetch({
@@ -14,7 +13,7 @@ export async function generateMetadata() {
     return {}
   }
 
-  return formatMetaData(home.seo as unknown as SeoType, home?.name || '')
+  return formatMetaData(home.seo, home?.name || '')
 }
 
 export default async function Page() {

@@ -1,9 +1,9 @@
 import { resolveOpenGraphImage } from '@/lib/sanity/client/utils'
-import { MetaTagType, SeoType } from '@/types/seo'
+import type { SeoFragmentType } from '@/lib/sanity/queries/fragments/fragment.types'
 import { Metadata } from 'next'
 
 function parseAdditionalMetaTags(
-  additionalMetaTags: MetaTagType[] | undefined,
+  additionalMetaTags: SeoFragmentType['additionalMetaTags'],
 ) {
   if (!additionalMetaTags) {
     return undefined
@@ -36,10 +36,10 @@ function parseAdditionalMetaTags(
 }
 
 export const formatMetaData = (
-  seo: SeoType,
+  seo: SeoFragmentType,
   defaultTitle: string,
 ): Metadata => {
-  const metaImage = resolveOpenGraphImage(seo.metaImage)
+  const metaImage = resolveOpenGraphImage(seo.metaImage ?? undefined)
 
   return {
     title: seo?.metaTitle ?? defaultTitle,
@@ -58,7 +58,7 @@ export const formatMetaData = (
           siteName: seo.openGraph.siteName ?? undefined,
           url: seo.openGraph.url ?? undefined,
           images: seo.openGraph.image
-            ? resolveOpenGraphImage(seo.openGraph.image)
+            ? resolveOpenGraphImage(seo.openGraph.image ?? undefined)
             : metaImage,
         }
       : undefined,

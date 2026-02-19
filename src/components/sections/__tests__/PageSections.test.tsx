@@ -2,9 +2,19 @@ import { describe, it, expect, vi } from 'vitest'
 import { render, screen } from '@/test/utils'
 import PageSections from '../PageSections'
 
-// Mock useOptimistic to return initial sections as-is
+type OptimisticReducer<T> = (current: T, action: unknown) => T
+
+// Capture the reducer so we can test it
+let capturedReducer: OptimisticReducer<unknown> | null = null
+
 vi.mock('next-sanity/hooks', () => ({
-  useOptimistic: (initialValue: unknown) => initialValue,
+  useOptimistic: (
+    initialValue: unknown,
+    reducer: OptimisticReducer<unknown>,
+  ) => {
+    capturedReducer = reducer
+    return initialValue
+  },
 }))
 
 // Mock dataAttr utility
@@ -129,5 +139,100 @@ describe('PageSections', () => {
 
     expect(screen.getByText(/Component not found/)).toBeInTheDocument()
     expect(screen.getByText('unknownType')).toBeInTheDocument()
+  })
+})
+
+describe('PageSections optimistic update reducer', () => {
+  it('returns current sections when action.id does not match documentId', () => {
+    const sections = [{ _key: 'hero-1', _type: 'hero' as const, title: 'Hero' }]
+
+    render(
+      <PageSections
+        documentId="doc-1"
+        documentType="page"
+        sections={sections as never}
+      />,
+    )
+
+    expect(capturedReducer).not.toBeNull()
+    const result = capturedReducer!(sections, {
+      id: 'different-doc',
+      document: { pageSections: [] },
+    })
+    expect(result).toBe(sections)
+  })
+
+  it('returns current sections when action has no pageSections', () => {
+    const sections = [{ _key: 'hero-1', _type: 'hero' as const, title: 'Hero' }]
+
+    render(
+      <PageSections
+        documentId="doc-1"
+        documentType="page"
+        sections={sections as never}
+      />,
+    )
+
+    const result = capturedReducer!(sections, {
+      id: 'doc-1',
+      document: {},
+    })
+    expect(result).toBe(sections)
+  })
+
+  it('merges existing sections with new action sections by _key', () => {
+    const currentSections = [
+      { _key: 'hero-1', _type: 'hero' as const, title: 'Old Hero' },
+      { _key: 'postlist-1', _type: 'postList' as const, title: 'Old Posts' },
+    ]
+
+    render(
+      <PageSections
+        documentId="doc-1"
+        documentType="page"
+        sections={currentSections as never}
+      />,
+    )
+
+    const newSections = [
+      { _key: 'hero-1', _type: 'hero' as const, title: 'New Hero' },
+      { _key: 'postlist-1', _type: 'postList' as const, title: 'New Posts' },
+    ]
+
+    const result = capturedReducer!(currentSections, {
+      id: 'doc-1',
+      document: { pageSections: newSections },
+    }) as typeof currentSections
+
+    // Existing sections matched by _key are preserved
+    expect(result[0]).toBe(currentSections[0])
+    expect(result[1]).toBe(currentSections[1])
+  })
+
+  it('uses new section when no matching _key exists in current', () => {
+    const currentSections = [
+      { _key: 'hero-1', _type: 'hero' as const, title: 'Hero' },
+    ]
+
+    render(
+      <PageSections
+        documentId="doc-1"
+        documentType="page"
+        sections={currentSections as never}
+      />,
+    )
+
+    const newSection = {
+      _key: 'new-section',
+      _type: 'postList' as const,
+      title: 'Brand New',
+    }
+
+    const result = capturedReducer!(currentSections, {
+      id: 'doc-1',
+      document: { pageSections: [newSection] },
+    }) as typeof currentSections
+
+    expect(result[0]).toBe(newSection)
   })
 })

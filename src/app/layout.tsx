@@ -1,3 +1,4 @@
+'use client'
 /**
  * Do not import Sanity or front-end specific code into this
  * file, it will not be tree shaken effectively across routes

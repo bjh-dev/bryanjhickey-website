@@ -14,7 +14,7 @@ The CI/CD pipeline consists of 5 main workflows that ensure code quality, securi
 
 ## 🔄 CI/CD Pipeline
 
-**Trigger**: Push to `main`/`develop`, Pull Requests  
+**Trigger**: Push to `main`/`develop`, Pull Requests
 **File**: `.github/workflows/ci.yml`
 
 ### Pipeline Stages
@@ -61,7 +61,7 @@ graph LR
 
 ## 🔍 Pull Request Checks
 
-**Trigger**: PR opened, synchronized, reopened  
+**Trigger**: PR opened, synchronized, reopened
 **File**: `.github/workflows/pr.yml`
 
 ### Enhanced PR Features
@@ -113,7 +113,7 @@ _This comment was generated automatically by the CI/CD pipeline_
 
 ## 🛡️ Security & Dependency Checks
 
-**Trigger**: Daily schedule, dependency changes, manual dispatch  
+**Trigger**: Daily schedule, dependency changes, manual dispatch
 **File**: `.github/workflows/security.yml`
 
 ### Security Features
@@ -145,7 +145,7 @@ _This comment was generated automatically by the CI/CD pipeline_
 
 ## 🚢 Release & Deploy
 
-**Trigger**: Git tags (`v*.*.*`), manual dispatch  
+**Trigger**: Git tags (`v*.*.*`), manual dispatch
 **File**: `.github/workflows/release.yml`
 
 ### Release Process
@@ -195,14 +195,14 @@ _This comment was generated automatically by the CI/CD pipeline_
     script: |
       cd /path/to/app
       git pull origin main
-      bun install --frozen-lockfile
-      bun run built
+      pnpm install --frozen-lockfile
+      pnpm run built
       pm2 restart app
 ```
 
 ## 📚 Documentation & Maintenance
 
-**Trigger**: Code changes, schedule, manual dispatch  
+**Trigger**: Code changes, schedule, manual dispatch
 **File**: `.github/workflows/docs.yml`
 
 ### Documentation Features
@@ -276,15 +276,15 @@ The CI/CD pipeline integrates seamlessly with local development:
 
 ```bash
 # Run the same tests locally
-bun test                    # Watch mode
-bun run test:run           # Single run
-bun run test:coverage      # With coverage
-bun run test:ci           # CI mode
+pnpm test                    # Watch mode
+pnpm run test:run           # Single run
+pnpm run test:coverage      # With coverage
+pnpm run test:ci           # CI mode
 
 # Quality checks
-bun run lint              # ESLint
-bun run typecheck         # TypeScript
-bun run built             # Build check
+pnpm run lint              # ESLint
+pnpm run typecheck         # TypeScript
+pnpm run built             # Build check
 ```
 
 ## 📊 Pipeline Metrics & Monitoring

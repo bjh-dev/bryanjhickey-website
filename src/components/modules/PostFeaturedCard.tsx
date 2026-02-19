@@ -1,5 +1,6 @@
 import ReadTime from '@/components/modules/ReadTime'
-import { PostListSection } from '@/components/sections/types'
+import { PostCardFragmentType } from '@/lib/sanity/queries/fragments/fragment.types'
+import { formatDate } from '@/utils/strings'
 import { Card, CardContent } from '@/components/ui/card'
 import { getDocumentLink } from '@/lib/links'
 import { urlForImage } from '@/lib/sanity/client/image'
@@ -7,7 +8,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { FaCross } from 'react-icons/fa6'
 
-export function PostFeaturedCard(featuredPost: PostListSection['posts'][0]) {
+export function PostFeaturedCard(featuredPost: PostCardFragmentType) {
   return (
     <Link
       className="group col-span-1 items-stretch rounded-xl"
@@ -35,11 +36,7 @@ export function PostFeaturedCard(featuredPost: PostListSection['posts'][0]) {
               {featuredPost.date ? (
                 <div className="flex">
                   <time className="text-foreground/50">
-                    {new Date(featuredPost.date).toLocaleDateString('en-AU', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric',
-                    })}
+                    {formatDate(featuredPost.date)}
                   </time>
                 </div>
               ) : null}

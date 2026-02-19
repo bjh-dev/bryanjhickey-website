@@ -69,7 +69,7 @@ export default async function Footer() {
           )}
           <div>
             {settings.socials && (
-              <div className="flex space-x-4">
+              <nav aria-label="Social media links" className="flex space-x-4">
                 {settings.socials.map((social) => {
                   return (
                     <SocialMedia
@@ -79,7 +79,7 @@ export default async function Footer() {
                     />
                   )
                 })}
-              </div>
+              </nav>
             )}
           </div>
           <div>

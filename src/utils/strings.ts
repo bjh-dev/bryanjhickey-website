@@ -31,6 +31,14 @@ export const wordCount = (str: string) => {
   return str.split(/\s+/).filter(Boolean).length
 }
 
+export const formatDate = (dateString: string, locale = 'en-AU') => {
+  return new Date(dateString).toLocaleDateString(locale, {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  })
+}
+
 export const readTime = (wordCount: number) => {
   const wordsPerMinute = 180
 

@@ -48,7 +48,10 @@ export default function Hero({ section }: { section: HeroSection }) {
                 />
               </FadeXAnimation>
             )}
-            <div className="text-primary flex gap-4">
+            <nav
+              aria-label="Social media links"
+              className="text-primary flex gap-4"
+            >
               <FadeYAnimation delay={1.75}>
                 <a
                   href="https://www.facebook.com/bryanjhickey"
@@ -67,8 +70,7 @@ export default function Hero({ section }: { section: HeroSection }) {
               </FadeYAnimation>
               <FadeYAnimation delay={2}>
                 <a
-                  href="www.linkedin.com/in/bryanjhickey
-"
+                  href="https://www.linkedin.com/in/bryanjhickey"
                   target="_blank"
                   rel="nofollow noopener"
                   onClick={() => {
@@ -98,7 +100,7 @@ export default function Hero({ section }: { section: HeroSection }) {
                   <FaXTwitter className="h-6 w-6 transition-colors hover:text-white" />
                 </a>
               </FadeYAnimation>
-            </div>
+            </nav>
           </div>
         </div>
       </div>

@@ -20,7 +20,7 @@ export default function Hero({ section }: { section: HeroSection }) {
           placeholder="blur"
           blurDataURL={bryanHeroDataUri}
           alt="Bryan J. Hickey"
-          className="pointer-events-none object-cover object-right-top"
+          className="pointer-events-none object-cover object-top-right"
         />
       )}
       <div className="content feature h-full">
@@ -33,12 +33,12 @@ export default function Hero({ section }: { section: HeroSection }) {
               </h1>
             </FadeXAnimation>
             <FadeXAnimation xStartValue={-10} delay={1} duration={0.75}>
-              <p className="font-serif text-3xl sm:text-5xl lg:text-6xl">
+              <p className="font-serif text-2xl sm:text-4xl lg:text-5xl">
                 {section.subtitle}
               </p>
             </FadeXAnimation>
             <FadeXAnimation xStartValue={-10} delay={1.24} duration={0.75}>
-              <div className="bg-primary my-6 h-0.5 w-1/4 max-w-[120px]" />
+              <div className="bg-primary my-6 h-0.5 w-1/4 max-w-30" />
             </FadeXAnimation>
             {section.content && (
               <FadeXAnimation xStartValue={-10} delay={1.5} duration={0.75}>

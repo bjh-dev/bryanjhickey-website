@@ -1,5 +1,6 @@
 import FadeXAnimation from '@/components/animations/FadeXAnimation'
 import FadeYAnimation from '@/components/animations/FadeYAnimation'
+import ButtonsGroup from '@/components/modules/ButtonsGroup'
 import { bryanHeroDataUri } from '@/lib/dataUris'
 import Image from 'next/image'
 import { FaFacebook, FaLinkedinIn, FaXTwitter } from 'react-icons/fa6'
@@ -8,6 +9,7 @@ import { urlForImage } from '@/lib/sanity/client/image'
 import { PortableTextBlock } from 'next-sanity'
 import { track } from '@vercel/analytics'
 import { HeroSection } from '@/components/sections/types'
+import { ButtonFragmentType } from '@/lib/sanity/queries/fragments/fragment.types'
 
 export default function Hero({ section }: { section: HeroSection }) {
   return (
@@ -48,11 +50,19 @@ export default function Hero({ section }: { section: HeroSection }) {
                 />
               </FadeXAnimation>
             )}
+            {section.buttons && section.buttons.length > 0 && (
+              <FadeXAnimation xStartValue={-10} delay={1.75} duration={0.75}>
+                <ButtonsGroup
+                  buttons={section.buttons as unknown as ButtonFragmentType[]}
+                  size="lg"
+                />
+              </FadeXAnimation>
+            )}
             <nav
               aria-label="Social media links"
               className="text-primary flex gap-4"
             >
-              <FadeYAnimation delay={1.75}>
+              <FadeYAnimation delay={2}>
                 <a
                   href="https://www.facebook.com/bryanjhickey"
                   target="_blank"
@@ -68,7 +78,7 @@ export default function Hero({ section }: { section: HeroSection }) {
                   <FaFacebook className="h-6 w-6 transition-colors hover:text-white" />
                 </a>
               </FadeYAnimation>
-              <FadeYAnimation delay={2}>
+              <FadeYAnimation delay={2.25}>
                 <a
                   href="https://www.linkedin.com/in/bryanjhickey"
                   target="_blank"
@@ -84,7 +94,7 @@ export default function Hero({ section }: { section: HeroSection }) {
                   <FaLinkedinIn className="h-6 w-6 transition-colors hover:text-white" />
                 </a>
               </FadeYAnimation>
-              <FadeYAnimation delay={2.25}>
+              <FadeYAnimation delay={2.5}>
                 <a
                   href="https://x.com/bryanjhickey"
                   target="_blank"

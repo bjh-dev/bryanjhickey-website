@@ -135,6 +135,7 @@ export const heroSectionFragment = /* groq */ `
   subheading,
   ${imageFragment}
   ${contentFragment}
+  ${buttonsFragment}
 `
 
 export const mediaTextSectionFragment = /* groq */ `
@@ -196,6 +197,8 @@ export const postListSectionFragment = /* groq */ `
     title,
     subtitle,
     description,
+    recentTitle,
+    recentSubtitle,
     numberOfPosts,
     "posts": *[_type == 'post'] | order(_createdAt desc, _id desc) [0...20] {
       ${postFragment}
@@ -217,7 +220,8 @@ export const ctaSectionFragment = /* groq */ `
 export const subscribeSectionFragment = /* groq */ `
   _type,
   heading,
-  text
+  text,
+  buttonText
 `
 
 export const textColumnSectionFragment = /* groq */ `

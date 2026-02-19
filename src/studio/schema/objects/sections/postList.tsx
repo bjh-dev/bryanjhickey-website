@@ -27,6 +27,19 @@ export default defineType({
       validation: (Rule) => Rule.max(250),
     }),
     defineField({
+      name: 'recentTitle',
+      title: 'Recent Posts Title',
+      type: 'string',
+      description:
+        'Heading for the recent posts subsection (e.g. "Recent Writing")',
+    }),
+    defineField({
+      name: 'recentSubtitle',
+      title: 'Recent Posts Subtitle',
+      type: 'string',
+      description: 'Short description below the recent posts heading',
+    }),
+    defineField({
       name: 'numberOfPosts',
       title: 'Number of Posts',
       type: 'number',

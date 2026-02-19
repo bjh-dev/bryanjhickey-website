@@ -14,6 +14,7 @@ import page from '@/studio/schema/documents/page'
 import social from '@/studio/schema/objects/social'
 import button from '@/studio/schema/objects/button'
 import postList from '@/studio/schema/objects/sections/postList'
+import subscribe from '@/studio/schema/objects/sections/subscribe'
 import textColumn from '@/studio/schema/objects/sections/textColumn'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
@@ -29,6 +30,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     // Sections
     hero,
     postList,
+    subscribe,
     textColumn,
     // Objects
     blockContent,

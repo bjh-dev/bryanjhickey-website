@@ -33,7 +33,7 @@ export default async function Header({
           <div className="flex space-x-2">
             <FadeXAnimation xStartValue={20} delay={3}>
               <Button asChild size="lg">
-                <Link href="/booking">Book a Time with Bryan</Link>
+                <Link href="/booking">Let&apos;s Talk</Link>
               </Button>
             </FadeXAnimation>
           </div>

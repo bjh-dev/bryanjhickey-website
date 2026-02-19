@@ -1,5 +1,6 @@
 import ReadTime from '@/components/modules/ReadTime'
 import { PostListSection } from '@/components/sections/types'
+import { formatDate } from '@/utils/strings'
 import { Card, CardContent } from '@/components/ui/card'
 import { getDocumentLink } from '@/lib/links'
 import { urlForImage } from '@/lib/sanity/client/image'
@@ -50,11 +51,7 @@ export function PostCard({
                 {post.date ? (
                   <div className="flex">
                     <time className="text-foreground/50 text-xs">
-                      {new Date(post.date).toLocaleDateString('en-AU', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric',
-                      })}
+                      {formatDate(post.date)}
                     </time>
                   </div>
                 ) : null}
@@ -74,11 +71,7 @@ export function PostCard({
                 {post.date ? (
                   <div className="flex">
                     <time className="text-foreground/50">
-                      {new Date(post.date).toLocaleDateString('en-AU', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric',
-                      })}
+                      {formatDate(post.date)}
                     </time>
                   </div>
                 ) : null}

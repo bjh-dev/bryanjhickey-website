@@ -1,15 +1,15 @@
 'use client'
-import { motion } from 'framer-motion'
+import FadeAnimation from '@/components/animations/FadeAnimation'
 import { ReactNode } from 'react'
 
 const FadeYAnimation = ({
   children,
-  opacityStartValue = 0,
-  opacityEndValue = 1,
-  delay = 0,
-  duration = 0.5,
-  yStartValue = 10,
-  yEndValue = 0,
+  opacityStartValue,
+  opacityEndValue,
+  delay,
+  duration,
+  yStartValue,
+  yEndValue,
 }: {
   children: ReactNode
   opacityStartValue?: number
@@ -20,16 +20,17 @@ const FadeYAnimation = ({
   yEndValue?: number
 }) => {
   return (
-    <motion.div
-      initial={{ opacity: opacityStartValue, y: yStartValue }}
-      animate={{
-        opacity: opacityEndValue,
-        y: yEndValue,
-        transition: { duration: duration, delay: delay },
-      }}
+    <FadeAnimation
+      direction="y"
+      opacityStartValue={opacityStartValue}
+      opacityEndValue={opacityEndValue}
+      delay={delay}
+      duration={duration}
+      startValue={yStartValue}
+      endValue={yEndValue}
     >
       {children}
-    </motion.div>
+    </FadeAnimation>
   )
 }
 

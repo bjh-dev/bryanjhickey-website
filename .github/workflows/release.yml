@@ -12,7 +12,7 @@ on:
         type: string
 
 env:
-  BUN_VERSION: 'latest'
+  NODE_VERSION: "20"
 
 jobs:
   # Job 1: Create Release
@@ -44,24 +44,24 @@ jobs:
         run: |
           # Get previous tag
           PREVIOUS_TAG=$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || echo "")
-          
+
           if [ -n "$PREVIOUS_TAG" ]; then
             echo "Generating release notes since $PREVIOUS_TAG"
-            
+
             # Generate changelog
             echo "## 📝 Changes" > release-notes.md
             echo "" >> release-notes.md
-            
+
             # Get commits since last tag
             git log $PREVIOUS_TAG..HEAD --pretty=format:"- %s (%h)" --reverse >> release-notes.md
             echo "" >> release-notes.md
             echo "" >> release-notes.md
-            
+
             # Add contributors
             echo "## 👥 Contributors" >> release-notes.md
             git log $PREVIOUS_TAG..HEAD --pretty=format:"- @%an" | sort -u >> release-notes.md
             echo "" >> release-notes.md
-            
+
             # Add technical details
             echo "## 🔧 Technical Details" >> release-notes.md
             echo "- **Commits**: $(git rev-list --count $PREVIOUS_TAG..HEAD)" >> release-notes.md
@@ -72,7 +72,7 @@ jobs:
             echo "" >> release-notes.md
             echo "This is the first release of bryanjhickey.com!" >> release-notes.md
           fi
-          
+
           # Set multiline output
           {
             echo 'notes<<EOF'
@@ -80,23 +80,27 @@ jobs:
             echo EOF
           } >> $GITHUB_OUTPUT
 
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v2
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          bun-version: ${{ env.BUN_VERSION }}
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
 
       - name: Install dependencies
-        run: bun install
+        run: pnpm install
 
       - name: Generate Sanity types
-        run: bun run sanity:typegen
+        run: pnpm run sanity:typegen
         env:
           NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
           NEXT_PUBLIC_SANITY_DATASET: ${{ secrets.NEXT_PUBLIC_SANITY_DATASET }}
           NEXT_PUBLIC_SANITY_API_VERSION: ${{ secrets.NEXT_PUBLIC_SANITY_API_VERSION }}
 
       - name: Run full test suite
-        run: bun run test:run
+        run: pnpm run test:run
         env:
           NEXT_PUBLIC_SANITY_PROJECT_ID: test-project
           NEXT_PUBLIC_SANITY_DATASET: test
@@ -105,7 +109,7 @@ jobs:
           SANITY_API_READ_TOKEN: test-token
 
       - name: Build production bundle
-        run: bun run built
+        run: pnpm run built
         env:
           NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
           NEXT_PUBLIC_SANITY_DATASET: ${{ secrets.NEXT_PUBLIC_SANITY_DATASET }}
@@ -156,23 +160,27 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v5
 
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v2
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          bun-version: ${{ env.BUN_VERSION }}
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
 
       - name: Install dependencies
-        run: bun install
+        run: pnpm install
 
       - name: Generate Sanity types
-        run: bun run sanity:typegen
+        run: pnpm run sanity:typegen
         env:
           NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
           NEXT_PUBLIC_SANITY_DATASET: ${{ secrets.NEXT_PUBLIC_SANITY_DATASET }}
           NEXT_PUBLIC_SANITY_API_VERSION: ${{ secrets.NEXT_PUBLIC_SANITY_API_VERSION }}
 
       - name: Build for production
-        run: bun run built
+        run: pnpm run built
         env:
           NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
           NEXT_PUBLIC_SANITY_DATASET: ${{ secrets.NEXT_PUBLIC_SANITY_DATASET }}
@@ -183,7 +191,7 @@ jobs:
 
       # Add your deployment steps here based on your hosting platform
       # Examples:
-      
+
       # For Vercel:
       # - name: Deploy to Vercel
       #   uses: amondnet/vercel-action@v25
@@ -192,7 +200,7 @@ jobs:
       #     vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
       #     vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
       #     vercel-args: '--prod'
-      
+
       # For Netlify:
       # - name: Deploy to Netlify
       #   uses: nwtgck/actions-netlify@v3.0
@@ -204,7 +212,7 @@ jobs:
       #   env:
       #     NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
       #     NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-      
+
       # For custom server deployment:
       # - name: Deploy to server
       #   uses: appleboy/ssh-action@v1.0.0
@@ -215,8 +223,8 @@ jobs:
       #     script: |
       #       cd /path/to/your/app
       #       git pull origin main
-      #       bun install
-      #       bun run built
+      #       pnpm install
+      #       pnpm run built
       #       pm2 restart bryanjhickey
 
       - name: Deployment placeholder
@@ -228,7 +236,7 @@ jobs:
       - name: Notify deployment success
         run: |
           echo "✅ Release ${{ needs.create-release.outputs.release-tag }} deployed successfully!"
-          
+
   # Job 3: Post-deployment validation
   validate-deployment:
     name: Validate Deployment

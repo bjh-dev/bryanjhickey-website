@@ -122,7 +122,7 @@ export default function CustomPortableText({
               width="1000"
               height="667"
               src={urlForImage(value)?.width(1000).height(667).url()}
-              alt={value?.alt ?? ''}
+              alt={value?.alt || 'Content image'}
               className="h-auto w-full"
             />
           </div>

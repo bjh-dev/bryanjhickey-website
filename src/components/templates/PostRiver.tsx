@@ -22,7 +22,6 @@ const PostRiver = ({
   return (
     <>
       {results.map((post) => {
-        // @ts-expect-error Type mismatch, but this is a Post type
         return <PostFeaturedCard key={post._id} {...post} />
       })}
 

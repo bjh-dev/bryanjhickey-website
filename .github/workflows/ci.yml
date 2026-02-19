@@ -8,7 +8,6 @@ on:
 
 env:
   NODE_VERSION: "20"
-  BUN_VERSION: "latest"
 
 jobs:
   # Job 1: Code Quality & Linting
@@ -20,35 +19,30 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v5
 
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: ${{ env.BUN_VERSION }}
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
 
-      - name: Cache dependencies
-        uses: actions/cache@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          path: ~/.bun/install/cache
-          key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lockb') }}
-          restore-keys: |
-            ${{ runner.os }}-bun-
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
 
       - name: Install dependencies
-        run: bun install
+        run: pnpm install
 
       - name: Generate Sanity types
-        run: bun run sanity:typegen
+        run: pnpm run sanity:typegen
         env:
           NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
           NEXT_PUBLIC_SANITY_DATASET: ${{ secrets.NEXT_PUBLIC_SANITY_DATASET }}
           NEXT_PUBLIC_SANITY_API_VERSION: ${{ secrets.NEXT_PUBLIC_SANITY_API_VERSION }}
 
       - name: Run ESLint
-        run: bun run lint
+        run: pnpm run lint
 
-      - name: Run TypeScript type checking (warn only)
-        run: |
-          bun run typecheck || echo "TypeScript errors detected, but continuing as warning."
+      - name: Run TypeScript type checking
+        run: pnpm run typecheck
 
   # Job 2: Testing
   test:
@@ -60,31 +54,27 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v5
 
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: ${{ env.BUN_VERSION }}
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
 
-      - name: Cache dependencies
-        uses: actions/cache@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          path: ~/.bun/install/cache
-          key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lockb') }}
-          restore-keys: |
-            ${{ runner.os }}-bun-
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
 
       - name: Install dependencies
-        run: bun install
+        run: pnpm install
 
       - name: Generate Sanity types
-        run: bun run sanity:typegen
+        run: pnpm run sanity:typegen
         env:
           NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
           NEXT_PUBLIC_SANITY_DATASET: ${{ secrets.NEXT_PUBLIC_SANITY_DATASET }}
           NEXT_PUBLIC_SANITY_API_VERSION: ${{ secrets.NEXT_PUBLIC_SANITY_API_VERSION }}
 
       - name: Run unit tests
-        run: bun run test:run
+        run: pnpm run test:run
         env:
           NEXT_PUBLIC_SANITY_PROJECT_ID: test-project
           NEXT_PUBLIC_SANITY_DATASET: test
@@ -93,7 +83,7 @@ jobs:
           SANITY_API_READ_TOKEN: test-token
 
       - name: Run tests with coverage
-        run: bun run test:coverage
+        run: pnpm run test:coverage
         env:
           NEXT_PUBLIC_SANITY_PROJECT_ID: test-project
           NEXT_PUBLIC_SANITY_DATASET: test
@@ -120,31 +110,27 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v5
 
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: ${{ env.BUN_VERSION }}
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
 
-      - name: Cache dependencies
-        uses: actions/cache@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          path: ~/.bun/install/cache
-          key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lockb') }}
-          restore-keys: |
-            ${{ runner.os }}-bun-
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
 
       - name: Install dependencies
-        run: bun install
+        run: pnpm install
 
       - name: Generate Sanity types
-        run: bun run sanity:typegen
+        run: pnpm run sanity:typegen
         env:
           NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
           NEXT_PUBLIC_SANITY_DATASET: ${{ secrets.NEXT_PUBLIC_SANITY_DATASET }}
           NEXT_PUBLIC_SANITY_API_VERSION: ${{ secrets.NEXT_PUBLIC_SANITY_API_VERSION }}
 
       - name: Build application
-        run: bun run built
+        run: pnpm run built
         env:
           NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
           NEXT_PUBLIC_SANITY_DATASET: ${{ secrets.NEXT_PUBLIC_SANITY_DATASET }}
@@ -153,8 +139,7 @@ jobs:
           SANITY_API_READ_TOKEN: ${{ secrets.SANITY_API_READ_TOKEN }}
 
       - name: Run security audit
-        run: bun audit
-        continue-on-error: true
+        run: pnpm audit
 
       - name: Cache build output
         uses: actions/cache@v4
@@ -162,9 +147,9 @@ jobs:
           path: |
             .next/cache
             .next/static
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/bun.lockb') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
           restore-keys: |
-            ${{ runner.os }}-nextjs-${{ hashFiles('**/bun.lockb') }}-
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-
 
   # Job 4: Deploy (Production only)
   deploy:
@@ -178,31 +163,27 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v5
 
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: ${{ env.BUN_VERSION }}
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
 
-      - name: Cache dependencies
-        uses: actions/cache@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          path: ~/.bun/install/cache
-          key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lockb') }}
-          restore-keys: |
-            ${{ runner.os }}-bun-
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
 
       - name: Install dependencies
-        run: bun install
+        run: pnpm install
 
       - name: Generate Sanity types
-        run: bun run sanity:typegen
+        run: pnpm run sanity:typegen
         env:
           NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
           NEXT_PUBLIC_SANITY_DATASET: ${{ secrets.NEXT_PUBLIC_SANITY_DATASET }}
           NEXT_PUBLIC_SANITY_API_VERSION: ${{ secrets.NEXT_PUBLIC_SANITY_API_VERSION }}
 
       - name: Build for production
-        run: bun run built
+        run: pnpm run built
         env:
           NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
           NEXT_PUBLIC_SANITY_DATASET: ${{ secrets.NEXT_PUBLIC_SANITY_DATASET }}
@@ -222,7 +203,7 @@ jobs:
       #     vercel-args: '--prod'
 
       - name: Notify deployment success
-        run: echo "🚀 Deployment completed successfully!"
+        run: echo "Deployment completed successfully!"
 
   # Job 5: Notification
   notify:
@@ -235,8 +216,8 @@ jobs:
       - name: Check workflow status
         run: |
           if [ "${{ contains(needs.*.result, 'failure') }}" = "true" ]; then
-            echo "❌ CI/CD Pipeline failed"
+            echo "CI/CD Pipeline failed"
             exit 1
           else
-            echo "✅ CI/CD Pipeline completed successfully"
+            echo "CI/CD Pipeline completed successfully"
           fi

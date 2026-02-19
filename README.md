@@ -6,7 +6,7 @@ A modern personal website built with Next.js 15 and Sanity CMS, featuring live p
 
 - **Framework**: Next.js 15 with App Router
 - **CMS**: Sanity with embedded Studio
-- **Runtime**: Bun (package manager and runtime)
+- **Package Manager**: pnpm
 - **Styling**: Tailwind CSS v4
 - **Language**: TypeScript
 - **Testing**: Vitest + React Testing Library
@@ -33,17 +33,17 @@ A modern personal website built with Next.js 15 and Sanity CMS, featuring live p
 
 ### Prerequisites
 
-- Bun runtime
-- Node.js 18+
+- Node.js 20+
+- pnpm
 
 ### Getting Started
 
 ```bash
 # Install dependencies
-bun install
+pnpm install
 
 # Start development server (Next.js + Sanity type generation watcher)
-bun dev
+pnpm dev
 
 # Access the website
 open http://localhost:3000
@@ -56,23 +56,23 @@ open http://localhost:3000/studio
 
 ```bash
 # Development
-bun dev                    # Start dev server with type generation watcher
-bun run sanity:typegen     # Generate Sanity types manually
+pnpm dev                    # Start dev server with type generation watcher
+pnpm run sanity:typegen     # Generate Sanity types manually
 
 # Build & Production
-bun run build              # Build for production
-bun start                  # Start production server
+pnpm run built              # Build for production
+pnpm start                  # Start production server
 
 # Testing
-bun test                   # Run tests in watch mode
-bun run test:run           # Run tests once
-bun run test:coverage      # Run tests with coverage report
-bun run test:ui            # Run tests with UI interface
+pnpm test                   # Run tests in watch mode
+pnpm run test:run           # Run tests once
+pnpm run test:coverage      # Run tests with coverage report
+pnpm run test:ui            # Run tests with UI interface
 
 # Code Quality
-bun run lint               # Run ESLint
-bun run typecheck          # TypeScript type checking
-bun run next:debug         # Debug build with cache inspection
+pnpm run lint               # Run ESLint
+pnpm run typecheck          # TypeScript type checking
+pnpm run next:debug         # Debug build with cache inspection
 ```
 
 ## 📁 Project Structure
@@ -118,16 +118,16 @@ Coverage   26.39% (modules)
 
 ```bash
 # Run all tests
-bun test
+pnpm test
 
 # Run tests with coverage
-bun run test:coverage
+pnpm run test:coverage
 
 # Run tests in watch mode
-bun run test:watch
+pnpm run test:watch
 
 # Run tests with UI
-bun run test:ui
+pnpm run test:ui
 ```
 
 ## 📝 Content Management
@@ -159,7 +159,7 @@ bun run test:ui
 - TypeScript with strict mode
 - ESLint with Next.js, accessibility, and Prettier rules
 - Husky pre-commit hooks with lint-staged
-- Always run `bun run typecheck` before commits
+- Always run `pnpm run typecheck` before commits
 
 ### Testing
 
@@ -322,7 +322,7 @@ Coverage   26.39% (modules)
 
 ### Immediate (1-2 days each)
 
-1. **Add Bundle Analyzer**: `bun add -D @next/bundle-analyzer`
+1. **Add Bundle Analyzer**: `pnpm add -D @next/bundle-analyzer`
 2. **Implement Error Boundaries**: Wrap main sections
 3. **Add Loading States**: Create loading.tsx for key routes
 4. **Security Headers**: Add CSP and security headers
@@ -350,17 +350,17 @@ _Analysis performed using automated code quality assessment tools and manual rev
 
 ![TypeScript](https://img.shields.io/badge/TypeScript-100%25-blue)
 ![Test Coverage](https://img.shields.io/badge/Coverage-0%25-green)
-![Components](https://img.shields.io/badge/Components-41-orange)
-![Tests](https://img.shields.io/badge/Tests-5-purple)
-![Lines of Code](https://img.shields.io/badge/Lines%20of%20Code-6571-lightgrey)
+![Components](https://img.shields.io/badge/Components-47-orange)
+![Tests](https://img.shields.io/badge/Tests-11-purple)
+![Lines of Code](https://img.shields.io/badge/Lines%20of%20Code-7551-lightgrey)
 
 | Metric           | Value                                                                                         |
 | ---------------- | --------------------------------------------------------------------------------------------- |
-| TypeScript Files | 109                                                                                           |
-| React Components | 41                                                                                            |
-| Test Files       | 5                                                                                             |
-| Lines of Code    | 6571                                                                                          |
+| TypeScript Files | 120                                                                                           |
+| React Components | 47                                                                                            |
+| Test Files       | 11                                                                                            |
+| Lines of Code    | 7551                                                                                          |
 | Test Coverage    | 0%                                                                                            |
 | Build Status     | ![CI](https://github.com/bjh-dev/bryanjhickey-website/workflows/CI%2FCD%20Pipeline/badge.svg) |
 
-_Metrics updated automatically on Sat Dec 13 02:08:44 UTC 2025_
+_Metrics updated automatically on Thu Feb 19 13:31:35 UTC 2026_

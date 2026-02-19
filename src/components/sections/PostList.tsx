@@ -13,10 +13,7 @@ export default function PostList({ section }: { section: PostListSection }) {
     .filter((post) => post.isFeatured)
     .slice(0, 2)
 
-  const isShowMore = section.numberOfPosts
-    ? section.posts.length > section.numberOfPosts + 1 &&
-      (section.numberOfPosts ?? 6)
-    : false
+  const isShowMore = section.posts.length > (section.numberOfPosts ?? 6)
 
   return (
     <section className="py-12">

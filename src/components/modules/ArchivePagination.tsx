@@ -80,14 +80,17 @@ export function ArchivePagination({
             <PaginationLink
               href={pageLink(page, linkBase)}
               isActive={currentPage === page}
+              aria-current={currentPage === page ? 'page' : undefined}
             >
               {page}
             </PaginationLink>
           </PaginationItem>
         ))}
-        <PaginationItem>
-          <PaginationEllipsis />
-        </PaginationItem>
+        {pages[pages.length - 1] < totalPages && (
+          <PaginationItem>
+            <PaginationEllipsis />
+          </PaginationItem>
+        )}
         {nextPage && (
           <PaginationItem>
             <PaginationNext href={pageLink(nextPage, linkBase)} />

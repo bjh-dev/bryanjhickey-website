@@ -1,5 +1,6 @@
 import { cn } from '@/lib/utils'
 import { SocialMediaType } from '@/types/seo'
+import { IconType } from 'react-icons'
 import {
   FaFacebook,
   FaInstagram,
@@ -9,6 +10,15 @@ import {
   FaYoutube,
 } from 'react-icons/fa6'
 
+const ICON_MAP: Record<NonNullable<SocialMediaType>, IconType> = {
+  facebook: FaFacebook,
+  instagram: FaInstagram,
+  linkedin: FaLinkedinIn,
+  twitter: FaXTwitter,
+  youtube: FaYoutube,
+  tiktok: FaTiktok,
+}
+
 export const SocialIcon = ({
   platform,
   className,
@@ -16,64 +26,17 @@ export const SocialIcon = ({
   platform: NonNullable<SocialMediaType>
   className?: string
 }) => {
-  switch (platform) {
-    case 'facebook':
-      return (
-        <FaFacebook
-          className={cn(
-            'group-hover:text-primary h-6 w-6 transition-colors',
-            className,
-          )}
-        />
-      )
-    case 'instagram':
-      return (
-        <FaInstagram
-          className={cn(
-            'group-hover:text-primary h-6 w-6 transition-colors',
-            className,
-          )}
-        />
-      )
-    case 'linkedin':
-      return (
-        <FaLinkedinIn
-          className={cn(
-            'group-hover:text-primary h-6 w-6 transition-colors',
-            className,
-          )}
-        />
-      )
-    case 'twitter':
-      return (
-        <FaXTwitter
-          className={cn(
-            'group-hover:text-primary h-6 w-6 transition-colors',
-            className,
-          )}
-        />
-      )
-    case 'youtube':
-      return (
-        <FaYoutube
-          className={cn(
-            'group-hover:text-primary h-6 w-6 transition-colors',
-            className,
-          )}
-        />
-      )
-    case 'tiktok':
-      return (
-        <FaTiktok
-          className={cn(
-            'group-hover:text-primary h-6 w-6 transition-colors',
-            className,
-          )}
-        />
-      )
-    default:
-      return null
-  }
+  const Icon = ICON_MAP[platform]
+  if (!Icon) return null
+
+  return (
+    <Icon
+      className={cn(
+        'group-hover:text-primary h-6 w-6 transition-colors',
+        className,
+      )}
+    />
+  )
 }
 
 export default function SocialMedia({

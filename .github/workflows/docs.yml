@@ -18,7 +18,7 @@ on:
   workflow_dispatch:
 
 env:
-  BUN_VERSION: "latest"
+  NODE_VERSION: "20"
 
 jobs:
   # Job 1: Generate Code Documentation
@@ -30,16 +30,20 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v5
 
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v2
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          bun-version: ${{ env.BUN_VERSION }}
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
 
       - name: Install dependencies
-        run: bun install
+        run: pnpm install
 
       - name: Generate Sanity types
-        run: bun run sanity:typegen
+        run: pnpm run sanity:typegen
         env:
           NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
           NEXT_PUBLIC_SANITY_DATASET: ${{ secrets.NEXT_PUBLIC_SANITY_DATASET }}
@@ -98,7 +102,7 @@ jobs:
 
       - name: Generate test coverage documentation
         run: |
-          bun run test:coverage > coverage-output.txt 2>&1 || true
+          pnpm run test:coverage > coverage-output.txt 2>&1 || true
 
           echo "# Test Coverage Report" > COVERAGE.md
           echo "" >> COVERAGE.md
@@ -143,13 +147,17 @@ jobs:
           ref: ${{ github.head_ref }}
           fetch-depth: 0
 
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v2
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          bun-version: ${{ env.BUN_VERSION }}
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
 
       - name: Install dependencies
-        run: bun install
+        run: pnpm install
 
       - name: Generate metrics
         run: |
@@ -175,12 +183,12 @@ jobs:
 
           echo "📊 Project Metrics:"
           echo "- Total TypeScript files: $TOTAL_FILES"
-          echo "- Component files: $COMPONENT_FILES"  
+          echo "- Component files: $COMPONENT_FILES"
           echo "- Test files: $TEST_FILES"
           echo "- Total lines of code: $TOTAL_LINES"
 
       - name: Run test coverage for metrics
-        run: bun run test:coverage --reporter=json > coverage-metrics.json || true
+        run: pnpm run test:coverage --reporter=json > coverage-metrics.json || true
         env:
           NEXT_PUBLIC_SANITY_PROJECT_ID: test-project
           NEXT_PUBLIC_SANITY_DATASET: test

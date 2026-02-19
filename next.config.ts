@@ -11,14 +11,38 @@ const nextConfig: NextConfig = {
     ],
   },
   async headers() {
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+
     return [
+      {
+        // Security headers for all routes
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'SAMEORIGIN',
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin',
+          },
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=()',
+          },
+        ],
+      },
       {
         // Allow Sanity's live preview endpoint
         source: '/api/sanity/:path*',
         headers: [
           {
             key: 'Access-Control-Allow-Origin',
-            value: '*', // Caution: "*" is permissive—lock down if needed
+            value: siteUrl,
           },
           {
             key: 'Access-Control-Allow-Methods',
@@ -36,7 +60,7 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: 'Access-Control-Allow-Origin',
-            value: '*',
+            value: siteUrl,
           },
         ],
       },

@@ -23,16 +23,16 @@ This project uses **Vitest** with **React Testing Library** for comprehensive te
 
 ```bash
 # Run tests in watch mode
-bun test
+pnpm test
 
 # Run tests once
-bun run test:run
+pnpm run test:run
 
 # Run tests with UI
-bun run test:ui
+pnpm run test:ui
 
 # Run tests with coverage
-bun run test:coverage
+pnpm run test:coverage
 ```
 
 ## Test Structure
@@ -180,7 +180,6 @@ describe('ComponentName', () => {
 ### Best Practices
 
 1. **Test Behavior, Not Implementation**
-
    - Focus on what users see and interact with
    - Avoid testing internal component state
 
@@ -196,13 +195,11 @@ describe('ComponentName', () => {
    ```
 
 3. **Test Accessibility**
-
    - Include axe testing for all components
    - Verify proper ARIA attributes
    - Test keyboard navigation
 
 4. **Mock External Dependencies**
-
    - Mock API calls and external services
    - Mock Next.js components that don't affect testing logic
    - Keep mocks simple and focused
@@ -232,17 +229,14 @@ Tests automatically run on:
 ### Common Issues
 
 1. **JSX Transform Errors**
-
    - Ensure setup.tsx imports React
    - Check vitest.config.ts has @vitejs/plugin-react
 
 2. **Environment Variable Errors**
-
    - Verify all required env vars are set in vitest.config.ts
    - Check src/studio/env.ts for required variables
 
 3. **Mock Issues**
-
    - Clear mocks between tests with vi.clearAllMocks()
    - Check mock implementations match actual API
 

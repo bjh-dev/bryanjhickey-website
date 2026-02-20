@@ -13,7 +13,7 @@ import { ButtonFragmentType } from '@/lib/sanity/queries/fragments/fragment.type
 
 export default function Hero({ section }: { section: HeroSection }) {
   return (
-    <section className="relative h-[85svh] overflow-hidden bg-black">
+    <section className="relative h-[100svh] overflow-hidden bg-black">
       {section.image && (
         <Image
           src={urlForImage(section.image).url()}

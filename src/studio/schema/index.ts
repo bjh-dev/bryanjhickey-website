@@ -1,6 +1,7 @@
 import person from '@/studio/schema/documents/person'
 import category from '@/studio/schema/documents/category'
 import post from '@/studio/schema/documents/post'
+import bookReview from '@/studio/schema/documents/bookReview'
 import blockContent from '@/studio/schema/objects/blockContent'
 import link from '@/studio/schema/objects/link'
 import menu from '@/studio/schema/objects/menu'
@@ -15,6 +16,7 @@ import social from '@/studio/schema/objects/social'
 import button from '@/studio/schema/objects/button'
 import postList from '@/studio/schema/objects/sections/postList'
 import subscribe from '@/studio/schema/objects/sections/subscribe'
+import bookReviews from '@/studio/schema/objects/sections/bookReviews'
 import textColumn from '@/studio/schema/objects/sections/textColumn'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
@@ -23,11 +25,13 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     home,
     settings,
     // Documents
+    bookReview,
     category,
     post,
     person,
     page,
     // Sections
+    bookReviews,
     hero,
     postList,
     subscribe,

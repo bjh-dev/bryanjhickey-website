@@ -236,6 +236,27 @@ Use `--force-with-lease` (never `--force`) to avoid overwriting remote changes y
 
 ---
 
+## Sanity Dataset Sync
+
+This project has two Sanity datasets: `production` and `development` (project ID: `3ngw5o33`).
+
+**Whenever you change the Sanity schema or modify content via the Sanity MCP tools, sync production to development before creating a PR:**
+
+```bash
+npx sanity dataset export production /tmp/sanity-production-export.tar.gz --overwrite
+npx sanity dataset import /tmp/sanity-production-export.tar.gz development --replace
+```
+
+This keeps the `development` dataset in sync with `production` so that preview environments and development builds reflect the latest content and schema.
+
+**When to run this:**
+
+- After deploying schema changes (`npx sanity schema deploy` or modifying schema files)
+- After creating, updating, publishing, or deleting documents via Sanity MCP tools
+- Before running `gh pr create` on any branch that touches Sanity schemas or content
+
+---
+
 ## Before Marking Work Done
 
 - [ ] All changes are on a feature branch (not `main`)

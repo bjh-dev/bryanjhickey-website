@@ -1,4 +1,3 @@
-import { PostQueryResult } from '@/types/sanity.types'
 import { slugify, getHeadingsFromPortableText } from '@/utils/strings'
 import React from 'react'
 import type { PortableTextBlock } from 'next-sanity'
@@ -9,11 +8,11 @@ interface PortableTextSpan {
   text: string
 }
 
-export default function Toc({
-  posts,
-}: {
-  posts: NonNullable<PostQueryResult>
-}) {
+type TocProps = {
+  posts: { content: unknown[] | null }
+}
+
+export default function Toc({ posts }: TocProps) {
   // If posts.content is PortableText, extract headings
   const blocks = Array.isArray(posts.content) ? posts.content : []
   const headings = getHeadingsFromPortableText(blocks as PortableTextBlock[])

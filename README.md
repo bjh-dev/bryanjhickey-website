@@ -350,17 +350,17 @@ _Analysis performed using automated code quality assessment tools and manual rev
 
 ![TypeScript](https://img.shields.io/badge/TypeScript-100%25-blue)
 ![Test Coverage](https://img.shields.io/badge/Coverage-0%25-green)
-![Components](https://img.shields.io/badge/Components-52-orange)
+![Components](https://img.shields.io/badge/Components-54-orange)
 ![Tests](https://img.shields.io/badge/Tests-15-purple)
-![Lines of Code](https://img.shields.io/badge/Lines%20of%20Code-8307-lightgrey)
+![Lines of Code](https://img.shields.io/badge/Lines%20of%20Code-9023-lightgrey)
 
 | Metric           | Value                                                                                         |
 | ---------------- | --------------------------------------------------------------------------------------------- |
-| TypeScript Files | 130                                                                                           |
-| React Components | 52                                                                                            |
+| TypeScript Files | 136                                                                                           |
+| React Components | 54                                                                                            |
 | Test Files       | 15                                                                                            |
-| Lines of Code    | 8307                                                                                          |
+| Lines of Code    | 9023                                                                                          |
 | Test Coverage    | 0%                                                                                            |
 | Build Status     | ![CI](https://github.com/bjh-dev/bryanjhickey-website/workflows/CI%2FCD%20Pipeline/badge.svg) |
 
-_Metrics updated automatically on Thu Feb 19 22:20:45 UTC 2026_
+_Metrics updated automatically on Fri Feb 20 01:47:46 UTC 2026_

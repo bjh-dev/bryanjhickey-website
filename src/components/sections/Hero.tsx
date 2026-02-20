@@ -27,7 +27,7 @@ export default function Hero({ section }: { section: HeroSection }) {
       )}
       <div className="content feature h-full">
         <div className="mt-12 max-w-xl self-center md:mt-0">
-          <div className="relative flex flex-col text-white lg:space-y-2">
+          <div className="relative flex flex-col text-white lg:space-y-4">
             <FadeXAnimation xStartValue={-10} delay={0.25}>
               {' '}
               <h1 className="text-primary max-w-3xl font-medium tracking-wider uppercase lg:text-lg">
@@ -58,59 +58,61 @@ export default function Hero({ section }: { section: HeroSection }) {
                 />
               </FadeXAnimation>
             )}
-            <nav
-              aria-label="Social media links"
-              className="text-primary flex gap-4"
-            >
-              <FadeYAnimation delay={2}>
-                <a
-                  href="https://www.facebook.com/bryanjhickey"
-                  target="_blank"
-                  rel="nofollow noopener"
-                  onClick={() => {
-                    track('Social Platform', {
-                      platform: 'facebook',
-                      location: 'hero',
-                    })
-                  }}
-                >
-                  <p className="sr-only">Facebook Link</p>
-                  <FaFacebook className="h-6 w-6 transition-colors hover:text-white" />
-                </a>
-              </FadeYAnimation>
-              <FadeYAnimation delay={2.25}>
-                <a
-                  href="https://www.linkedin.com/in/bryanjhickey"
-                  target="_blank"
-                  rel="nofollow noopener"
-                  onClick={() => {
-                    track('Social Platform', {
-                      platform: 'linkedin',
-                      location: 'hero',
-                    })
-                  }}
-                >
-                  <p className="sr-only">LinkedIn Link</p>
-                  <FaLinkedinIn className="h-6 w-6 transition-colors hover:text-white" />
-                </a>
-              </FadeYAnimation>
-              <FadeYAnimation delay={2.5}>
-                <a
-                  href="https://x.com/bryanjhickey"
-                  target="_blank"
-                  rel="nofollow noopener"
-                  onClick={() => {
-                    track('Social Platform', {
-                      platform: 'twitter',
-                      location: 'hero',
-                    })
-                  }}
-                >
-                  <p className="sr-only">X / Twitter Link</p>
-                  <FaXTwitter className="h-6 w-6 transition-colors hover:text-white" />
-                </a>
-              </FadeYAnimation>
-            </nav>
+            <div className="mt-4">
+              <nav
+                aria-label="Social media links"
+                className="text-primary flex gap-4"
+              >
+                <FadeYAnimation delay={2}>
+                  <a
+                    href="https://www.facebook.com/bryanjhickey"
+                    target="_blank"
+                    rel="nofollow noopener"
+                    onClick={() => {
+                      track('Social Platform', {
+                        platform: 'facebook',
+                        location: 'hero',
+                      })
+                    }}
+                  >
+                    <p className="sr-only">Facebook Link</p>
+                    <FaFacebook className="h-6 w-6 transition-colors hover:text-white" />
+                  </a>
+                </FadeYAnimation>
+                <FadeYAnimation delay={2.25}>
+                  <a
+                    href="https://www.linkedin.com/in/bryanjhickey"
+                    target="_blank"
+                    rel="nofollow noopener"
+                    onClick={() => {
+                      track('Social Platform', {
+                        platform: 'linkedin',
+                        location: 'hero',
+                      })
+                    }}
+                  >
+                    <p className="sr-only">LinkedIn Link</p>
+                    <FaLinkedinIn className="h-6 w-6 transition-colors hover:text-white" />
+                  </a>
+                </FadeYAnimation>
+                <FadeYAnimation delay={2.5}>
+                  <a
+                    href="https://x.com/bryanjhickey"
+                    target="_blank"
+                    rel="nofollow noopener"
+                    onClick={() => {
+                      track('Social Platform', {
+                        platform: 'twitter',
+                        location: 'hero',
+                      })
+                    }}
+                  >
+                    <p className="sr-only">X / Twitter Link</p>
+                    <FaXTwitter className="h-6 w-6 transition-colors hover:text-white" />
+                  </a>
+                </FadeYAnimation>
+              </nav>
+            </div>
           </div>
         </div>
       </div>

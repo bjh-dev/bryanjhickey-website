@@ -49,7 +49,7 @@ export default function BookReviews({
               <Link
                 key={review._id}
                 href={`/book-reviews/${review.slug}`}
-                className={`bg-foreground/10 hover:bg-foreground/20 group hover:border-primary flex flex-col rounded-xl border border-transparent p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg`}
+                className={`bg-foreground/5 hover:bg-foreground/10 group hover:border-primary flex flex-col rounded-xl border border-transparent p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg`}
               >
                 <p className="text-primary text-xs font-semibold tracking-[0.15em] uppercase">
                   Book Review

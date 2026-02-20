@@ -245,11 +245,56 @@ export const cardGridsSectionFragment = /* groq */ `
   },
 `
 
+export const bookReviewCardFragment = /* groq */ `
+  _type,
+  _id,
+  "status": select(_originalId in path("drafts.**") => "draft", "published"),
+  "title": coalesce(title, "Untitled"),
+  "slug": slug.current,
+  excerpt,
+  bookTitle,
+  bookAuthor,
+  image,
+  date,
+  _updatedAt,
+  "author": author->{${personFragment}},
+  "wordCount": count(string::split(coalesce(pt::text(content), ''), " ")),
+`
+
+export const bookReviewFragment = /* groq */ `
+  ${bookReviewCardFragment}
+  publisher,
+  yearPublished,
+  amazonLink,
+  ${contentFragment}
+  seo {
+    ${seoFragment}
+  },
+`
+
+export const bookReviewsSectionFragment = /* groq */ `
+  _type,
+  heading,
+  subtitle,
+  linkText,
+  numberOfReviews,
+  "reviews": *[_type == 'bookReview'] | order(date desc) [0...6] {
+    _id,
+    title,
+    bookTitle,
+    bookAuthor,
+    excerpt,
+    date,
+    "slug": slug.current,
+  }
+`
+
 export const pageBuilderFragment = /* groq */ `
   pageSections[]{
     ...,
     _key,
     _type,
+    _type == 'bookReviews' => {${bookReviewsSectionFragment}},
     _type == 'cardGrid' => {${cardGridsSectionFragment}},
     _type == 'cta' => {${ctaSectionFragment}},
     _type == 'divider' => {${dividerSectionFragment}},

@@ -8,6 +8,7 @@ export const getBaseURL = () => {
 type SupportedDocumentType =
   | 'page'
   | 'post'
+  | 'bookReview'
   | 'category'
   | 'homePage'
   | 'person'
@@ -26,6 +27,8 @@ export const getDocumentLink = (
       return `${linkBase}/${slug}`
     case 'post':
       return `${linkBase}/posts/${slug}`
+    case 'bookReview':
+      return `${linkBase}/book-reviews/${slug}`
     case 'category':
       return `${linkBase}/category/${slug}`
     case 'person':

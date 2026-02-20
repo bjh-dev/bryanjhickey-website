@@ -7,6 +7,8 @@ import {
   personFragment,
   postCardFragment,
   menuItemFragment,
+  bookReviewFragment,
+  bookReviewCardFragment,
 } from '@/lib/sanity/queries/fragments'
 
 export const settingsQuery = defineQuery(`*[_type == "settings"][0]{
@@ -44,10 +46,11 @@ export const getPageQuery = defineQuery(`
 `)
 
 export const getSitemapQuery = defineQuery(`
-  *[((_type in ["page", "post"] && defined(slug.current)) || (_type == "homePage")) && seo.noIndex != true]{
+  *[((_type in ["page", "post", "bookReview"] && defined(slug.current)) || (_type == "homePage")) && seo.noIndex != true]{
     "href": select(
       _type == "page" => "/" + slug.current,
       _type == "post" => "/posts/" + slug.current,
+      _type == "bookReview" => "/book-reviews/" + slug.current,
       _type == "homePage" => "/",
       slug.current
     ),
@@ -119,6 +122,36 @@ export const postsArchiveQuery = defineQuery(`
     "total": count(allResults),
     "results": allResults[$from..$to] {
       ${postCardFragment}
+    }
+  }
+`)
+
+export const bookReviewQuery = defineQuery(`
+  *[_type == "bookReview" && slug.current == $slug] [0] {
+    ${bookReviewFragment}
+    "slug": slug.current,
+    "headings": content[style in ["h2", "h3", "h4", "h5", "h6"]],
+  }
+`)
+
+export const allBookReviewsQuery = defineQuery(`
+  *[_type == 'bookReview'] | order(date desc, _id desc) {
+    ${bookReviewCardFragment}
+  }
+`)
+
+export const bookReviewSlugs = defineQuery(`
+  *[_type == "bookReview" && defined(slug.current)][0..$limit].slug.current
+`)
+
+export const bookReviewsArchiveQuery = defineQuery(`
+  {
+    "allResults": *[_type == "bookReview"] | order(date desc, _id desc)
+  }
+  {
+    "total": count(allResults),
+    "results": allResults[$from..$to] {
+      ${bookReviewCardFragment}
     }
   }
 `)

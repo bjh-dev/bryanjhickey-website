@@ -21,6 +21,7 @@ const mockPost = {
   _id: 'post-1',
   status: 'published' as const,
   title: 'Test Blog Post',
+  subtitle: 'A Subtitle for Testing',
   slug: 'test-blog-post',
   excerpt: 'This is a test excerpt for the blog post.',
   isFeatured: false,
@@ -254,6 +255,19 @@ describe('PostCard', () => {
       'md:line-clamp-2',
       // 'lg:font-bold' removed, as not present
     )
+  })
+
+  it('renders subtitle when present', () => {
+    render(<PostCard post={mockPost} />)
+
+    expect(screen.getByText('A Subtitle for Testing')).toBeInTheDocument()
+  })
+
+  it('does not render subtitle when absent', () => {
+    const postWithoutSubtitle = { ...mockPost, subtitle: null }
+    render(<PostCard post={postWithoutSubtitle} />)
+
+    expect(screen.queryByText('A Subtitle for Testing')).not.toBeInTheDocument()
   })
 
   it('applies correct excerpt styling', () => {

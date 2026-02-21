@@ -52,6 +52,11 @@ export function PostFeaturedCard(featuredPost: PostCardFragmentType) {
             <h3 className="group-hover:text-primary font-serif text-3xl font-medium transition-all duration-300 md:line-clamp-2 lg:text-4xl">
               {featuredPost.title}
             </h3>
+            {featuredPost.subtitle && (
+              <p className="text-foreground/60 font-serif text-lg font-normal md:line-clamp-1 lg:text-xl">
+                {featuredPost.subtitle}
+              </p>
+            )}
             <p className="text-foreground/80 group-hover:text-foreground font-serif text-sm leading-relaxed transition-all duration-300 md:line-clamp-3 lg:text-base">
               {featuredPost.excerpt}
             </p>

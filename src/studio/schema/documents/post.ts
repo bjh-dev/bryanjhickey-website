@@ -25,6 +25,14 @@ export default defineType({
       group: 'content',
     }),
     defineField({
+      name: 'subtitle',
+      title: 'Subtitle',
+      type: 'string',
+      description:
+        'An optional secondary line that appears below the title. Use it to add context, a tagline, or a descriptive phrase.',
+      group: 'content',
+    }),
+    defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',

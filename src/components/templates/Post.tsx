@@ -31,9 +31,14 @@ const Post = ({ post }: Props) => {
         >
           <section className="col-span-3">
             <FadeXAnimation delay={0.5}>
-              <h1 className="mb-6 font-serif text-4xl leading-10 font-medium tracking-tight md:text-6xl md:leading-20">
+              <h1 className="mb-2 font-serif text-4xl leading-10 font-medium tracking-tight md:text-6xl md:leading-20">
                 {post.title}
               </h1>
+              {post.subtitle && (
+                <p className="text-foreground/60 mb-6 font-serif text-2xl leading-snug font-normal tracking-tight md:text-3xl">
+                  {post.subtitle}
+                </p>
+              )}
             </FadeXAnimation>
             {post.author ? (
               <FadeXAnimation delay={1}>

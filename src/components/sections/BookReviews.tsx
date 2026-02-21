@@ -19,68 +19,70 @@ export default function BookReviews({
   const visibleReviews = reviews.slice(0, displayCount)
 
   return (
-    <section className="border-border border-b">
-      <div className="mx-auto max-w-7xl px-6 py-20">
-        <div className="flex items-baseline justify-between">
-          <h2 className="text-foreground text-2xl font-bold tracking-tight sm:text-3xl">
-            {section.heading}
-          </h2>
-          {section.linkText && (
-            <Link
-              href="/book-reviews"
-              className="text-primary hover:text-primary/80 text-sm font-medium transition-colors"
-            >
-              {section.linkText} &rarr;
-            </Link>
+    <section>
+      <div className="py-12">
+        <div className="content">
+          <div className="flex items-baseline justify-between">
+            <h2 className="text-foreground border-foreground/60 my-8 mb-8 w-full border-b pb-8 text-5xl font-bold tracking-wider uppercase">
+              {section.heading}
+            </h2>
+          </div>
+
+          {section.subtitle && (
+            <p className="text-foreground/50 font-bitter mb-8 max-w-lg pb-12 text-2xl leading-relaxed italic">
+              {section.subtitle}
+            </p>
           )}
-        </div>
 
-        {section.subtitle && (
-          <p className="text-muted-foreground mt-4 max-w-2xl text-[1.0625rem] leading-relaxed">
-            {section.subtitle}
-          </p>
-        )}
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {visibleReviews.map((review, index) => {
+              return (
+                <Link
+                  key={review._id}
+                  href={`/book-reviews/${review.slug}`}
+                  className="bg-foreground/5 hover:bg-foreground/10 group hover:border-primary flex flex-col rounded-xl border border-transparent p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
+                >
+                  <div className="flex flex-col gap-2">
+                    <p className="text-primary text-xs font-semibold tracking-[0.15em] uppercase">
+                      Book Review
+                    </p>
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {visibleReviews.map((review, index) => {
-            const colorClass = CARD_COLORS[index % CARD_COLORS.length]
+                    <h3 className="text-foreground line-clamp-2 text-lg leading-snug font-bold">
+                      {review.bookTitle}
+                    </h3>
 
-            return (
+                    {review.bookAuthor && (
+                      <p className="text-foreground mt-1 text-sm">
+                        by {review.bookAuthor}
+                      </p>
+                    )}
+
+                    {review.excerpt && (
+                      <p className="text-foreground/60 mt-2 line-clamp-3 flex-1 text-sm leading-relaxed">
+                        {review.excerpt}
+                      </p>
+                    )}
+
+                    {review.date && (
+                      <p className="text-text-foreground/60 mt-4 text-xs">
+                        {format(parseISO(review.date), 'MMMM d, yyyy')}
+                      </p>
+                    )}
+                  </div>
+                </Link>
+              )
+            })}
+          </div>
+          {section.linkText && (
+            <div className="flex w-full justify-end-safe py-12">
               <Link
-                key={review._id}
-                href={`/book-reviews/${review.slug}`}
-                className={`bg-foreground/5 hover:bg-foreground/10 group hover:border-primary flex flex-col rounded-xl border border-transparent p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg`}
+                href="/book-reviews"
+                className="text-primary hover:text-primary/80 text-sm font-medium transition-colors"
               >
-                <p className="text-primary text-xs font-semibold tracking-[0.15em] uppercase">
-                  Book Review
-                </p>
-
-                <h3 className="text-foreground mt-3 text-lg leading-snug font-bold">
-                  {review.bookTitle}
-                </h3>
-
-                {review.bookAuthor && (
-                  <p className="text-muted-foreground mt-1 text-sm">
-                    by {review.bookAuthor}
-                  </p>
-                )}
-
-                <hr className="border-border/60 my-4" />
-
-                {review.excerpt && (
-                  <p className="text-muted-foreground line-clamp-3 flex-1 text-sm leading-relaxed">
-                    {review.excerpt}
-                  </p>
-                )}
-
-                {review.date && (
-                  <p className="text-muted-foreground mt-4 text-xs">
-                    {format(parseISO(review.date), 'MMMM d, yyyy')}
-                  </p>
-                )}
+                {section.linkText} &rarr;
               </Link>
-            )
-          })}
+            </div>
+          )}
         </div>
       </div>
     </section>

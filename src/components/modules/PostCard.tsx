@@ -66,6 +66,11 @@ export function PostCard({
             <h3 className="group-hover:text-primary font-serif text-2xl transition-all duration-300 md:line-clamp-2">
               {post.title}
             </h3>
+            {post.subtitle && (
+              <p className="text-foreground/60 font-serif text-base font-normal md:line-clamp-1">
+                {post.subtitle}
+              </p>
+            )}
             {!showImage && (
               <div className="flex items-start gap-2 text-sm md:items-center md:gap-4">
                 {post.date ? (

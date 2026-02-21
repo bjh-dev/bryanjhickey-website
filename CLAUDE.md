@@ -1,5 +1,14 @@
 # CLAUDE.md
 
+> **STOP — BEFORE WRITING ANY CODE:**
+>
+> 1. Create a feature branch: `git checkout -b feat/your-task-name origin/main`
+> 2. Make all changes on that branch — **never commit to `main`**
+> 3. When the work is complete (lint, typecheck, tests, build all pass), commit and push
+> 4. Raise a PR: `gh pr create --base main`
+>
+> This is non-negotiable. Every code change, no matter how small, follows this workflow.
+
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Project Overview

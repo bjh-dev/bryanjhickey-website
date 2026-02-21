@@ -171,6 +171,7 @@ export const postCardFragment = /* groq */ `
   _id,
   "status": select(_originalId in path("drafts.**") => "draft", "published"),
   "title": coalesce(title, "Untitled"),
+  subtitle,
   "slug": slug.current,
   excerpt,
   isFeatured,

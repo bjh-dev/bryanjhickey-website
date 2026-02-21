@@ -21,6 +21,7 @@ const mockFeaturedPost = {
   _id: 'featured-post-1',
   status: 'published' as const,
   title: 'Featured Test Post',
+  subtitle: 'A Subtitle for Featured Testing',
   slug: 'featured-test-post',
   excerpt: 'This is a test excerpt for the featured blog post.',
   isFeatured: true,
@@ -174,6 +175,23 @@ describe('PostFeaturedCard', () => {
       'md:line-clamp-2',
       'lg:text-4xl',
     )
+  })
+
+  it('renders subtitle when present', () => {
+    render(<PostFeaturedCard {...mockFeaturedPost} />)
+
+    expect(
+      screen.getByText('A Subtitle for Featured Testing'),
+    ).toBeInTheDocument()
+  })
+
+  it('does not render subtitle when absent', () => {
+    const postWithoutSubtitle = { ...mockFeaturedPost, subtitle: null }
+    render(<PostFeaturedCard {...postWithoutSubtitle} />)
+
+    expect(
+      screen.queryByText('A Subtitle for Featured Testing'),
+    ).not.toBeInTheDocument()
   })
 
   it('applies correct excerpt styling', () => {

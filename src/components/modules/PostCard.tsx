@@ -45,21 +45,30 @@ export function PostCard({
             </div>
           )}
 
-          <div className="col-span-2 flex flex-col gap-2">
+          <div className="col-span-2 flex flex-col gap-4">
             {showImage && (
               <div className="flex items-start gap-2 md:items-center md:gap-4">
                 {post.date ? (
                   <div className="flex">
                     <time className="text-foreground/50 text-xs">
-                      {formatDate(post.date)}
+                      {formatDate('short', post.date)}
                     </time>
                   </div>
                 ) : null}
-                <div className="hidden md:flex md:items-center">
-                  <div className="text-foreground/50 text-sm">&#10013;</div>
-                </div>
                 <div className="flex items-center">
                   <ReadTime wordCount={post.wordCount} className="text-xs" />
+                </div>
+              </div>
+            )}
+            {!showImage && (
+              <div className="text-foreground/60 flex items-start gap-4 text-xs md:items-center md:gap-4">
+                {post.date ? (
+                  <div className="flex items-center">
+                    <time>{formatDate('short', post.date)}</time>
+                  </div>
+                ) : null}
+                <div className="flex items-center">
+                  <ReadTime wordCount={post.wordCount} />
                 </div>
               </div>
             )}
@@ -67,28 +76,11 @@ export function PostCard({
               {post.title}
             </h3>
             {post.subtitle && (
-              <p className="text-foreground/60 font-serif text-base font-normal md:line-clamp-1">
+              <p className="text-foreground font-serif text-lg font-normal italic md:line-clamp-2">
                 {post.subtitle}
               </p>
             )}
-            {!showImage && (
-              <div className="flex items-start gap-2 text-sm md:items-center md:gap-4">
-                {post.date ? (
-                  <div className="flex">
-                    <time className="text-foreground/50">
-                      {formatDate(post.date)}
-                    </time>
-                  </div>
-                ) : null}
-                <div className="hidden md:flex md:items-center">
-                  <div className="text-foreground/50 text-sm">&#10013;</div>
-                </div>
-                <div className="flex items-center">
-                  <ReadTime wordCount={post.wordCount} />
-                </div>
-              </div>
-            )}
-            <p className="text-foreground/80 group-hover:text-foreground font-serif text-sm leading-relaxed transition-all duration-300 md:line-clamp-3 lg:text-base">
+            <p className="text-foreground/60 group-hover:text-foreground font-serif text-sm leading-relaxed transition-all duration-300 md:line-clamp-4 lg:text-base">
               {post.excerpt}
             </p>
           </div>

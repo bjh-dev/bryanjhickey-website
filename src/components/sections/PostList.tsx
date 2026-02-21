@@ -19,13 +19,13 @@ export default function PostList({ section }: { section: PostListSection }) {
     <section className="py-12">
       <div className="content feature">
         {featuredPosts && (
-          <section className="pt-12 pb-6">
+          <section>
             <div>
-              <h4 className="text-foreground border-foreground/60 my-8 mb-8 border-b pb-8 text-3xl font-bold tracking-wider uppercase">
+              <h4 className="text-foreground border-foreground/60 my-8 mb-8 border-b pb-8 text-5xl font-bold tracking-wider uppercase">
                 {section.title || 'Featured Posts'}
               </h4>
               {section.subtitle && (
-                <p className="text-muted-foreground -mt-4 mb-8 text-lg">
+                <p className="text-foreground/50 font-bitter mb-8 max-w-lg pb-12 text-2xl leading-relaxed italic">
                   {section.subtitle}
                 </p>
               )}
@@ -39,11 +39,11 @@ export default function PostList({ section }: { section: PostListSection }) {
           </section>
         )}
         <section className="pt-6 pb-12">
-          <h4 className="text-foreground border-foreground/60 my-8 mb-8 border-b pb-8 text-3xl font-bold tracking-wider uppercase">
+          <h4 className="text-foreground border-foreground/60 my-8 mb-8 border-b pb-8 text-5xl font-bold tracking-wider uppercase">
             {section.recentTitle || 'Recent Posts'}
           </h4>
           {section.recentSubtitle && (
-            <p className="text-muted-foreground -mt-4 mb-8 text-lg">
+            <p className="text-foreground/50 font-bitter mb-8 max-w-lg pb-12 text-2xl leading-relaxed italic">
               {section.recentSubtitle}
             </p>
           )}
@@ -56,11 +56,11 @@ export default function PostList({ section }: { section: PostListSection }) {
               })}
           </div>
           {isShowMore && (
-            <div className="flex w-full justify-end py-12">
+            <div className="flex w-full justify-end-safe py-12">
               <Button asChild variant="link">
                 <Link
-                  className="text-primary hover:text-foreground flex items-center gap-4"
                   href="/posts"
+                  className="text-primary hover:text-primary/80 text-sm font-medium transition-colors"
                 >
                   More Posts
                   <FaArrowRight />

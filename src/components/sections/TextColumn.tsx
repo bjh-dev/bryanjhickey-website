@@ -10,29 +10,31 @@ export default function TextColumn({
   section: TextColumnSection
 }) {
   return (
-    <section className="border-border border-b">
-      <div className="mx-auto max-w-[720px] px-6 py-20">
-        {section.eyebrow && (
-          <p className="text-primary mb-8 text-xs font-semibold tracking-[0.2em] uppercase">
-            {section.eyebrow}
-          </p>
-        )}
+    <section className="py-24">
+      <div className="content">
+        <div className="mx-auto max-w-180">
+          {section.eyebrow && (
+            <p className="text-primary mb-8 text-xs font-semibold tracking-[0.2em] uppercase">
+              {section.eyebrow}
+            </p>
+          )}
 
-        {section.content && (
-          <CustomPortableText
-            value={section.content as PortableTextBlock[]}
-            paragraphStyles="text-foreground text-[1.0625rem] leading-[1.85] [&>div>p+p]:mt-5"
-          />
-        )}
-
-        {section.buttons && section.buttons.length > 0 && (
-          <div className="mt-8">
-            <ButtonsGroup
-              buttons={section.buttons as unknown as ButtonFragmentType[]}
-              size="default"
+          {section.content && (
+            <CustomPortableText
+              value={section.content as PortableTextBlock[]}
+              paragraphStyles="text-foreground text-[1.0625rem] leading-[1.85] [&>div>p+p]:mt-5"
             />
-          </div>
-        )}
+          )}
+
+          {section.buttons && section.buttons.length > 0 && (
+            <div className="mt-8">
+              <ButtonsGroup
+                buttons={section.buttons as unknown as ButtonFragmentType[]}
+                size="default"
+              />
+            </div>
+          )}
+        </div>
       </div>
     </section>
   )

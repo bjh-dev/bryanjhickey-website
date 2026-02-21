@@ -13,7 +13,7 @@ import { ButtonFragmentType } from '@/lib/sanity/queries/fragments/fragment.type
 
 export default function Hero({ section }: { section: HeroSection }) {
   return (
-    <section className="relative h-[100svh] overflow-hidden bg-black">
+    <section className="relative min-h-[80svh] overflow-hidden bg-black">
       {section.image && (
         <Image
           src={urlForImage(section.image).url()}
@@ -25,7 +25,7 @@ export default function Hero({ section }: { section: HeroSection }) {
           className="pointer-events-none object-cover object-top-right"
         />
       )}
-      <div className="content feature h-full">
+      <div className="content feature h-full py-24 md:py-36">
         <div className="mt-12 max-w-xl self-center md:mt-0">
           <div className="relative flex flex-col text-white lg:space-y-4">
             <FadeXAnimation xStartValue={-10} delay={0.25}>
@@ -35,7 +35,7 @@ export default function Hero({ section }: { section: HeroSection }) {
               </h1>
             </FadeXAnimation>
             <FadeXAnimation xStartValue={-10} delay={1} duration={0.75}>
-              <p className="font-serif text-2xl sm:text-4xl lg:text-5xl">
+              <p className="font-serif text-5xl md:text-6xl">
                 {section.subtitle}
               </p>
             </FadeXAnimation>

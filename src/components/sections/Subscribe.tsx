@@ -3,8 +3,8 @@ import { Button } from '@/components/ui/button'
 
 export default function Subscribe({ section }: { section: SubscribeSection }) {
   return (
-    <section className="border-border border-b">
-      <div className="mx-auto max-w-[720px] px-6 py-20 text-center">
+    <section>
+      <div className="mx-auto max-w-180 px-6 py-20 text-center">
         {section.heading && (
           <h2 className="text-foreground text-2xl font-bold tracking-tight sm:text-3xl">
             {section.heading}

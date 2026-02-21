@@ -31,12 +31,26 @@ export const wordCount = (str: string) => {
   return str.split(/\s+/).filter(Boolean).length
 }
 
-export const formatDate = (dateString: string, locale = 'en-AU') => {
-  return new Date(dateString).toLocaleDateString(locale, {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  })
+export const formatDate = (
+  format: 'short' | 'long',
+  dateString: string,
+  locale = 'en-AU',
+) => {
+  if (format === 'short') {
+    return new Date(dateString).toLocaleDateString(locale, {
+      year: '2-digit',
+      month: 'short',
+      day: 'numeric',
+    })
+  }
+  if (format === 'long') {
+    return new Date(dateString).toLocaleDateString(locale, {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    })
+  }
+  return new Date(dateString).toLocaleDateString(locale)
 }
 
 export const readTime = (wordCount: number) => {

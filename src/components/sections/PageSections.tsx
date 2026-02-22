@@ -4,6 +4,7 @@ import { ElementType } from 'react'
 import { useOptimistic } from 'next-sanity/hooks'
 import { type SanityDocument } from 'next-sanity'
 import { dataAttr } from '@/lib/sanity/client/utils'
+import BibleQuoteOfTheDay from '@/components/sections/BibleQuoteOfTheDay'
 import BookReviews from '@/components/sections/BookReviews'
 import Hero from '@/components/sections/Hero'
 import { Section, Sections } from '@/components/sections/types'
@@ -15,6 +16,7 @@ import TextColumn from '@/components/sections/TextColumn'
 type PageSectionstype = Section['_type']
 
 const SECTION_COMPONENTS: Record<PageSectionstype, ElementType> = {
+  bibleQuoteOfTheDay: BibleQuoteOfTheDay,
   bookReviews: BookReviews,
   hero: Hero,
   postList: PostList,

@@ -23,6 +23,12 @@ vi.mock('@/lib/sanity/client/utils', () => ({
 }))
 
 // Mock section components
+vi.mock('@/components/sections/BibleQuoteOfTheDay', () => ({
+  default: ({ section }: { section: { title: string } }) => (
+    <div data-testid="biblequoteoftheday-section">{section.title}</div>
+  ),
+}))
+
 vi.mock('@/components/sections/Hero', () => ({
   default: ({ section }: { section: { title: string } }) => (
     <div data-testid="hero-section">{section.title}</div>
@@ -118,6 +124,27 @@ describe('PageSections', () => {
 
     expect(screen.getByTestId('hero-section')).toBeInTheDocument()
     expect(screen.getByTestId('postlist-section')).toBeInTheDocument()
+  })
+
+  it('renders a bibleQuoteOfTheDay section', () => {
+    const sections = [
+      {
+        _key: 'bqotd-1',
+        _type: 'bibleQuoteOfTheDay' as const,
+        title: 'Daily Verse',
+      },
+    ]
+
+    render(
+      <PageSections
+        documentId="doc-1"
+        documentType="page"
+        sections={sections as never}
+      />,
+    )
+
+    expect(screen.getByTestId('biblequoteoftheday-section')).toBeInTheDocument()
+    expect(screen.getByText('Daily Verse')).toBeInTheDocument()
   })
 
   it('renders fallback for unknown section type', () => {

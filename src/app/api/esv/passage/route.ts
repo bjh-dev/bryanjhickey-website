@@ -18,10 +18,13 @@ export async function GET(request: NextRequest) {
     )
   }
 
+  const includeVerseNumbers =
+    request.nextUrl.searchParams.get('include-verse-numbers') ?? 'true'
+
   const params = new URLSearchParams({
     q,
     'include-passage-references': 'true',
-    'include-verse-numbers': 'true',
+    'include-verse-numbers': includeVerseNumbers,
     'include-footnotes': 'false',
     'include-headings': 'false',
     'include-short-copyright': 'true',

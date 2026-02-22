@@ -16,6 +16,7 @@ import social from '@/studio/schema/objects/social'
 import button from '@/studio/schema/objects/button'
 import postList from '@/studio/schema/objects/sections/postList'
 import subscribe from '@/studio/schema/objects/sections/subscribe'
+import bibleQuoteOfTheDay from '@/studio/schema/objects/sections/bibleQuoteOfTheDay'
 import bookReviews from '@/studio/schema/objects/sections/bookReviews'
 import scripturePassage from '@/studio/schema/objects/sections/scripturePassage'
 import textColumn from '@/studio/schema/objects/sections/textColumn'
@@ -32,6 +33,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     person,
     page,
     // Sections
+    bibleQuoteOfTheDay,
     bookReviews,
     hero,
     postList,

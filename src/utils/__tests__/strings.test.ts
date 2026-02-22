@@ -141,8 +141,14 @@ describe('formatDate', () => {
 
   it('formats date string in short format', () => {
     const result = formatDate('short', '2024-06-01T12:00:00.000Z')
-    expect(result).toContain('24')
     expect(result).toContain('Jun')
+    expect(result).toContain('24')
+  })
+
+  it('handles ISO date strings in long format', () => {
+    const result = formatDate('long', '2024-06-01T12:00:00.000Z')
+    expect(result).toContain('2024')
+    expect(result).toContain('June')
   })
 })
 

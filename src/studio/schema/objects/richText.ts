@@ -1,7 +1,7 @@
 import { defineType, defineArrayMember, defineField } from 'sanity'
 import { ImageIcon, RemoveIcon } from '@sanity/icons'
 import { extendedDecorators } from '@/studio/schema/fields/decorators'
-import { baseAnnotations } from '@/studio/schema/fields/annotations'
+import { richTextAnnotations } from '@/studio/schema/fields/annotations'
 import {
   HeadingFour,
   HeadingThree,
@@ -37,7 +37,7 @@ export default defineType({
       ],
       marks: {
         decorators: extendedDecorators,
-        annotations: baseAnnotations,
+        annotations: richTextAnnotations,
       },
     }),
     defineArrayMember({

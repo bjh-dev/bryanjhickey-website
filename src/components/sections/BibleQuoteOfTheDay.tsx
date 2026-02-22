@@ -86,7 +86,7 @@ export default function BibleQuoteOfTheDay({
   if (!data?.passages?.[0]) return null
 
   return (
-    <section className="bg-foreground/10 py-24">
+    <section className="bg-foreground/5 py-24">
       <div className="content">
         <div className="grid gap-12 lg:grid-cols-2">
           <div className="max-w-3xl">

@@ -1,9 +1,14 @@
 'use client'
 
+import { useSyncExternalStore } from 'react'
 import FadeXAnimation from '@/components/animations/FadeXAnimation'
 import { cn } from '@/lib/utils'
 import { useTheme } from 'next-themes'
 import { usePathname } from 'next/navigation'
+
+const noop = () => () => {}
+const getTrue = () => true
+const getFalse = () => false
 
 export const Logo = ({
   lightLogo = false,
@@ -12,6 +17,7 @@ export const Logo = ({
   lightLogo?: boolean
   animate?: boolean
 }) => {
+  const mounted = useSyncExternalStore(noop, getTrue, getFalse)
   const { resolvedTheme } = useTheme()
   const pathname = usePathname()
   const isPostsRoute =
@@ -20,7 +26,7 @@ export const Logo = ({
     pathname.startsWith('/book-reviews')
   const isDarkTheme = resolvedTheme === 'dark'
 
-  if (!resolvedTheme) {
+  if (!mounted) {
     return null
   }
 

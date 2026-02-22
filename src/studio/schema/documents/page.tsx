@@ -18,6 +18,8 @@ export default defineType({
       name: 'name',
       title: 'Name',
       type: 'string',
+      description:
+        'The display name for this page. Shown in navigation and as the page heading.',
       validation: (Rule) => Rule.required(),
       group: 'content',
     }),
@@ -25,6 +27,8 @@ export default defineType({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
+      description:
+        'The URL-friendly version of the name (e.g. "about-us"). Auto-generated from the name.',
       validation: (Rule) => Rule.required(),
       options: {
         source: 'name',
@@ -40,4 +44,16 @@ export default defineType({
       group: 'seo',
     }),
   ],
+  preview: {
+    select: {
+      title: 'name',
+      slug: 'slug.current',
+    },
+    prepare({ title, slug }) {
+      return {
+        title: title || 'Untitled Page',
+        subtitle: slug ? `/${slug}` : 'No slug',
+      }
+    },
+  },
 })

@@ -9,14 +9,10 @@ import {
 } from './blockContentComponents'
 
 /**
- * This is the schema type for block content used in the post document type
- * Importing this type into the studio configuration's `schema` property
- * lets you reuse it in other document types with:
- *  {
- *    name: 'someName',
- *    title: 'Some title',
- *    type: 'blockContent'
- *  }
+ * @deprecated Use `richText` for longform content or `simpleText` for section text.
+ *
+ * This type is kept registered in the schema index so that existing documents
+ * using `blockContent` continue to validate. No new fields should reference it.
  */
 
 export default defineType({
@@ -26,10 +22,6 @@ export default defineType({
   of: [
     defineArrayMember({
       type: 'block',
-      // Styles let you define what blocks can be marked up as. The default
-      // set corresponds with HTML tags, but you can set any title or value
-      // you want, and decide how you want to deal with it where you want to
-      // use your content.
       styles: [
         { title: 'Normal', value: 'normal' },
         { title: 'Leading Paragraph', value: 'lead', component: LeadParagraph },
@@ -43,10 +35,7 @@ export default defineType({
         { title: 'Bullet', value: 'bullet' },
         { title: 'Number', value: 'number' },
       ],
-      // Marks let you mark up inline text in the Portable Text Editor
       marks: {
-        // Decorators usually describe a single property – e.g. a typographic
-        // preference or highlighting
         decorators: [
           { title: 'Code', value: 'code' },
           { title: 'Emphasis', value: 'em' },
@@ -54,7 +43,6 @@ export default defineType({
           { title: 'Strong', value: 'strong' },
           { title: 'Underline', value: 'underline' },
         ],
-        // Annotations can be any object structure – e.g. a link or a footnote.
         annotations: [
           defineArrayMember({
             name: 'customLink',
@@ -93,9 +81,6 @@ export default defineType({
         ],
       },
     }),
-    // You can add additional types here. Note that you can't use
-    // primitive types such as 'string' and 'number' in the same array
-    // as a block type.
     defineArrayMember({
       type: 'image',
       icon: ImageIcon,

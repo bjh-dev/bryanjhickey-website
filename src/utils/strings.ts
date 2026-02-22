@@ -194,12 +194,12 @@ export function sortByBibleOrder(a: string, b: string): number {
 export function getHeadingsFromPortableText(
   blocks: PortableTextBlock[],
 ): PortableTextBlock[] {
-  // Return all heading blocks (h1-h5)
+  // Return all heading blocks (h2-h4)
   return blocks.filter(
     (block) =>
       block &&
       typeof block.style === 'string' &&
-      /^h[1-5]$/.test(block.style) &&
+      /^h[2-4]$/.test(block.style) &&
       Array.isArray(block.children),
   )
 }

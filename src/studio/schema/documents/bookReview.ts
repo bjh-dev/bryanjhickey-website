@@ -2,6 +2,7 @@ import { format, parseISO } from 'date-fns'
 import { defineField, defineType } from 'sanity'
 import { defaultFieldGroups } from '@/studio/config/fieldGroups'
 import { BookOpen } from 'lucide-react'
+import imageWithAlt from '@/studio/schema/fields/imageWithAlt'
 
 /**
  * Book Review schema. Define and edit the fields for the 'bookReview' content type.
@@ -37,36 +38,11 @@ export default defineType({
       validation: (rule) => rule.required(),
       group: 'content',
     }),
-    defineField({
-      name: 'image',
+    imageWithAlt({
       title: 'Cover Image',
-      type: 'image',
       description:
         'The cover image displayed at the top of the review and on review cards. Use a high-quality, landscape-oriented image.',
       group: 'content',
-      options: {
-        hotspot: true,
-      },
-      fields: [
-        {
-          name: 'alt',
-          type: 'string',
-          title: 'Alternative text',
-          description: 'Important for SEO and accessibility.',
-          validation: (rule) => {
-            return rule.custom((alt, context) => {
-              if (
-                (context.document?.image as { asset?: { _ref?: string } })
-                  ?.asset?._ref &&
-                !alt
-              ) {
-                return 'Required'
-              }
-              return true
-            })
-          },
-        },
-      ],
     }),
     defineField({
       name: 'excerpt',
@@ -118,7 +94,7 @@ export default defineType({
     defineField({
       name: 'content',
       title: 'Content',
-      type: 'blockContent',
+      type: 'richText',
       description:
         'The full body of the review. Use headings, lists, and links to structure your writing.',
       group: 'content',

@@ -20,7 +20,30 @@ const pageSectionsObjects = [
 export default defineField({
   name: 'pageSections',
   title: 'Page Sections',
+  description:
+    'Build your page by adding, reordering, and configuring sections. Each section is a self-contained content block.',
   type: 'array',
   of: pageSectionsObjects.map(({ name }) => defineArrayMember({ type: name })),
   group: 'content',
+  options: {
+    insertMenu: {
+      groups: [
+        {
+          name: 'content',
+          title: 'Content',
+          of: ['hero', 'textColumn', 'postList', 'bookReviews'],
+        },
+        {
+          name: 'scripture',
+          title: 'Scripture',
+          of: ['bibleQuoteOfTheDay', 'scripturePassage'],
+        },
+        {
+          name: 'engagement',
+          title: 'Engagement',
+          of: ['subscribe'],
+        },
+      ],
+    },
+  },
 })

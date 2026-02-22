@@ -3,6 +3,10 @@ import category from '@/studio/schema/documents/category'
 import post from '@/studio/schema/documents/post'
 import bookReview from '@/studio/schema/documents/bookReview'
 import blockContent from '@/studio/schema/objects/blockContent'
+import richText from '@/studio/schema/objects/richText'
+import simpleText from '@/studio/schema/objects/simpleText'
+import callout from '@/studio/schema/objects/callout'
+import youtubeEmbed from '@/studio/schema/objects/youtubeEmbed'
 import link from '@/studio/schema/objects/link'
 import menu from '@/studio/schema/objects/menu'
 import menuItem from '@/studio/schema/objects/menuItem'
@@ -41,7 +45,11 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     subscribe,
     textColumn,
     // Objects
-    blockContent,
+    blockContent, // @deprecated — kept for existing data compatibility
+    richText,
+    simpleText,
+    callout,
+    youtubeEmbed,
     button,
     social,
     link,

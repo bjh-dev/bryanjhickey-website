@@ -13,7 +13,10 @@ export default defineType({
   fields: [
     defineField({
       name: 'variant',
+      title: 'Style',
       type: 'string',
+      description:
+        'The visual style of the button. "Default" is the primary style, "Link" renders as a text link.',
       initialValue: () => 'default',
       options: createRadioListLayout(buttonVariants, {
         direction: 'horizontal',
@@ -23,12 +26,14 @@ export default defineType({
       name: 'text',
       title: 'Button Text',
       type: 'string',
+      description: 'The label shown on the button.',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'link',
       title: 'Link',
       type: 'link',
+      description: 'Where the button navigates to when clicked.',
     }),
   ],
   preview: {

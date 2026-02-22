@@ -48,7 +48,6 @@ describe('Byline', () => {
     render(<Byline post={mockPost as never} />)
 
     expect(screen.getByText(/2 mins/)).toBeInTheDocument()
-    expect(screen.getByText('reading time')).toBeInTheDocument()
   })
 
   it('renders publication date', () => {

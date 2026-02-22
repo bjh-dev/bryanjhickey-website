@@ -1,7 +1,8 @@
 import { format, parseISO } from 'date-fns'
-import { defineField, defineType } from 'sanity'
+import { defineArrayMember, defineField, defineType } from 'sanity'
 import { defaultFieldGroups } from '@/studio/config/fieldGroups'
 import { FilePlus2 } from 'lucide-react'
+import imageWithAlt from '@/studio/schema/fields/imageWithAlt'
 
 /**
  * Post schema.  Define and edit the fields for the 'post' content type.
@@ -54,37 +55,10 @@ export default defineType({
       group: 'content',
       initialValue: false,
     }),
-    defineField({
-      name: 'image',
-      title: 'Image',
-      type: 'image',
+    imageWithAlt({
       description:
         'The cover image displayed at the top of the post and on post cards. Use a high-quality, landscape-oriented image.',
       group: 'content',
-      options: {
-        hotspot: true,
-      },
-      fields: [
-        {
-          name: 'alt',
-          type: 'string',
-          title: 'Alternative text',
-          description: 'Important for SEO and accessibility.',
-          validation: (rule) => {
-            // Custom validation to ensure alt text is provided if the image is present. https://www.sanity.io/docs/validation
-            return rule.custom((alt, context) => {
-              if (
-                (context.document?.coverImage as { asset?: { _ref?: string } })
-                  ?.asset?._ref &&
-                !alt
-              ) {
-                return 'Required'
-              }
-              return true
-            })
-          },
-        },
-      ],
     }),
     defineField({
       name: 'excerpt',
@@ -101,13 +75,15 @@ export default defineType({
       type: 'array',
       description:
         'Tag this post with one or more categories so readers can find related content.',
-      of: [{ type: 'reference', to: { type: 'category' } }],
+      of: [
+        defineArrayMember({ type: 'reference', to: [{ type: 'category' }] }),
+      ],
       group: 'content',
     }),
     defineField({
       name: 'content',
       title: 'Content',
-      type: 'blockContent',
+      type: 'richText',
       description:
         'The full body of the post. Use headings, lists, and links to structure your writing.',
       group: 'content',

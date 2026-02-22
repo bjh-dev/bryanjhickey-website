@@ -41,7 +41,7 @@ export const HeadingThree = ({ children }: { children: ReactNode }) => {
   return (
     <h3
       id={slugify(headingText)}
-      className="py-6 font-serif text-3xl first-of-type:pt-0 md:text-4xl"
+      className="py-6 font-serif text-2xl first-of-type:pt-0 md:text-3xl"
     >
       {children}
     </h3>
@@ -56,17 +56,6 @@ export const HeadingFour = ({ children }: { children: ReactNode }) => {
     >
       {children}
     </h4>
-  )
-}
-export const HeadingFive = ({ children }: { children: ReactNode }) => {
-  const headingText = getTextFromReactNode(children)
-  return (
-    <h5
-      id={slugify(headingText)}
-      className="py-6 font-serif text-lg first-of-type:pt-0 md:text-xl"
-    >
-      {children}
-    </h5>
   )
 }
 
@@ -90,8 +79,7 @@ export const CalloutBlock = ({
       'border-border bg-background my-6 rounded-lg border p-6',
       type === 'info' && 'border-green-600 bg-green-50 dark:bg-green-950',
       type === 'question' && 'border-blue-600 bg-blue-50 dark:bg-blue-950',
-      type === 'caution' &&
-        'border-yellow-4000 bg-yellow-50 dark:bg-yellow-950',
+      type === 'caution' && 'border-yellow-400 bg-yellow-50 dark:bg-yellow-950',
     )}
   >
     <div className="flex items-center gap-2 pb-2">
@@ -160,6 +148,12 @@ export const UnderlineMark = ({ children }: { children: ReactNode }) => (
   <u className="underline">{children}</u>
 )
 
+export const HighlightMark = ({ children }: { children: ReactNode }) => (
+  <mark className="rounded-sm bg-yellow-200 px-0.5 dark:bg-yellow-800">
+    {children}
+  </mark>
+)
+
 export const SuperScriptMark = ({ children }: { children: ReactNode }) => (
   <sup className="text-xs">{children}</sup>
 )
@@ -168,26 +162,109 @@ export const SubScriptMark = ({ children }: { children: ReactNode }) => (
   <sub className="text-xs">{children}</sub>
 )
 
+export const HorizontalRule = () => <hr className="border-border my-12" />
+
+export const YouTubeEmbed = ({
+  url,
+  caption,
+}: {
+  url?: string
+  caption?: string
+}) => {
+  if (!url) return null
+
+  // Extract video ID from various YouTube URL formats
+  const videoId = url.match(
+    /(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/,
+  )?.[1]
+
+  if (!videoId) return null
+
+  return (
+    <figure className="my-8">
+      <div className="relative aspect-video overflow-hidden rounded-lg">
+        <iframe
+          src={`https://www.youtube-nocookie.com/embed/${videoId}`}
+          title={caption || 'YouTube video'}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          className="absolute inset-0 h-full w-full"
+        />
+      </div>
+      {caption && (
+        <figcaption className="text-foreground/60 mt-2 text-center text-sm">
+          {caption}
+        </figcaption>
+      )}
+    </figure>
+  )
+}
+
+export const CodeBlockComponent = ({
+  code,
+  language,
+  filename,
+}: {
+  code?: string
+  language?: string
+  filename?: string
+}) => {
+  if (!code) return null
+
+  return (
+    <figure className="my-8">
+      {filename && (
+        <div className="bg-muted text-muted-foreground rounded-t-lg border border-b-0 px-4 py-2 font-mono text-xs">
+          {filename}
+        </div>
+      )}
+      <pre
+        className={cn(
+          'bg-muted overflow-x-auto rounded-lg p-4 font-mono text-sm',
+          filename && 'rounded-t-none',
+        )}
+      >
+        <code className={language ? `language-${language}` : undefined}>
+          {code}
+        </code>
+      </pre>
+    </figure>
+  )
+}
+
+export const ImageWithCaption = ({
+  children,
+  caption,
+}: {
+  children: ReactNode
+  caption?: string
+}) => (
+  <figure className="my-8">
+    {children}
+    {caption && (
+      <figcaption className="text-foreground/60 mt-2 text-center text-sm">
+        {caption}
+      </figcaption>
+    )}
+  </figure>
+)
+
 export const CustomPortableTextComponents: Partial<PortableTextReactComponents> =
   {
     block: {
-      h1: ({ children }) => <HeadingOne>{children}</HeadingOne>,
       h2: ({ children }) => <HeadingTwo>{children}</HeadingTwo>,
       h3: ({ children }) => <HeadingThree>{children}</HeadingThree>,
       h4: ({ children }) => <HeadingFour>{children}</HeadingFour>,
-      h5: ({ children }) => <HeadingFive>{children}</HeadingFive>,
       lead: ({ children }) => <LeadParagraph>{children}</LeadParagraph>,
       normal: ({ children }) => <DefaultText>{children}</DefaultText>,
       default: ({ children }) => <DefaultText>{children}</DefaultText>,
       blockquote: ({ children }) => <BlockQuote>{children}</BlockQuote>,
     },
     list: {
-      // Ex. 1: customizing common list types
       bullet: ({ children }) => <BulletList>{children}</BulletList>,
       number: ({ children }) => <NumberedList>{children}</NumberedList>,
     },
     listItem: {
-      // Ex. 2: customizing list item types
       bullet: ({ children }) => <BulletListItem>{children}</BulletListItem>,
       number: ({ children }) => <NumberedListItem>{children}</NumberedListItem>,
     },
@@ -199,6 +276,7 @@ export const CustomPortableTextComponents: Partial<PortableTextReactComponents> 
         <StrikeThroughMark>{children}</StrikeThroughMark>
       ),
       underline: ({ children }) => <UnderlineMark>{children}</UnderlineMark>,
+      highlight: ({ children }) => <HighlightMark>{children}</HighlightMark>,
       sup: ({ children }) => <SuperScriptMark>{children}</SuperScriptMark>,
       sub: ({ children }) => <SubScriptMark>{children}</SubScriptMark>,
     },

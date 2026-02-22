@@ -73,7 +73,7 @@ function CategoryFilterPills({
           className={cn(
             'shrink-0 rounded-full border px-5 py-2 text-xs font-medium tracking-wide transition-colors',
             isAllActive
-              ? 'bg-foreground text-background border-foreground'
+              ? 'bg-primary text-primary-foreground border-primary'
               : 'border-border text-muted-foreground hover:border-foreground hover:text-foreground',
           )}
         >
@@ -88,7 +88,7 @@ function CategoryFilterPills({
               className={cn(
                 'shrink-0 rounded-full border px-5 py-2 text-xs font-medium tracking-wide transition-colors',
                 isActive
-                  ? 'bg-foreground text-background border-foreground'
+                  ? 'bg-primary text-primary-foreground border-primary'
                   : 'border-border text-muted-foreground hover:border-foreground hover:text-foreground',
               )}
             >
@@ -161,7 +161,7 @@ function ImageCard({ post, index }: { post: PostType; index: number }) {
         href={getDocumentLink({ slug: post.slug, _type: 'post' })}
         className={cn(
           'group block',
-          isSecondRow && 'border-border border-t pt-8',
+          isSecondRow ? 'border-border border-t pt-8' : 'pb-8',
           index % 2 === 0 ? 'lg:pe-8' : 'border-border lg:border-s lg:ps-8',
         )}
       >
@@ -311,7 +311,7 @@ function PostsPagination({
             className={cn(
               'rounded-sm border px-3 py-2 text-sm font-medium transition-colors',
               page === currentPage
-                ? 'bg-foreground text-background border-foreground'
+                ? 'bg-primary text-primary-foreground border-primary'
                 : 'border-border text-muted-foreground hover:border-foreground hover:text-foreground',
             )}
           >
@@ -365,7 +365,7 @@ export default async function PostsPage({ searchParams }: Props) {
 
   if (posts.length === 0) {
     return (
-      <section className="py-12">
+      <section className="py-24">
         <div className="content feature">
           <div className="border-border mb-10 grid items-end gap-4 border-b pb-10 lg:grid-cols-2 lg:gap-10">
             <div>
@@ -398,7 +398,7 @@ export default async function PostsPage({ searchParams }: Props) {
   const rowCPosts = posts.slice(8, 10)
 
   return (
-    <section className="py-12">
+    <section className="py-48">
       <div className="content feature">
         {/* Section Header */}
         <div className="border-border mb-10 grid items-end gap-4 border-b pb-10 lg:grid-cols-2 lg:gap-10">

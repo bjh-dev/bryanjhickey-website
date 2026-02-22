@@ -9,7 +9,7 @@ import Link from 'next/link'
 import FadeYAnimation from '@/components/animations/FadeYAnimation'
 import { cn } from '@/lib/utils'
 
-const REVIEWS_PER_PAGE = 10
+const REVIEWS_PER_PAGE = 12
 
 type ReviewType = BookReviewCardFragmentType
 
@@ -24,65 +24,20 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-/* ─── Shared subcomponents ─────────────────────── */
+/* ─── Review card ──────────────────────────────── */
 
-function ReviewMeta({ review }: { review: ReviewType }) {
-  return (
-    <div className="text-muted-foreground flex items-center gap-4 text-xs font-medium tracking-wider uppercase">
-      {review.date && <time>{formatDate('long', review.date)}</time>}
-      <span className="bg-border inline-block h-px w-5" />
-      <span>{readTime(review.wordCount)} min read</span>
-    </div>
-  )
-}
-
-/* ─── Hero review ──────────────────────────────── */
-
-function HeroReview({ review }: { review: ReviewType }) {
-  return (
-    <FadeYAnimation yStartValue={24} duration={0.8}>
-      <Link
-        href={getDocumentLink({ slug: review.slug, _type: 'bookReview' })}
-        className="group border-border mb-16 block pb-16"
-      >
-        <ReviewMeta review={review} />
-        <h2 className="text-foreground mt-4 mb-2 font-serif text-3xl leading-tight font-bold tracking-tight lg:text-4xl">
-          {review.bookTitle}
-        </h2>
-        {review.bookAuthor && (
-          <p className="text-muted-foreground mb-4 text-sm font-medium">
-            by {review.bookAuthor}
-          </p>
-        )}
-        {review.excerpt && (
-          <p className="text-muted-foreground mb-6 max-w-2xl text-base leading-relaxed font-light">
-            {review.excerpt}
-          </p>
-        )}
-        <span className="text-primary text-sm font-medium">
-          Read review &rarr;
-        </span>
-      </Link>
-    </FadeYAnimation>
-  )
-}
-
-/* ─── Row A: Grid cards (2×2) ──────────────────── */
-
-function GridCard({ review, index }: { review: ReviewType; index: number }) {
-  const isSecondRow = index >= 2
-
+function ReviewCard({ review, index }: { review: ReviewType; index: number }) {
   return (
     <FadeYAnimation yStartValue={20} duration={0.7} delay={0.05 * index}>
       <Link
         href={getDocumentLink({ slug: review.slug, _type: 'bookReview' })}
-        className={cn(
-          'group block',
-          isSecondRow ? 'border-border border-t pt-8' : 'pb-8',
-          index % 2 === 0 ? 'lg:pe-8' : 'border-border lg:border-s lg:ps-8',
-        )}
+        className="group block h-full"
       >
-        <ReviewMeta review={review} />
+        <div className="text-muted-foreground flex items-center gap-4 text-xs font-medium tracking-wider uppercase">
+          {review.date && <time>{formatDate('long', review.date)}</time>}
+          <span className="bg-border inline-block h-px w-5" />
+          <span>{readTime(review.wordCount)} min read</span>
+        </div>
         <h3 className="text-foreground group-hover:text-primary mt-3 mb-1.5 font-serif text-xl leading-snug font-bold transition-colors duration-300">
           {review.bookTitle}
         </h3>
@@ -93,87 +48,6 @@ function GridCard({ review, index }: { review: ReviewType; index: number }) {
         )}
         {review.excerpt && (
           <p className="text-muted-foreground line-clamp-3 text-sm leading-relaxed font-light">
-            {review.excerpt}
-          </p>
-        )}
-      </Link>
-    </FadeYAnimation>
-  )
-}
-
-/* ─── Row B: Text-only cards (3-col) ───────────── */
-
-function TextCard({
-  review,
-  index,
-  isLast,
-}: {
-  review: ReviewType
-  index: number
-  isLast: boolean
-}) {
-  return (
-    <FadeYAnimation yStartValue={20} duration={0.7} delay={0.1 * index}>
-      <Link
-        href={getDocumentLink({ slug: review.slug, _type: 'bookReview' })}
-        className={cn(
-          'group block px-0 lg:px-8',
-          index === 0 && 'lg:ps-0',
-          isLast && 'lg:pe-0',
-          !isLast &&
-            'border-border border-b pb-8 lg:border-e lg:border-b-0 lg:pb-0',
-        )}
-      >
-        <ReviewMeta review={review} />
-        <h3 className="text-foreground group-hover:text-primary mt-3 mb-1.5 font-serif text-lg leading-snug font-bold transition-colors duration-300">
-          {review.bookTitle}
-        </h3>
-        {review.bookAuthor && (
-          <p className="text-muted-foreground mb-2 text-sm font-medium">
-            by {review.bookAuthor}
-          </p>
-        )}
-        {review.excerpt && (
-          <p className="text-muted-foreground line-clamp-3 text-[15px] leading-relaxed font-light">
-            {review.excerpt}
-          </p>
-        )}
-      </Link>
-    </FadeYAnimation>
-  )
-}
-
-/* ─── Row C: Asymmetric cards (2-col) ──────────── */
-
-function AsymmetricCard({
-  review,
-  index,
-}: {
-  review: ReviewType
-  index: number
-}) {
-  return (
-    <FadeYAnimation yStartValue={20} duration={0.7} delay={0.15 * index}>
-      <Link
-        href={getDocumentLink({ slug: review.slug, _type: 'bookReview' })}
-        className={cn(
-          'group block',
-          index === 0 && 'lg:pe-8',
-          index === 1 &&
-            'border-border border-t pt-8 lg:border-s lg:border-t-0 lg:ps-8 lg:pt-0',
-        )}
-      >
-        <ReviewMeta review={review} />
-        <h3 className="text-foreground group-hover:text-primary mt-3 mb-1.5 font-serif text-xl leading-snug font-bold transition-colors duration-300">
-          {review.bookTitle}
-        </h3>
-        {review.bookAuthor && (
-          <p className="text-muted-foreground mb-2 text-sm font-medium">
-            by {review.bookAuthor}
-          </p>
-        )}
-        {review.excerpt && (
-          <p className="text-muted-foreground line-clamp-3 text-[15px] leading-relaxed font-light">
             {review.excerpt}
           </p>
         )}
@@ -287,11 +161,6 @@ export default async function BookReviewsPage({ searchParams }: Props) {
     )
   }
 
-  const heroReview = reviews[0]
-  const rowAReviews = reviews.slice(1, 5)
-  const rowBReviews = reviews.slice(5, 8)
-  const rowCReviews = reviews.slice(8, 10)
-
   return (
     <section className="py-48">
       <div className="content feature">
@@ -314,40 +183,12 @@ export default async function BookReviewsPage({ searchParams }: Props) {
           </p>
         </div>
 
-        {/* Featured Hero Review */}
-        {heroReview && <HeroReview review={heroReview} />}
-
-        {/* Row A: Grid Cards (2×2) */}
-        {rowAReviews.length > 0 && (
-          <div className="mb-16 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-0">
-            {rowAReviews.map((review, i) => (
-              <GridCard key={review._id} review={review} index={i} />
-            ))}
-          </div>
-        )}
-
-        {/* Row B: Text-Only (3-col) */}
-        {rowBReviews.length > 0 && (
-          <div className="border-border mb-16 grid grid-cols-1 gap-8 border-t pt-12 lg:grid-cols-3 lg:gap-0">
-            {rowBReviews.map((review, i) => (
-              <TextCard
-                key={review._id}
-                review={review}
-                index={i}
-                isLast={i === rowBReviews.length - 1}
-              />
-            ))}
-          </div>
-        )}
-
-        {/* Row C: Asymmetric (2-col) */}
-        {rowCReviews.length > 0 && (
-          <div className="border-border mb-16 grid grid-cols-1 border-t pt-12 lg:grid-cols-[1fr_1.2fr] lg:gap-0">
-            {rowCReviews.map((review, i) => (
-              <AsymmetricCard key={review._id} review={review} index={i} />
-            ))}
-          </div>
-        )}
+        {/* Review Grid */}
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
+          {reviews.map((review, i) => (
+            <ReviewCard key={review._id} review={review} index={i} />
+          ))}
+        </div>
 
         {/* Pagination */}
         <ReviewsPagination

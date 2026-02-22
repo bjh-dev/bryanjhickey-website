@@ -10,7 +10,7 @@ export default function TextColumn({
   section: TextColumnSection
 }) {
   return (
-    <section className="py-24">
+    <section data-attribute="text-column" className="py-24">
       <div className="content">
         <div className="mx-auto max-w-180">
           {section.eyebrow && (

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, ReactNode } from 'react'
 import { PortableTextBlock } from 'next-sanity'
 import CustomPortableText from '@/components/modules/PortableText'
 import { BibleQuoteOfTheDaySection } from '@/components/sections/types'
@@ -10,6 +10,31 @@ type EsvPassageResponse = {
   passages?: string[]
   canonical?: string
   error?: string
+}
+
+function cleanPassageText(text: string, canonical?: string): string {
+  let cleaned = text
+  if (canonical) {
+    const escaped = canonical.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    cleaned = cleaned.replace(new RegExp(`^\\s*${escaped}\\s*`), '')
+  }
+  cleaned = cleaned.replace(/\s*\(ESV\)\s*$/, '')
+  return cleaned.trim()
+}
+
+function formatVerseNumbers(text: string): ReactNode[] {
+  const parts = text.split(/(\[\d+\])/)
+  return parts.map((part, i) => {
+    const match = part.match(/^\[(\d+)\]$/)
+    if (match) {
+      return (
+        <sup key={i} className="text-muted-foreground font-sans text-[0.6em]">
+          {match[1]}
+        </sup>
+      )
+    }
+    return part
+  })
 }
 
 export default function BibleQuoteOfTheDay({
@@ -22,7 +47,12 @@ export default function BibleQuoteOfTheDay({
 
   const fetchPassage = useCallback(async () => {
     const reference = getDailyVerse()
-    const params = new URLSearchParams({ q: reference })
+    const params = new URLSearchParams({
+      q: reference,
+      'indent-poetry': 'true',
+      'indent-paragraphs': '2',
+      'include-selahs': 'true',
+    })
 
     try {
       const res = await fetch(`/api/esv/passage?${params}`)
@@ -56,35 +86,50 @@ export default function BibleQuoteOfTheDay({
   if (!data?.passages?.[0]) return null
 
   return (
-    <section className="my-16 px-4">
-      <div className="mx-auto max-w-3xl">
-        {section.eyebrow && (
-          <p className="text-primary mb-4 text-xs font-semibold tracking-[0.2em] uppercase">
-            {section.eyebrow}
-          </p>
-        )}
+    <section className="bg-foreground/10 py-24">
+      <div className="content">
+        <div className="grid gap-12 lg:grid-cols-2">
+          <div className="max-w-3xl">
+            {section.eyebrow && (
+              <p className="text-primary mb-4 text-xs font-semibold tracking-[0.2em] uppercase">
+                {section.eyebrow}
+              </p>
+            )}
 
-        <h2 className="text-foreground mb-6 font-serif text-3xl font-bold tracking-tight lg:text-4xl">
-          {section.title}
-        </h2>
+            <h2 className="text-foreground mb-6 font-serif text-xl font-bold tracking-tight lg:text-2xl">
+              {section.title}
+            </h2>
 
-        {section.content && (
-          <div className="mb-8">
-            <CustomPortableText
-              value={section.content as PortableTextBlock[]}
-              paragraphStyles="text-muted-foreground text-base leading-relaxed"
-            />
+            {section.content && (
+              <div className="mb-8">
+                <CustomPortableText
+                  value={section.content as PortableTextBlock[]}
+                  paragraphStyles="text-muted-foreground leading-relaxed"
+                />
+              </div>
+            )}
           </div>
-        )}
-
-        <blockquote className="border-border border-l-4 pl-6">
-          <p className="text-foreground font-serif text-xl leading-relaxed whitespace-pre-wrap lg:text-2xl">
-            {data.passages[0]}
-          </p>
-          <footer className="text-muted-foreground mt-4 text-sm font-medium">
-            {data.canonical} — ESV
-          </footer>
-        </blockquote>
+          <div>
+            <blockquote className="border-primary border-l pl-6">
+              <p className="text-foreground font-serif text-lg leading-relaxed whitespace-pre-wrap">
+                {formatVerseNumbers(
+                  cleanPassageText(data.passages[0], data.canonical),
+                )}
+              </p>
+              <footer className="text-muted-foreground mt-4 text-sm font-medium">
+                <a
+                  href={`https://www.esv.org/${encodeURIComponent(data.canonical ?? '')}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-foreground underline decoration-1 underline-offset-2"
+                >
+                  {data.canonical}
+                </a>{' '}
+                — ESV
+              </footer>
+            </blockquote>
+          </div>
+        </div>
       </div>
     </section>
   )

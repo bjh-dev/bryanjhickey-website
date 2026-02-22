@@ -60,7 +60,9 @@ describe('BibleQuoteOfTheDay', () => {
       ).toBeInTheDocument()
     })
 
-    expect(screen.getByText(/Psalm 23 — ESV/)).toBeInTheDocument()
+    const link = screen.getByRole('link', { name: 'Psalm 23' })
+    expect(link).toHaveAttribute('href', 'https://www.esv.org/Psalm%2023')
+    expect(link.closest('footer')?.textContent).toContain('— ESV')
   })
 
   it('renders title', async () => {

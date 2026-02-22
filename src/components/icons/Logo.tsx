@@ -15,7 +15,9 @@ export const Logo = ({
   const { resolvedTheme } = useTheme()
   const pathname = usePathname()
   const isPostsRoute =
-    pathname.startsWith('/posts') || pathname.startsWith('/category')
+    pathname.startsWith('/posts') ||
+    pathname.startsWith('/category') ||
+    pathname.startsWith('/book-reviews')
   const isDarkTheme = resolvedTheme === 'dark'
 
   if (!resolvedTheme) {

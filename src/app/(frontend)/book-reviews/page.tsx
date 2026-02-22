@@ -1,86 +1,202 @@
 import { sanityFetch } from '@/lib/sanity/client/live'
-import { allBookReviewsQuery } from '@/lib/sanity/queries/queries'
+import { bookReviewsArchiveQuery } from '@/lib/sanity/queries/queries'
+import { BookReviewCardFragmentType } from '@/lib/sanity/queries/fragments/fragment.types'
+import { getDocumentLink } from '@/lib/links'
+import { formatDate, readTime } from '@/utils/strings'
 import { notFound } from 'next/navigation'
+import { Metadata } from 'next'
 import Link from 'next/link'
-import { format, parseISO } from 'date-fns'
-import ReadTime from '@/components/modules/ReadTime'
+import FadeYAnimation from '@/components/animations/FadeYAnimation'
+import { cn } from '@/lib/utils'
 
-const CARD_COLORS = [
-  'bg-amber-50 dark:bg-amber-950/40',
-  'bg-orange-50 dark:bg-orange-950/40',
-  'bg-stone-100 dark:bg-stone-900/50',
-  'bg-rose-50 dark:bg-rose-950/40',
-] as const
+const REVIEWS_PER_PAGE = 12
 
-export default async function BookReviewsPage() {
-  const { data: reviews } = await sanityFetch({
-    query: allBookReviewsQuery,
-  })
+type ReviewType = BookReviewCardFragmentType
 
-  if (!reviews) {
-    notFound()
+type Props = {
+  searchParams: Promise<{ page?: string }>
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: 'Book Reviews',
+    alternates: { canonical: '/book-reviews' },
+  }
+}
+
+/* ─── Review card ──────────────────────────────── */
+
+function ReviewCard({ review, index }: { review: ReviewType; index: number }) {
+  return (
+    <FadeYAnimation yStartValue={20} duration={0.7} delay={0.05 * index}>
+      <Link
+        href={getDocumentLink({ slug: review.slug, _type: 'bookReview' })}
+        className="group block h-full"
+      >
+        <div className="text-muted-foreground flex items-center gap-4 text-xs font-medium tracking-wider uppercase">
+          {review.date && <time>{formatDate('long', review.date)}</time>}
+          <span className="bg-border inline-block h-px w-5" />
+          <span>{readTime(review.wordCount)} min read</span>
+        </div>
+        <h3 className="text-foreground group-hover:text-primary mt-3 mb-1.5 font-serif text-xl leading-snug font-bold transition-colors duration-300">
+          {review.bookTitle}
+        </h3>
+        {review.bookAuthor && (
+          <p className="text-muted-foreground mb-2 text-sm font-medium">
+            by {review.bookAuthor}
+          </p>
+        )}
+        {review.excerpt && (
+          <p className="text-muted-foreground line-clamp-3 text-sm leading-relaxed font-light">
+            {review.excerpt}
+          </p>
+        )}
+      </Link>
+    </FadeYAnimation>
+  )
+}
+
+/* ─── Pagination ───────────────────────────────── */
+
+function ReviewsPagination({
+  currentPage,
+  totalPages,
+  totalReviews,
+  reviewsOnPage,
+}: {
+  currentPage: number
+  totalPages: number
+  totalReviews: number
+  reviewsOnPage: number
+}) {
+  if (totalPages <= 1) return null
+
+  const buildHref = (page: number) => {
+    if (page > 1) return `/book-reviews?page=${page}`
+    return '/book-reviews'
   }
 
   return (
-    <section className="py-24">
-      <div className="content">
-        <div className="py-16">
-          <h1 className="text-4xl font-bold">Book Reviews</h1>
-          <p className="text-muted-foreground mt-4 max-w-2xl text-lg leading-relaxed">
-            Critical reviews and reflections on books covering theology,
-            philosophy, and biblical studies.
+    <div className="border-border mt-16 border-t pt-12 text-center">
+      <div className="mb-6 flex items-center justify-center gap-2">
+        {currentPage > 1 && (
+          <Link
+            href={buildHref(currentPage - 1)}
+            className="text-muted-foreground hover:text-foreground border-border rounded-sm border px-4 py-2 text-sm font-medium transition-colors"
+          >
+            Previous
+          </Link>
+        )}
+        {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+          <Link
+            key={page}
+            href={buildHref(page)}
+            className={cn(
+              'rounded-sm border px-3 py-2 text-sm font-medium transition-colors',
+              page === currentPage
+                ? 'bg-primary text-primary-foreground border-primary'
+                : 'border-border text-muted-foreground hover:border-foreground hover:text-foreground',
+            )}
+          >
+            {page}
+          </Link>
+        ))}
+        {currentPage < totalPages && (
+          <Link
+            href={buildHref(currentPage + 1)}
+            className="text-muted-foreground hover:text-foreground border-border rounded-sm border px-4 py-2 text-sm font-medium transition-colors"
+          >
+            Next
+          </Link>
+        )}
+      </div>
+      <p className="text-muted-foreground text-sm">
+        Showing {reviewsOnPage} of {totalReviews} reviews
+      </p>
+    </div>
+  )
+}
+
+/* ─── Page ─────────────────────────────────────── */
+
+export default async function BookReviewsPage({ searchParams }: Props) {
+  const { page: pageParam } = await searchParams
+  const currentPage = Math.max(1, parseInt(pageParam ?? '1', 10) || 1)
+
+  const from = (currentPage - 1) * REVIEWS_PER_PAGE
+  const to = from + REVIEWS_PER_PAGE - 1
+
+  const { data: archiveData } = await sanityFetch({
+    query: bookReviewsArchiveQuery,
+    params: { from, to },
+  })
+
+  if (!archiveData) notFound()
+
+  const reviews = archiveData.results
+  const totalPages = Math.ceil(archiveData.total / REVIEWS_PER_PAGE)
+
+  if (reviews.length === 0) {
+    return (
+      <section className="py-48">
+        <div className="content feature">
+          <div className="border-border mb-10 grid items-end gap-4 border-b pb-10 lg:grid-cols-2 lg:gap-10">
+            <div>
+              <p className="text-primary mb-4 text-xs font-semibold tracking-[0.2em] uppercase">
+                Book Reviews
+              </p>
+              <h1 className="text-foreground font-serif text-5xl leading-none font-black tracking-tight lg:text-7xl">
+                Critical reviews{' '}
+                <em className="text-primary font-normal italic">
+                  and reflections
+                </em>
+              </h1>
+            </div>
+          </div>
+          <p className="text-muted-foreground py-24 text-center text-lg font-light">
+            No book reviews found.
+          </p>
+        </div>
+      </section>
+    )
+  }
+
+  return (
+    <section className="py-48">
+      <div className="content feature">
+        {/* Section Header */}
+        <div className="border-border mb-10 grid items-end gap-4 border-b pb-10 lg:grid-cols-2 lg:gap-10">
+          <div>
+            <p className="text-primary mb-4 text-xs font-semibold tracking-[0.2em] uppercase">
+              Book Reviews
+            </p>
+            <h1 className="text-foreground font-serif text-5xl leading-none font-black tracking-tight lg:text-7xl">
+              Critical reviews{' '}
+              <em className="text-primary font-normal italic">
+                and reflections
+              </em>
+            </h1>
+          </div>
+          <p className="text-muted-foreground max-w-md self-end pb-1 text-lg leading-relaxed font-light">
+            Reviews and reflections on books covering theology, philosophy, and
+            biblical studies.
           </p>
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {reviews.map((review, index) => {
-            const colorClass = CARD_COLORS[index % CARD_COLORS.length]
-
-            return (
-              <Link
-                key={review._id}
-                href={`/book-reviews/${review.slug}`}
-                className={`${colorClass} group flex flex-col rounded-xl p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg`}
-              >
-                <p className="text-muted-foreground text-xs font-semibold tracking-[0.15em] uppercase">
-                  Book Review
-                </p>
-
-                <h3 className="text-foreground mt-3 text-lg leading-snug font-bold">
-                  {review.bookTitle}
-                </h3>
-
-                {review.bookAuthor && (
-                  <p className="text-muted-foreground mt-1 text-sm">
-                    by {review.bookAuthor}
-                  </p>
-                )}
-
-                <hr className="border-border/60 my-4" />
-
-                {review.excerpt && (
-                  <p className="text-muted-foreground line-clamp-3 flex-1 text-sm leading-relaxed">
-                    {review.excerpt}
-                  </p>
-                )}
-
-                <div className="mt-4 flex items-center gap-3 text-xs">
-                  {review.date && (
-                    <time className="text-muted-foreground">
-                      {format(parseISO(review.date), 'MMMM d, yyyy')}
-                    </time>
-                  )}
-                  {!!review.wordCount && (
-                    <ReadTime
-                      wordCount={review.wordCount}
-                      className="text-xs"
-                    />
-                  )}
-                </div>
-              </Link>
-            )
-          })}
+        {/* Review Grid */}
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
+          {reviews.map((review, i) => (
+            <ReviewCard key={review._id} review={review} index={i} />
+          ))}
         </div>
+
+        {/* Pagination */}
+        <ReviewsPagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          totalReviews={archiveData.total}
+          reviewsOnPage={reviews.length}
+        />
       </div>
     </section>
   )

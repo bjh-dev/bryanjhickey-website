@@ -140,6 +140,12 @@ export const allBookReviewsQuery = defineQuery(`
   }
 `)
 
+export const allCategoriesQuery = defineQuery(`
+  *[_type == "category"] | order(title asc) {
+    ${categoryFragment}
+  }
+`)
+
 export const bookReviewSlugs = defineQuery(`
   *[_type == "bookReview" && defined(slug.current)][0..$limit].slug.current
 `)

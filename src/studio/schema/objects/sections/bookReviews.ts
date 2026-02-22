@@ -32,9 +32,9 @@ export default defineType({
       name: 'numberOfReviews',
       title: 'Number of Reviews',
       type: 'number',
-      description: 'How many book review cards to display (1–6).',
+      description: 'How many book review cards to display (1–8).',
       initialValue: 3,
-      validation: (Rule) => Rule.min(1).max(6),
+      validation: (Rule) => Rule.min(1).max(8),
     }),
   ],
   preview: {

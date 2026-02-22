@@ -4,6 +4,7 @@ import {
   PostsArchiveQueryResult,
   BookReviewQueryResult,
   BookReviewsArchiveQueryResult,
+  AllCategoriesQueryResult,
 } from '@/types/sanity.types'
 
 export type PostCardFragmentType = NonNullable<
@@ -19,6 +20,8 @@ export type BookReviewFragmentType = NonNullable<BookReviewQueryResult>
 export type CategoryFragmentType = NonNullable<
   PostFragmentType['categories']
 >[number]
+
+export type CategoryListItemType = NonNullable<AllCategoriesQueryResult[number]>
 
 export type PageFragmentType = NonNullable<GetPageQueryResult>
 export type SeoFragmentType = NonNullable<PageFragmentType['seo']>

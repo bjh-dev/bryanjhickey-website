@@ -1599,6 +1599,44 @@
     }
   },
   {
+    "name": "bibleQuoteOfTheDay",
+    "type": "type",
+    "value": {
+      "type": "object",
+      "attributes": {
+        "_type": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string",
+            "value": "bibleQuoteOfTheDay"
+          }
+        },
+        "eyebrow": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
+        "title": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
+        "content": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "inline",
+            "name": "blockContent"
+          },
+          "optional": true
+        }
+      }
+    }
+  },
+  {
     "name": "page",
     "type": "document",
     "attributes": {
@@ -1655,6 +1693,21 @@
           "of": {
             "type": "union",
             "of": [
+              {
+                "type": "object",
+                "attributes": {
+                  "_key": {
+                    "type": "objectAttribute",
+                    "value": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "rest": {
+                  "type": "inline",
+                  "name": "bibleQuoteOfTheDay"
+                }
+              },
               {
                 "type": "object",
                 "attributes": {
@@ -2703,6 +2756,21 @@
           "of": {
             "type": "union",
             "of": [
+              {
+                "type": "object",
+                "attributes": {
+                  "_key": {
+                    "type": "objectAttribute",
+                    "value": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "rest": {
+                  "type": "inline",
+                  "name": "bibleQuoteOfTheDay"
+                }
+              },
               {
                 "type": "object",
                 "attributes": {

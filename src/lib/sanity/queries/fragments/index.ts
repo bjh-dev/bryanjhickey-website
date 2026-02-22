@@ -273,6 +273,13 @@ export const bookReviewFragment = /* groq */ `
   },
 `
 
+export const bibleQuoteOfTheDaySectionFragment = /* groq */ `
+  _type,
+  eyebrow,
+  title,
+  ${contentFragment}
+`
+
 export const bookReviewsSectionFragment = /* groq */ `
   _type,
   heading,
@@ -302,6 +309,7 @@ export const pageBuilderFragment = /* groq */ `
     ...,
     _key,
     _type,
+    _type == 'bibleQuoteOfTheDay' => {${bibleQuoteOfTheDaySectionFragment}},
     _type == 'bookReviews' => {${bookReviewsSectionFragment}},
     _type == 'cardGrid' => {${cardGridsSectionFragment}},
     _type == 'cta' => {${ctaSectionFragment}},

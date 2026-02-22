@@ -25,7 +25,7 @@ export default defineType({
     defineField({
       name: 'content',
       title: 'Content',
-      type: 'blockContent',
+      type: 'simpleText',
       description:
         'Optional introductory text displayed above the daily verse.',
     }),

@@ -83,7 +83,7 @@ export default defineType({
     defineField({
       name: 'content',
       title: 'Content',
-      type: 'blockContent',
+      type: 'richText',
       description:
         'The full body of the post. Use headings, lists, and links to structure your writing.',
       group: 'content',

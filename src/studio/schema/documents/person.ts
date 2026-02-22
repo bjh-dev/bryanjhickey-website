@@ -58,6 +58,14 @@ export default defineType({
         'Their job title or role (e.g. "Senior Developer", "Editor").',
       group: 'content',
     }),
+    defineField({
+      name: 'biography',
+      title: 'Biography',
+      type: 'richText',
+      description:
+        'A short bio for the author page. Supports full rich text formatting.',
+      group: 'content',
+    }),
   ],
 
   // List preview configuration. https://www.sanity.io/docs/previews-list-views

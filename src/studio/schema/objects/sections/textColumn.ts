@@ -17,7 +17,7 @@ export default defineType({
     defineField({
       name: 'content',
       title: 'Content',
-      type: 'blockContent',
+      type: 'simpleText',
       description:
         'The main body text displayed in a centered, readable column.',
       validation: (Rule) => Rule.required(),

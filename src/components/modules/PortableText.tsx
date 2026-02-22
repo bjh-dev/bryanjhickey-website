@@ -22,9 +22,7 @@ import { LinkFragmentType } from '@/lib/sanity/queries/fragments/fragment.types'
 import { urlForImage } from '@/lib/sanity/client/image'
 import {
   BlockQuote,
-  HeadingFive,
   HeadingFour,
-  HeadingOne,
   HeadingThree,
   HeadingTwo,
   NumberedList,
@@ -38,9 +36,14 @@ import {
   StrikeThroughMark,
   StrongMark,
   UnderlineMark,
+  HighlightMark,
   SuperScriptMark,
   SubScriptMark,
   CalloutBlock,
+  HorizontalRule,
+  YouTubeEmbed,
+  CodeBlockComponent,
+  ImageWithCaption,
 } from '@/studio/schema/objects/blockContentComponents'
 
 export default function CustomPortableText({
@@ -55,11 +58,12 @@ export default function CustomPortableText({
       normal: ({ children }) => (
         <DefaultText paragraphStyles={paragraphStyles}>{children}</DefaultText>
       ),
-      h1: ({ children }) => <HeadingOne>{children}</HeadingOne>,
+      default: ({ children }) => (
+        <DefaultText paragraphStyles={paragraphStyles}>{children}</DefaultText>
+      ),
       h2: ({ children }) => <HeadingTwo>{children}</HeadingTwo>,
       h3: ({ children }) => <HeadingThree>{children}</HeadingThree>,
       h4: ({ children }) => <HeadingFour>{children}</HeadingFour>,
-      h5: ({ children }) => <HeadingFive>{children}</HeadingFive>,
       lead: ({ children }) => <LeadParagraph>{children}</LeadParagraph>,
       blockquote: ({ children }) => <BlockQuote>{children}</BlockQuote>,
     },
@@ -120,6 +124,7 @@ export default function CustomPortableText({
         <StrikeThroughMark>{children}</StrikeThroughMark>
       ),
       underline: ({ children }) => <UnderlineMark>{children}</UnderlineMark>,
+      highlight: ({ children }) => <HighlightMark>{children}</HighlightMark>,
       sup: ({ children }) => <SuperScriptMark>{children}</SuperScriptMark>,
       sub: ({ children }) => <SubScriptMark>{children}</SubScriptMark>,
     },
@@ -130,8 +135,8 @@ export default function CustomPortableText({
           return null
         }
 
-        return (
-          <div className="my-8 overflow-hidden rounded-lg shadow-lg">
+        const imageElement = (
+          <div className="overflow-hidden rounded-lg shadow-lg">
             <Image
               width="1000"
               height="667"
@@ -141,6 +146,16 @@ export default function CustomPortableText({
             />
           </div>
         )
+
+        if (value?.caption) {
+          return (
+            <ImageWithCaption caption={value.caption}>
+              {imageElement}
+            </ImageWithCaption>
+          )
+        }
+
+        return <div className="my-8">{imageElement}</div>
       },
       callout: (props) => {
         return (
@@ -150,6 +165,23 @@ export default function CustomPortableText({
             content={props?.value?.content}
           />
         )
+      },
+      code: (props) => {
+        return (
+          <CodeBlockComponent
+            code={props.value?.code}
+            language={props.value?.language}
+            filename={props.value?.filename}
+          />
+        )
+      },
+      youtubeEmbed: (props) => {
+        return (
+          <YouTubeEmbed url={props.value?.url} caption={props.value?.caption} />
+        )
+      },
+      hr: () => {
+        return <HorizontalRule />
       },
     },
   }

@@ -105,6 +105,9 @@ const contentFragment = /* groq */ `
   content[]{
     ...,
     ${markDefsFragment}
+    _type == 'image' => { ..., alt, caption },
+    _type == 'code' => { ..., language, code, filename },
+    _type == 'youtubeEmbed' => { ..., url, caption },
     content[]{
       ...,
       ${markDefsFragment}

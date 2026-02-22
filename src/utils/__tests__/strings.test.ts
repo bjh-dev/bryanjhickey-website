@@ -274,4 +274,20 @@ describe('getHeadingsFromPortableText', () => {
 
     expect(getHeadingsFromPortableText(blocks)).toHaveLength(0)
   })
+
+  it('excludes h1 and h5 headings', () => {
+    const blocks = [
+      { _type: 'block', _key: '1', style: 'h1', children: [{ text: 'H1' }] },
+      { _type: 'block', _key: '2', style: 'h2', children: [{ text: 'H2' }] },
+      { _type: 'block', _key: '3', style: 'h3', children: [{ text: 'H3' }] },
+      { _type: 'block', _key: '4', style: 'h4', children: [{ text: 'H4' }] },
+      { _type: 'block', _key: '5', style: 'h5', children: [{ text: 'H5' }] },
+    ] as PortableTextBlock[]
+
+    const headings = getHeadingsFromPortableText(blocks)
+    expect(headings).toHaveLength(3)
+    expect(headings[0].style).toBe('h2')
+    expect(headings[1].style).toBe('h3')
+    expect(headings[2].style).toBe('h4')
+  })
 })

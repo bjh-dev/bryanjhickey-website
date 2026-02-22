@@ -94,7 +94,7 @@ export default defineType({
     defineField({
       name: 'content',
       title: 'Content',
-      type: 'blockContent',
+      type: 'richText',
       description:
         'The full body of the review. Use headings, lists, and links to structure your writing.',
       group: 'content',

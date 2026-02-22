@@ -4,6 +4,7 @@
  * This configuration is used to for the Sanity Studio that’s mounted on the `/app/studio/[[...tool]]/page.tsx` route
  */
 
+import { codeInput } from '@sanity/code-input'
 import { visionTool } from '@sanity/vision'
 import { defineConfig } from 'sanity'
 import { structureTool } from 'sanity/structure'
@@ -112,6 +113,10 @@ const basePlugins = [
   // Browse, manage and select
   // https://www.sanity.io/plugins/sanity-plugin-media
   media(),
+
+  // Syntax-highlighted code blocks in Portable Text
+  // https://www.sanity.io/plugins/code-input
+  codeInput(),
 ]
 const developmentPlugins = [
   // Quickly test your GROQ queries

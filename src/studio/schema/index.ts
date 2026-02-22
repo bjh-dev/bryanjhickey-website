@@ -17,6 +17,7 @@ import button from '@/studio/schema/objects/button'
 import postList from '@/studio/schema/objects/sections/postList'
 import subscribe from '@/studio/schema/objects/sections/subscribe'
 import bookReviews from '@/studio/schema/objects/sections/bookReviews'
+import scripturePassage from '@/studio/schema/objects/sections/scripturePassage'
 import textColumn from '@/studio/schema/objects/sections/textColumn'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
@@ -34,6 +35,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     bookReviews,
     hero,
     postList,
+    scripturePassage,
     subscribe,
     textColumn,
     // Objects

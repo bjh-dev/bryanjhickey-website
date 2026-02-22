@@ -1,5 +1,5 @@
 import { defineType, defineArrayMember, defineField } from 'sanity'
-import { ImageIcon, LinkIcon } from '@sanity/icons'
+import { BookIcon, ImageIcon, LinkIcon } from '@sanity/icons'
 import {
   HeadingFour,
   HeadingOne,
@@ -64,6 +64,29 @@ export default defineType({
               defineField({
                 name: 'customLink',
                 type: 'link',
+              }),
+            ],
+          }),
+          defineArrayMember({
+            name: 'scriptureRef',
+            type: 'object',
+            title: 'Scripture Reference',
+            icon: BookIcon,
+            fields: [
+              defineField({
+                name: 'reference',
+                type: 'string',
+                title: 'Passage Reference',
+                description:
+                  'The Bible passage as sent to the ESV API (e.g. "John 3:16", "Gen 3:1-7", "Psalm 23").',
+                validation: (Rule) => Rule.required(),
+              }),
+              defineField({
+                name: 'label',
+                type: 'string',
+                title: 'Display Label Override',
+                description:
+                  'Optional. If blank, the highlighted text is shown as-is. Use this to show a shortened label while the full API reference differs.',
               }),
             ],
           }),

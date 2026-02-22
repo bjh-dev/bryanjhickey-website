@@ -290,6 +290,13 @@ export const bookReviewsSectionFragment = /* groq */ `
   }
 `
 
+export const scripturePassageSectionFragment = /* groq */ `
+  _type,
+  heading,
+  passageReference,
+  showVerseNumbers
+`
+
 export const pageBuilderFragment = /* groq */ `
   pageSections[]{
     ...,
@@ -302,6 +309,7 @@ export const pageBuilderFragment = /* groq */ `
     _type == 'hero' => {${heroSectionFragment}},
     _type == 'mediaText' => {${mediaTextSectionFragment}},
     _type == 'postList' => {${postListSectionFragment}},
+    _type == 'scripturePassage' => {${scripturePassageSectionFragment}},
     _type == 'subscribe' => {${subscribeSectionFragment}},
     _type == 'textColumn' => {${textColumnSectionFragment}}
   },

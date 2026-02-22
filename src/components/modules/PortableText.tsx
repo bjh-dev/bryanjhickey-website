@@ -15,6 +15,7 @@ import {
 } from 'next-sanity'
 
 import Link from '@/components/modules/Link'
+import ScripturePopover from '@/components/modules/ScripturePopover'
 import Image from 'next/image'
 import { ReactNode } from 'react'
 import { LinkFragmentType } from '@/lib/sanity/queries/fragments/fragment.types'
@@ -100,6 +101,19 @@ export default function CustomPortableText({
         }
 
         return <Link link={customLink}>{children}</Link>
+      },
+      scriptureRef: ({
+        children,
+        value,
+      }: {
+        children: ReactNode
+        value?: { reference?: string; label?: string }
+      }) => {
+        const reference = value?.reference
+        if (!reference) return <>{children}</>
+        return (
+          <ScripturePopover reference={reference}>{children}</ScripturePopover>
+        )
       },
       strong: ({ children }) => <StrongMark>{children}</StrongMark>,
       'strike-through': ({ children }) => (

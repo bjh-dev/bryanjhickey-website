@@ -32,8 +32,8 @@ export default function BookReviews({
           )}
         </div>
 
-        {/* Review list — single-line low-impact rows */}
-        <div className="flex flex-col">
+        {/* Review cards */}
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {visibleReviews.map((review, index) => (
             <FadeYAnimation
               key={review._id}
@@ -43,24 +43,35 @@ export default function BookReviews({
             >
               <Link
                 href={`/book-reviews/${review.slug}`}
-                className={`group border-border flex items-baseline gap-4 py-5 ${
-                  index < visibleReviews.length - 1 ? 'border-b' : ''
-                }`}
+                className="bg-foreground/5 hover:bg-foreground/10 group hover:border-primary flex flex-col rounded-xl border border-transparent p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
               >
-                <h3 className="text-foreground group-hover:text-primary font-serif text-lg leading-snug font-bold transition-colors duration-300">
-                  {review.bookTitle}
-                </h3>
-                {review.bookAuthor && (
-                  <span className="text-muted-foreground hidden text-sm font-light sm:inline">
-                    by {review.bookAuthor}
-                  </span>
-                )}
-                <span className="bg-border hidden h-px flex-1 sm:inline-block" />
-                {review.date && (
-                  <time className="text-muted-foreground text-xs font-medium tracking-wider uppercase">
-                    {formatDate('long', review.date)}
-                  </time>
-                )}
+                <div className="flex flex-col gap-2">
+                  <p className="text-primary text-xs font-semibold tracking-[0.15em] uppercase">
+                    Book Review
+                  </p>
+
+                  <h3 className="text-foreground group-hover:text-primary line-clamp-2 font-serif text-lg leading-snug font-bold transition-colors duration-300">
+                    {review.bookTitle}
+                  </h3>
+
+                  {review.bookAuthor && (
+                    <p className="text-muted-foreground mt-1 text-sm font-light">
+                      by {review.bookAuthor}
+                    </p>
+                  )}
+
+                  {review.excerpt && (
+                    <p className="text-muted-foreground mt-2 line-clamp-3 flex-1 text-sm leading-relaxed font-light">
+                      {review.excerpt}
+                    </p>
+                  )}
+
+                  {review.date && (
+                    <p className="text-muted-foreground mt-4 text-xs font-medium tracking-wider uppercase">
+                      {formatDate('long', review.date)}
+                    </p>
+                  )}
+                </div>
               </Link>
             </FadeYAnimation>
           ))}

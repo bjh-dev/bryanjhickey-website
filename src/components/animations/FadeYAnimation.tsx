@@ -4,6 +4,7 @@ import { ReactNode } from 'react'
 
 const FadeYAnimation = ({
   children,
+  className,
   opacityStartValue,
   opacityEndValue,
   delay,
@@ -12,6 +13,7 @@ const FadeYAnimation = ({
   yEndValue,
 }: {
   children: ReactNode
+  className?: string
   opacityStartValue?: number
   opacityEndValue?: number
   delay?: number
@@ -21,6 +23,7 @@ const FadeYAnimation = ({
 }) => {
   return (
     <FadeAnimation
+      className={className}
       direction="y"
       opacityStartValue={opacityStartValue}
       opacityEndValue={opacityEndValue}

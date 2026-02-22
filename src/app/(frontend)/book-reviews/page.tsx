@@ -28,7 +28,12 @@ export async function generateMetadata(): Promise<Metadata> {
 
 function ReviewCard({ review, index }: { review: ReviewType; index: number }) {
   return (
-    <FadeYAnimation yStartValue={20} duration={0.7} delay={0.05 * index}>
+    <FadeYAnimation
+      className="h-full"
+      yStartValue={20}
+      duration={0.7}
+      delay={0.05 * index}
+    >
       <Link
         href={getDocumentLink({ slug: review.slug, _type: 'bookReview' })}
         className="group block h-full"

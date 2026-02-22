@@ -4,6 +4,7 @@ import { ReactNode } from 'react'
 
 type FadeAnimationProps = {
   children: ReactNode
+  className?: string
   direction: 'x' | 'y'
   opacityStartValue?: number
   opacityEndValue?: number
@@ -15,6 +16,7 @@ type FadeAnimationProps = {
 
 const FadeAnimation = ({
   children,
+  className,
   direction,
   opacityStartValue = 0,
   opacityEndValue = 1,
@@ -42,7 +44,7 @@ const FadeAnimation = ({
         }
 
   return (
-    <motion.div initial={initial} animate={animate}>
+    <motion.div className={className} initial={initial} animate={animate}>
       {children}
     </motion.div>
   )

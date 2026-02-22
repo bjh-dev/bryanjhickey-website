@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { useRef, useCallback } from 'react'
+import { useRef, useCallback, useState, useEffect } from 'react'
 import { BookReviewsSection } from '@/components/sections/types'
 import { formatDate } from '@/utils/strings'
 import FadeYAnimation from '@/components/animations/FadeYAnimation'
@@ -14,7 +14,7 @@ function ReviewCard({ review, index }: { review: ReviewType; index: number }) {
     <FadeYAnimation yStartValue={24} duration={0.8} delay={0.1 * index}>
       <Link
         href={`/book-reviews/${review.slug}`}
-        className="bg-foreground/5 hover:bg-foreground/10 group hover:border-primary flex h-full flex-col rounded-xl border border-transparent p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
+        className="bg-foreground/5 hover:bg-foreground/10 group hover:border-primary flex h-full flex-col rounded-xl border border-transparent p-6 transition-colors duration-200"
       >
         <div className="flex flex-col gap-2">
           <p className="text-primary text-xs font-semibold tracking-[0.15em] uppercase">
@@ -64,15 +64,43 @@ export default function BookReviews({
   const visibleReviews = reviews.slice(0, cardsToShow)
   const useCarousel = visibleReviews.length > 3
 
+  const [scrollProgress, setScrollProgress] = useState(0)
+
   const scroll = useCallback((direction: 'left' | 'right') => {
     if (!scrollRef.current) return
     const container = scrollRef.current
+    const { scrollLeft, scrollWidth, clientWidth } = container
+    const maxScroll = scrollWidth - clientWidth
     const cardWidth = container.firstElementChild?.clientWidth ?? 0
     const gap = 24
-    container.scrollBy({
-      left: direction === 'left' ? -(cardWidth + gap) : cardWidth + gap,
-      behavior: 'smooth',
-    })
+    const step = cardWidth + gap
+
+    if (direction === 'right' && scrollLeft >= maxScroll - 2) {
+      // At the end — wrap to start
+      container.scrollTo({ left: 0, behavior: 'smooth' })
+    } else if (direction === 'left' && scrollLeft <= 2) {
+      // At the start — wrap to end
+      container.scrollTo({ left: maxScroll, behavior: 'smooth' })
+    } else {
+      container.scrollBy({
+        left: direction === 'left' ? -step : step,
+        behavior: 'smooth',
+      })
+    }
+  }, [])
+
+  useEffect(() => {
+    const container = scrollRef.current
+    if (!container) return
+
+    const handleScroll = () => {
+      const { scrollLeft, scrollWidth, clientWidth } = container
+      const maxScroll = scrollWidth - clientWidth
+      setScrollProgress(maxScroll > 0 ? scrollLeft / maxScroll : 0)
+    }
+
+    container.addEventListener('scroll', handleScroll, { passive: true })
+    return () => container.removeEventListener('scroll', handleScroll)
   }, [])
 
   return (
@@ -97,25 +125,7 @@ export default function BookReviews({
 
         {useCarousel ? (
           /* Carousel layout for > 3 reviews */
-          <div className="relative">
-            {/* Navigation arrows — desktop only */}
-            <button
-              type="button"
-              onClick={() => scroll('left')}
-              aria-label="Scroll left"
-              className="bg-background/80 text-foreground hover:bg-background border-border absolute top-1/2 -left-4 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border shadow-sm backdrop-blur-sm transition-colors lg:flex"
-            >
-              <ChevronLeft className="h-5 w-5" />
-            </button>
-            <button
-              type="button"
-              onClick={() => scroll('right')}
-              aria-label="Scroll right"
-              className="bg-background/80 text-foreground hover:bg-background border-border absolute top-1/2 -right-4 z-10 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border shadow-sm backdrop-blur-sm transition-colors lg:flex"
-            >
-              <ChevronRight className="h-5 w-5" />
-            </button>
-
+          <div>
             {/* Scroll container */}
             <div
               ref={scrollRef}
@@ -133,23 +143,52 @@ export default function BookReviews({
               {/* "Show more" card when 8-card limit reached */}
               {hasOverflow && (
                 <div className="w-[85vw] shrink-0 snap-start sm:w-[45%] lg:w-[calc(33.333%-16px)]">
-                  <FadeYAnimation
-                    yStartValue={24}
-                    duration={0.8}
-                    delay={0.1 * cardsToShow}
+                  <Link
+                    href="/book-reviews"
+                    className="bg-foreground/5 hover:bg-foreground/10 group hover:border-primary flex h-full flex-col items-center justify-center gap-3 rounded-xl border border-transparent p-6 transition-colors duration-200"
                   >
-                    <Link
-                      href="/book-reviews"
-                      className="bg-foreground/5 hover:bg-foreground/10 group hover:border-primary flex h-full min-h-48 flex-col items-center justify-center gap-3 rounded-xl border border-transparent p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
-                    >
-                      <span className="text-foreground group-hover:text-primary font-serif text-lg font-bold transition-colors duration-300">
-                        Show more
-                      </span>
-                      <ArrowRight className="text-primary h-5 w-5" />
-                    </Link>
-                  </FadeYAnimation>
+                    <span className="text-foreground group-hover:text-primary font-serif text-lg font-bold transition-colors duration-300">
+                      Show more
+                    </span>
+                    <ArrowRight className="text-primary h-5 w-5" />
+                  </Link>
                 </div>
               )}
+            </div>
+
+            {/* Progress bar + navigation arrows */}
+            <div className="mt-8 flex items-center gap-4">
+              {/* Progress bar */}
+              <div
+                className="bg-border h-0.5 flex-1 overflow-hidden rounded-full"
+                style={
+                  {
+                    '--carousel-progress': Math.max(0.05, scrollProgress),
+                  } as React.CSSProperties
+                }
+              >
+                <div className="bg-primary h-full origin-left scale-x-(--carousel-progress) rounded-full transition-transform duration-200 ease-out" />
+              </div>
+
+              {/* Navigation arrows */}
+              <div className="flex gap-2">
+                <button
+                  type="button"
+                  onClick={() => scroll('left')}
+                  aria-label="Scroll left"
+                  className="text-foreground hover:bg-foreground/10 border-border flex h-10 w-10 items-center justify-center rounded-full border transition-colors"
+                >
+                  <ChevronLeft className="h-5 w-5" />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => scroll('right')}
+                  aria-label="Scroll right"
+                  className="text-foreground hover:bg-foreground/10 border-border flex h-10 w-10 items-center justify-center rounded-full border transition-colors"
+                >
+                  <ChevronRight className="h-5 w-5" />
+                </button>
+              </div>
             </div>
           </div>
         ) : (

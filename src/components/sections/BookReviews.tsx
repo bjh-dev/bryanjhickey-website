@@ -1,13 +1,7 @@
 import Link from 'next/link'
-import { format, parseISO } from 'date-fns'
 import { BookReviewsSection } from '@/components/sections/types'
-
-const CARD_COLORS = [
-  'bg-amber-50 dark:bg-amber-950/40',
-  'bg-orange-50 dark:bg-orange-950/40',
-  'bg-stone-100 dark:bg-stone-900/50',
-  'bg-rose-50 dark:bg-rose-950/40',
-] as const
+import { formatDate } from '@/utils/strings'
+import FadeYAnimation from '@/components/animations/FadeYAnimation'
 
 export default function BookReviews({
   section,
@@ -19,71 +13,70 @@ export default function BookReviews({
   const visibleReviews = reviews.slice(0, displayCount)
 
   return (
-    <section>
-      <div className="py-12">
-        <div className="content">
-          <div className="flex items-baseline justify-between">
-            <h2 className="text-foreground border-foreground/60 my-8 mb-8 w-full border-b pb-8 text-5xl font-bold tracking-wider uppercase">
+    <section className="py-12">
+      <div className="content feature">
+        {/* Section Header — editorial style matching PostList */}
+        <div className="border-border mb-16 grid items-end gap-4 border-b pb-10 lg:grid-cols-2 lg:gap-10">
+          <div>
+            <p className="text-primary mb-4 text-xs font-semibold tracking-[0.2em] uppercase">
+              Book Reviews
+            </p>
+            <h2 className="text-foreground font-serif text-5xl leading-none font-black tracking-tight lg:text-7xl">
               {section.heading}
             </h2>
           </div>
-
           {section.subtitle && (
-            <p className="text-foreground/50 font-bitter mb-8 max-w-lg pb-12 text-2xl leading-relaxed italic">
+            <p className="text-muted-foreground max-w-md self-end pb-1 text-lg leading-relaxed font-light">
               {section.subtitle}
             </p>
           )}
-
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {visibleReviews.map((review, index) => {
-              return (
-                <Link
-                  key={review._id}
-                  href={`/book-reviews/${review.slug}`}
-                  className="bg-foreground/5 hover:bg-foreground/10 group hover:border-primary flex flex-col rounded-xl border border-transparent p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
-                >
-                  <div className="flex flex-col gap-2">
-                    <p className="text-primary text-xs font-semibold tracking-[0.15em] uppercase">
-                      Book Review
-                    </p>
-
-                    <h3 className="text-foreground line-clamp-2 text-lg leading-snug font-bold">
-                      {review.bookTitle}
-                    </h3>
-
-                    {review.bookAuthor && (
-                      <p className="text-foreground mt-1 text-sm">
-                        by {review.bookAuthor}
-                      </p>
-                    )}
-
-                    {review.excerpt && (
-                      <p className="text-foreground/60 mt-2 line-clamp-3 flex-1 text-sm leading-relaxed">
-                        {review.excerpt}
-                      </p>
-                    )}
-
-                    {review.date && (
-                      <p className="text-text-foreground/60 mt-4 text-xs">
-                        {format(parseISO(review.date), 'MMMM d, yyyy')}
-                      </p>
-                    )}
-                  </div>
-                </Link>
-              )
-            })}
-          </div>
-          {section.linkText && (
-            <div className="flex w-full justify-end-safe py-12">
-              <Link
-                href="/book-reviews"
-                className="text-primary hover:text-primary/80 text-sm font-medium transition-colors"
-              >
-                {section.linkText} &rarr;
-              </Link>
-            </div>
-          )}
         </div>
+
+        {/* Review list — single-line low-impact rows */}
+        <div className="flex flex-col">
+          {visibleReviews.map((review, index) => (
+            <FadeYAnimation
+              key={review._id}
+              yStartValue={24}
+              duration={0.8}
+              delay={0.1 * index}
+            >
+              <Link
+                href={`/book-reviews/${review.slug}`}
+                className={`group border-border flex items-baseline gap-4 py-5 ${
+                  index < visibleReviews.length - 1 ? 'border-b' : ''
+                }`}
+              >
+                <h3 className="text-foreground group-hover:text-primary font-serif text-lg leading-snug font-bold transition-colors duration-300">
+                  {review.bookTitle}
+                </h3>
+                {review.bookAuthor && (
+                  <span className="text-muted-foreground hidden text-sm font-light sm:inline">
+                    by {review.bookAuthor}
+                  </span>
+                )}
+                <span className="bg-border hidden h-px flex-1 sm:inline-block" />
+                {review.date && (
+                  <time className="text-muted-foreground text-xs font-medium tracking-wider uppercase">
+                    {formatDate('long', review.date)}
+                  </time>
+                )}
+              </Link>
+            </FadeYAnimation>
+          ))}
+        </div>
+
+        {/* View all link */}
+        {section.linkText && (
+          <div className="flex w-full justify-end py-12">
+            <Link
+              href="/book-reviews"
+              className="text-primary hover:text-primary/80 text-sm font-medium transition-colors"
+            >
+              {section.linkText} &rarr;
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   )

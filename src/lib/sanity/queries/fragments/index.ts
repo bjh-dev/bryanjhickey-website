@@ -279,7 +279,7 @@ export const bookReviewsSectionFragment = /* groq */ `
   subtitle,
   linkText,
   numberOfReviews,
-  "reviews": *[_type == 'bookReview'] | order(date desc) [0...6] {
+  "reviews": *[_type == 'bookReview'] | order(date desc) [0...9] {
     _id,
     title,
     bookTitle,

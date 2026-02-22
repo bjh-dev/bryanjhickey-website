@@ -44,7 +44,7 @@ function HeroCard({ post }: { post: PostType }) {
               width={800}
               height={600}
               sizes="(max-width: 1024px) 100vw, 55vw"
-              className="h-full w-full object-cover contrast-105 grayscale-[15%] transition-all duration-600 ease-out group-hover:scale-103 group-hover:contrast-110 group-hover:grayscale-0"
+              className="h-full w-full object-cover contrast-105 grayscale-15 transition-all duration-600 ease-out group-hover:scale-103 group-hover:contrast-110 group-hover:grayscale-0"
             />
           </div>
         )}
@@ -96,14 +96,14 @@ function SideCard({ post, index }: { post: PostType; index: number }) {
           )}
         </div>
         {post.image && (
-          <div className="aspect-square w-[140px] overflow-hidden">
+          <div className="aspect-square w-35 overflow-hidden">
             <Image
               src={urlForImage(post.image).url()}
               alt={post.title}
               width={300}
               height={300}
               sizes="140px"
-              className="h-full w-full object-cover grayscale-[20%] transition-all duration-500 ease-out group-hover:scale-105 group-hover:grayscale-0"
+              className="h-full w-full object-cover grayscale-20 transition-all duration-500 ease-out group-hover:scale-105 group-hover:grayscale-0"
             />
           </div>
         )}

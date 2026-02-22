@@ -79,7 +79,6 @@ export const linkFragment = /* groq */ `
   type,
   openInNewTab,
   external,
-  href,
   internal->{
     ...,
     _type,
@@ -131,19 +130,10 @@ export const buttonsFragment = /* groq */ `
 
 export const heroSectionFragment = /* groq */ `
   _type,
-  text,
-  subheading,
+  title,
+  subtitle,
   ${imageFragment}
   ${contentFragment}
-  ${buttonsFragment}
-`
-
-export const mediaTextSectionFragment = /* groq */ `
-  _type,
-  heading,
-  text,
-  media,
-  mediaPosition,
   ${buttonsFragment}
 `
 
@@ -206,18 +196,6 @@ export const postListSectionFragment = /* groq */ `
     }
 `
 
-export const dividerSectionFragment = /* groq */ `
-  _type,
-  height
-`
-
-export const ctaSectionFragment = /* groq */ `
-  _type,
-  heading,
-  text,
-  ${buttonsFragment}
-`
-
 export const subscribeSectionFragment = /* groq */ `
   _type,
   heading,
@@ -230,20 +208,6 @@ export const textColumnSectionFragment = /* groq */ `
   eyebrow,
   ${contentFragment}
   ${buttonsFragment}
-`
-
-export const cardGridFragment = /* groq */ `
-  _type,
-  heading,
-  ${contentFragment}
-  icon,
-`
-
-export const cardGridsSectionFragment = /* groq */ `
-  ${cardGridFragment}
-  cards[]{
-    ${cardGridFragment}
-  },
 `
 
 export const bookReviewCardFragment = /* groq */ `
@@ -311,11 +275,7 @@ export const pageBuilderFragment = /* groq */ `
     _type,
     _type == 'bibleQuoteOfTheDay' => {${bibleQuoteOfTheDaySectionFragment}},
     _type == 'bookReviews' => {${bookReviewsSectionFragment}},
-    _type == 'cardGrid' => {${cardGridsSectionFragment}},
-    _type == 'cta' => {${ctaSectionFragment}},
-    _type == 'divider' => {${dividerSectionFragment}},
     _type == 'hero' => {${heroSectionFragment}},
-    _type == 'mediaText' => {${mediaTextSectionFragment}},
     _type == 'postList' => {${postListSectionFragment}},
     _type == 'scripturePassage' => {${scripturePassageSectionFragment}},
     _type == 'subscribe' => {${subscribeSectionFragment}},

@@ -1,4 +1,4 @@
-import { defineField, defineType } from 'sanity'
+import { defineArrayMember, defineField, defineType } from 'sanity'
 import { TextIcon } from '@sanity/icons'
 
 export default defineType({
@@ -26,7 +26,7 @@ export default defineType({
       name: 'buttons',
       title: 'Call to Action',
       type: 'array',
-      of: [{ type: 'button' }],
+      of: [defineArrayMember({ type: 'button' })],
       description: 'An optional link displayed below the text content.',
       validation: (Rule) => Rule.max(1),
     }),

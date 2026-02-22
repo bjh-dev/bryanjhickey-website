@@ -2,7 +2,11 @@ import { createRadioListLayout } from '@/utils/schema'
 import { defineField, defineType } from 'sanity'
 import { Link } from 'lucide-react'
 
-const allLinkableTypes = [{ type: 'post' }, { type: 'page' }]
+const allLinkableTypes = [
+  { type: 'post' },
+  { type: 'page' },
+  { type: 'bookReview' },
+]
 
 export default defineType({
   name: 'link',
@@ -11,7 +15,10 @@ export default defineType({
   fields: [
     defineField({
       name: 'type',
+      title: 'Link Type',
       type: 'string',
+      description:
+        'Choose "Internal" to link to a page on this site, or "External" for an outside URL.',
       options: createRadioListLayout(['internal', 'external']),
       initialValue: () => 'external',
       validation: (Rule) => Rule.required(),
@@ -27,18 +34,15 @@ export default defineType({
       name: 'external',
       type: 'string',
       title: 'URL',
+      description:
+        'The full URL including https:// (e.g. "https://example.com").',
       hidden: ({ parent }) => parent?.type !== 'external',
     }),
     defineField({
-      name: 'href',
-      type: 'string',
-      initialValue: () => '#',
-      hidden: true,
-      readOnly: true,
-    }),
-    defineField({
       name: 'internal',
+      title: 'Internal Page',
       type: 'reference',
+      description: 'Select a page, post, or book review to link to.',
       options: { disableNew: true },
       hidden: ({ parent }) => parent?.type !== 'internal',
       to: allLinkableTypes,

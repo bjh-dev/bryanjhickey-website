@@ -20,6 +20,12 @@ export async function GET(request: NextRequest) {
 
   const includeVerseNumbers =
     request.nextUrl.searchParams.get('include-verse-numbers') ?? 'true'
+  const indentParagraphs =
+    request.nextUrl.searchParams.get('indent-paragraphs') ?? '0'
+  const indentPoetry =
+    request.nextUrl.searchParams.get('indent-poetry') ?? 'false'
+  const includeSelahs =
+    request.nextUrl.searchParams.get('include-selahs') ?? 'true'
 
   const params = new URLSearchParams({
     q,
@@ -28,8 +34,9 @@ export async function GET(request: NextRequest) {
     'include-footnotes': 'false',
     'include-headings': 'false',
     'include-short-copyright': 'true',
-    'indent-paragraphs': '0',
-    'indent-poetry': 'false',
+    'include-selahs': includeSelahs,
+    'indent-paragraphs': indentParagraphs,
+    'indent-poetry': indentPoetry,
   })
 
   const response = await fetch(

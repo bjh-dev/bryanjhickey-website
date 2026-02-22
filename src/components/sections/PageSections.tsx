@@ -62,6 +62,7 @@ export default function PageSections({
 
   return (
     <div
+      className="[&>div:has(>[data-attribute=text-column])+div>section[data-attribute=text-column]]:pt-0"
       data-sanity={dataAttr({
         id: documentId,
         type: documentType,

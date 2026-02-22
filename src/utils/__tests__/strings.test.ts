@@ -129,20 +129,20 @@ describe('readTime', () => {
 })
 
 describe('formatDate', () => {
-  it('formats date string to en-AU locale by default', () => {
-    const result = formatDate('2024-01-15')
+  it('formats date string in long format to en-AU locale by default', () => {
+    const result = formatDate('long', '2024-01-15')
     expect(result).toBe('15 January 2024')
   })
 
   it('formats date string with custom locale', () => {
-    const result = formatDate('2024-01-15', 'en-US')
+    const result = formatDate('long', '2024-01-15', 'en-US')
     expect(result).toBe('January 15, 2024')
   })
 
-  it('handles ISO date strings', () => {
-    const result = formatDate('2024-06-01T12:00:00.000Z')
-    expect(result).toContain('2024')
-    expect(result).toContain('June')
+  it('formats date string in short format', () => {
+    const result = formatDate('short', '2024-06-01T12:00:00.000Z')
+    expect(result).toContain('24')
+    expect(result).toContain('Jun')
   })
 })
 

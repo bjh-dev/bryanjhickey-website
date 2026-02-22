@@ -161,3 +161,15 @@ export const bookReviewsArchiveQuery = defineQuery(`
     }
   }
 `)
+
+export const scriptureIndexQuery = defineQuery(`
+  *[_type == "post" && defined(slug.current)] | order(date desc) {
+    "title": coalesce(title, "Untitled"),
+    "slug": slug.current,
+    date,
+    "refs": array::compact(content[].markDefs[_type == "scriptureRef"]{
+      reference,
+      label
+    })
+  }[count(refs) > 0]
+`)

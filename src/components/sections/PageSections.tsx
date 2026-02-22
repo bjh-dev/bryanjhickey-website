@@ -8,6 +8,7 @@ import BookReviews from '@/components/sections/BookReviews'
 import Hero from '@/components/sections/Hero'
 import { Section, Sections } from '@/components/sections/types'
 import PostList from '@/components/sections/PostList'
+import ScripturePassage from '@/components/sections/ScripturePassage'
 import Subscribe from '@/components/sections/Subscribe'
 import TextColumn from '@/components/sections/TextColumn'
 
@@ -17,6 +18,7 @@ const SECTION_COMPONENTS: Record<PageSectionstype, ElementType> = {
   bookReviews: BookReviews,
   hero: Hero,
   postList: PostList,
+  scripturePassage: ScripturePassage,
   subscribe: Subscribe,
   textColumn: TextColumn,
 } as const

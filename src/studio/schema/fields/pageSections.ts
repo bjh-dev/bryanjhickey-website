@@ -3,9 +3,17 @@ import bookReviews from '@/studio/schema/objects/sections/bookReviews'
 import hero from '@/studio/schema/objects/sections/hero'
 import postList from '@/studio/schema/objects/sections/postList'
 import subscribe from '@/studio/schema/objects/sections/subscribe'
+import scripturePassage from '@/studio/schema/objects/sections/scripturePassage'
 import textColumn from '@/studio/schema/objects/sections/textColumn'
 
-const pageSectionsObjects = [bookReviews, hero, postList, subscribe, textColumn]
+const pageSectionsObjects = [
+  bookReviews,
+  hero,
+  postList,
+  scripturePassage,
+  subscribe,
+  textColumn,
+]
 
 export default defineField({
   name: 'pageSections',

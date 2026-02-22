@@ -30,6 +30,8 @@ export const projectId = assertValue(
   'Missing environment variable: NEXT_PUBLIC_SANITY_PROJECT_ID',
 )
 
+export const esvApiKey = process.env.ESV_API_KEY
+
 export const clientEnv = {
   NEXT_PUBLIC_SANITY_API_VERSION: apiVersion,
   NEXT_PUBLIC_SANITY_DATASET: dataset,

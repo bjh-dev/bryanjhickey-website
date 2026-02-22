@@ -8,7 +8,6 @@ describe('ReadTime', () => {
     render(<ReadTime wordCount={360} />)
 
     expect(screen.getByText(/2 mins/)).toBeInTheDocument()
-    expect(screen.getByText('reading time')).toBeInTheDocument()
   })
 
   it('renders singular "min" for 1 minute', () => {

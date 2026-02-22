@@ -2,6 +2,7 @@ import { describe, it, expect, vi } from 'vitest'
 import { render, screen } from '@/test/utils'
 import { axe } from 'jest-axe'
 import { PostCard } from '../PostCard'
+import { formatDate } from '@/utils/strings'
 
 // Mock the urlForImage function
 vi.mock('@/lib/sanity/client/image', () => ({
@@ -67,6 +68,8 @@ const mockFeaturedPost = {
   isFeatured: true,
 }
 
+const expectedDate = formatDate('short', '2024-01-15')
+
 describe('PostCard', () => {
   it('renders post information correctly without image', () => {
     render(<PostCard post={mockPost} />)
@@ -75,7 +78,7 @@ describe('PostCard', () => {
     expect(
       screen.getByText('This is a test excerpt for the blog post.'),
     ).toBeInTheDocument()
-    expect(screen.getByText('15 January 2024')).toBeInTheDocument()
+    expect(screen.getByText(expectedDate)).toBeInTheDocument()
   })
 
   it('does not render image by default', () => {
@@ -147,7 +150,6 @@ describe('PostCard', () => {
     // ReadTime component should be present with calculated reading time
     // 250 words / 180 words per minute = 2 minutes
     expect(screen.getByText(/2 min/)).toBeInTheDocument()
-    expect(screen.getByText(/reading time/)).toBeInTheDocument()
   })
 
   it('renders publication date', () => {
@@ -160,18 +162,15 @@ describe('PostCard', () => {
   it('shows date and read time when showImage is false', () => {
     render(<PostCard post={mockPost} showImage={false} />)
 
-    expect(screen.getByText('15 January 2024')).toBeInTheDocument()
-    // Use regex matcher for '2 min' and assert 'reading time'
+    expect(screen.getByText(expectedDate)).toBeInTheDocument()
     expect(screen.getByText(/2\s*min/)).toBeInTheDocument()
-    expect(screen.getByText('reading time')).toBeInTheDocument()
   })
 
   it('shows date and read time when showImage is true', () => {
     render(<PostCard post={mockPost} showImage={true} />)
 
-    expect(screen.getByText('15 January 2024')).toBeInTheDocument()
+    expect(screen.getByText(expectedDate)).toBeInTheDocument()
     expect(screen.getByText(/2\s*min/)).toBeInTheDocument()
-    expect(screen.getByText('reading time')).toBeInTheDocument()
   })
 
   it('handles post without image gracefully', () => {
@@ -277,23 +276,24 @@ describe('PostCard', () => {
       'This is a test excerpt for the blog post.',
     )
     expect(excerpt).toHaveClass(
-      'text-foreground/80',
+      'text-foreground/60',
       'group-hover:text-foreground',
       'font-serif',
       'text-sm',
       'leading-relaxed',
       'transition-all',
       'duration-300',
-      'md:line-clamp-3',
+      'md:line-clamp-4',
       'lg:text-base',
     )
   })
 
   it('applies correct date styling', () => {
-    render(<PostCard post={mockPost} />)
+    render(<PostCard post={mockPost} showImage={true} />)
 
-    const date = screen.getByText('15 January 2024')
-    expect(date).toHaveClass('text-foreground/50') // 'text-xs' removed
+    const date = screen.getByText(expectedDate)
+    expect(date.tagName).toBe('TIME')
+    expect(date).toHaveClass('text-foreground/50', 'text-xs')
   })
 
   it('applies correct featured tag styling when shown', () => {

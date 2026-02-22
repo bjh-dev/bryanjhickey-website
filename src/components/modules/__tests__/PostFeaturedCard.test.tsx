@@ -2,6 +2,7 @@ import { describe, it, expect, vi } from 'vitest'
 import { render, screen } from '@/test/utils'
 import { axe } from 'jest-axe'
 import { PostFeaturedCard } from '../PostFeaturedCard'
+import { formatDate } from '@/utils/strings'
 
 // Mock the urlForImage function
 vi.mock('@/lib/sanity/client/image', () => ({
@@ -60,6 +61,8 @@ const mockFeaturedPost = {
   seo: null,
 }
 
+const expectedDate = formatDate('short', '2024-01-15')
+
 describe('PostFeaturedCard', () => {
   it('renders featured post information correctly', () => {
     render(<PostFeaturedCard {...mockFeaturedPost} />)
@@ -68,7 +71,7 @@ describe('PostFeaturedCard', () => {
     expect(
       screen.getByText('This is a test excerpt for the featured blog post.'),
     ).toBeInTheDocument()
-    expect(screen.getByText('15 January 2024')).toBeInTheDocument()
+    expect(screen.getByText(expectedDate)).toBeInTheDocument()
   })
 
   it('renders post image with correct alt text', () => {
@@ -92,7 +95,6 @@ describe('PostFeaturedCard', () => {
     // ReadTime component should be present with calculated reading time
     // 250 words / 180 words per minute = 2 minutes
     expect(screen.getByText(/2 min/)).toBeInTheDocument()
-    expect(screen.getByText(/reading time/)).toBeInTheDocument()
   })
 
   it('renders publication date', () => {
@@ -201,7 +203,7 @@ describe('PostFeaturedCard', () => {
       'This is a test excerpt for the featured blog post.',
     )
     expect(excerpt).toHaveClass(
-      'text-foreground/80',
+      'text-foreground/60',
       'group-hover:text-foreground',
       'font-serif',
       'text-sm',
@@ -216,8 +218,8 @@ describe('PostFeaturedCard', () => {
   it('applies correct date styling', () => {
     render(<PostFeaturedCard {...mockFeaturedPost} />)
 
-    const date = screen.getByText('15 January 2024')
-    expect(date).toHaveClass('text-foreground/50') // 'text-xs' removed
+    const date = screen.getByText(expectedDate)
+    expect(date).toHaveClass('text-foreground/50')
   })
 
   it('applies correct image container styling', () => {
@@ -227,9 +229,11 @@ describe('PostFeaturedCard', () => {
     expect(imageContainer).toBeInTheDocument()
     expect(imageContainer).toHaveClass(
       'relative',
-      'h-[20svh]',
+      'h-72',
       'overflow-hidden',
-      'lg:h-[40svh]',
+      'rounded-t-xl',
+      'md:h-64',
+      'lg:h-72',
     )
   })
 

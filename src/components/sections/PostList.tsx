@@ -1,12 +1,16 @@
+'use client'
+
 import { PostListSection } from '@/components/sections/types'
 import Link from 'next/link'
 import { FaArrowRight } from 'react-icons/fa6'
-import { Button } from '@/components/ui/button'
 import { getDocumentLink } from '@/lib/links'
 import { urlForImage } from '@/lib/sanity/client/image'
 import { formatDate, readTime } from '@/utils/strings'
 import Image from 'next/image'
 import FadeYAnimation from '@/components/animations/FadeYAnimation'
+import { useRef, useState, useEffect } from 'react'
+
+const MAX_SIDE_POSTS = 6
 
 type PostType = NonNullable<PostListSection['posts']>[number]
 
@@ -67,7 +71,15 @@ function HeroCard({ post }: { post: PostType }) {
   )
 }
 
-function SideCard({ post, index }: { post: PostType; index: number }) {
+function SideCard({
+  post,
+  index,
+  showBorder,
+}: {
+  post: PostType
+  index: number
+  showBorder: boolean
+}) {
   const categoryLabel = getCategoryLabel(post)
   const number = String(index + 1).padStart(2, '0')
 
@@ -77,7 +89,7 @@ function SideCard({ post, index }: { post: PostType; index: number }) {
         href={getDocumentLink({ slug: post.slug, _type: 'post' })}
         className={`group relative grid cursor-pointer grid-cols-[1fr_140px] items-start gap-6 py-8 ${
           index === 0 ? 'pt-0' : ''
-        } border-border ${index < 2 ? 'border-b' : ''}`}
+        } border-border ${showBorder ? 'border-b' : ''}`}
       >
         <div>
           <CardMeta post={post} />
@@ -110,6 +122,22 @@ function SideCard({ post, index }: { post: PostType; index: number }) {
         <span className="text-border pointer-events-none absolute -top-2 -right-4 font-serif text-7xl leading-none font-black opacity-0 transition-opacity duration-400 group-hover:opacity-50">
           {number}
         </span>
+      </Link>
+    </FadeYAnimation>
+  )
+}
+
+function ReadMoreCard({ index }: { index: number }) {
+  return (
+    <FadeYAnimation yStartValue={24} duration={0.8} delay={0.1 * (index + 1)}>
+      <Link
+        href="/posts"
+        className="group border-border flex items-center gap-3 border-t py-8"
+      >
+        <span className="text-foreground group-hover:text-primary font-serif text-lg font-bold transition-colors duration-300">
+          Read more posts
+        </span>
+        <FaArrowRight className="text-primary h-3.5 w-3.5" />
       </Link>
     </FadeYAnimation>
   )
@@ -154,6 +182,13 @@ function BottomCard({
 }
 
 export default function PostList({ section }: { section: PostListSection }) {
+  const scrollRef = useRef<HTMLDivElement>(null)
+  const [scrollMetrics, setScrollMetrics] = useState({
+    progress: 0,
+    thumbPercent: 30,
+    canScroll: false,
+  })
+
   const featuredPosts = section.posts.filter((post) => post.isFeatured)
   const recentPosts = section.posts.filter((post) => !post.isFeatured)
   const allPosts = [...featuredPosts, ...recentPosts].slice(
@@ -162,12 +197,45 @@ export default function PostList({ section }: { section: PostListSection }) {
   )
 
   const heroPost = allPosts[0]
-  const sidePosts = allPosts.slice(1, 4)
-  const bottomPosts = allPosts.slice(4, 7)
+  const sidePosts = allPosts.slice(1, 1 + MAX_SIDE_POSTS)
+  const bottomPosts = allPosts.slice(1 + MAX_SIDE_POSTS)
+  const hasMoreSidePosts = section.posts.length > 1 + MAX_SIDE_POSTS
+  const visibleSidePosts = hasMoreSidePosts
+    ? sidePosts.slice(0, MAX_SIDE_POSTS - 1)
+    : sidePosts
 
-  const isShowMore = section.posts.length > (section.numberOfPosts ?? 7)
+  useEffect(() => {
+    const el = scrollRef.current
+    if (!el) return
+
+    const update = () => {
+      const { scrollTop, scrollHeight, clientHeight } = el
+      const isScrollable = scrollHeight > clientHeight
+      const maxScroll = scrollHeight - clientHeight
+      setScrollMetrics({
+        progress: maxScroll > 0 ? scrollTop / maxScroll : 0,
+        thumbPercent: isScrollable
+          ? Math.max(20, (clientHeight / scrollHeight) * 100)
+          : 30,
+        canScroll: isScrollable,
+      })
+    }
+
+    update()
+    el.addEventListener('scroll', update, { passive: true })
+    const observer = new ResizeObserver(update)
+    observer.observe(el)
+
+    return () => {
+      el.removeEventListener('scroll', update)
+      observer.disconnect()
+    }
+  }, [])
 
   if (!heroPost) return null
+
+  const thumbOffset =
+    scrollMetrics.progress * (100 - scrollMetrics.thumbPercent)
 
   return (
     <section className="py-12">
@@ -195,11 +263,43 @@ export default function PostList({ section }: { section: PostListSection }) {
         <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr]">
           <HeroCard post={heroPost} />
 
-          {sidePosts.length > 0 && (
-            <div className="flex flex-col pt-4 lg:ps-12 lg:pt-0">
-              {sidePosts.map((post, index) => (
-                <SideCard key={post._id} post={post} index={index} />
-              ))}
+          {visibleSidePosts.length > 0 && (
+            <div className="relative pt-4 lg:pt-0">
+              <div className="flex lg:absolute lg:inset-0">
+                <div
+                  ref={scrollRef}
+                  className="scrollbar-hide flex min-h-0 flex-1 flex-col lg:overflow-y-auto lg:ps-12"
+                >
+                  {visibleSidePosts.map((post, index) => (
+                    <SideCard
+                      key={post._id}
+                      post={post}
+                      index={index}
+                      showBorder={
+                        hasMoreSidePosts || index < visibleSidePosts.length - 1
+                      }
+                    />
+                  ))}
+                  {hasMoreSidePosts && (
+                    <ReadMoreCard index={visibleSidePosts.length} />
+                  )}
+                </div>
+
+                {/* Vertical progress bar */}
+                {scrollMetrics.canScroll && (
+                  <div className="hidden lg:ms-3 lg:block lg:w-1 lg:self-stretch">
+                    <div className="bg-border/40 relative h-full w-full rounded-full">
+                      <div
+                        className="bg-primary/60 absolute top-0 w-full rounded-full transition-transform duration-150 ease-out"
+                        style={{
+                          height: `${scrollMetrics.thumbPercent}%`,
+                          transform: `translateY(${thumbOffset}%)`,
+                        }}
+                      />
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           )}
         </div>
@@ -215,21 +315,6 @@ export default function PostList({ section }: { section: PostListSection }) {
                 isLast={index === bottomPosts.length - 1}
               />
             ))}
-          </div>
-        )}
-
-        {/* More Posts Link */}
-        {isShowMore && (
-          <div className="flex w-full justify-end py-12">
-            <Button asChild variant="link">
-              <Link
-                href="/posts"
-                className="text-primary hover:text-primary/80 text-sm font-medium transition-colors"
-              >
-                More Posts
-                <FaArrowRight />
-              </Link>
-            </Button>
           </div>
         )}
       </div>

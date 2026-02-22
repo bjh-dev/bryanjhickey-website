@@ -97,6 +97,9 @@ export default async function Footer() {
             &copy; {new Date().getFullYear()} {settings.title}. All rights
             reserved.
           </p>
+          <p className="text-muted-foreground/50 mt-2">
+            Designed, coded &amp; deployed by Bryan &mdash; not a theme.
+          </p>
         </div>
       </div>
       <div className="bg-primary absolute right-0 bottom-0 left-0 h-2"></div>

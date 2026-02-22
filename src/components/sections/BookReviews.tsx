@@ -204,18 +204,6 @@ export default function BookReviews({
             ))}
           </div>
         )}
-
-        {/* View all link — only shown when not in carousel overflow mode */}
-        {section.linkText && !hasOverflow && (
-          <div className="flex w-full justify-end py-12">
-            <Link
-              href="/book-reviews"
-              className="text-primary hover:text-primary/80 text-sm font-medium transition-colors"
-            >
-              {section.linkText} &rarr;
-            </Link>
-          </div>
-        )}
       </div>
     </section>
   )

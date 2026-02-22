@@ -119,9 +119,6 @@ function SideCard({
             />
           </div>
         )}
-        <span className="text-border pointer-events-none absolute -top-2 -right-4 font-serif text-7xl leading-none font-black opacity-0 transition-opacity duration-400 group-hover:opacity-50">
-          {number}
-        </span>
       </Link>
     </FadeYAnimation>
   )
@@ -241,10 +238,10 @@ export default function PostList({ section }: { section: PostListSection }) {
     <section className="py-12">
       <div className="content feature">
         {/* Section Header */}
-        <div className="border-border mb-16 grid items-end gap-4 border-b pb-10 lg:grid-cols-2 lg:gap-10">
+        <div className="border-border mb-16 flex flex-col items-start justify-between gap-6 border-b pb-10 md:flex-row">
           <div>
             {section.subtitle && (
-              <p className="text-primary mb-4 text-xs font-semibold tracking-[0.2em] uppercase">
+              <p className="text-primary mb-4 max-w-lg text-xs font-semibold tracking-[0.2em] uppercase">
                 {section.subtitle}
               </p>
             )}
@@ -252,11 +249,13 @@ export default function PostList({ section }: { section: PostListSection }) {
               {section.title || 'Featured Posts'}
             </h2>
           </div>
-          {section.description && (
-            <p className="text-muted-foreground max-w-md self-end pb-1 text-lg leading-relaxed font-light">
-              {section.description}
-            </p>
-          )}
+          <div>
+            {section.description && (
+              <p className="text-muted-foreground max-w-md self-end pb-1 text-lg leading-relaxed font-light">
+                {section.description}
+              </p>
+            )}
+          </div>
         </div>
 
         {/* Main Grid: Hero + Sidebar */}

@@ -1,3 +1,4 @@
+import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import { SocialMediaType } from '@/types/seo'
 import { IconType } from 'react-icons'
@@ -54,22 +55,19 @@ export default function SocialMedia({
     return null
   }
   return (
-    <a
-      href={url}
-      target="_blank"
-      rel="nofollow noopener"
-      className={cn('group', anchorClasses)}
-    >
-      <p className="sr-only">{platform} Link</p>
-      {platform && (
-        <SocialIcon
-          platform={platform}
-          className={cn(
-            'group-hover:text-primary h-6 w-6 transition-colors',
-            iconClasses,
-          )}
-        />
-      )}
-    </a>
+    <Button asChild variant="outline" size="icon" className="rounded-full p-0">
+      <a href={url} target="_blank" rel="nofollow noopener">
+        <p className="sr-only">{platform} Link</p>
+        {platform && (
+          <SocialIcon
+            platform={platform}
+            className={cn(
+              'group-hover:text-primary h-6 w-6 transition-colors',
+              iconClasses,
+            )}
+          />
+        )}
+      </a>
+    </Button>
   )
 }

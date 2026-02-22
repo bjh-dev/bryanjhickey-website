@@ -28,10 +28,10 @@ export const ThemeSwitcher = () => {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent
-        align="end"
-        side="top"
+        align="start"
+        side="bottom"
         sideOffset={12}
-        className="bg-background"
+        className="border-0 bg-transparent p-0"
       >
         <DropdownMenuItem onClick={() => setTheme('system')}>
           System Mode (default)

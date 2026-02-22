@@ -16,12 +16,12 @@ type Props = {
 const BookReview = ({ bookReview }: Props) => {
   const hasHeadings = bookReview.headings && bookReview.headings.length > 0
   return (
-    <div className="py-48">
+    <div className="py-24">
       {/* Cover image */}
       {bookReview.image?.asset?._ref && (
         <FadeYAnimation yStartValue={24} duration={0.8}>
           <div className="content feature mb-10">
-            <div className="aspect-video overflow-hidden">
+            <div className="aspect-20/8 overflow-hidden">
               <Image
                 src={urlForImage(bookReview.image).url()}
                 alt={bookReview.title ?? ''}

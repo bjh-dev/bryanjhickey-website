@@ -11,12 +11,17 @@ type ReviewType = NonNullable<BookReviewsSection['reviews']>[number]
 
 function ReviewCard({ review, index }: { review: ReviewType; index: number }) {
   return (
-    <FadeYAnimation yStartValue={24} duration={0.8} delay={0.1 * index}>
+    <FadeYAnimation
+      className="h-full"
+      yStartValue={24}
+      duration={0.8}
+      delay={0.1 * index}
+    >
       <Link
         href={`/book-reviews/${review.slug}`}
         className="bg-foreground/5 hover:bg-foreground/10 group hover:border-primary flex h-full flex-col rounded-xl border border-transparent p-6 transition-colors duration-200"
       >
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-1 flex-col gap-2">
           <p className="text-primary text-xs font-semibold tracking-[0.15em] uppercase">
             Book Review
           </p>
@@ -32,13 +37,13 @@ function ReviewCard({ review, index }: { review: ReviewType; index: number }) {
           )}
 
           {review.excerpt && (
-            <p className="text-muted-foreground mt-2 line-clamp-3 flex-1 text-sm leading-relaxed font-light">
+            <p className="text-muted-foreground mt-2 line-clamp-3 text-sm leading-relaxed font-light">
               {review.excerpt}
             </p>
           )}
 
           {review.date && (
-            <p className="text-muted-foreground mt-4 text-xs font-medium tracking-wider uppercase">
+            <p className="text-muted-foreground mt-auto pt-4 text-xs font-medium tracking-wider uppercase">
               {formatDate('long', review.date)}
             </p>
           )}

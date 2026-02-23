@@ -127,9 +127,11 @@ const BookReview = ({ bookReview }: Props) => {
                   </nav>
                 </aside>
               )}
-              <div className="mr-auto ml-0 max-w-2xl">
+
+              <div className="max-w-prose-lg mr-auto ml-0 flex-1">
                 <CustomPortableText
                   value={bookReview.content as PortableTextBlock[]}
+                  paragraphStyles="prose !text-xl leading-relaxed text-foreground lg:!text-xl"
                 />
               </div>
             </div>

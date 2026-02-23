@@ -55,6 +55,7 @@ export default function Hero({ section }: { section: HeroSection }) {
                 <ButtonsGroup
                   buttons={section.buttons as unknown as ButtonFragmentType[]}
                   size="lg"
+                  variantMap={{ outline: 'outlineDark' }}
                 />
               </FadeXAnimation>
             )}

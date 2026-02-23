@@ -3,7 +3,13 @@ import { defineField, defineType } from 'sanity'
 import { capitalize } from '@/utils/strings'
 import { createRadioListLayout } from '@/utils/schema'
 
-const buttonVariants = ['default', 'secondary', 'outline', 'link']
+const buttonVariants = [
+  'default',
+  'secondary',
+  'outline',
+  'outlineDark',
+  'link',
+]
 
 export default defineType({
   name: 'button',

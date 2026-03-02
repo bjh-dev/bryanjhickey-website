@@ -121,7 +121,7 @@ jobs:
           SANITY_API_READ_TOKEN: test-token
 
       - name: Upload documentation artifacts
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: generated-docs
           path: |
@@ -325,7 +325,7 @@ jobs:
           echo "- 📊 Consider adding inline API documentation" >> doc-health.md
 
       - name: Upload health report
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: documentation-health-report
           path: doc-health.md

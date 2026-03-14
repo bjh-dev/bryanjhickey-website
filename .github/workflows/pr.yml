@@ -203,7 +203,7 @@ jobs:
           SANITY_API_READ_TOKEN: ${{ secrets.SANITY_API_READ_TOKEN }}
 
       - name: Upload bundle analysis
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: bundle-analysis
           path: .next/analyze/

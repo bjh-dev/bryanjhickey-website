@@ -98,16 +98,6 @@ const markDefsFragment = /* groq */ `
   markDefs[]{
     ...,
     ${customLinkFragment}
-    _type == 'footnote' => {
-      ...,
-      note[]{
-        ...,
-        markDefs[]{
-          ...,
-          ${customLinkFragment}
-        }
-      }
-    }
   },
 `
 

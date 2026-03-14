@@ -1,6 +1,5 @@
 import { defineArrayMember, defineField } from 'sanity'
-import { BookIcon, LinkIcon, OlistIcon } from '@sanity/icons'
-import { ReactNode } from 'react'
+import { BookIcon, LinkIcon } from '@sanity/icons'
 
 /**
  * External/internal link annotation wrapping the reusable `link` object type.
@@ -51,54 +50,3 @@ export const scriptureRefAnnotation = defineArrayMember({
  * Standard set of annotations for all block content types.
  */
 export const baseAnnotations = [linkAnnotation, scriptureRefAnnotation]
-
-const FootnotePreview = ({ children }: { children: ReactNode }) => (
-  <span style={{ borderBottom: '2px dashed #6366f1', paddingBottom: 1 }}>
-    {children}
-  </span>
-)
-
-/**
- * Footnote annotation for adding numbered endnotes within rich text.
- * The highlighted text becomes the in-text reference; the note field
- * holds the footnote body displayed at the bottom of the article.
- */
-export const footnoteAnnotation = defineArrayMember({
-  name: 'footnote',
-  type: 'object',
-  title: 'Footnote',
-  icon: OlistIcon,
-  components: {
-    annotation: FootnotePreview,
-  },
-  fields: [
-    defineField({
-      name: 'note',
-      type: 'array',
-      title: 'Footnote Content',
-      description:
-        'The text that appears at the bottom of the article. Supports bold, italic, underline, and links.',
-      of: [
-        defineArrayMember({
-          type: 'block',
-          styles: [{ title: 'Normal', value: 'normal' }],
-          lists: [],
-          marks: {
-            decorators: [
-              { title: 'Strong', value: 'strong' },
-              { title: 'Emphasis', value: 'em' },
-              { title: 'Underline', value: 'underline' },
-            ],
-            annotations: [linkAnnotation],
-          },
-        }),
-      ],
-    }),
-  ],
-})
-
-/**
- * Annotations for full rich text (posts, book reviews).
- * Extends baseAnnotations with footnote support.
- */
-export const richTextAnnotations = [...baseAnnotations, footnoteAnnotation]

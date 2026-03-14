@@ -13,7 +13,7 @@
     "dev": "pnpm run next:dev",
     "built": "pnpm exec sanity typegen generate & pnpm run next:build",
     "start": "pnpm run next:start",
-    "sanity:typegen": "mkdir -p ./.sanity && NODE_OPTIONS='--require ./scripts/react-global.cjs' sanity schema extract --path=.sanity/schema.json && sanity typegen generate",
+    "sanity:typegen": "mkdir -p ./.sanity && rm -rf ./.sanity/schema.json && NODE_OPTIONS='--require ./scripts/react-global.cjs' sanity schema extract --path=.sanity/ && sanity typegen generate",
     "typecheck": "tsc --noEmit",
     "prepare": "husky",
     "test": "vitest",

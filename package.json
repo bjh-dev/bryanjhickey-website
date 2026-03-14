@@ -11,7 +11,7 @@
     "lint": "eslint",
     "lint:fix": "eslint --fix",
     "dev": "pnpm run next:dev",
-    "built": "pnpm exec sanity typegen generate & pnpm run next:build",
+    "built": "pnpm run sanity:typegen && pnpm run next:build",
     "start": "pnpm run next:start",
     "sanity:typegen": "mkdir -p ./.sanity && NODE_OPTIONS='--require ./scripts/react-global.cjs' sanity schema extract --path=.sanity/schema.json && sanity typegen generate",
     "typecheck": "tsc --noEmit",

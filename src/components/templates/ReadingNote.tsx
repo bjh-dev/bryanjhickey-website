@@ -64,24 +64,20 @@ const ReadingNote = ({ readingNote }: Props) => {
         {/* Publication details card */}
         <FadeYAnimation yStartValue={20} duration={0.7} delay={0.15}>
           <div className="mb-8">
-            <p className="text-primary mb-3 text-xs font-semibold tracking-[0.2em] uppercase">
+            <p className="text-primary my-6 text-xl font-semibold tracking-wide uppercase">
               {SOURCE_TYPE_LABELS[sourceType] ?? 'Publication Details'}
             </p>
             <div className="bg-muted/50 rounded-lg p-6">
               <dl className="grid grid-cols-1 gap-3 text-sm sm:grid-cols-2">
                 <div>
                   <dt className="text-muted-foreground font-medium">Title</dt>
-                  <dd className="text-foreground font-serif text-lg">
-                    {readingNote.bookTitle}
-                  </dd>
+                  <dd className="text-foreground">{readingNote.bookTitle}</dd>
                 </div>
                 <div>
                   <dt className="text-muted-foreground font-medium">
                     {sourceType === 'editedBook' ? 'Editor' : 'Author'}
                   </dt>
-                  <dd className="text-foreground font-serif text-lg">
-                    {readingNote.bookAuthor}
-                  </dd>
+                  <dd className="text-foreground">{readingNote.bookAuthor}</dd>
                 </div>
                 {readingNote.publisher && (
                   <div>
@@ -153,7 +149,7 @@ const ReadingNote = ({ readingNote }: Props) => {
                     <dt className="text-muted-foreground font-medium">DOI</dt>
                     <dd className="text-foreground">
                       <a
-                        href={`https://doi.org/${readingNote.doi}`}
+                        href={readingNote.doi}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-primary hover:underline"

@@ -62,7 +62,7 @@ function HeroCard({ post }: { post: PostType }) {
           </p>
         )}
         {post.excerpt && (
-          <p className="text-muted-foreground max-w-xl text-base leading-relaxed font-light">
+          <p className="text-foreground/80 line-clamp-3 text-base leading-relaxed">
             {post.excerpt}
           </p>
         )}
@@ -102,7 +102,7 @@ function SideCard({
             </p>
           )}
           {post.excerpt && (
-            <p className="text-muted-foreground line-clamp-2 text-sm leading-relaxed font-light">
+            <p className="text-foreground/80 line-clamp-3 text-base leading-relaxed">
               {post.excerpt}
             </p>
           )}
@@ -169,7 +169,7 @@ function BottomCard({
           </p>
         )}
         {post.excerpt && (
-          <p className="text-muted-foreground line-clamp-3 text-[15px] leading-relaxed font-light">
+          <p className="text-foreground/80 line-clamp-3 text-base leading-relaxed font-light">
             {post.excerpt}
           </p>
         )}
@@ -251,7 +251,7 @@ export default function PostList({ section }: { section: PostListSection }) {
           </div>
           <div>
             {section.description && (
-              <p className="text-muted-foreground max-w-md self-end pb-1 text-lg leading-relaxed font-light">
+              <p className="text-foreground max-w-md self-end pb-1 text-lg leading-relaxed">
                 {section.description}
               </p>
             )}

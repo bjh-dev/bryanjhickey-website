@@ -54,7 +54,7 @@ const jsonLd = {
         'Hermeneutics',
         'Christian Formation',
         'Old Testament Studies',
-        'Book Reviews',
+        'Notes on Reading',
       ],
     },
   ],

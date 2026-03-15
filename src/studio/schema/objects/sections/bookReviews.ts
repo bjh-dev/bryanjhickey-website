@@ -3,7 +3,7 @@ import { BookIcon } from '@sanity/icons'
 
 export default defineType({
   name: 'bookReviews',
-  title: 'Book Reviews',
+  title: 'Notes on Reading',
   type: 'object',
   icon: BookIcon,
   fields: [
@@ -25,14 +25,14 @@ export default defineType({
       title: 'Link Text',
       type: 'string',
       description:
-        'Text for the "View all reviews" link in the header, e.g. "All reviews".',
-      initialValue: 'All reviews',
+        'Text for the "View all notes" link in the header, e.g. "All notes".',
+      initialValue: 'All notes',
     }),
     defineField({
       name: 'numberOfReviews',
-      title: 'Number of Reviews',
+      title: 'Number of Notes',
       type: 'number',
-      description: 'How many book review cards to display (1–8).',
+      description: 'How many reading note cards to display (1–8).',
       initialValue: 3,
       validation: (Rule) => Rule.min(1).max(8),
     }),
@@ -43,8 +43,8 @@ export default defineType({
     },
     prepare({ heading }) {
       return {
-        title: heading || 'Book Reviews',
-        subtitle: 'Book Reviews',
+        title: heading || 'Notes on Reading',
+        subtitle: 'Notes on Reading',
         media: BookIcon,
       }
     },

@@ -1,33 +1,9 @@
 import type { NextConfig } from 'next'
+import redirects from './redirects'
 
 const nextConfig: NextConfig = {
   async redirects() {
-    return [
-      {
-        source:
-          '/posts/book-review-speaking-in-tongues-a-critical-historical-examination-by-philip-blosser',
-        destination:
-          '/book-reviews/book-review-speaking-in-tongues-a-critical-historical-examination-by-philip-blosser',
-        permanent: true,
-      },
-      {
-        source:
-          '/posts/book-review-an-invitation-to-analytic-christian-theology-by-thomas-h-mccall',
-        destination:
-          '/book-reviews/book-review-an-invitation-to-analytic-christian-theology-by-thomas-h-mccall',
-        permanent: true,
-      },
-      {
-        source: '/posts/book-review-scripture-as-communication',
-        destination: '/book-reviews/book-review-scripture-as-communication',
-        permanent: true,
-      },
-      {
-        source: '/category/book-review',
-        destination: '/book-reviews',
-        permanent: true,
-      },
-    ]
+    return redirects
   },
   images: {
     remotePatterns: [

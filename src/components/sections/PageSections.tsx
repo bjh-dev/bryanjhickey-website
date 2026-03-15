@@ -5,7 +5,7 @@ import { useOptimistic } from 'next-sanity/hooks'
 import { type SanityDocument } from 'next-sanity'
 import { dataAttr } from '@/lib/sanity/client/utils'
 import BibleQuoteOfTheDay from '@/components/sections/BibleQuoteOfTheDay'
-import BookReviews from '@/components/sections/BookReviews'
+import ReadingNotes from '@/components/sections/ReadingNotes'
 import Hero from '@/components/sections/Hero'
 import { Section, Sections } from '@/components/sections/types'
 import PostList from '@/components/sections/PostList'
@@ -17,7 +17,7 @@ type PageSectionstype = Section['_type']
 
 const SECTION_COMPONENTS: Record<PageSectionstype, ElementType> = {
   bibleQuoteOfTheDay: BibleQuoteOfTheDay,
-  bookReviews: BookReviews,
+  bookReviews: ReadingNotes,
   hero: Hero,
   postList: PostList,
   scripturePassage: ScripturePassage,

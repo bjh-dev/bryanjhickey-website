@@ -264,7 +264,7 @@ export const readingNotesSectionFragment = /* groq */ `
   subtitle,
   linkText,
   numberOfReviews,
-  "reviews": *[_type == 'bookReview'] | order(date desc) [0...9] {
+  "reviews": *[_type == 'bookReview' && date <= now()] | order(date desc) [0...9] {
     _id,
     title,
     sourceType,

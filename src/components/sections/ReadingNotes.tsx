@@ -11,7 +11,7 @@ const SOURCE_TYPE_LABELS: Record<string, string> = {
   book: 'Book',
   editedBook: 'Edited Book',
   journalArticle: 'Journal Article',
-  chapterInEditedBook: 'Chapter',
+  chapterInEditedBook: 'Chapter in Book',
   thesis: 'Thesis',
   report: 'Report',
 }
@@ -28,31 +28,33 @@ function ReviewCard({ review, index }: { review: ReviewType; index: number }) {
     >
       <Link
         href={`/notes-on-reading/${review.slug}`}
-        className="bg-foreground/5 hover:bg-foreground/10 group hover:border-primary flex h-full flex-col rounded-xl border border-transparent p-6 transition-colors duration-200"
+        className="border-border group hover:border-primary flex h-full flex-col rounded-xl border bg-yellow-400/5 p-6 transition-colors duration-200 hover:bg-yellow-400/10"
       >
         <div className="flex flex-1 flex-col gap-2">
-          <p className="text-primary text-xs font-semibold tracking-[0.15em] uppercase">
+          <p className="text-clr-gold-700 dark:text-primary text-xs font-semibold tracking-[0.15em] uppercase">
             {SOURCE_TYPE_LABELS[review.sourceType ?? 'book'] ?? 'Reading Note'}
           </p>
 
-          <h3 className="text-foreground group-hover:text-primary line-clamp-2 font-serif text-lg leading-snug font-bold transition-colors duration-300">
+          <h3 className="text-foreground line-clamp-2 h-12 font-serif text-lg leading-snug font-bold">
             {review.bookTitle}
           </h3>
 
+          <div className="border-primary my-4 w-0 border-b-2 transition-[width] duration-300 ease-out group-hover:w-full" />
+
           {review.bookAuthor && (
-            <p className="text-muted-foreground mt-1 text-sm font-light">
+            <p className="text-foreground/80 mt-1 text-sm">
               by {review.bookAuthor}
             </p>
           )}
 
           {review.excerpt && (
-            <p className="text-muted-foreground mt-2 line-clamp-3 text-sm leading-relaxed font-light">
+            <p className="text-foreground/80 mt-2 line-clamp-3 text-sm leading-relaxed">
               {review.excerpt}
             </p>
           )}
 
           {review.date && (
-            <p className="text-muted-foreground mt-auto pt-4 text-xs font-medium tracking-wider uppercase">
+            <p className="text-foreground/60 mt-auto pt-4 text-xs font-medium tracking-wider uppercase">
               {formatDate('long', review.date)}
             </p>
           )}
@@ -123,7 +125,7 @@ export default function ReadingNotes({
         {/* Section Header */}
         <div className="border-border mb-16 grid items-end gap-4 border-b pb-10 lg:grid-cols-2 lg:gap-10">
           <div>
-            <p className="text-primary mb-4 text-xs font-semibold tracking-[0.2em] uppercase">
+            <p className="text-clr-gold-700 dark:text-primary mb-4 text-xs font-semibold tracking-[0.2em] uppercase">
               Notes on Reading
             </p>
             <h2 className="text-foreground font-serif text-5xl leading-none font-black tracking-tight lg:text-7xl">
@@ -131,7 +133,7 @@ export default function ReadingNotes({
             </h2>
           </div>
           {section.subtitle && (
-            <p className="text-muted-foreground max-w-md self-end pb-1 text-lg leading-relaxed font-light">
+            <p className="text-foreground max-w-md self-end pb-1 text-lg leading-relaxed">
               {section.subtitle}
             </p>
           )}

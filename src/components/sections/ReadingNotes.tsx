@@ -2,12 +2,21 @@
 
 import Link from 'next/link'
 import { useRef, useCallback, useState, useEffect } from 'react'
-import { BookReviewsSection } from '@/components/sections/types'
+import { ReadingNotesSection } from '@/components/sections/types'
 import { formatDate } from '@/utils/strings'
 import FadeYAnimation from '@/components/animations/FadeYAnimation'
 import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react'
 
-type ReviewType = NonNullable<BookReviewsSection['reviews']>[number]
+const SOURCE_TYPE_LABELS: Record<string, string> = {
+  book: 'Book',
+  editedBook: 'Edited Book',
+  journalArticle: 'Journal Article',
+  chapterInEditedBook: 'Chapter',
+  thesis: 'Thesis',
+  report: 'Report',
+}
+
+type ReviewType = NonNullable<ReadingNotesSection['reviews']>[number]
 
 function ReviewCard({ review, index }: { review: ReviewType; index: number }) {
   return (
@@ -18,12 +27,12 @@ function ReviewCard({ review, index }: { review: ReviewType; index: number }) {
       delay={0.1 * index}
     >
       <Link
-        href={`/book-reviews/${review.slug}`}
+        href={`/notes-on-reading/${review.slug}`}
         className="bg-foreground/5 hover:bg-foreground/10 group hover:border-primary flex h-full flex-col rounded-xl border border-transparent p-6 transition-colors duration-200"
       >
         <div className="flex flex-1 flex-col gap-2">
           <p className="text-primary text-xs font-semibold tracking-[0.15em] uppercase">
-            Book Review
+            {SOURCE_TYPE_LABELS[review.sourceType ?? 'book'] ?? 'Reading Note'}
           </p>
 
           <h3 className="text-foreground group-hover:text-primary line-clamp-2 font-serif text-lg leading-snug font-bold transition-colors duration-300">
@@ -53,10 +62,10 @@ function ReviewCard({ review, index }: { review: ReviewType; index: number }) {
   )
 }
 
-export default function BookReviews({
+export default function ReadingNotes({
   section,
 }: {
-  section: BookReviewsSection
+  section: ReadingNotesSection
 }) {
   const reviews = section.reviews ?? []
   const scrollRef = useRef<HTMLDivElement>(null)
@@ -115,7 +124,7 @@ export default function BookReviews({
         <div className="border-border mb-16 grid items-end gap-4 border-b pb-10 lg:grid-cols-2 lg:gap-10">
           <div>
             <p className="text-primary mb-4 text-xs font-semibold tracking-[0.2em] uppercase">
-              Book Reviews
+              Notes on Reading
             </p>
             <h2 className="text-foreground font-serif text-5xl leading-none font-black tracking-tight lg:text-7xl">
               {section.heading}
@@ -149,7 +158,7 @@ export default function BookReviews({
               {hasOverflow && (
                 <div className="w-[85vw] shrink-0 snap-start sm:w-[45%] lg:w-[calc(33.333%-16px)]">
                   <Link
-                    href="/book-reviews"
+                    href="/notes-on-reading"
                     className="bg-foreground/5 hover:bg-foreground/10 group hover:border-primary flex h-full flex-col items-center justify-center gap-3 rounded-xl border border-transparent p-6 transition-colors duration-200"
                   >
                     <span className="text-foreground group-hover:text-primary font-serif text-lg font-bold transition-colors duration-300">

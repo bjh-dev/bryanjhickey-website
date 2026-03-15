@@ -1,25 +1,28 @@
 import { notFound } from 'next/navigation'
 import { sanityFetch } from '@/lib/sanity/client/live'
-import { bookReviewQuery, bookReviewSlugs } from '@/lib/sanity/queries/queries'
+import {
+  readingNoteQuery,
+  readingNoteSlugs,
+} from '@/lib/sanity/queries/queries'
 import { Metadata } from 'next'
 import { client } from '@/lib/sanity/client/client'
-import { BookReviewQueryResult } from '@/types/sanity.types'
-import BookReview from '@/components/templates/BookReview'
+import { ReadingNoteQueryResult } from '@/types/sanity.types'
+import ReadingNote from '@/components/templates/ReadingNote'
 import { formatMetaData } from '@/lib/sanity/client/seo'
 
 type Props = {
   params: Promise<{ slug: string }>
 }
 
-const loadData = async (props: Props): Promise<BookReviewQueryResult> => {
+const loadData = async (props: Props): Promise<ReadingNoteQueryResult> => {
   const { slug } = await props.params
 
-  const { data: bookReview } = await sanityFetch({
-    query: bookReviewQuery,
+  const { data: readingNote } = await sanityFetch({
+    query: readingNoteQuery,
     params: { slug },
   })
 
-  return bookReview
+  return readingNote
 }
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
@@ -33,7 +36,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 }
 
 export async function generateStaticParams() {
-  const slugs = await client.fetch(bookReviewSlugs, {
+  const slugs = await client.fetch(readingNoteSlugs, {
     limit: 50,
   })
 
@@ -44,12 +47,12 @@ export async function generateStaticParams() {
   return [...staticParams]
 }
 
-export default async function BookReviewPage(props: Props) {
-  const bookReview = await loadData(props)
+export default async function ReadingNotePage(props: Props) {
+  const readingNote = await loadData(props)
 
-  if (!bookReview) {
+  if (!readingNote) {
     notFound()
   }
 
-  return <BookReview bookReview={bookReview} />
+  return <ReadingNote readingNote={readingNote} />
 }

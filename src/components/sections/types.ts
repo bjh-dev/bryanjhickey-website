@@ -8,7 +8,7 @@ export type BibleQuoteOfTheDaySection = Extract<
   Section,
   { _type: 'bibleQuoteOfTheDay' }
 >
-export type BookReviewsSection = Extract<Section, { _type: 'bookReviews' }>
+export type ReadingNotesSection = Extract<Section, { _type: 'bookReviews' }>
 export type HeroSection = Extract<Section, { _type: 'hero' }>
 export type PostListSection = Extract<Section, { _type: 'postList' }>
 export type ScripturePassageSection = Extract<

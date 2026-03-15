@@ -1,6 +1,6 @@
 import { sanityFetch } from '@/lib/sanity/client/live'
-import { bookReviewsArchiveQuery } from '@/lib/sanity/queries/queries'
-import { BookReviewCardFragmentType } from '@/lib/sanity/queries/fragments/fragment.types'
+import { readingNotesArchiveQuery } from '@/lib/sanity/queries/queries'
+import { ReadingNoteCardFragmentType } from '@/lib/sanity/queries/fragments/fragment.types'
 import { getDocumentLink } from '@/lib/links'
 import { formatDate, readTime } from '@/utils/strings'
 import { notFound } from 'next/navigation'
@@ -9,9 +9,18 @@ import Link from 'next/link'
 import FadeYAnimation from '@/components/animations/FadeYAnimation'
 import { cn } from '@/lib/utils'
 
-const REVIEWS_PER_PAGE = 12
+const NOTES_PER_PAGE = 12
 
-type ReviewType = BookReviewCardFragmentType
+const SOURCE_TYPE_LABELS: Record<string, string> = {
+  book: 'Book',
+  editedBook: 'Edited Book',
+  journalArticle: 'Journal Article',
+  chapterInEditedBook: 'Chapter',
+  thesis: 'Thesis',
+  report: 'Report',
+}
+
+type NoteType = ReadingNoteCardFragmentType
 
 type Props = {
   searchParams: Promise<{ page?: string }>
@@ -19,14 +28,14 @@ type Props = {
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: 'Book Reviews',
-    alternates: { canonical: '/book-reviews' },
+    title: 'Notes on Reading',
+    alternates: { canonical: '/notes-on-reading' },
   }
 }
 
-/* ─── Review card ──────────────────────────────── */
+/* ─── Note card ───────────────────────────────── */
 
-function ReviewCard({ review, index }: { review: ReviewType; index: number }) {
+function NoteCard({ note, index }: { note: NoteType; index: number }) {
   return (
     <FadeYAnimation
       className="h-full"
@@ -35,25 +44,29 @@ function ReviewCard({ review, index }: { review: ReviewType; index: number }) {
       delay={0.05 * index}
     >
       <Link
-        href={getDocumentLink({ slug: review.slug, _type: 'bookReview' })}
+        href={getDocumentLink({ slug: note.slug, _type: 'bookReview' })}
         className="group block h-full"
       >
         <div className="text-muted-foreground flex items-center gap-4 text-xs font-medium tracking-wider uppercase">
-          {review.date && <time>{formatDate('long', review.date)}</time>}
+          <span className="text-primary">
+            {SOURCE_TYPE_LABELS[note.sourceType ?? 'book'] ?? 'Book'}
+          </span>
           <span className="bg-border inline-block h-px w-5" />
-          <span>{readTime(review.wordCount)} min read</span>
+          {note.date && <time>{formatDate('long', note.date)}</time>}
+          <span className="bg-border inline-block h-px w-5" />
+          <span>{readTime(note.wordCount)} min read</span>
         </div>
         <h3 className="text-foreground group-hover:text-primary mt-3 mb-1.5 font-serif text-xl leading-snug font-bold transition-colors duration-300">
-          {review.bookTitle}
+          {note.bookTitle}
         </h3>
-        {review.bookAuthor && (
+        {note.bookAuthor && (
           <p className="text-muted-foreground mb-2 text-sm font-medium">
-            by {review.bookAuthor}
+            by {note.bookAuthor}
           </p>
         )}
-        {review.excerpt && (
+        {note.excerpt && (
           <p className="text-muted-foreground line-clamp-3 text-sm leading-relaxed font-light">
-            {review.excerpt}
+            {note.excerpt}
           </p>
         )}
       </Link>
@@ -63,22 +76,22 @@ function ReviewCard({ review, index }: { review: ReviewType; index: number }) {
 
 /* ─── Pagination ───────────────────────────────── */
 
-function ReviewsPagination({
+function NotesPagination({
   currentPage,
   totalPages,
-  totalReviews,
-  reviewsOnPage,
+  totalNotes,
+  notesOnPage,
 }: {
   currentPage: number
   totalPages: number
-  totalReviews: number
-  reviewsOnPage: number
+  totalNotes: number
+  notesOnPage: number
 }) {
   if (totalPages <= 1) return null
 
   const buildHref = (page: number) => {
-    if (page > 1) return `/book-reviews?page=${page}`
-    return '/book-reviews'
+    if (page > 1) return `/notes-on-reading?page=${page}`
+    return '/notes-on-reading'
   }
 
   return (
@@ -116,7 +129,7 @@ function ReviewsPagination({
         )}
       </div>
       <p className="text-muted-foreground text-sm">
-        Showing {reviewsOnPage} of {totalReviews} reviews
+        Showing {notesOnPage} of {totalNotes} notes
       </p>
     </div>
   )
@@ -124,42 +137,42 @@ function ReviewsPagination({
 
 /* ─── Page ─────────────────────────────────────── */
 
-export default async function BookReviewsPage({ searchParams }: Props) {
+export default async function ReadingNotesPage({ searchParams }: Props) {
   const { page: pageParam } = await searchParams
   const currentPage = Math.max(1, parseInt(pageParam ?? '1', 10) || 1)
 
-  const from = (currentPage - 1) * REVIEWS_PER_PAGE
-  const to = from + REVIEWS_PER_PAGE - 1
+  const from = (currentPage - 1) * NOTES_PER_PAGE
+  const to = from + NOTES_PER_PAGE - 1
 
   const { data: archiveData } = await sanityFetch({
-    query: bookReviewsArchiveQuery,
+    query: readingNotesArchiveQuery,
     params: { from, to },
   })
 
   if (!archiveData) notFound()
 
-  const reviews = archiveData.results
-  const totalPages = Math.ceil(archiveData.total / REVIEWS_PER_PAGE)
+  const notes = archiveData.results
+  const totalPages = Math.ceil(archiveData.total / NOTES_PER_PAGE)
 
-  if (reviews.length === 0) {
+  if (notes.length === 0) {
     return (
       <section className="py-48">
         <div className="content feature">
           <div className="border-border mb-10 grid items-end gap-4 border-b pb-10 lg:grid-cols-2 lg:gap-10">
             <div>
               <p className="text-primary mb-4 text-xs font-semibold tracking-[0.2em] uppercase">
-                Book Reviews
+                Notes on Reading
               </p>
               <h1 className="text-foreground font-serif text-5xl leading-none font-black tracking-tight lg:text-7xl">
-                Critical reviews{' '}
+                Notes on reading{' '}
                 <em className="text-primary font-normal italic">
-                  and reflections
+                  and reflection
                 </em>
               </h1>
             </div>
           </div>
           <p className="text-muted-foreground py-24 text-center text-lg font-light">
-            No book reviews found.
+            No reading notes found.
           </p>
         </div>
       </section>
@@ -173,34 +186,34 @@ export default async function BookReviewsPage({ searchParams }: Props) {
         <div className="border-border mb-10 grid items-end gap-4 border-b pb-10 lg:grid-cols-2 lg:gap-10">
           <div>
             <p className="text-primary mb-4 text-xs font-semibold tracking-[0.2em] uppercase">
-              Book Reviews
+              Notes on Reading
             </p>
             <h1 className="text-foreground font-serif text-5xl leading-none font-black tracking-tight lg:text-7xl">
-              Critical reviews{' '}
+              Notes on reading{' '}
               <em className="text-primary font-normal italic">
-                and reflections
+                and reflection
               </em>
             </h1>
           </div>
           <p className="text-muted-foreground max-w-md self-end pb-1 text-lg leading-relaxed font-light">
-            Reviews and reflections on books covering theology, philosophy, and
-            biblical studies.
+            Reviews and reflections on books, journal articles, theses, and
+            other works covering theology, philosophy, and biblical studies.
           </p>
         </div>
 
-        {/* Review Grid */}
+        {/* Note Grid */}
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
-          {reviews.map((review, i) => (
-            <ReviewCard key={review._id} review={review} index={i} />
+          {notes.map((note, i) => (
+            <NoteCard key={note._id} note={note} index={i} />
           ))}
         </div>
 
         {/* Pagination */}
-        <ReviewsPagination
+        <NotesPagination
           currentPage={currentPage}
           totalPages={totalPages}
-          totalReviews={archiveData.total}
-          reviewsOnPage={reviews.length}
+          totalNotes={archiveData.total}
+          notesOnPage={notes.length}
         />
       </div>
     </section>

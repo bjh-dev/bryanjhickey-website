@@ -213,13 +213,14 @@ export const textColumnSectionFragment = /* groq */ `
   ${buttonsFragment}
 `
 
-export const bookReviewCardFragment = /* groq */ `
+export const readingNoteCardFragment = /* groq */ `
   _type,
   _id,
   "status": select(_originalId in path("drafts.**") => "draft", "published"),
   "title": coalesce(title, "Untitled"),
   "slug": slug.current,
   excerpt,
+  sourceType,
   bookTitle,
   bookAuthor,
   image,
@@ -229,11 +230,21 @@ export const bookReviewCardFragment = /* groq */ `
   "wordCount": count(string::split(coalesce(pt::text(content), ''), " ")),
 `
 
-export const bookReviewFragment = /* groq */ `
-  ${bookReviewCardFragment}
+export const readingNoteFragment = /* groq */ `
+  ${readingNoteCardFragment}
   publisher,
   yearPublished,
   amazonLink,
+  journalName,
+  volume,
+  issue,
+  pages,
+  doi,
+  editors,
+  parentBookTitle,
+  institution,
+  thesisType,
+  reportNumber,
   ${contentFragment}
   seo {
     ${seoFragment}
@@ -247,7 +258,7 @@ export const bibleQuoteOfTheDaySectionFragment = /* groq */ `
   ${contentFragment}
 `
 
-export const bookReviewsSectionFragment = /* groq */ `
+export const readingNotesSectionFragment = /* groq */ `
   _type,
   heading,
   subtitle,
@@ -256,6 +267,7 @@ export const bookReviewsSectionFragment = /* groq */ `
   "reviews": *[_type == 'bookReview'] | order(date desc) [0...9] {
     _id,
     title,
+    sourceType,
     bookTitle,
     bookAuthor,
     excerpt,
@@ -277,7 +289,7 @@ export const pageBuilderFragment = /* groq */ `
     _key,
     _type,
     _type == 'bibleQuoteOfTheDay' => {${bibleQuoteOfTheDaySectionFragment}},
-    _type == 'bookReviews' => {${bookReviewsSectionFragment}},
+    _type == 'bookReviews' => {${readingNotesSectionFragment}},
     _type == 'hero' => {${heroSectionFragment}},
     _type == 'postList' => {${postListSectionFragment}},
     _type == 'scripturePassage' => {${scripturePassageSectionFragment}},

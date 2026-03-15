@@ -23,7 +23,7 @@ export const Logo = ({
   const isPostsRoute =
     pathname.startsWith('/posts') ||
     pathname.startsWith('/category') ||
-    pathname.startsWith('/book-reviews')
+    pathname.startsWith('/notes-on-reading')
   const isDarkTheme = resolvedTheme === 'dark'
 
   if (!mounted) {

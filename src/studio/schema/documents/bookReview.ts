@@ -217,10 +217,10 @@ export default defineType({
     }),
     defineField({
       name: 'date',
-      title: 'Date',
+      title: 'Published Date',
       type: 'datetime',
       description:
-        'The publication date shown to readers. Defaults to today — adjust for backdated or scheduled notes.',
+        'The publication date shown to readers. Defaults to today. Set a future date to schedule — the note will not appear in listings until this date.',
       initialValue: () => new Date().toISOString(),
       group: 'content',
     }),

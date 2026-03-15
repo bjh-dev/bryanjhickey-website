@@ -46,7 +46,7 @@ export const getPageQuery = defineQuery(`
 `)
 
 export const getSitemapQuery = defineQuery(`
-  *[((_type in ["page", "post", "bookReview"] && defined(slug.current)) || (_type == "homePage")) && seo.noIndex != true]{
+  *[((_type in ["page", "post"] && defined(slug.current)) || (_type == "bookReview" && defined(slug.current) && date <= now()) || (_type == "homePage")) && seo.noIndex != true]{
     "href": select(
       _type == "page" => "/" + slug.current,
       _type == "post" => "/posts/" + slug.current,
@@ -135,7 +135,7 @@ export const readingNoteQuery = defineQuery(`
 `)
 
 export const allReadingNotesQuery = defineQuery(`
-  *[_type == 'bookReview'] | order(date desc, _id desc) {
+  *[_type == 'bookReview' && date <= now()] | order(date desc, _id desc) {
     ${readingNoteCardFragment}
   }
 `)
@@ -152,7 +152,7 @@ export const readingNoteSlugs = defineQuery(`
 
 export const readingNotesArchiveQuery = defineQuery(`
   {
-    "allResults": *[_type == "bookReview"] | order(date desc, _id desc)
+    "allResults": *[_type == "bookReview" && date <= now()] | order(date desc, _id desc)
   }
   {
     "total": count(allResults),
